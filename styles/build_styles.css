@@ -182,3 +182,84 @@ select {
 
     box-shadow: 0 1px 0 var(--charcoal);
 }
+
+/* ==================================================
+   STUDENT ENTRY BOXES
+   ================================================== */
+
+.student-entry-area {
+    margin-top: 18px;
+}
+
+.student-entry-input {
+    width: 100%;
+    padding: 14px 16px;
+
+    background: white;
+    color: var(--text);
+
+    border: 2px solid var(--charcoal);
+    border-radius: var(--radius-small);
+
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.student-entry-input:focus {
+    outline: 3px solid rgba(78, 50, 232, 0.2);
+    border-color: var(--purple);
+}
+
+.student-entry-list {
+    display: grid;
+    gap: 10px;
+
+    margin: 14px 0 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.student-entry-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 10px 12px 10px 16px;
+
+    background: white;
+
+    border: 2px solid var(--charcoal);
+    border-radius: var(--radius-small);
+
+    line-height: 1.4;
+}
+
+.delete-answer {
+    flex: 0 0 auto;
+
+    width: 30px;
+    height: 30px;
+
+    display: grid;
+    place-items: center;
+
+    padding: 0;
+
+    background: var(--soft-orange);
+    color: var(--charcoal);
+
+    border: 2px solid var(--charcoal);
+    border-radius: 50%;
+
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.delete-answer:hover {
+    background: var(--orange);
+}
