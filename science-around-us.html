@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Science is All Around Us | GTAC</title>
+
+    <link rel="stylesheet" href="styles/build_styles.css">
+    <link rel="stylesheet" href="styles/science-around-us.css">
+
+    <script src="scripts/common_functions.js" defer></script>
+    <script src="scripts/science-around-us.js" defer></script>
+</head>
+
+<body>
+
+<header class="site-header">
+    <a href="index.html">GTAC STEM</a>
+
+    <nav>
+        <a href="science-around-us.html">
+            Science is All Around Us
+        </a>
+
+        <a href="local-stem-experts.html">
+            Local STEM Experts
+        </a>
+    </nav>
+</header>
+
+<main class="page">
+
+<!-- Science is all around us header section-->
+
+    <section class="science-hero">
+
+        <p class="science-eyebrow">
+            Science is everywhere
+        </p>
+
+        <h1>
+            Science is All Around Us
+        </h1>
+
+        <p class="science-intro">
+            Click on something from your world below to explore the science and STEM behind it.
+        </p>
+
+        <div class="science-object-grid">
+
+            <button class="science-object-card" type="button" data-object="helmet">
+                <div class="science-object-image">
+                    <img src="../assets/images/helmet.png" alt="Helmet">
+                </div>
+
+                <span>Helmet</span>
+            </button>
+
+            <button class="science-object-card" type="button" data-object="bread">
+                <div class="science-object-image">
+                    <img src="../assets/images/bread.jpg" alt="Bread">
+                </div>
+
+                <span>Bread</span>
+            </button>
+
+            <button class="science-object-card" type="button" data-object="sunscreen">
+                <div class="science-object-image">
+                    <img src="../assets/images/sunscreen.jpg" alt="Sunscreen">
+                </div>
+
+                <span>Sunscreen</span>
+            </button>
+
+        </div>
+
+    </section>
+
+<!-- Helmet Section -->
+
+<section class="science-content-panel" data-content="helmet" hidden>
+
+    <!-- See Think Wonder Content Header -->
+    <div class="science-content-heading">
+        <span class="science-content-label">Helmet</span>
+
+        <h2>See / Think / Wonder</h2>
+    </div>
+
+    <!-- See -->
+    <section class="stw-section stw-section--see">
+        <h3>SEE</h3>
+
+        <p class="stw-prompt">
+            Look at the images below.<br>
+            <strong>What do you see?</strong>
+        </p>
+
+        <div class="stw-image-grid">
+
+            <img
+                src="../assets/images/helmet-observation-1.jpg"
+                alt="Person wearing a safety helmet"
+            >
+
+            <img
+                src="../assets/images/helmet-observation-2.jpg"
+                alt="Person wearing a sports helmet"
+            >
+
+            <img
+                src="../assets/images/helmet-observation-3.jpg"
+                alt="Cyclist wearing a helmet"
+            >
+
+            <img
+                src="../assets/images/helmet-observation-4.jpg"
+                alt="Skateboarder wearing a helmet"
+            >
+
+        </div>
+
+        <!-- Text entry area for SEE -->
+        <div class="student-entry-area">
+            <input
+                class="student-entry-input"
+                type="text"
+                placeholder="Add an observation..."
+                aria-label="Add an observation about the helmet images"
+            >
+
+            <ul class="student-entry-list"></ul>
+        </div>        
+
+    </section>
+
+    <!-- Think -->
+    <section class="stw-section stw-section--think">
+        <h3>THINK</h3>
+
+        <p class="stw-prompt">
+            What do you think is going on?<br>
+            <strong>What makes you think that?</strong>
+        </p>
+
+        <!-- Text entry area for THINK -->
+        <div class="student-entry-area">
+            <input
+                class="student-entry-input"
+                type="text"
+                placeholder="Add a thought..."
+                aria-label="Add a thought about the helmet images"
+            >
+
+            <ul class="student-entry-list"></ul>
+        </div>
+    </section>
+
+    <!-- Wonder -->
+    <section class="stw-section stw-section--wonder">
+        <h3>WONDER</h3>
+
+        <p class="stw-prompt">
+            What does this make you wonder?<br>
+            <strong>What questions would you like to ask?</strong>
+        </p>
+
+        <!-- Text entry area for WONDER -->
+        <div class="student-entry-area">
+            <input
+                class="student-entry-input"
+                type="text"
+                placeholder="Add a question..."
+                aria-label="Add a question about the helmet images"
+            >
+
+            <ul class="student-entry-list"></ul>
+        </div>
+    </section>
+
+</section>
+
+</main>
+
+</body>
+</html>

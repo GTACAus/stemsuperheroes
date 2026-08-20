@@ -1,0 +1,275 @@
+/* =========================================================
+   SCIENCE IS ALL AROUND US
+   ========================================================= */
+
+
+/* ---------- Hero ---------- */
+
+.science-hero {
+    padding: 50px 30px;
+
+    background: var(--purple);
+
+    border: 3px solid var(--charcoal);
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow-medium);
+
+    text-align: center;
+}
+
+.science-eyebrow {
+    width: fit-content;
+    margin: 0 auto 12px;
+    padding: 7px 14px;
+
+    background: var(--yellow);
+    color: var(--charcoal);
+
+    border: 2px solid var(--charcoal);
+    border-radius: 999px;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.science-hero h1 {
+    margin: 0 0 14px;
+
+    color: white;
+
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.05;
+}
+
+.science-intro {
+    max-width: 650px;
+    margin: 0 auto 32px;
+
+    color: white;
+
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+
+/* ---------- Object selector ---------- */
+
+.science-object-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.science-object-card {
+    padding: 14px;
+
+    background: var(--paper);
+    color: var(--text);
+
+    border: 3px solid var(--charcoal);
+    border-radius: var(--radius-medium);
+
+    box-shadow: var(--shadow-small);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+.science-object-card:hover {
+    background: var(--soft-yellow);
+
+    transform: translateY(-4px);
+
+    box-shadow: var(--shadow-medium);
+}
+
+.science-object-image {
+    display: grid;
+    place-items: center;
+
+    aspect-ratio: 1;
+
+    margin-bottom: 12px;
+
+    background: var(--soft-yellow);
+    border-radius: var(--radius-small);
+
+    overflow: hidden;
+}
+
+.science-object-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+.science-object-card span {
+    display: block;
+
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.science-object-card.selected {
+    background: var(--mint);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 650px) {
+
+    .science-hero {
+        padding: 35px 18px;
+    }
+
+    .science-object-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .science-object-card {
+        max-width: 260px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+}
+
+/* =========================================================
+   SCIENCE CONTENT PANEL
+   ========================================================= */
+
+.science-content-panel {
+    margin-top: 32px;
+    padding: 28px;
+
+    background: var(--paper);
+
+    border: 3px solid var(--charcoal);
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow-medium);
+}
+
+.science-content-panel[hidden] {
+    display: none;
+}
+
+.science-content-heading {
+    margin-bottom: 28px;
+}
+
+.science-content-label {
+    display: inline-block;
+
+    margin-bottom: 10px;
+    padding: 7px 14px;
+
+    background: var(--yellow);
+
+    border: 2px solid var(--charcoal);
+    border-radius: var(--radius-small);
+
+    font-weight: 700;
+}
+
+.science-content-heading h2 {
+    margin: 0;
+
+    font-size: 1.7rem;
+}
+
+.stw-section {
+    margin-bottom: 26px;
+    padding: 22px;
+
+    border: 3px solid var(--charcoal);
+    border-radius: var(--radius-medium);
+
+    box-shadow: var(--shadow-small);
+}
+
+.stw-section:last-child {
+    margin-bottom: 0;
+}
+
+.stw-section h3 {
+    margin: 0 0 10px;
+
+    font-size: 1.4rem;
+}
+
+.stw-section p {
+    margin: 0;
+
+    line-height: 1.6;
+}
+
+.stw-section--see {
+    background: var(--soft-orange);
+}
+
+.stw-section--think {
+    background: var(--soft-yellow);
+}
+
+.stw-section--wonder {
+    background: var(--soft-green);
+}
+
+.stw-placeholder {
+    margin-top: 18px;
+    padding: 50px 20px;
+
+    background: white;
+
+    border: 2px dashed var(--charcoal);
+    border-radius: var(--radius-medium);
+
+    text-align: center;
+    color: var(--muted);
+}
+
+/* See Think Wonder Prompt */
+
+.stw-prompt {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* Image grid for See, Think, Wonder sections */
+.stw-image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+
+    margin-top: 18px;
+}
+
+.stw-image-grid img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+
+    object-fit: cover;
+
+    border: 2px solid var(--charcoal);
+    border-radius: var(--radius-small);
+}
+
+@media (max-width: 650px) {
+    .stw-image-grid {
+        grid-template-columns: 1fr;
+    }
+}

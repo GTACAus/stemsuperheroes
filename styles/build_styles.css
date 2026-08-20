@@ -1,0 +1,184 @@
+/* =========================================================
+   GTAC SHARED DESIGN SYSTEM
+   ========================================================= */
+
+:root {
+    /* Brand */
+    --cream: #f7f2df;
+    --paper: #fffdf4;
+    --yellow: #ffc91c;
+    --orange: #ff6b3d;
+    --green: #00c77a;
+    --mint: #67e5c1;
+    --purple: #4e32e8;
+    --lavender: #b8a4ff;
+    --blue: #75dde8;
+    --charcoal: #30332f;
+
+    /* Soft backgrounds */
+    --soft-yellow: #fff0a8;
+    --soft-orange: #ffd3c3;
+    --soft-green: #d7f5e9;
+    --soft-purple: #ded7ff;
+    --soft-blue: #d7f2f4;
+
+    /* Semantic */
+    --bg: var(--cream);
+    --card: var(--paper);
+    --text: var(--charcoal);
+    --muted: #62655f;
+    --line: var(--charcoal);
+
+    --button: var(--green);
+    --button-hover: var(--purple);
+
+    /* Layout */
+    --content-width: 1180px;
+
+    --radius-small: 12px;
+    --radius-medium: 20px;
+    --radius-large: 26px;
+
+    --shadow-small: 0 4px 0 var(--charcoal);
+    --shadow-medium: 0 6px 0 var(--charcoal);
+}
+
+
+/* =========================================================
+   RESET / BASE
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: "DM Sans", Arial, sans-serif;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+
+/* =========================================================
+   SHARED LAYOUT
+   ========================================================= */
+
+.page {
+    width: min(var(--content-width), 94%);
+    margin: 0 auto;
+    padding: 38px 0 60px;
+}
+
+.site-header {
+    width: min(var(--content-width), 94%);
+    margin: 0 auto;
+    padding: 20px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.site-header > a {
+    color: var(--purple);
+
+    font-size: 1.1rem;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.site-header nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.site-header nav a {
+    padding: 8px 12px;
+
+    color: var(--text);
+
+    border-radius: var(--radius-small);
+
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.site-header nav a:hover {
+    background: var(--soft-purple);
+}
+
+
+/* =========================================================
+   SHARED COMPONENTS
+   ========================================================= */
+
+.card {
+    background: var(--card);
+
+    border: 3px solid var(--line);
+    border-radius: var(--radius-medium);
+
+    box-shadow: var(--shadow-small);
+}
+
+.gtac-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    background: var(--green);
+    color: white;
+
+    border: 2px solid var(--charcoal);
+    border-radius: var(--radius-small);
+
+    box-shadow: var(--shadow-small);
+
+    font-weight: 700;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+.gtac-button:hover {
+    background: var(--purple);
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow-medium);
+}
+
+.gtac-button:active {
+    transform: translateY(3px);
+
+    box-shadow: 0 1px 0 var(--charcoal);
+}
