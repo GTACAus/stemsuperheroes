@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupScienceObjectSelector();
     setupScienceStudentEntries();
     initTrueFalse();
+    initThingLink();
 });
 
 /* ==================================================
@@ -94,4 +95,18 @@ function initTrueFalse() {
     });
 }
 
-function initThingLink() {}
+function initThingLink() {
+    const thinglinkBoxes = document.querySelectorAll(".thinglink-box");
+
+    thinglinkBoxes.forEach((box) => {
+        const heading = box.querySelector("h3");
+
+        box.addEventListener("mouseenter", () => {
+            console.log("mouse entered");
+            heading.classList.add("transparent");
+        });
+        box.addEventListener("mouseleave", () => {
+            heading.classList.remove("transparent");
+        });
+    });
+}
