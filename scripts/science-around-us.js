@@ -1,7 +1,7 @@
 /* ==================================================
    SCIENCE PAGE INITIALISATION
    ================================================== */
-
+const dev = true;
 document.addEventListener("DOMContentLoaded", () => {
     setupScienceObjectSelector();
     setupScienceStudentEntries();
@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function setupScienceObjectSelector() {
     const objectCards = document.querySelectorAll(".science-object-card");
     const contentPanels = document.querySelectorAll(".science-content-panel");
+    if (dev) {
+        contentPanels[0].hidden = false;
+    }
 
     objectCards.forEach(card => {
         card.addEventListener("click", () => {
@@ -56,7 +59,7 @@ function setupScienceStudentEntries() {
 function initTrueFalse() {
     document.querySelectorAll('.tf-options').forEach((group) => {
         const options = group.querySelectorAll('.tf-option');
-        const section = group.closest('.stw-section');
+        const section = group.closest('.gtac-section');
         const checkButton = section.querySelector('.tf-check');
         const feedback = section.querySelector('.tf-feedback');
         const correctValue = group.dataset.correct;
