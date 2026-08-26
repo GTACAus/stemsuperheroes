@@ -162,7 +162,7 @@
 
 .science-explorer-heading h2 {
     margin: 0 0 8px;
-    font-size: 1.8rem;
+    font-size: clamp(1.3rem, 5vw, 1.7rem);
 }
 
 .science-explorer-heading p {
@@ -193,14 +193,7 @@
 }
 
 .science-content-section {
-    padding: 28px;
-
     background: var(--paper);
-
-    border: 3px solid var(--charcoal);
-    border-radius: var(--radius-large);
-
-    box-shadow: var(--shadow-medium);
 } /*the panel that contains each of the sections within the objects*/
 
 .science-content-panel > .gtac-section {
@@ -445,17 +438,8 @@
     margin-bottom: 20px;
 }
 
-.try-icon {
-    display: grid;
-    place-items: center;
-    flex: 0 0 auto;
-
+.gtac-svg-icon--try {
     background: #17b3c4;
-}
-
-.try-icon svg {
-    width: 26px;
-    height: 26px;
 }
 
 .try-header h3 {
@@ -503,7 +487,17 @@
 }
 
 @media (max-width: 650px) {
+    .science-content-section,
+    .gtac-section {
+        padding: 18px;
+    }
+
     .try-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .thinglink-box h3 {
+        padding: 8px 12px;
     }
 }

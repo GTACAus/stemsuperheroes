@@ -21,7 +21,19 @@
 <header class="site-header">
     <a href="index.html">GTAC STEM</a>
 
-    <nav>
+    <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Open menu"
+    >
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav">
         <a href="science-around-us.html">
             Science is All Around Us
         </a>
@@ -197,7 +209,7 @@
 <section class="science-content-panel" data-content="helmet" hidden>
 
     <!-- See Think Wonder Section -->
-    <section class="science-content-section">
+    <section class="gtac-section science-content-section">
 
         <!-- See Think Wonder Content Header -->
         <div class="science-content-heading">
@@ -421,7 +433,7 @@
 
 <div class="section-box try-section">
     <div class="box-title try-header">
-        <span class="gtac-svg-icon try-icon" aria-hidden="true">
+        <span class="gtac-svg-icon gtac-svg-icon--try" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 
     <!-- Liquid fill with wavy surface -->
