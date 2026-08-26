@@ -156,7 +156,8 @@ select {
 
 .nav-toggle-bar {
     display: block;
-    height: 2px;
+    margin: 0 20%;
+    height: 3px;
     background: var(--charcoal);
     border-radius: 2px;
 }
@@ -219,6 +220,8 @@ select {
     margin-bottom: 26px;
     padding: 22px;
 
+    background: var(--paper);
+
     border: 3px solid var(--charcoal);
     border-radius: var(--radius-medium);
 
@@ -241,6 +244,7 @@ select {
 
 .section-box {
     margin-top: 10px;  
+    background: var(--paper);
     border: 2px solid var(--charcoal);
     border-radius: var(--radius-small);
     padding: 22px;
