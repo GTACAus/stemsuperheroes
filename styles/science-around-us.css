@@ -6,7 +6,7 @@
 /* ---------- Hero ---------- */
 
 .science-hero {
-    padding: 16px 20px;
+    padding: 50px 30px;
 
     background: var(--purple);
 
@@ -20,8 +20,7 @@
 
 .science-eyebrow {
     width: fit-content;
-
-    margin: 0 auto 8px;
+    margin: 0 auto 12px;
     padding: 7px 14px;
 
     background: var(--yellow);
@@ -36,7 +35,7 @@
 }
 
 .science-hero h1 {
-    margin: 0 0 8px;
+    margin: 0 0 14px;
 
     color: white;
 
@@ -46,8 +45,7 @@
 
 .science-intro {
     max-width: 650px;
-
-    margin: 0 auto;
+    margin: 0 auto 32px;
 
     color: white;
 
@@ -134,7 +132,7 @@
 @media (max-width: 650px) {
 
     .science-hero {
-        padding: 20px 18px;
+        padding: 35px 18px;
     }
 
     .science-object-grid {
@@ -258,24 +256,49 @@
 }
 
 .thinglink-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-    width: clamp(500px, 40vw, 1000px);
-    
+    position: relative;
+    width: 100%;
+
     margin: 10px auto;
 }
 
 .thinglink-box h3 {
-    font-size: medium;
-}
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
 
-.thinglink-box iframe {
+    width: max-content;
+    max-width: 80%;
+
+    margin: 0;
+    padding: 10px 16px;
+
+    background: var(--paper);
 
     border: 2px solid var(--charcoal);
+    border-radius: var(--radius-small);
+    font-size: clamp(15px, 1.5vw, 20px);
+    text-align: center;
+
+    z-index: 2;
+}
+
+
+.thinglink-box iframe {
+    width: 80%;
+    aspect-ratio: 1 / 1;
+    
+    margin: 0 10%;
+    
+    border: 2px solid var(--charcoal);
     border-radius: 10px;
+
+    z-index: 1;
+}
+
+.thinglink-box--wide iframe {
+    aspect-ratio: 16 / 9;
 }
 
 /* See Think Wonder Prompt */

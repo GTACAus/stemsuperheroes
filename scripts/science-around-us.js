@@ -5,6 +5,7 @@ const dev = true;
 document.addEventListener("DOMContentLoaded", () => {
     setupScienceObjectSelector();
     setupScienceStudentEntries();
+    initTrueFalse();
 });
 
 /* ==================================================
@@ -93,4 +94,4 @@ function initTrueFalse() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', initTrueFalse);
+function initThingLink() {}
