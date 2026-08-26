@@ -6,7 +6,7 @@
 /* ---------- Hero ---------- */
 
 .science-hero {
-    padding: 16px 20px;
+    padding: 50px 30px;
 
     background: var(--purple);
 
@@ -20,8 +20,7 @@
 
 .science-eyebrow {
     width: fit-content;
-
-    margin: 0 auto 8px;
+    margin: 0 auto 12px;
     padding: 7px 14px;
 
     background: var(--yellow);
@@ -36,7 +35,7 @@
 }
 
 .science-hero h1 {
-    margin: 0 0 8px;
+    margin: 0 0 14px;
 
     color: white;
 
@@ -46,8 +45,7 @@
 
 .science-intro {
     max-width: 650px;
-
-    margin: 0 auto;
+    margin: 0 auto 32px;
 
     color: white;
 
@@ -134,7 +132,7 @@
 @media (max-width: 650px) {
 
     .science-hero {
-        padding: 20px 18px;
+        padding: 35px 18px;
     }
 
     .science-object-grid {
@@ -147,36 +145,6 @@
         margin: 0 auto;
     }
 
-}
-
-/* =========================================================
-   SCIENCE EXPLORER
-   ========================================================= */
-
-.science-explorer {
-    padding: 8px 0 30px;
-}
-
-.science-explorer-heading {
-    margin-bottom: 24px;
-    text-align: center;
-}
-
-.science-explorer-heading h2 {
-    margin: 0 0 8px;
-    font-size: 1.8rem;
-}
-
-.science-explorer-heading p {
-    margin: 0;
-    color: var(--muted);
-    line-height: 1.5;
-}
-
-@media (max-width: 650px) {
-    .science-explorer {
-        padding: 24px 18px;
-    }
 }
 
 /* =========================================================
@@ -223,62 +191,6 @@
     font-size: 1.7rem;
 }
 
-.gtac-section {
-    margin-bottom: 26px;
-    padding: 22px;
-
-    border: 3px solid var(--charcoal);
-    border-radius: var(--radius-medium);
-
-    box-shadow: var(--shadow-small);
-}
-
-.gtac-section:last-child {
-    margin-bottom: 0;
-}
-
-.gtac-section h3 {
-    font-size: 1.4rem;
-}
-
-.gtac-section p {
-    margin: 0;
-
-    line-height: 1.6;
-}
-
-.section-box {
-    margin-top: 10px;  
-    border: 2px solid var(--charcoal);
-    border-radius: var(--radius-small);
-    padding: 22px;
-}
-
-.box-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-}
-
-.gtac-svg-icon {
-    display: grid;
-    place-items: center;
-    flex: 0 0 auto;
-
-    width: 60px;
-    height: 60px;
-
-    border: 2px solid var(--charcoal);
-    border-radius: var(--radius-small);
-
-    /* box-shadow: var(--shadow-small); */
-}
-
-.gtac-svg-icon svg {
-    width: 80%;
-}
-
 .gtac-svg-icon--see {
     background: var(--orange);
 }
@@ -304,24 +216,49 @@
 }
 
 .thinglink-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-    width: clamp(500px, 40vw, 1000px);
-    
+    position: relative;
+    width: 100%;
+
     margin: 10px auto;
 }
 
 .thinglink-box h3 {
-    font-size: medium;
-}
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
 
-.thinglink-box iframe {
+    width: max-content;
+    max-width: 80%;
+
+    margin: 0;
+    padding: 10px 16px;
+
+    background: var(--paper);
 
     border: 2px solid var(--charcoal);
+    border-radius: var(--radius-small);
+    font-size: clamp(15px, 1.5vw, 20px);
+    text-align: center;
+
+    z-index: 2;
+}
+
+
+.thinglink-box iframe {
+    width: 80%;
+    aspect-ratio: 1 / 1;
+    
+    margin: 0 10%;
+    
+    border: 2px solid var(--charcoal);
     border-radius: 10px;
+
+    z-index: 1;
+}
+
+.thinglink-box--wide iframe {
+    aspect-ratio: 16 / 9;
 }
 
 /* See Think Wonder Prompt */
