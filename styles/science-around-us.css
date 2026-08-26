@@ -6,7 +6,7 @@
 /* ---------- Hero ---------- */
 
 .science-hero {
-    padding: 50px 30px;
+    padding: 16px 20px;
 
     background: var(--purple);
 
@@ -20,7 +20,8 @@
 
 .science-eyebrow {
     width: fit-content;
-    margin: 0 auto 12px;
+
+    margin: 0 auto 8px;
     padding: 7px 14px;
 
     background: var(--yellow);
@@ -35,7 +36,7 @@
 }
 
 .science-hero h1 {
-    margin: 0 0 14px;
+    margin: 0 0 8px;
 
     color: white;
 
@@ -45,7 +46,8 @@
 
 .science-intro {
     max-width: 650px;
-    margin: 0 auto 32px;
+
+    margin: 0 auto;
 
     color: white;
 
@@ -132,7 +134,7 @@
 @media (max-width: 650px) {
 
     .science-hero {
-        padding: 35px 18px;
+        padding: 20px 18px;
     }
 
     .science-object-grid {
@@ -145,6 +147,36 @@
         margin: 0 auto;
     }
 
+}
+
+/* =========================================================
+   SCIENCE EXPLORER
+   ========================================================= */
+
+.science-explorer {
+    padding: 8px 0 30px;
+}
+
+.science-explorer-heading {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.science-explorer-heading h2 {
+    margin: 0 0 8px;
+    font-size: 1.8rem;
+}
+
+.science-explorer-heading p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+@media (max-width: 650px) {
+    .science-explorer {
+        padding: 24px 18px;
+    }
 }
 
 /* =========================================================
