@@ -180,11 +180,21 @@
 }
 
 /* =========================================================
-   SCIENCE CONTENT PANEL
+   SCIENCE CONTENT PANEL - THE GROUP THAT DIFFERENTIATES THE OBJECTS
    ========================================================= */
 
 .science-content-panel {
+    display: grid;
+    gap: 26px;
+
     margin-top: 32px;
+} /* This just groups the different objects together, so no visible box */
+
+.science-content-panel[hidden] {
+    display: none;
+}
+
+.science-content-section {
     padding: 28px;
 
     background: var(--paper);
@@ -193,11 +203,11 @@
     border-radius: var(--radius-large);
 
     box-shadow: var(--shadow-medium);
-}
+} /*the panel that contains each of the sections within the objects*/
 
-.science-content-panel[hidden] {
-    display: none;
-}
+.science-content-panel > .gtac-section {
+    margin-bottom: 0;
+} /* To not accidentally get double spacing */
 
 .science-content-heading {
     margin-bottom: 28px;
@@ -221,62 +231,6 @@
     margin: 0;
 
     font-size: 1.7rem;
-}
-
-.gtac-section {
-    margin-bottom: 26px;
-    padding: 22px;
-
-    border: 3px solid var(--charcoal);
-    border-radius: var(--radius-medium);
-
-    box-shadow: var(--shadow-small);
-}
-
-.gtac-section:last-child {
-    margin-bottom: 0;
-}
-
-.gtac-section h3 {
-    font-size: 1.4rem;
-}
-
-.gtac-section p {
-    margin: 0;
-
-    line-height: 1.6;
-}
-
-.section-box {
-    margin-top: 10px;  
-    border: 2px solid var(--charcoal);
-    border-radius: var(--radius-small);
-    padding: 22px;
-}
-
-.box-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-}
-
-.gtac-svg-icon {
-    display: grid;
-    place-items: center;
-    flex: 0 0 auto;
-
-    width: 60px;
-    height: 60px;
-
-    border: 2px solid var(--charcoal);
-    border-radius: var(--radius-small);
-
-    /* box-shadow: var(--shadow-small); */
-}
-
-.gtac-svg-icon svg {
-    width: 80%;
 }
 
 .gtac-svg-icon--see {
@@ -429,6 +383,27 @@
 
 .tf-feedback--incorrect {
     background: var(--soft-orange);
+}
+
+/* ---------- Did You Know ---------- */
+
+.did-you-know {
+    background: var(--soft-purple);
+}
+
+.did-you-know-title {
+    margin-bottom: 20px;
+}
+
+.did-you-know-icon {
+    background: var(--purple);
+}
+
+.did-you-know-title h3 {
+    margin: 0;
+
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 /* ---------- Try This section ---------- */
