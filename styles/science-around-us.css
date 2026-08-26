@@ -257,7 +257,7 @@
 
 .thinglink-box {
     position: relative;
-    width: 100%;
+    width: 80%;
 
     margin: 10px auto;
 }
@@ -282,15 +282,20 @@
     text-align: center;
 
     z-index: 2;
+
+    transition:
+        opacity 0.1s ease-out;
+}
+
+.thinglink-box h3.transparent {
+    opacity: 0.3;
 }
 
 
 .thinglink-box iframe {
-    width: 80%;
+    width: 100%;
     aspect-ratio: 1 / 1;
-    
-    margin: 0 10%;
-    
+        
     border: 2px solid var(--charcoal);
     border-radius: 10px;
 
