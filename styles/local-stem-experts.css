@@ -191,8 +191,10 @@
 /* ---------- Back ---------- */
 
 .expert-card-back {
-    padding: 14px;
+    padding: 12px;
+
     background: #b9d88c;
+
     transform: rotateY(180deg);
 }
 
