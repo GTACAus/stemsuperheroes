@@ -2,229 +2,156 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Local STEM Experts | GTAC</title>
 
+    <!-- Keep your existing shared design system. -->
     <link rel="stylesheet" href="styles/build_styles.css">
     <link rel="stylesheet" href="styles/local-stem-experts.css">
+    <link rel="stylesheet" href="styles/expert-profile.css">
 
+    <!-- Your existing classroom text-input / navigation helpers. -->
     <script src="scripts/common_functions.js" defer></script>
-    <script src="scripts/local-stem-experts.js" defer></script>
+    <!-- This file is now a module so it can import the reusable components. -->
+    <script type="module" src="scripts/local-stem-experts.js"></script>
 </head>
-
 <body>
+    <header class="site-header">
+        <a href="index.html">GTAC STEM</a>
+        <button class="nav-toggle" type="button"
+                aria-label="Toggle navigation" aria-controls="site-navigation"
+                aria-expanded="false">
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+        </button>
+        <nav class="site-nav" id="site-navigation">
+            <a href="science-around-us.html">Science is All Around Us</a>
+            <a href="local-stem-experts.html" aria-current="page">Local STEM Experts</a>
+        </nav>
+    </header>
 
-<header class="site-header">
-    <a href="index.html">GTAC STEM</a>
-
-    <nav>
-        <a href="science-around-us.html">
-            Science is All Around Us
-        </a>
-
-        <a href="local-stem-experts.html">
-            Local STEM Experts
-        </a>
-    </nav>
-</header>
-
-<main class="page">
-
-    <!-- Local STEM Experts Header -->
-
-    <section class="experts-hero">
-
-        <p class="experts-eyebrow">
-            Meet local STEM people
-        </p>
-
-        <h1>
-            Local STEM Experts
-        </h1>
-
-        <p class="experts-intro">
-            Discover people working in science, technology, engineering and mathematics, and learn about the pathways that brought them there.
-        </p>
-
-    </section>
-
-
-    <!-- Local STEM Experts Content -->
-
-    <section class="experts-content">
-
-        <div class="experts-section-heading">
-            <h2>Meet the experts</h2>
-
-            <p>
-                Explore the profiles below to learn more about different STEM careers and experiences.
+    <main class="page">
+        <section class="experts-hero">
+            <p class="experts-eyebrow">Meet local STEM people</p>
+            <h1>Local STEM Experts</h1>
+            <p class="experts-intro">
+                Discover people working in science, technology, engineering and
+                mathematics, and learn about the pathways that brought them there.
             </p>
-        </div>
+        </section>
 
-        <!-- Experts cards will go here -->
-        <div class="experts-grid">
-
-            <article
-                class="expert-flip-card"
-                data-thinglink-url="https://www.thinglink.com/view/scene/2110566100411351717"
-                tabindex="0"
-            >
-
-                <div class="expert-flip-inner">
-
-                    <!-- Front of card -->
-                    <div class="expert-card-face expert-card-front">
-
-                        <div class="expert-image">
-                            <img
-                                src="assets/images/paddy.jpg"
-                                alt="Portrait of local STEM expert"
-                            >
-                        </div>
-
-                        <div class="expert-card-content">
-
-                            <p class="expert-field">
-                                Neuro-oncologist
-                            </p>
-
-                            <h3>
-                                Paddy
-                            </h3>
-
-                            <p class="expert-role">
-                                STEM Coach
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Back of card -->
-                    <div class="expert-card-face expert-card-back">
-
-                        <div class="expert-detail-stack">
-
-                            <!-- STEM superpower -->
-                            <div class="expert-detail-row expert-detail-row--dark">
-
-                                <span class="expert-detail-icon">
-                                    ⚛
-                                </span>
-
-                                <div>
-                                    <strong>STEM superpower</strong>
-
-                                    <p>
-                                        Understanding childhood cancer by creating
-                                        models of the brain in the lab
-                                    </p>
-                                </div>
-
-                            </div>
-
-
-                            <!-- Cool fact -->
-                            <div class="expert-detail-row expert-detail-row--light">
-
-                                <span class="expert-detail-icon">
-                                    💡
-                                </span>
-
-                                <div>
-                                    <strong>Cool Fact</strong>
-
-                                    <p>
-                                        Paddy studied Neuroscience because he loves
-                                        Philosophy
-                                    </p>
-                                </div>
-
-                            </div>
-
-
-                            <!-- Impact -->
-                            <div class="expert-detail-row expert-detail-row--dark">
-
-                                <span class="expert-detail-icon">
-                                    ✨
-                                </span>
-
-                                <div>
-                                    <strong>Impact</strong>
-
-                                    <p>
-                                        His work helps researchers test ideas for
-                                        treating brain cancers in safer lab models.
-                                    </p>
-                                </div>
-
-                            </div>
-
-
-                            <!-- Lesson -->
-                            <div class="expert-detail-row expert-detail-row--light">
-
-                                <span class="expert-detail-icon">
-                                    💬
-                                </span>
-
-                                <div>
-                                    <strong>Lesson</strong>
-
-                                    <p>
-                                        Follow your nose
-                                    </p>
-                                </div>
-
-                            </div>
-
-
-                            <!-- Expert identity -->
-                            <div class="expert-profile-chip">
-
-                                <img
-                                    src="assets/images/paddy.jpg"
-                                    alt=""
-                                >
-
-                                <div>
-                                    <strong>Paddy</strong>
-                                    <span>Neuro-oncologist</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <div
-                class="thinglink-panel"
-                hidden
-            >
-                <iframe
-                    class="thinglink-frame"
-                    title="Local STEM Expert ThingLink"
-                    loading="lazy"
-                    allowfullscreen
-                ></iframe>
+        <section class="experts-content" aria-labelledby="experts-heading">
+            <div class="experts-section-heading">
+                <h2 id="experts-heading">Meet the experts</h2>
+                <p>Explore the profiles below to learn about different STEM careers and experiences.</p>
+                <p class="experts-tap-hint">On a touchscreen, tap once to flip a card and again to open the profile.</p>
             </div>
 
-        </div>
+            <div class="experts-grid">
+                <!-- Existing Paddy card. Keeps its ThingLink while you migrate his content. -->
+                <article class="expert-flip-card" role="button" tabindex="0"
+                         aria-label="Open Paddy's STEM profile"
+                         aria-controls="expert-details-panel" aria-expanded="false"
+                         data-thinglink-url="https://www.thinglink.com/view/scene/2110566100411351717">
+                    <div class="expert-flip-inner">
+                        <div class="expert-card-face expert-card-front">
+                            <div class="expert-image">
+                                <img src="assets/images/paddy.jpg" alt="Paddy, a neuro-oncologist">
+                            </div>
+                            <div class="expert-card-content">
+                                <p class="expert-field">Neuro-oncologist</p>
+                                <h3>Paddy</h3>
+                                <p class="expert-role">STEM Coach</p>
+                            </div>
+                        </div>
+                        <div class="expert-card-face expert-card-back">
+                            <div class="expert-detail-stack">
+                                <div class="expert-detail-row expert-detail-row--dark">
+                                    <span class="expert-detail-icon" aria-hidden="true">⚛</span>
+                                    <div><strong>STEM superpower</strong>
+                                        <p>Understanding childhood cancer by creating models of the brain in the lab</p>
+                                    </div>
+                                </div>
+                                <div class="expert-detail-row expert-detail-row--light">
+                                    <span class="expert-detail-icon" aria-hidden="true">💡</span>
+                                    <div><strong>Cool fact</strong>
+                                        <p>Paddy studied Neuroscience because he loves Philosophy</p>
+                                    </div>
+                                </div>
+                                <div class="expert-detail-row expert-detail-row--dark">
+                                    <span class="expert-detail-icon" aria-hidden="true">✨</span>
+                                    <div><strong>Impact</strong>
+                                        <p>His work helps researchers test ideas for treating brain cancers in safer lab models.</p>
+                                    </div>
+                                </div>
+                                <div class="expert-detail-row expert-detail-row--light">
+                                    <span class="expert-detail-icon" aria-hidden="true">💬</span>
+                                    <div><strong>Lesson</strong><p>Follow your nose</p></div>
+                                </div>
+                                <div class="expert-profile-chip">
+                                    <img src="assets/images/paddy.jpg" alt="">
+                                    <div><strong>Paddy</strong><span>Neuro-oncologist</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
 
-    </section>
+                <!-- NEW coded profile: data-expert-id matches expert-data.js. -->
+                <article class="expert-flip-card" role="button" tabindex="0"
+                         aria-label="Open Kezia's STEM profile"
+                         aria-controls="expert-details-panel" aria-expanded="false"
+                         data-expert-id="kezia">
+                    <div class="expert-flip-inner">
+                        <div class="expert-card-face expert-card-front">
+                            <div class="expert-image">
+                                <img src="assets/images/experts/kezia/portrait.jpg"
+                                     alt="Kezia, an infectious disease researcher">
+                            </div>
+                            <div class="expert-card-content">
+                                <p class="expert-field">Infectious Disease Expert</p>
+                                <h3>Kezia</h3>
+                                <p class="expert-role">Peter Doherty Institute</p>
+                            </div>
+                        </div>
+                        <div class="expert-card-face expert-card-back">
+                            <div class="expert-detail-stack">
+                                <div class="expert-detail-row expert-detail-row--dark">
+                                    <span class="expert-detail-icon" aria-hidden="true">⚛</span>
+                                    <div><strong>STEM superpower</strong>
+                                        <p>Studying immune cells that recognise and clear HIV-infected cells</p>
+                                    </div>
+                                </div>
+                                <div class="expert-detail-row expert-detail-row--light">
+                                    <span class="expert-detail-icon" aria-hidden="true">💡</span>
+                                    <div><strong>Cool fact</strong>
+                                        <p>She loves cooking and running</p>
+                                    </div>
+                                </div>
+                                <div class="expert-detail-row expert-detail-row--dark">
+                                    <span class="expert-detail-icon" aria-hidden="true">✨</span>
+                                    <div><strong>Impact</strong>
+                                        <p>Her research helps us understand how the body fights viruses.</p>
+                                    </div>
+                                </div>
+                                <div class="expert-detail-row expert-detail-row--light">
+                                    <span class="expert-detail-icon" aria-hidden="true">💬</span>
+                                    <div><strong>Lesson</strong><p>Stay curious!</p></div>
+                                </div>
+                                <div class="expert-profile-chip">
+                                    <img src="assets/images/experts/kezia/portrait.jpg" alt="">
+                                    <div><strong>Kezia</strong><span>Infectious Disease Expert</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
 
-</main>
-
+                <!-- Only one panel is needed. JavaScript moves it below the clicked card's row. -->
+                <section id="expert-details-panel" class="expert-profile-panel" hidden></section>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
