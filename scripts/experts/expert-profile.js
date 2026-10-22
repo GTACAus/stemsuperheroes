@@ -64,29 +64,10 @@ export function renderExpertProfile(panel, expert, onClose) {
             <h3 class="profile-section-heading">Advice</h3>
             <ul>${expert.advice.map(item => `<li>${e(item)}</li>`).join("")}</ul>
         </section>
-
-        <section class="profile-your-turn">
-            <div class="profile-your-turn-heading"><span aria-hidden="true">💡</span><h3>Your Turn!</h3></div>
-            <p>${e(expert.question)}</p>
-            <div class="student-entry-area">
-                <label class="profile-answer-label" for="expert-question-input">My questions</label>
-                <input id="expert-question-input" class="student-entry-input"
-                       type="text" placeholder="Type a question and press Enter" autocomplete="off">
-                <ul class="student-entry-list" aria-label="My saved questions"></ul>
-            </div>
-        </section>
     `;
 
     panel.querySelector(".profile-close").addEventListener("click", onClose);
     initTimeline(panel.querySelector(".profile-timeline"), expert.timeline);
-
-    // Reuse the student-input helper already defined in common_functions.js.
-    // It uses your existing classroom language filter and delete buttons.
-    if (typeof window.setupStudentEntryArea === "function") {
-        window.setupStudentEntryArea(panel.querySelector(".student-entry-area"));
-    } else {
-        console.warn("setupStudentEntryArea() is missing; check common_functions.js");
-    }
 }
 
 export function renderLegacyThingLink(panel, url, name, onClose) {
