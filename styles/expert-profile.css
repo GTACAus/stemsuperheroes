@@ -142,22 +142,6 @@
 .profile-advice { margin-top: 16px; }
 .profile-advice ul { margin: 0; padding-left: 20px; line-height: 1.6; font-weight: 600; }
 
-/* ---------- Your Turn: reuses shared student entry classes ---------- */
-.profile-your-turn {
-    margin-top: 16px;
-    padding: 17px 20px 20px;
-    background: #fff2a4;
-    border: 3px solid var(--charcoal);
-    border-radius: 16px;
-}
-.profile-your-turn-heading { display: flex; align-items: center; justify-content: center; gap: 9px; }
-.profile-your-turn-heading > span { font-size: 1.45rem; }
-.profile-your-turn h3 { margin: 0; color: #9d145e; font-size: 1.4rem; }
-.profile-your-turn > p { margin: 5px 0 0; text-align: center; font-weight: 650; }
-.profile-your-turn .student-entry-area { max-width: 700px; margin: 18px auto 0; }
-.profile-answer-label { display: block; margin-bottom: 7px; font-size: .9rem; font-weight: 700; }
-.profile-your-turn .student-entry-input { background: white; }
-
 /* =========================================================
    REUSABLE CLICKABLE TIMELINE
    ========================================================= */
@@ -267,8 +251,16 @@
     .profile-superpower { margin-top: 13px; }
     .profile-impact-layout { grid-template-columns: 1fr; }
     .profile-impact-layout > img { max-height: 240px; }
-    .profile-your-turn { padding: 16px 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
     .timeline-pin { transition: none; }
+}
+
+/* =========================================================
+   OPTIONAL VIDEO FEATURE
+   Spacing between the video and previous sections
+   ========================================================= */
+
+.profile-video {
+    margin-top: 16px;
 }

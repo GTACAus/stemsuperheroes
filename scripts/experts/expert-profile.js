@@ -60,14 +60,50 @@ export function renderExpertProfile(panel, expert, onClose) {
             </section>
         </div>
 
+        <!-- =========================================
+            VIDEO FEATURE
+            Only displayed if the expert has a video
+            ========================================= -->
+        
+        ${expert.video ? `
+            <section class="profile-section profile-video">
+                <h3 class="profile-section-heading">
+                    ${e(expert.video.heading)}
+                </h3>
+
+                <p>${e(expert.video.description)}</p>
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster="${e(expert.video.poster)}"
+                >
+                    <source
+                        src="${e(expert.video.src)}"
+                        type="video/mp4"
+                    >
+                    Your browser does not support this video.
+                </video>
+
+                <p class="profile-video-caption">
+                    ${e(expert.video.caption)}
+                </p>
+            </section>
+        ` : ""} 
+
         <section class="profile-section profile-advice">
-            <h3 class="profile-section-heading">Advice</h3>
+            <h3 class="profile-section-heading">
+                ${e(expert.adviceHeading || "Advice")}
+            </h3>
             <ul>${expert.advice.map(item => `<li>${e(item)}</li>`).join("")}</ul>
         </section>
+
     `;
 
     panel.querySelector(".profile-close").addEventListener("click", onClose);
     initTimeline(panel.querySelector(".profile-timeline"), expert.timeline);
+
 }
 
 export function renderLegacyThingLink(panel, url, name, onClose) {

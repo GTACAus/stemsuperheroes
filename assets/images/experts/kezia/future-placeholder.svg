@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 480" role="img" aria-label="Placeholder image for Kezia's future plans">
-  <rect width="600" height="480" fill="#d7f2f4"/>
-  <circle cx="300" cy="171" r="94" fill="#00a7b8" opacity="0.12"/>
-  <path d="M226 221l74-132 74 132-74-26z" fill="#fff" stroke="#30332f" stroke-width="8" stroke-linejoin="round"/>
-  <path d="M300 193V95" stroke="#00a7b8" stroke-width="10" stroke-linecap="round"/>
-  <text x="300" y="320" font-family="Arial,sans-serif" font-size="33" font-weight="700" text-anchor="middle" fill="#30332f">FUTURE PLANS</text>
-  <text x="300" y="361" font-family="Arial,sans-serif" font-size="20" text-anchor="middle" fill="#62655f">Add a photograph here</text>
-</svg>

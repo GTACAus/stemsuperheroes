@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 480" role="img" aria-label="Placeholder image for Kezia's STEM pathway">
-  <rect width="600" height="480" fill="#d7f5e9"/>
-  <path d="M154 198C209 115 275 253 347 157c31-41 72-14 96 18" stroke="#50b46f" stroke-width="14" stroke-linecap="round" stroke-dasharray="13 23" fill="none"/>
-  <circle cx="154" cy="198" r="22" fill="#fff" stroke="#30332f" stroke-width="7"/>
-  <circle cx="443" cy="175" r="22" fill="#fff" stroke="#30332f" stroke-width="7"/>
-  <text x="300" y="320" font-family="Arial,sans-serif" font-size="33" font-weight="700" text-anchor="middle" fill="#30332f">FINDING HER PATH</text>
-  <text x="300" y="361" font-family="Arial,sans-serif" font-size="20" text-anchor="middle" fill="#62655f">Add a photograph here</text>
-</svg>
