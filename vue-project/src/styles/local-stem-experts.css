@@ -1,0 +1,140 @@
+/* =========================================================
+   LOCAL STEM EXPERTS: hero, flip cards, grid
+   Uses variables from your existing build_styles.css.
+   ========================================================= */
+
+.experts-hero {
+    padding: 50px 30px;
+    background: var(--green);
+    border: 3px solid var(--charcoal);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-medium);
+    text-align: center;
+}
+.experts-eyebrow {
+    width: fit-content;
+    margin: 0 auto 12px;
+    padding: 7px 14px;
+    background: var(--yellow);
+    border: 2px solid var(--charcoal);
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.experts-hero h1 {
+    margin: 0 0 14px;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.05;
+}
+.experts-intro {
+    max-width: 700px;
+    margin: auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+.experts-content { margin-top: 32px; }
+.experts-section-heading { margin-bottom: 22px; }
+.experts-section-heading h2 { margin: 0 0 8px; font-size: 1.8rem; }
+.experts-section-heading p { margin: 0; color: var(--muted); line-height: 1.6; }
+.experts-section-heading .experts-tap-hint { margin-top: 6px; font-size: .85rem; }
+.experts-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+
+/* ---------- Cards and flip ---------- */
+.expert-flip-card {
+    aspect-ratio: 5 / 7;
+    perspective: 1000px;
+    cursor: pointer;
+    min-width: 0;
+    border-radius: var(--radius-medium);
+}
+.expert-flip-card:focus-visible { outline: 4px solid var(--purple); outline-offset: 5px; }
+.expert-flip-card[aria-expanded="true"] { outline: 4px solid var(--green); outline-offset: 5px; }
+.expert-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform .6s ease;
+    transform-style: preserve-3d;
+}
+@media (hover: hover) and (pointer: fine) {
+    .expert-flip-card:hover .expert-flip-inner,
+    .expert-flip-card:focus-visible .expert-flip-inner { transform: rotateY(180deg); }
+}
+.expert-flip-card.is-flipped .expert-flip-inner { transform: rotateY(180deg); }
+.expert-card-face {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: var(--paper);
+    border: 3px solid var(--charcoal);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+.expert-card-front { display: flex; flex-direction: column; }
+.expert-image { aspect-ratio: 1 / 1; overflow: hidden; }
+.expert-image img { width: 100%; height: 100%; object-fit: cover; }
+.expert-card-content { padding: 20px; }
+.expert-card-front h3 { margin: 0 0 6px; font-size: 1.4rem; }
+.expert-field {
+    width: fit-content;
+    margin: 0 0 10px;
+    padding: 5px 10px;
+    background: var(--soft-purple);
+    color: var(--purple);
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.expert-role { margin: 0; color: var(--muted); font-weight: 700; }
+
+.expert-card-back { padding: 12px; background: #b9d88c; transform: rotateY(180deg); }
+.expert-detail-stack { display: grid; gap: 10px; }
+.expert-detail-row {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 18px;
+}
+.expert-detail-row--dark { background: var(--charcoal); color: white; }
+.expert-detail-row--light { background: var(--soft-yellow); color: var(--charcoal); }
+.expert-detail-icon {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    background: white;
+    border-radius: 50%;
+    font-size: .9rem;
+}
+.expert-detail-row strong { display: block; margin-bottom: 3px; font-size: .85rem; }
+.expert-detail-row p { margin: 0; font-size: .78rem; line-height: 1.3; }
+.expert-profile-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: #dfff9f;
+    border-radius: 999px;
+}
+.expert-profile-chip img { width: 42px; height: 42px; object-fit: cover; border: 2px solid white; border-radius: 50%; }
+.expert-profile-chip strong, .expert-profile-chip span { display: block; }
+.expert-profile-chip strong { font-size: .9rem; }
+.expert-profile-chip span { font-size: .75rem; }
+
+@media (max-width: 850px) {
+    .experts-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+    .experts-hero { padding: 35px 18px; }
+    .experts-grid { grid-template-columns: minmax(0, 1fr); }
+    .expert-flip-card { width: min(100%, 380px); justify-self: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .expert-flip-inner { transition: none; }
+}
