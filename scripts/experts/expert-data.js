@@ -149,7 +149,6 @@ export const expertProfiles = {
                     colour: "#E9B400",
                     image: `${imageFolder}dictionary.jpg`,
                     imageAlt: "Illustration representing Paddy's school experience",
-                    imageFit: "contain",
                     points: [
                         "Paddy found maths difficult at school.",
                         "He was more interested in subjects such as English and the humanities.",
@@ -180,14 +179,14 @@ export const expertProfiles = {
                     ]
                 },
                 {
-                    title: "Inside a mini-brain",
+                    title: "Looking to the Future",
                     colour: "#00A7B8",
-                    image: `${imageFolder}organoid-depth.jpg`,
-                    imageAlt: "Microscope view from a different depth within Paddy's brain organoid",
+                    image: `${imageFolder}genes.jpg`,
+                    imageAlt: "Image of genes",
                     points: [
-                        "A special microscope takes pictures at different depths inside a brain organoid.",
-                        "Imaging software can combine these views to build a 3D picture of the model.",
-                        "Watch Paddy's real laboratory video below! The coloured images show a lab-grown model, not slices of a person's brain."
+                        "Paddy's research investigates how childhood brain cancers develop.",
+                        "By studying tiny brain models, scientists can explore how genetic changes affect brain cells.",
+                        "In the future, these discoveries could help scientists develop better treatments for children with brain cancer."
                     ]
                 }
             ],
@@ -195,17 +194,17 @@ export const expertProfiles = {
             hobbies: {
                 heading: "Hobbies and interests",
                 text: "Outside the lab, Paddy enjoys hiking, running, reading about the humanities and going to the cinema. He has also gone on overnight hikes in New Zealand.",
-                image: `${imageFolder}hiking.jpg`,
+                image: `${imageFolder}hiking.jpeg`,
                 imageAlt: "Paddy hiking outdoors",
 
                 photos: [
                     {
-                        image: `${imageFolder}hiking.jpg`,
+                        image: `${imageFolder}hiking.jpeg`,
                         imageAlt: "Paddy hiking outdoors",
                         caption: "Hiking"
                     },
                     {
-                        image: `${imageFolder}running.jpg`,
+                        image: `${imageFolder}running.png`,
                         imageAlt: "Paddy at a running event",
                         caption: "Running"
                     }

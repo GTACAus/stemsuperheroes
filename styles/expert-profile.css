@@ -258,9 +258,41 @@
 
 /* =========================================================
    OPTIONAL VIDEO FEATURE
-   Spacing between the video and previous sections
+
+   Controls video size, spacing and appearance.
+   Keeps videos responsive on desktop and mobile.
    ========================================================= */
 
 .profile-video {
     margin-top: 16px;
+    min-width: 0;
+}
+
+/* ---------- Video player ---------- */
+
+.profile-video video {
+    display: block;
+
+    width: 100%;
+    max-width: 760px;
+
+    aspect-ratio: 16 / 9;
+    height: auto;
+
+    object-fit: contain;
+
+    margin: 16px auto;
+    background: #111;
+
+    border-radius: 12px;
+}
+
+/* ---------- Video caption ---------- */
+
+.profile-video-caption {
+    margin: 12px 0 0;
+
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
 }
