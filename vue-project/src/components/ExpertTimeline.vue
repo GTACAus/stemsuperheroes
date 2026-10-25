@@ -1,14 +1,14 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref } from 'vue';
 
 // Reusable for any ordered sequence of stages:
 // { title, colour, points, image, imageAlt, imageFit?, draft? }
 const props = defineProps({
   stages: { type: Array, required: true },
-})
+});
 
-const selected = ref(0)
-const stage = computed(() => props.stages[selected.value])
+const selected = ref(0);
+const stage = computed(() => props.stages[selected.value]);
 </script>
 
 <template>

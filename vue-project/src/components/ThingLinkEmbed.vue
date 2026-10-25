@@ -2,8 +2,8 @@
 defineProps({
   url: { type: String, required: true },
   name: { type: String, required: true },
-})
-defineEmits(['close'])
+});
+defineEmits(['close']);
 </script>
 
 <template>

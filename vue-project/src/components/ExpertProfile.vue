@@ -1,10 +1,10 @@
 <script setup>
-import ExpertTimeline from './ExpertTimeline.vue'
+import ExpertTimeline from './ExpertTimeline.vue';
 
-defineProps({ expert: { type: Object, required: true } })
-defineEmits(['close'])
+defineProps({ expert: { type: Object, required: true } });
+defineEmits(['close']);
 
-const impactIcons = ['🔎', '♡', '✿']
+const impactIcons = ['🔎', '♡', '✿'];
 </script>
 
 <template>

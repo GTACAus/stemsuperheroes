@@ -1,0 +1,25 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "tsconfig.json": "tsconfig.*.json, env.d.ts, typed-router.d.ts",
+    "vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*",
+    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .oxlint*, oxlint*, .oxfmt*, .prettier*, prettier*, .editorconfig, bun.lock, nub.lock"
+  },
+  "actionButtons": {
+    "commands": [
+      { "name": "▶ Start site", "command": "npm run dev", "singleInstance": true },
+      { "name": "▶ Build", "command": "npm run build" },
+      {
+        "name": "■ Stop site",
+        "useVsCodeApi": true,
+        "command": "workbench.action.terminal.kill"
+      },
+      {
+        "name": "🌐 Preview Page",
+        "useVsCodeApi": true,
+        "command": "simpleBrowser.show",
+        "args": ["http://localhost:5173/"]
+      },
+    ]
+  }
+}

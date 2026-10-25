@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const open = ref(false)
+const open = ref(false);
 const links = [
   { to: '/science-around-us', label: 'Science is All Around Us' },
   { to: '/local-stem-experts', label: 'Local STEM Experts' },
-]
+];
 </script>
 
 <template>

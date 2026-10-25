@@ -3,15 +3,15 @@ defineProps({
   expert: { type: Object, required: true },
   flipped: Boolean,
   expanded: Boolean,
-})
-defineEmits(['activate'])
+});
+defineEmits(['activate']);
 
 const rows = [
   { key: 'superpower', icon: '⚛', label: 'STEM superpower', tone: 'dark' },
   { key: 'coolFact', icon: '💡', label: 'Cool fact', tone: 'light' },
   { key: 'impact', icon: '✨', label: 'Impact', tone: 'dark' },
   { key: 'lesson', icon: '💬', label: 'Lesson', tone: 'light' },
-]
+];
 </script>
 
 <template>
