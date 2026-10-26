@@ -162,7 +162,7 @@ export const expertProfiles = {
                     imageAlt: "Illustration showing a pathway from the arts into neuroscience",
                     imageFit: "contain",
                     points: [
-                        "Paddy started a Bachelor of Arts before changing to a Bachelor of Science.",
+                        "Paddy started a Bachelor of Arts before in philosophy changing to a Bachelor of Science.",
                         "His interest in philosophy helped spark an interest in neuroscience.",
                         "He read The Brain That Changes Itself, a book about neuroplasticity — how the brain can change over time."
                     ]
