@@ -54,6 +54,6 @@ Near the bottom left of the VS Code window, there are four buttons with the foll
   </tr>
   <tr>
     <td>🌐 Preview Page</td>
-    <td>Previews the page in the browser</td>
+    <td>Previews the page in the browser (You have to start the server first)</td>
   </tr>
 </table>

@@ -1,18 +1,47 @@
 /* =========================================================
    EXPERT CONTENT (DATA ONLY)
-   Add future experts as new entries in this object.
-   The HTML layout and timeline interaction do not change.
+   Add future experts as new entries in this array. Each entry drives
+   both the card on the Local STEM Experts page and the profile panel.
+
+   Every expert needs: id, name, role, portrait, portraitAlt, back.
+   Optional: organisation, subtitle (shown on the card instead of
+   organisation).
+   Then EITHER a full profile (timeline, hobbies, impact, advice)
+   OR `thinglinkUrl` to open a legacy ThingLink embed instead.
    ========================================================= */
 
-const keziaImages = `${import.meta.env.BASE_URL}assets/images/experts/kezia/`;
+const base = `${ import.meta.env.BASE_URL }assets/images/experts`;
+const paddyImages = `${base}/paddy/`;
+const keziaImages = `${base}/kezia/`;
 
-export const expertProfiles = {
-    kezia: {
+export const expertProfiles = [
+    {
+        name: "Paddy",
+        role: "Neuro-oncologist",
+        subtitle: "STEM Coach",
+        portrait: `${paddyImages}paddy.jpg`,
+        portraitAlt: "Paddy, a neuro-oncologist",
+        thinglinkUrl: "https://www.thinglink.com/view/scene/2110566100411351717",
+        back: {
+            superpower: "Understanding childhood cancer by creating models of the brain in the lab",
+            coolFact: "Paddy studied Neuroscience because he loves Philosophy",
+            impact: "His work helps researchers test ideas for treating brain cancers in safer lab models.",
+            lesson: "Follow your nose"
+        }
+    },
+    {
         name: "Kezia",
         role: "Infectious Disease Expert",
         organisation: "Peter Doherty Institute for Infection and Immunity",
+        subtitle: "Peter Doherty Institute",
         portrait: `${keziaImages}portrait.jpg`,
-        superpower: "Studying special immune cells that can recognise and clear HIV-infected cells",
+        portraitAlt: "Kezia, an infectious disease researcher",
+        back: {
+            superpower: "Studying immune cells that recognise and clear HIV-infected cells",
+            coolFact: "She loves cooking and running",
+            impact: "Her research helps us understand how the body fights viruses.",
+            lesson: "Stay curious!"
+        },
 
         // The first and fourth stages use information visible in your Canva image.
         // The other stages are honest placeholders: replace their text and photos
@@ -90,4 +119,4 @@ export const expertProfiles = {
         ],
         question: "What kind of questions would you ask Kezia?"
     }
-};
+];
