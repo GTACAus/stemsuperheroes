@@ -1,4 +1,5 @@
 <script setup>
+import Button from '../Button.vue'
 import { computed, ref } from 'vue';
 
 const props = defineProps({
@@ -29,21 +30,21 @@ function check() {
     <p><strong>True or False:</strong> {{ statement }}</p>
 
     <div class="tf-options" role="radiogroup" aria-label="True or False">
-      <button
+      <Button
         v-for="option in [true, false]"
         :key="String(option)"
-        class="gtac-button tf-option"
+        class="tf-option"
         role="radio"
         :aria-checked="String(selected === option)"
         type="button"
         @click="choose(option)"
       >
         {{ option ? 'True' : 'False' }}
-      </button>
+      </Button>
     </div>
 
     <div class="tf-actions">
-      <button class="gtac-button tf-check" type="button" :disabled="selected === null" @click="check">Check</button>
+      <Button type="button" :disabled="selected === null" @click="check">Check</button>
     </div>
 
     <div
@@ -73,40 +74,19 @@ function check() {
 }
 
 .tf-option {
-  padding: 12px 28px;
+  --padding: 12px 28px;
+  --background: white;
+  --color: var(--text);
+  --border: 2px solid var(--charcoal);
+  --border-radius: var(--radius-small);
+  --box-shadow: var(--shadow-small);
+  --font-weight: 700;
+  
+  --background-hover: var(--soft-purple);
+  --translate-amount-hover: -2px;
+  --box-shadow-hover: var(--shadow-medium);
 
-  background: white;
-  color: var(--text);
-
-  border: 2px solid var(--charcoal);
-  border-radius: var(--radius-small);
-
-  box-shadow: var(--shadow-small);
-
-  font-weight: 700;
-  cursor: pointer;
-
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease,
-    background 0.15s ease;
-}
-
-.tf-option:hover {
-  background: var(--soft-purple);
-}
-
-.tf-option[aria-checked="true"] {
-  background: var(--mint);
-  transform: translateY(2px);
-  box-shadow: none;
-}
-
-.tf-check[disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none !important;
-  box-shadow: var(--shadow-small) !important;
+  --translate-amount-active: 2px;
 }
 
 .tf-feedback {

@@ -3,6 +3,8 @@ import { ref } from 'vue';
 import HelmetDetails from '../components/science/HelmetDetails.vue';
 import StwSection from '../components/science/StwSection.vue';
 import { scienceObjects } from '../data/science-objects.js';
+import LearningOverview from '../components/science/LearningOverview.vue';
+import Button from '../components/Button.vue';
 
 // Extra content shown below an object's See / Think / Wonder, keyed by object id.
 const extras = { helmet: HelmetDetails };
@@ -21,65 +23,14 @@ const selectedId = ref(null);
     </section>
 
     <!-- Learning Overview -->
-    <section class="learning-overview">
-      <!-- Learning Objective -->
-      <article class="card learning-panel learning-panel--objective">
-        <p class="learning-kicker">Learning Objective</p>
-        <div class="learning-objective-box">
-          <strong>
-            Explore how STEM is used to solve problems and create or improve everyday objects
-          </strong>
-        </div>
-
-        <h2 class="learning-subheading">Success criteria</h2>
-        <ol class="success-criteria">
-          <li>
-            <span class="success-number">1</span>
-            <span>I can explain what problem an everyday object is designed to solve</span>
-          </li>
-          <li>
-            <span class="success-number">2</span>
-            <span>
-              I can identify how science, technology, engineering, or mathematics is used in an everyday object
-            </span>
-          </li>
-          <li>
-            <span class="success-number">3</span>
-            <span>
-              I can describe how STEM Experts use their knowledge and skills to design, test or improve everyday
-              objects
-            </span>
-          </li>
-        </ol>
-      </article>
-
-      <!-- Think Like a Scientist -->
-      <article class="card learning-panel learning-panel--scientist">
-        <p class="learning-kicker">Think Like a Scientist</p>
-        <h2>See, Think, Wonder</h2>
-
-        <p class="learning-description">
-          As scientists we are all curious. We observe the world around us and ask questions about how the world
-          works. A way to come up with questions is to use a thinking tool called
-          <strong><em>See, Think, Wonder</em></strong
-          >. Practice making observations and asking questions by following these steps:
-        </p>
-        <div class="stw-guide">
-          <div class="stw-guide-row stw-guide-row--see">
-            <strong>See</strong>
-            <span>What do you notice?</span>
-          </div>
-          <div class="stw-guide-row stw-guide-row--think">
-            <strong>Think</strong>
-            <span>What do you think is happening?</span>
-          </div>
-          <div class="stw-guide-row stw-guide-row--wonder">
-            <strong>Wonder</strong>
-            <span>What questions do you have?</span>
-          </div>
-        </div>
-      </article>
-    </section>
+    <LearningOverview 
+      learningObjective="Explore how STEM is used to solve problems and create or improve everyday objects"
+      :successCriteria="[
+        'I can explain what problem an everyday object is designed to solve',
+        'I can identify how science, technology, engineering, or mathematics is used in an everyday object',
+        'I can describe how STEM Experts use their knowledge and skills to design, test or improve everyday objects'
+      ]"
+    />
 
     <!-- Choose something to explore -->
     <section class="science-explorer">
@@ -89,7 +40,7 @@ const selectedId = ref(null);
       </div>
 
       <div class="science-object-grid">
-        <button
+        <Button
           v-for="object in scienceObjects"
           :key="object.id"
           class="science-object-card"
@@ -103,7 +54,7 @@ const selectedId = ref(null);
           </div>
 
           <span>{{ object.name }}</span>
-        </button>
+        </Button>
       </div>
     </section>
 
@@ -223,30 +174,19 @@ const selectedId = ref(null);
 }
 
 .science-object-card {
-  padding: 14px;
+  --padding: 14px;
 
-  background: var(--paper);
-  color: var(--text);
+  --background: var(--paper);
+  --color: var(--text);
 
-  border: 3px solid var(--charcoal);
-  border-radius: var(--radius-medium);
+  --border-radius: var(--radius-medium);
 
-  box-shadow: var(--shadow-small);
+  --background-hover: var(--soft-yellow);
+  --translate-amount-hover: -4px;
+  --box-shadow-hover: var(--shadow-medium);
 
-  cursor: pointer;
-
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease,
-    background 0.15s ease;
-}
-
-.science-object-card:hover {
-  background: var(--soft-yellow);
-
-  transform: translateY(-4px);
-
-  box-shadow: var(--shadow-medium);
+  --background-active: var(--mint);
+  --translate-amount-active: 4px;
 }
 
 .science-object-image {
@@ -275,12 +215,6 @@ const selectedId = ref(null);
 
   font-size: 1rem;
   font-weight: 700;
-}
-
-.science-object-card.selected {
-  background: var(--mint);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-medium);
 }
 
 /* ---------- Content panel (groups everything for one object; no visible box) ---------- */

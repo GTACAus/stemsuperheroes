@@ -11,10 +11,6 @@
    ========================================================= */
 
 const base = `${ import.meta.env.BASE_URL }assets/images/experts`;
-const paddyImages = `${base}/paddy/`;
-const keziaImages = `${base}/kezia/`;
-const munaImages = `${base}/muna/`;
-const millicentImages = `${base}/millicent/`;
 
 export const expertProfiles = [
     {
@@ -22,7 +18,7 @@ export const expertProfiles = [
         role: "Childhood Brain Cancer Researcher",
         subtitle: "STEM Coach",
         organisation: "Neuroscience research focused on childhood brain cancer",
-        portrait: `${paddyImages}portrait.jpg`,
+        portrait: `${base}/paddy/portrait.jpg`,
         portraitAlt: "Paddy, a neuro-oncologist",
         // thinglinkUrl: "https://www.thinglink.com/view/scene/2110566100411351717",
         back: {
@@ -35,7 +31,7 @@ export const expertProfiles = [
             {
                 title: "Curious beginnings",
                 colour: "#F43559",
-                image: `${paddyImages}portrait.jpg`,
+                image: `${base}/paddy/portrait.jpg`,
                 imageAlt: "Portrait of Paddy today",
                 points: [
                     "At school, Paddy was drawn to English literature, the arts and philosophy.",
@@ -46,7 +42,7 @@ export const expertProfiles = [
             {
                 title: "Challenges in school",
                 colour: "#E9B400",
-                image: `${paddyImages}dictionary.jpg`,
+                image: `${base}/paddy/dictionary.jpg`,
                 imageAlt: "Illustration representing Paddy's school experience",
                 points: [
                     "Paddy found maths difficult at school.",
@@ -57,7 +53,7 @@ export const expertProfiles = [
             {
                 title: "Finding his path",
                 colour: "#50B96D",
-                image: `${paddyImages}path-placeholder.svg`,
+                image: `${base}/paddy/path-placeholder.svg`,
                 imageAlt: "Illustration showing a pathway from the arts into neuroscience",
                 imageFit: "contain",
                 points: [
@@ -69,7 +65,7 @@ export const expertProfiles = [
             {
                 title: "Research with an impact",
                 colour: "#4F71CB",
-                image: `${paddyImages}brain-imaging.jpg`,
+                image: `${base}/paddy/brain-imaging.jpg`,
                 imageAlt: "Colourful microscope image of a lab-grown brain organoid",
                 points: [
                     "Paddy studies childhood brain cancer using organoids — tiny, lab-grown models of brain tissue made from human stem cells.",
@@ -80,7 +76,7 @@ export const expertProfiles = [
             {
                 title: "Looking to the Future",
                 colour: "#00A7B8",
-                image: `${paddyImages}genes.jpg`,
+                image: `${base}/paddy/genes.jpg`,
                 imageAlt: "Image of genes",
                 points: [
                     "Paddy's research investigates how childhood brain cancers develop.",
@@ -92,16 +88,16 @@ export const expertProfiles = [
         hobbies: {
             heading: "Hobbies and interests",
             text: "Outside the lab, Paddy enjoys hiking, running, reading about the humanities and going to the cinema. He has also gone on overnight hikes in New Zealand.",
-            image: `${paddyImages}hiking.jpeg`,
+            image: `${base}/paddy/hiking.jpeg`,
             imageAlt: "Paddy hiking outdoors",
             photos: [
                 {
-                    image: `${paddyImages}hiking.jpeg`,
+                    image: `${base}/paddy/hiking.jpeg`,
                     imageAlt: "Paddy hiking outdoors",
                     caption: "Hiking"
                 },
                 {
-                    image: `${paddyImages}running.png`,
+                    image: `${base}/paddy/running.png`,
                     imageAlt: "Paddy at a running event",
                     caption: "Running"
                 }
@@ -109,7 +105,7 @@ export const expertProfiles = [
         },
         impact: {
             heading: "Why does his research matter?",
-            image: `${paddyImages}organoid-still.jpg`,
+            image: `${base}/paddy/organoid-still.jpg`,
             imageAlt: "Fluorescent microscope image of a brain organoid",
             points: [
                 "Brain organoids let scientists investigate childhood brain cancers using models grown in the lab.",
@@ -120,7 +116,7 @@ export const expertProfiles = [
         video: {
             heading: "See a brain organoid under the microscope!",
             src: "assets/videos/paddy-brain-organoid.mp4",
-            poster: `${paddyImages}organoid-still.jpg`,
+            poster: `${base}/paddy/organoid-still.jpg`,
             description: "This 10-second video shared by Paddy shows a fluorescent microscope scan of a brain organoid — a tiny lab-grown model of brain tissue. The microscope records views at different depths, a bit like looking through many thin layers.",
             caption: "These are microscope images of a lab-grown model, not slices taken from a person's brain."
         },
@@ -136,7 +132,7 @@ export const expertProfiles = [
         role: "Infectious Disease Expert",
         organisation: "Peter Doherty Institute for Infection and Immunity",
         subtitle: "Peter Doherty Institute",
-        portrait: `${keziaImages}portrait.jpg`,
+        portrait: `${base}/kezia/portrait.jpg`,
         portraitAlt: "Kezia, an infectious disease researcher",
         back: {
             superpower: "Studying immune cells that recognise and clear HIV-infected cells",
@@ -148,7 +144,7 @@ export const expertProfiles = [
             {
                 title: "Curious beginnings",
                 colour: "#F43559",
-                image: `${keziaImages}poster.jpg`,
+                image: `${base}/kezia/poster.jpg`,
                 imageAlt: "Kezia presenting a research poster",
                 imageFit: "contain",
                 points: [
@@ -161,7 +157,7 @@ export const expertProfiles = [
             {
                 title: "Challenges in school",
                 colour: "#E9B400",
-                image: `${keziaImages}school-placeholder.svg`,
+                image: `${base}/kezia/school-placeholder.svg`,
                 imageAlt: "Placeholder for a photo from Kezia's school years",
                 points: ["Add Kezia's real school experiences here."],
                 draft: true
@@ -169,7 +165,7 @@ export const expertProfiles = [
             {
                 title: "Finding her path",
                 colour: "#50B96D",
-                image: `${keziaImages}path-placeholder.svg`,
+                image: `${base}/kezia/path-placeholder.svg`,
                 imageAlt: "Placeholder for a photo of Kezia's pathway into science",
                 points: ["Add the real story of how Kezia found her STEM pathway here."],
                 draft: true
@@ -177,7 +173,7 @@ export const expertProfiles = [
             {
                 title: "Research with an impact",
                 colour: "#4F71CB",
-                image: `${keziaImages}research.jpg`,
+                image: `${base}/kezia/research.jpg`,
                 imageAlt: "Kezia working in a laboratory",
                 points: [
                     "Investigates how the body fights viruses.",
@@ -188,7 +184,7 @@ export const expertProfiles = [
             {
                 title: "Future plans",
                 colour: "#00A7B8",
-                image: `${keziaImages}future-placeholder.svg`,
+                image: `${base}/kezia/future-placeholder.svg`,
                 imageAlt: "Placeholder for an image about Kezia's future plans",
                 points: ["Add Kezia's own future plans here."],
                 draft: true
@@ -198,12 +194,12 @@ export const expertProfiles = [
         hobbies: {
             heading: "Hobbies and interests",
             text: "Kezia loves to cook and run.",
-            image: `${keziaImages}running.jpg`,
+            image: `${base}/kezia/running.jpg`,
             imageAlt: "Kezia at a running event"
         },
         impact: {
             heading: "Why does her research matter?",
-            image: `${keziaImages}research.jpg`,
+            image: `${base}/kezia/research.jpg`,
             imageAlt: "Kezia working in a laboratory",
             points: [
                 "Investigates how the body fights viruses",
@@ -221,7 +217,7 @@ export const expertProfiles = [
         name: "Muna",
         role: "Microbiology Researcher",
         organisation: "Melbourne, Australia - University tutor and GTAC STEM Coach",
-        portrait: `${munaImages}portrait.jpg`,
+        portrait: `${base}/muna/portrait.jpg`,
         back: {
             coolFact: "She loves cooking and running",
             impact: "Her research helps us understand how the body fights viruses.",
@@ -232,7 +228,7 @@ export const expertProfiles = [
             {
                 title: "Curious beginnings",
                 colour: "#F43559",
-                image: `${munaImages}portrait.jpg`,
+                image: `${base}/muna/portrait.jpg`,
                 imageAlt: "Portrait of Muna",
                 points: [
                     "Muna grew up in Pakistan and always loved biology.",
@@ -243,7 +239,7 @@ export const expertProfiles = [
             {
                 title: "Challenges in school",
                 colour: "#E9B400",
-                image: `${munaImages}school.jpg`,
+                image: `${base}/muna/school.jpg`,
                 imageAlt: "Image representing Muna's school experiences",
                 points: [
                     "Muna loved biology, but she found chemistry challenging.",
@@ -255,7 +251,7 @@ export const expertProfiles = [
             {
                 title: "Finding her path",
                 colour: "#50B96D",
-                image: `${munaImages}study.jpg`,
+                image: `${base}/muna/study.jpg`,
                 imageAlt: "Image representing Muna's university studies",
                 points: [
                     "Muna discovered microbiology - the study of tiny living things, such as bacteria.",
@@ -267,7 +263,7 @@ export const expertProfiles = [
             {
                 title: "Research with an impact",
                 colour: "#4F71CB",
-                image: `${munaImages}bacteria.jpg`,
+                image: `${base}/muna/bacteria.jpg`,
                 imageAlt: "Image representing E. coli bacteria",
                 points: [
                     "Muna studies bacteria, including E. coli, which can cause urinary tract infections (UTIs).",
@@ -279,7 +275,7 @@ export const expertProfiles = [
             {
                 title: "Looking to the Future",
                 colour: "#00A7B8",
-                image: `${munaImages}future.jpg`,
+                image: `${base}/muna/future.jpg`,
                 imageAlt: "Image representing Muna's future in science",
                 points: [
                     "Muna is exploring opportunities to continue her research as a postdoctoral researcher.",
@@ -294,13 +290,13 @@ export const expertProfiles = [
         hobbies: {
             heading: "Hobbies and interests",
             text: "Outside science, Muna enjoys exploring different cafés and trying new coffees. She loves discovering interesting coffee spots around Melbourne!",
-            image: `${munaImages}coffee.jpeg`,
+            image: `${base}/muna/coffee.jpeg`,
             imageAlt: "Coffee at a café"
         },
 
         impact: {
             heading: "Why does her research matter?",
-            image: `${munaImages}bacteria.jpg`,
+            image: `${base}/muna/bacteria.jpg`,
             imageAlt: "Image representing bacteria studied in microbiology",
             points: [
                 "Investigates bacteria that can cause infections, including UTIs",
@@ -320,7 +316,7 @@ export const expertProfiles = [
         name: "Millicent",
         role: "Neuroscientist",
         organisation: "PhD research at The Florey and the University of Melbourne",
-        portrait: `${millicentImages}portrait.jpg`,
+        portrait: `${base}/millicent/portrait.jpg`,
         back: {
             coolFact: "She loves cooking and running",
             impact: "Her research helps us understand how the body fights viruses.",
@@ -333,7 +329,7 @@ export const expertProfiles = [
                 title: "Curious beginnings",
                 colour: "#F43559",
 
-                image: `${millicentImages}portrait.jpg`,
+                image: `${base}/millicent/portrait.jpg`,
                 imageAlt: "Millicent performing on stage as an adult",
 
                 points: [
@@ -407,7 +403,7 @@ export const expertProfiles = [
 
             text: "Millicent loves acting, reading, writing and presenting! She performed in theatre at school, hosted events and had her own radio show in Nigeria. She still enjoys the idea of broadcasting alongside science.",
 
-            image: `${millicentImages}portrait.jpg`,
+            image: `${base}/millicent/portrait.jpg`,
             imageAlt: "Millicent performing on stage"
         },
         impact: {
