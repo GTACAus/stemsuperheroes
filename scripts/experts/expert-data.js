@@ -375,7 +375,7 @@ export const expertProfiles = {
             hobbies: {
                 heading: "Hobbies and interests",
                 text: "Outside science, Muna enjoys exploring different cafés and trying new coffees. She loves discovering interesting coffee spots around Melbourne!",
-                image: `${imageFolder}coffee.jpg`,
+                image: `${imageFolder}coffee.jpeg`,
                 imageAlt: "Coffee at a café"
             },
 
@@ -426,7 +426,220 @@ export const expertProfiles = {
 
         };
 
-    })()
+    })(),
+
+
+/* =====================================================
+   MILLICENT - NEUROSCIENTIST
+
+   Interview: 11 March 2026
+
+   Edit this section to change Millicent's content.
+   The reusable profile layout remains unchanged.
+   ===================================================== */
+
+millicent: (() => {
+
+    /* ================================================
+       A. IMAGE LOCATIONS
+
+        MILLICENT'S IMAGE FOLDER AND PORTRAIT
+
+        All images are stored locally.
+        ===================================================== */
+
+        const imageFolder = "assets/images/experts/millicent/";
+
+        const stagePhoto = `${imageFolder}portrait.jpg`;
+
+    return {
+
+        /* ================================================
+           B. BASIC INFORMATION
+           ================================================ */
+
+        name: "Millicent",
+
+        role: "Neuroscientist",
+
+        organisation: "PhD research at The Florey and the University of Melbourne",
+
+        portrait: stagePhoto,
+
+        imageFolder,
+
+        superpower: "Investigating how the tiny microbes living in our gut may affect the brain and Huntington's disease",
+
+
+        /* ================================================
+           C. INTERACTIVE TIMELINE
+
+           Five clickable stages.
+           Each stage has its own image, colour and story.
+           ================================================ */
+
+        timeline: [
+
+            // STAGE 1: CURIOUS BEGINNINGS
+
+            {
+                title: "Curious beginnings",
+                colour: "#F43559",
+
+                image: stagePhoto,
+                imageAlt: "Millicent performing on stage as an adult",
+
+                points: [
+                    "Millicent grew up in Nigeria and loved reading, writing and acting from a young age.",
+                    "She dreamed of becoming a news presenter and enjoyed performing in school theatre.",
+                    "Her mum supported her ambition to keep studying, including overseas.",
+                    "Even though her family had different hopes for her career, she wanted to follow her own interests."
+                ]
+            },
+
+
+            // STAGE 2: CHALLENGES AND CHOICES
+
+            {
+                title: "Challenges and choices",
+                colour: "#E9B400",
+
+                image: `${imageFolder}school.svg`,
+                imageAlt: "Illustration representing different pathways through science and the arts",
+                imageFit: "contain",
+
+                points: [
+                    "Millicent originally applied to study medicine but did not get a place.",
+                    "Instead, she continued studying science and discovered new interests along the way.",
+                    "During her master's degree, she had less time for acting and radio, but her creative interests never disappeared."
+                ]
+            },
+
+
+            // STAGE 3: FINDING HER PATH
+
+            {
+                title: "Finding her path",
+                colour: "#50B96D",
+
+                image: `${imageFolder}journey.svg`,
+                imageAlt: "Illustration of Millicent's journey from Nigeria to the USA and Australia",
+                imageFit: "contain",
+
+                points: [
+                    "Millicent studied in Nigeria before moving to the USA for her master's degree.",
+                    "She worked on brain research at Brigham and Women's Hospital, linked to Harvard Medical School.",
+                    "After learning about the connection between gut microbes and the brain, she came to Melbourne for PhD research."
+                ]
+            },
+
+
+            // STAGE 4: RESEARCH WITH AN IMPACT
+
+            {
+                title: "Research with an impact",
+                colour: "#4F71CB",
+
+                image: `${imageFolder}gut-brain.svg`,
+                imageAlt: "Diagram representing the connection between gut microbes and the brain",
+                imageFit: "contain",
+
+                points: [
+                    "Millicent investigates Huntington's disease, an inherited condition that affects the brain, movement and thinking.",
+                    "She studies how bacteria living in the gut may communicate with the brain.",
+                    "In mouse research, her team found that prebiotics, which help feed some gut bacteria, improved certain measures of gut health, movement and thinking-related performance.",
+                    "These results are from mice, not proven treatments for people."
+                ]
+            },
+
+
+            // STAGE 5: LOOKING TO THE FUTURE
+
+            {
+                title: "Looking to the Future",
+                colour: "#00A7B8",
+
+                image: `${imageFolder}future.svg`,
+                imageAlt: "Illustration representing future clinical research",
+                imageFit: "contain",
+
+                points: [
+                    "In July 2026, Millicent submitted her PhD thesis about the gut and Huntington's disease.",
+                    "She hopes to work in clinical research, including studies that could improve patients' lives.",
+                    "She also shows us that a scientist can still love storytelling, acting and presenting."
+                ]
+            }
+
+        ],
+
+
+        /* ================================================
+           D. HOBBIES AND INTERESTS
+
+           Currently one photograph.
+
+           If more images become available, add a
+           "photos" array like Paddy's profile.
+           ================================================ */
+
+        hobbies: {
+            heading: "Hobbies and interests",
+
+            text: "Millicent loves acting, reading, writing and presenting! She performed in theatre at school, hosted events and had her own radio show in Nigeria. She still enjoys the idea of broadcasting alongside science.",
+
+            image: stagePhoto,
+            imageAlt: "Millicent performing on stage"
+        },
+
+
+        /* ================================================
+           E. WHY HER RESEARCH MATTERS
+
+           Three points appear with coloured icons.
+           The image appears next to the information.
+           ================================================ */
+
+        impact: {
+            heading: "Why does her research matter?",
+
+            image: `${imageFolder}gut-brain.svg`,
+            imageAlt: "Diagram showing gut microbes and a brain",
+
+            points: [
+                "Explores connections between the gut microbiome and brain health.",
+                "Tests whether changing gut microbes can help with problems linked to Huntington's disease in mice.",
+                "May help guide future research for people, but the findings are not a cure or a proven treatment."
+            ]
+        },
+
+
+        /* ================================================
+           F. ADVICE FOR STUDENTS
+
+           Based on Millicent's interview.
+           ================================================ */
+
+        adviceHeading: "Millicent's advice",
+
+        advice: [
+            "Find what excites you and pursue it!",
+            "You do not have to choose between science and the arts - you can enjoy both.",
+            "Trying something outside your comfort zone can open new doors."
+        ]
+
+        /* ================================================
+           G. OPTIONAL VIDEO
+
+           No video has been added for Millicent.
+
+           Add a video property here later if she
+           provides one.
+           ================================================ */
+
+    };
+
+})()
+
 
 
 
