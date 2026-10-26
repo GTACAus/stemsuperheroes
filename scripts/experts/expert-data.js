@@ -238,7 +238,196 @@ export const expertProfiles = {
             ]
         };
 
+    })(),
+
+
+    /* =====================================================
+    MUNA - MICROBIOLOGY RESEARCHER
+
+    Interview: 16 October 2026
+
+    Add or change Muna's information here.
+    The same reusable layout used by Kezia and Paddy
+    will automatically display this content.
+    ===================================================== */
+
+    muna: (() => {
+        // IMAGE FOLDER
+        // All Muna's images are stored here.
+        const imageFolder = "assets/images/experts/muna/";
+        return {
+
+            /* ================================================
+            A. BASIC INFORMATION
+            ================================================ */
+
+            name: "Muna",
+            role: "Microbiology Researcher",
+            organisation: "Melbourne, Australia - University tutor and GTAC STEM Coach",
+            portrait: `${imageFolder}portrait.jpg`,
+            superpower: "Studying bacteria that cause infections and investigating antibiotic resistance",
+            imageFolder,
+
+
+            /* ================================================
+            B. INTERACTIVE TIMELINE
+
+            Each stage has:
+            - A title
+            - A colour for its timeline marker
+            - A photograph or illustration
+            - Bullet points describing the story
+
+            The reusable timeline.js handles the clicks.
+            ================================================ */
+
+            timeline: [
+
+                // STAGE 1: CURIOUS BEGINNINGS
+
+                {
+                    title: "Curious beginnings",
+                    colour: "#F43559",
+                    image: `${imageFolder}portrait.jpg`,
+                    imageAlt: "Portrait of Muna",
+                    points: [
+                        "Muna grew up in Pakistan and always loved biology.",
+                        "When she was younger, she dreamed of becoming a doctor.",
+                        "She became the first woman in her extended family to attend university and later study overseas!"
+                    ]
+                },
+
+
+                // STAGE 2: CHALLENGES IN SCHOOL
+
+                {
+                    title: "Challenges in school",
+                    colour: "#E9B400",
+                    image: `${imageFolder}school.jpg`,
+                    imageAlt: "Image representing Muna's school experiences",
+                    points: [
+                        "Muna loved biology, but she found chemistry challenging.",
+                        "She wanted to study medicine, but getting into medical school in Pakistan was very competitive.",
+                        "She received an offer from a private medical university, but the fees were too expensive.",
+                        "Her original plan had to change, but she continued exploring science."
+                    ]
+                },
+
+
+                // STAGE 3: FINDING HER PATH
+
+                {
+                    title: "Finding her path",
+                    colour: "#50B96D",
+                    image: `${imageFolder}study.jpg`,
+                    imageAlt: "Image representing Muna's university studies",
+                    points: [
+                        "Muna discovered microbiology - the study of tiny living things, such as bacteria.",
+                        "She completed university degrees in microbiology in Pakistan.",
+                        "She then came to Australia to pursue a PhD, supported by a scholarship.",
+                        "She realised that she loved both scientific research and teaching."
+                    ]
+                },
+
+
+                // STAGE 4: RESEARCH WITH AN IMPACT
+
+                {
+                    title: "Research with an impact",
+                    colour: "#4F71CB",
+                    image: `${imageFolder}bacteria.jpg`,
+                    imageAlt: "Image representing E. coli bacteria",
+                    points: [
+                        "Muna studies bacteria, including E. coli, which can cause urinary tract infections (UTIs).",
+                        "She has worked with samples from real patients to investigate these bacteria.",
+                        "Her research explores antibiotic resistance - when bacteria can survive medicines designed to kill them.",
+                        "Understanding these bacteria could help scientists investigate better ways to treat infections."
+                    ]
+                },
+
+
+                // STAGE 5: LOOKING TO THE FUTURE
+
+                {
+                    title: "Looking to the Future",
+                    colour: "#00A7B8",
+                    image: `${imageFolder}future.jpg`,
+                    imageAlt: "Image representing Muna's future in science",
+                    points: [
+                        "Muna is exploring opportunities to continue her research as a postdoctoral researcher.",
+                        "She is also interested in teaching, public health and other science careers.",
+                        "As a GTAC STEM Coach, she has learned to explain science without complicated scientific words.",
+                        "Working with students has helped her become a more confident science communicator."
+                    ]
+                }
+
+            ],
+
+
+            /* ================================================
+            C. HOBBIES AND INTERESTS
+
+            One image: use "image".
+            Multiple images: add a "photos" array,
+            just like Paddy's profile.
+            ================================================ */
+
+            hobbies: {
+                heading: "Hobbies and interests",
+                text: "Outside science, Muna enjoys exploring different cafés and trying new coffees. She loves discovering interesting coffee spots around Melbourne!",
+                image: `${imageFolder}coffee.jpg`,
+                imageAlt: "Coffee at a café"
+            },
+
+
+            /* ================================================
+            D. WHY HER RESEARCH MATTERS
+
+            Text appears as bullet points with icons.
+            Image appears beside the bullet points.
+            ================================================ */
+
+            impact: {
+                heading: "Why does her research matter?",
+                image: `${imageFolder}bacteria.jpg`,
+                imageAlt: "Image representing bacteria studied in microbiology",
+                points: [
+                    "Investigates bacteria that can cause infections, including UTIs",
+                    "Helps scientists understand antibiotic resistance",
+                    "Could contribute to better ways of treating bacterial infections in the future"
+                ]
+            },
+
+
+            /* ================================================
+            E. ADVICE FOR STUDENTS
+
+            The heading can be customised for each expert.
+            These points are paraphrased from Muna's interview.
+            ================================================ */
+
+            adviceHeading: "Muna's advice",
+            advice: [
+                "Explore different interests and discover what you enjoy!",
+                "Your journey into science doesn't have to follow a straight path.",
+                "If something isn't right for you, it's okay to change direction and try something else."
+            ]
+
+            /* ================================================
+            F. OPTIONAL EXTRAS
+
+            No video has been added for Muna.
+
+            If she provides a video in the future,
+            we can add a "video" property like Paddy's.
+
+            The existing renderer already supports it.
+            ================================================ */
+
+        };
+
     })()
+
 
 
 };
