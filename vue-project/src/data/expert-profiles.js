@@ -4,7 +4,7 @@
    The HTML layout and timeline interaction do not change.
    ========================================================= */
 
-const keziaImages = "/assets/images/experts/kezia/";
+const keziaImages = `${import.meta.env.BASE_URL}assets/images/experts/kezia/`;
 
 export const expertProfiles = {
     kezia: {

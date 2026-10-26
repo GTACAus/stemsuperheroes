@@ -11,7 +11,7 @@ export const experts = [
         name: "Paddy",
         field: "Neuro-oncologist",
         role: "STEM Coach",
-        portrait: "/assets/images/paddy.jpg",
+        portrait: `${import.meta.env.BASE_URL}assets/images/paddy.jpg`,
         portraitAlt: "Paddy, a neuro-oncologist",
         thinglinkUrl: "https://www.thinglink.com/view/scene/2110566100411351717",
         back: {
@@ -26,7 +26,7 @@ export const experts = [
         name: "Kezia",
         field: "Infectious Disease Expert",
         role: "Peter Doherty Institute",
-        portrait: "/assets/images/experts/kezia/portrait.jpg",
+        portrait: `${import.meta.env.BASE_URL}assets/images/experts/kezia/portrait.jpg`,
         portraitAlt: "Kezia, an infectious disease researcher",
         profileId: "kezia",
         back: {

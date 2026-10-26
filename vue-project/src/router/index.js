@@ -1,7 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 export default createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // Hash history keeps routes working when dist/index.html is opened directly (file://).
+  history: createWebHashHistory(),
   routes: [
     { path: '/', name: 'home', component: () => import('../views/HomeView.vue') },
     { path: '/local-stem-experts', name: 'experts', component: () => import('../views/LocalStemExpertsView.vue') },
