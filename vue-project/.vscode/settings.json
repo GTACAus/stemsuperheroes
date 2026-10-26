@@ -15,11 +15,21 @@
       },
       { "name": "▶ Build", "command": "npm run build" },
       {
-        "name": "🌐 Preview Page",
+        "name": "🌐 Start & Preview",
         "useVsCodeApi": true,
-        "command": "simpleBrowser.show",
-        "args": ["http://localhost:5173/"]
+        "command": "multiCommand.startAndPreview"
       },
     ]
-  }
+  },
+  "multiCommand.commands": [
+    {
+      "command": "multiCommand.startAndPreview",
+      "interval": 3000,
+      "sequence": [
+        { "command": "workbench.action.terminal.new" },
+        { "command": "workbench.action.terminal.sendSequence", "args": { "text": "npm run dev\r" } },
+        { "command": "simpleBrowser.show", "args": "http://localhost:5173/" }
+      ]
+    }
+  ]
 }
