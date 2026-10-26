@@ -5,8 +5,9 @@ import vue from '@vitejs/plugin-vue';
 import vueDevTools from 'vite-plugin-vue-devtools';
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: './',
+export default defineConfig(({ command }) => ({
+  // Built site is served from https://gtacaus.github.io/stemsuperheroes/
+  base: command === 'build' ? '/stemsuperheroes/' : '/',
   plugins: [
     vue(),
     vueDevTools(),
@@ -23,4 +24,4 @@ export default defineConfig({
   devtools: {
     apply: 'serve',
   },
-});
+}));
