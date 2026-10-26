@@ -7,13 +7,13 @@
   },
   "actionButtons": {
     "commands": [
-      { "name": "▶ Start site", "command": "npm run dev", "singleInstance": true },
-      { "name": "▶ Build", "command": "npm run build" },
+      { "name": "▶ Start Server", "command": "npm run dev", "singleInstance": true },
       {
-        "name": "■ Stop site",
+        "name": "■ Stop Server",
         "useVsCodeApi": true,
         "command": "workbench.action.terminal.kill"
       },
+      { "name": "▶ Build", "command": "npm run build" },
       {
         "name": "🌐 Preview Page",
         "useVsCodeApi": true,
