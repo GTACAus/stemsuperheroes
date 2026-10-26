@@ -50,7 +50,8 @@
 
             <div class="experts-grid">
                 <!-- Existing Paddy card. Keeps its ThingLink while you migrate his content. -->
-            <!-- Paddy's coded STEM profile -->
+            
+                <!-- Paddy's coded STEM profile -->
             <article class="expert-flip-card" role="button" tabindex="0"
                     aria-label="Open Paddy's STEM profile"
                     aria-controls="expert-details-panel" aria-expanded="false"
@@ -100,6 +101,7 @@
                 </article>
 
                 <!-- NEW coded profile: data-expert-id matches expert-data.js. -->
+                 <!-- Kezia's coded STEM profile -->
                 <article class="expert-flip-card" role="button" tabindex="0"
                          aria-label="Open Kezia's STEM profile"
                          aria-controls="expert-details-panel" aria-expanded="false"
@@ -148,6 +150,114 @@
                         </div>
                     </div>
                 </article>
+
+                <!-- =====================================================
+                    MUNA - STEM EXPERT FLIP CARD
+
+                    data-expert-id="muna" connects this card to
+                    the Muna profile in expert-data.js.
+                    ===================================================== -->
+
+                <article
+                    class="expert-flip-card"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Open Muna's STEM profile"
+                    aria-controls="expert-details-panel"
+                    aria-expanded="false"
+                    data-expert-id="muna"
+                >
+                    <div class="expert-flip-inner">
+                        <!-- A. FRONT OF CARD -->
+                        <div class="expert-card-face expert-card-front">
+                            <div class="expert-image">
+                                <img
+                                    src="assets/images/experts/muna/portrait.jpg"
+                                    alt="Portrait of Muna"
+                                >
+                            </div>
+                            <div class="expert-card-content">
+                                <p class="expert-field">
+                                    Microbiology Researcher
+                                </p>
+                                <h3>Muna</h3>
+                                <p class="expert-role">
+                                    STEM Coach
+                                </p>
+                            </div>
+                        </div>
+                        <!-- B. BACK OF CARD -->
+                        <div class="expert-card-face expert-card-back">
+                            <div class="expert-detail-stack">
+                                <!-- STEM SUPERPOWER -->
+                                <div class="expert-detail-row expert-detail-row--dark">
+                                    <span class="expert-detail-icon" aria-hidden="true">
+                                        ⚛
+                                    </span>
+                                    <div>
+                                        <strong>STEM superpower</strong>
+                                        <p>
+                                            Investigating bacteria and how
+                                            they respond to antibiotics
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- COOL FACT -->
+                                <div class="expert-detail-row expert-detail-row--light">
+                                    <span class="expert-detail-icon" aria-hidden="true">
+                                        💡
+                                    </span>
+                                    <div>
+                                        <strong>Cool fact</strong>
+                                        <p>
+                                            Muna was the first woman in her
+                                            extended family to attend university!
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- RESEARCH IMPACT -->
+                                <div class="expert-detail-row expert-detail-row--dark">
+                                    <span class="expert-detail-icon" aria-hidden="true">
+                                        ✨
+                                    </span>
+                                    <div>
+                                        <strong>Impact</strong>
+                                        <p>
+                                            Her research helps scientists
+                                            understand bacteria that can
+                                            cause infections.
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- LESSON FOR STUDENTS -->
+                                <div class="expert-detail-row expert-detail-row--light">
+                                    <span class="expert-detail-icon" aria-hidden="true">
+                                        💬
+                                    </span>
+                                    <div>
+                                        <strong>Lesson</strong>
+                                        <p>
+                                            Explore different paths.
+                                            It's okay to change direction!
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- EXPERT IDENTITY CHIP -->
+                                <div class="expert-profile-chip">
+                                    <img
+                                        src="assets/images/experts/muna/portrait.jpg"
+                                        alt=""
+                                    >
+                                    <div>
+                                        <strong>Muna</strong>
+                                        <span>Microbiology Researcher</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
 
                 <!-- Only one panel is needed. JavaScript moves it below the clicked card's row. -->
                 <section id="expert-details-panel" class="expert-profile-panel" hidden></section>
