@@ -151,21 +151,41 @@
 .timeline-track {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(5, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 4px;
     min-width: 570px;
     padding: 0 4px;
 }
-.timeline-track::before {
+
+/* =========================================================
+   TIMELINE CONNECTING LINE
+
+   Connects each timeline marker to the next one.
+
+   Automatically works with 3, 4, 5 or more stages.
+   No line before the first or after the last marker.
+   ========================================================= */
+
+.timeline-step:not(:last-child)::before {
     content: "";
+
     position: absolute;
-    left: 10%;
-    right: 10%;
     top: 19px;
+
+    /* Start after the current marker */
+    left: calc(50% + 25px);
+
+    /* End before the next marker */
+    width: calc(100% + 4px - 50px);
+
     height: 7px;
     background: #37275c;
     border-radius: 999px;
+
+    pointer-events: none;
+    z-index: -1;
 }
+
 .timeline-step {
     position: relative;
     z-index: 1;
@@ -295,4 +315,39 @@
     color: var(--muted);
     font-size: 0.85rem;
     line-height: 1.5;
+}
+
+
+/* =========================================================
+   TIMELINE STARTING INSTRUCTIONS
+
+   Appears before a student selects a timeline point.
+   Disappears automatically after the first click.
+   ========================================================= */
+
+/* Hide story until a timeline point is selected */
+.timeline-display[hidden] {
+    display: none;
+}
+
+/* ---------- Instruction box ---------- */
+
+.timeline-prompt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 150px;
+    margin: 17px 0 0;
+    padding: 24px;
+
+    background: #c9f4df;
+    border: 2px dashed #69ddb4;
+    border-radius: 15px;
+
+    color: #37275c;
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1.5;
+    text-align: center;
 }
