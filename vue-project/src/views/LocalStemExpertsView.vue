@@ -1,8 +1,8 @@
 <script setup>
 import { computed, nextTick, ref, useTemplateRef } from 'vue';
-import ExpertCard from '../components/ExpertCard.vue';
-import ExpertProfile from '../components/ExpertProfile.vue';
-import ThingLinkEmbed from '../components/ThingLinkEmbed.vue';
+import ExpertCard from '../components/experts/ExpertCard.vue';
+import ExpertProfile from '../components/experts/ExpertProfile.vue';
+import ThingLinkEmbed from '../components/experts/ThingLinkEmbed.vue';
 import { expertProfiles } from '../data/expert-profiles.js';
 
 const cardRefs = useTemplateRef('cards');

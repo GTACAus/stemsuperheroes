@@ -5,12 +5,7 @@ export default createRouter({
   routes: [
     { path: '/', name: 'home', component: () => import('../views/HomeView.vue') },
     { path: '/local-stem-experts', name: 'experts', component: () => import('../views/LocalStemExpertsView.vue') },
-    {
-      path: '/science-around-us',
-      name: 'science',
-      component: () => import('../views/PlaceholderView.vue'),
-      props: { title: 'Science is All Around Us' },
-    },
+    { path: '/science-around-us', name: 'science', component: () => import('../views/ScienceAroundUsView.vue') },
   ],
   scrollBehavior: () => ({ top: 0 }),
 });

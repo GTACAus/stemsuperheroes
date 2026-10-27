@@ -21,7 +21,7 @@ const impactIcons = ['🔎', '♡', '✿'];
       <p class="profile-meta">📍 <span>{{ expert.organisation }}</span></p>
       <div class="profile-superpower">
         <strong>⚡ STEM Superpower</strong>
-        <p>{{ expert.superpower }}</p>
+        <p>{{ expert.back.superpower }}</p>
       </div>
     </div>
   </div>
