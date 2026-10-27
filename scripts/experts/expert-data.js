@@ -69,7 +69,7 @@ export const expertProfiles = {
                     imageAlt: "Kezia explaining her research beside a scientific poster",
                     imageFit: "cover",
                     points: [
-                        "In Australia, Kezia investigated how different immune cells fight infections.",
+                        "Kezia investigated how different immune cells fight infections.",
                         "She explored whether immune cells from healthy people could recognise and remove cells infected with HIV, a virus.",
                         "This research could help scientists investigate future treatments for HIV."
                     ]
@@ -285,8 +285,8 @@ export const expertProfiles = {
                 {
                     title: "Curious beginnings",
                     colour: "#F43559",
-                    image: `${imageFolder}portrait.jpg`,
-                    imageAlt: "Portrait of Muna",
+                    image: `${imageFolder}pakistan.jpg`,
+                    imageAlt: "Muna's Home",
                     points: [
                         "Muna grew up in Pakistan and always loved biology.",
                         "When she was younger, she dreamed of becoming a doctor.",
@@ -295,48 +295,48 @@ export const expertProfiles = {
                 },
 
 
-                // STAGE 2: CHALLENGES IN SCHOOL
+                // STAGE 2: DREAM OCCUPATION
 
                 {
-                    title: "Challenges in school",
+                    title: "Dream Occupation",
                     colour: "#E9B400",
-                    image: `${imageFolder}school.jpg`,
+                    image: `${imageFolder}muna-university.jpg`,
                     imageAlt: "Image representing Muna's school experiences",
                     points: [
-                        "Muna loved biology, but she found chemistry challenging.",
-                        "She wanted to study medicine, but getting into medical school in Pakistan was very competitive.",
-                        "She received an offer from a private medical university, but the fees were too expensive.",
-                        "Her original plan had to change, but she continued exploring science."
+                        // "Muna loved biology, but she found chemistry challenging.",
+                        "She wanted to be a doctor, but getting into medical school in Pakistan was very competitive.",
+                        "She received an offer from a private medical university, but it was too expensive.",
+                        "She changed her plans, but she knew she wanted to be in science."
                     ]
                 },
 
 
-                // STAGE 3: FINDING HER PATH
+                // STAGE 3: LEARNING ABOUT TINY LIVING THINGS
 
                 {
-                    title: "Finding her path",
+                    title: "Learning About Tiny Living Things",
                     colour: "#50B96D",
-                    image: `${imageFolder}study.jpg`,
+                    image: `${imageFolder}travel.jpeg`,
                     imageAlt: "Image representing Muna's university studies",
                     points: [
-                        "Muna discovered microbiology - the study of tiny living things, such as bacteria.",
-                        "She completed university degrees in microbiology in Pakistan.",
-                        "She then came to Australia to pursue a PhD, supported by a scholarship.",
-                        "She realised that she loved both scientific research and teaching."
+                        "Muna discovered a love for microbiology - the study of tiny living things, such as bacteria.",
+                        "She completed her undergraduate and masters in microbiology in Pakistan.",
+                        "She then got a full scholarship to do a PhD in Australia.",
+                        "She realised that she loved both research and teaching."
                     ]
                 },
 
 
-                // STAGE 4: RESEARCH WITH AN IMPACT
+                // STAGE 4: STUDYING BACTERIA
 
                 {
-                    title: "Research with an impact",
+                    title: "Studying Bacteria",
                     colour: "#4F71CB",
                     image: `${imageFolder}bacteria.jpg`,
                     imageAlt: "Image representing E. coli bacteria",
                     points: [
-                        "Muna studies bacteria, including E. coli, which can cause urinary tract infections (UTIs).",
-                        "She has worked with samples from real patients to investigate these bacteria.",
+                        "Muna studies bacteria, such as E. coli, which can cause urinary tract infections (UTIs).",
+                        "She works with real patient samples from hospitals.",
                         "Her research explores antibiotic resistance - when bacteria can survive medicines designed to kill them.",
                         "Understanding these bacteria could help scientists investigate better ways to treat infections."
                     ]
@@ -348,12 +348,12 @@ export const expertProfiles = {
                 {
                     title: "Looking to the Future",
                     colour: "#00A7B8",
-                    image: `${imageFolder}future.jpg`,
+                    image: `${imageFolder}poster.jpeg`,
                     imageAlt: "Image representing Muna's future in science",
                     points: [
-                        "Muna is exploring opportunities to continue her research as a postdoctoral researcher.",
-                        "She is also interested in teaching, public health and other science careers.",
-                        "As a GTAC STEM Coach, she has learned to explain science without complicated scientific words.",
+                        "In the future, Muna wants to continue working as a researcher.",
+                        "She is also interested in teaching, public health and other careers in science.",
+                        "As a GTAC STEM Coach, she has learned to explain science to kids and young people.",
                         "Working with students has helped her become a more confident science communicator."
                     ]
                 }
@@ -386,7 +386,7 @@ export const expertProfiles = {
 
             impact: {
                 heading: "Why does her research matter?",
-                image: `${imageFolder}bacteria.jpg`,
+                image: `${imageFolder}lab.jpg`,
                 imageAlt: "Image representing bacteria studied in microbiology",
                 points: [
                     "Investigates bacteria that can cause infections, including UTIs",
@@ -697,12 +697,12 @@ michael: (() => {
                 title: "Curious beginnings",
                 colour: "#F43559",
 
-                image: `${imageFolder}portrait.jpg`,
+                image: `${imageFolder}books.jpg`,
                 imageAlt: "Portrait of Michael today",
 
                 points: [
-                    "Michael grew up in Indonesia, and came to Australia for university.",
-                    "His university journey began with psychology, the study of how people think, feel and behave.",
+                    "Michael grew up in Indonesia, struggled with mathematics back in high school, but loved books and literature.",
+                    "He studied psychology at the University of Melbourne, the study of how people think, feel and behave.",
                     "He became interested in how science can help us understand people and solve problems."
                 ]
             },
