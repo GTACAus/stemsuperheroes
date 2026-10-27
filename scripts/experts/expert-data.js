@@ -476,7 +476,7 @@ millicent: (() => {
                 title: "Breaking Barriers",
                 colour: "#F43559",
 
-                image: stagePhoto,
+                image: `${imageFolder}nigeria.jpg`,
                 imageAlt: "Millicent performing on stage as an adult",
 
                 points: [
@@ -495,7 +495,7 @@ millicent: (() => {
 
                 image: `${imageFolder}paths.jpg`,
                 imageAlt: "Illustration representing different pathways through science and the arts",
-                imageFit: "contain",
+
 
                 points: [
                     "She loved acting and was part of a theatre group back in school.",
@@ -513,9 +513,8 @@ millicent: (() => {
                 title: "Finding her path",
                 colour: "#50B96D",
 
-                image: `${imageFolder}journey.svg`,
+                image: `${imageFolder}harvard.jpg`,
                 imageAlt: "Illustration of Millicent's journey from Nigeria to the USA and Australia",
-                imageFit: "contain",
 
                 points: [
                     "Millicent studied in Nigeria before moving to the USA for her master's degree.",
