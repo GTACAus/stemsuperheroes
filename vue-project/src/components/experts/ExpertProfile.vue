@@ -53,6 +53,31 @@ const impactIcons = ['🔎', '♡', '✿'];
     </section>
   </div>
 
+  <section v-if="expert.video" class="profile-section profile-video">
+    <h3 class="profile-section-heading">
+      {{ expert.video.heading }}
+    </h3>
+
+    <p>{{ expert.video.description }}</p>
+
+    <video
+      controls
+      playsinline
+      preload="metadata"
+      :poster="expert.video.poster"
+    >
+      <source
+        :src="expert.video.src"
+        type="video/mp4"
+      >
+        Your browser does not support this video.
+    </video>
+
+    <p class="profile-video-caption">
+      {{ expert.video.caption }}
+    </p>
+  </section>
+
   <section class="profile-section profile-advice">
     <h3 class="profile-section-heading">Advice</h3>
     <ul>
@@ -188,5 +213,46 @@ const impactIcons = ['🔎', '♡', '✿'];
   .profile-superpower { margin-top: 13px; }
   .profile-impact-layout { grid-template-columns: 1fr; }
   .profile-impact-layout > img { max-height: 240px; }
+}
+
+/* =========================================================
+   OPTIONAL VIDEO FEATURE
+
+   Controls video size, spacing and appearance.
+   Keeps videos responsive on desktop and mobile.
+   ========================================================= */
+
+.profile-video {
+    margin-top: 16px;
+    min-width: 0;
+}
+
+/* ---------- Video player ---------- */
+
+.profile-video video {
+    display: block;
+
+    width: 100%;
+    max-width: 760px;
+
+    aspect-ratio: 16 / 9;
+    height: auto;
+
+    object-fit: contain;
+
+    margin: 16px auto;
+    background: #111;
+
+    border-radius: 12px;
+}
+
+/* ---------- Video caption ---------- */
+
+.profile-video-caption {
+    margin: 12px 0 0;
+
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
 }
 </style>
