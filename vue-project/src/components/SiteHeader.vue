@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import Button from '@/components/Button.vue';
 
 const open = ref(false);
 const links = [
@@ -11,7 +12,7 @@ const links = [
 <template>
   <header class="site-header">
     <RouterLink to="/">GTAC STEM</RouterLink>
-    <button
+    <Button
       class="nav-toggle"
       type="button"
       aria-label="Toggle navigation"
@@ -22,7 +23,7 @@ const links = [
       <span class="nav-toggle-bar"></span>
       <span class="nav-toggle-bar"></span>
       <span class="nav-toggle-bar"></span>
-    </button>
+    </Button>
     <nav class="site-nav" :class="{ open }" id="site-navigation">
       <RouterLink v-for="link in links" :key="link.to" :to="link.to" @click="open = false">
         {{ link.label }}
@@ -81,6 +82,22 @@ const links = [
 }
 
 .nav-toggle {
+    --padding: 0;
+    --background: var(--paper);
+    --box-shadow: none;
+    
+    --background-hover: var(--soft-green);
+    --color-hover: inherit;
+    --translate-amount-hover: -2px;
+    --box-shadow-hover: var(--shadow-medium);
+    
+    --background-active: var(--mint);
+    --color-active: inherit;
+    --translate-amount-active: 3px;
+    --box-shadow-active: none;
+
+    --animation: pop-fade-in 0.5s ease;
+
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -88,14 +105,7 @@ const links = [
 
     width: 40px;
     height: 40px;
-    padding: 0;
 
-    background: var(--paper);
-
-    border: 2px solid var(--charcoal);
-    border-radius: var(--radius-small);
-
-    cursor: pointer;
 }
 
 .nav-toggle-bar {
