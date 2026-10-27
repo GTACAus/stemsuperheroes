@@ -1,13 +1,19 @@
 <script setup>
 import { ref } from 'vue';
-import HelmetDetails from '../components/science/HelmetDetails.vue';
-import StwSection from '../components/science/StwSection.vue';
+import Button from '@/components/Button.vue';
+import LearningOverview from '@/components/science/LearningOverview.vue';
+import HelmetDetails from '@/components/science/HelmetDetails.vue';
+import StwSection from '@/components/science/StwSection.vue';
+import FairTestBuilder from '@/components/science/FairTestBuilder.vue';
 import { scienceObjects } from '../data/science-objects.js';
-import LearningOverview from '../components/science/LearningOverview.vue';
-import Button from '../components/Button.vue';
 
 // Extra content shown below an object's See / Think / Wonder, keyed by object id.
-const extras = { helmet: HelmetDetails };
+const extras = {
+  helmet: [
+    HelmetDetails,
+    FairTestBuilder
+  ]
+};
 
 const selectedId = ref(null);
 </script>
@@ -88,7 +94,9 @@ const selectedId = ref(null);
         />
       </section>
 
-      <component :is="extras[object.id]" v-if="extras[object.id]" />
+      <section v-for="extra in extras[object.id]">
+        <component :is="extra" v-if="extra" />
+      </section>
     </section>
   </main>
 </template>

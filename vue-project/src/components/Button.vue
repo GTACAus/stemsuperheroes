@@ -21,12 +21,16 @@ button {
     --font-weight: 700;
     
     --background-hover: var(--purple);
+    --color-hover: inherit;
     --translate-amount-hover: -2px;
     --box-shadow-hover: var(--shadow-medium);
-
+    
     --background-active: var(--mint);
+    --color-active: inherit;
     --translate-amount-active: 3px;
     --box-shadow-active: none;
+
+    --animation: pop-fade-in 0.5s ease;
 
     padding: var(--padding);
 
@@ -43,9 +47,10 @@ button {
 
     cursor: pointer;
 
-    animation: pop-fade-in 0.5s ease;
+    animation: var(--animation);
 
     transition:
+        color 0.15s ease,
         transform 0.15s ease,
         box-shadow 0.15s ease,
         background 0.15s ease;
@@ -60,6 +65,7 @@ button:disabled {
 
 button:hover {
     background: var(--background-hover);
+    color: var(--color-hover);
 
     transform: translateY(var(--translate-amount-hover));
 
@@ -68,8 +74,10 @@ button:hover {
 
 button:active,
 button[aria-checked="true"],
-button.selected {
+button.selected,
+button.active {
     background: var(--background-active);
+    color: var(--color-active);
     transform: translateY(var(--translate-amount-active));
     box-shadow: var(--box-shadow-active);
 }
