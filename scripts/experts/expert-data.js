@@ -499,10 +499,10 @@ millicent: (() => {
 
                 points: [
                     "She loved acting and was part of a theatre group back in school.",
-"Realised she didn't have to choose between arts or science, she chose to do both.",
-"Millicent originally applied to study medicine but did not get a place.",
+                    "She realised she didn't have to choose between arts and science, she chose to do both.",
+"She applied to study medicine but did not get a place.",
                     "She continued studying science and discovered new interests along the way.",
-                    "During her master's degree, she had less time for acting and radio, but her creative interests never disappeared."
+                    "During her master's degree, she had less time for acting and radio, but her creative interests stayed."
                 ]
             },
 
@@ -518,7 +518,7 @@ millicent: (() => {
 
                 points: [
                     "Millicent studied in Nigeria before moving to the USA for her master's degree.",
-                    "She worked on brain research at Brigham and Women's Hospital, linked to Harvard Medical School.",
+                    "For her Masters, she worked on brain research at Brigham and Women's Hospital, linked to Harvard Medical School.",
                     "After learning about the connection between gut microbes and the brain, she came to Melbourne for PhD research."
                 ]
             },
