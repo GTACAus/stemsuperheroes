@@ -10,8 +10,8 @@ const links = [
 </script>
 
 <template>
-  <header class="site-header">
-    <RouterLink to="/">GTAC STEM</RouterLink>
+  <header>
+    <RouterLink id="home" to="/">GTAC STEM</RouterLink>
     <Button
       class="nav-toggle"
       type="button"
@@ -33,13 +33,13 @@ const links = [
 </template>
 
 <style scoped>
-.site-header {
+header {
     position: sticky;
     top: 0;
     z-index: 1000;
     
     width: min(var(--content-width), 94%);
-    margin: 0 auto;
+    margin: 0 auto 10px;
     padding: 20px 10px;
     border-radius: 10px;
     
@@ -51,34 +51,67 @@ const links = [
     background: var(--cream);
 }
 
-.site-header > a {
-    color: var(--purple);
-
+header a {
+    --transition-time: 0.15s;
+    
+    position: relative; /* anchors the ::after underline to the link, not the header */
     font-size: 1.1rem;
-    font-weight: 700;
-
     text-decoration: none;
+
+    transition:
+        color var(--transition-time) ease;
 }
 
-.site-header nav {
+header a:hover{
+    color: var(--purple);
+}
+
+header #home {
+    color: var(--purple);
+
+    font-weight: 700;
+    font-size: 25px;
+}
+
+header a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+
+    width: 100%;
+    height: 3px;
+
+    background: currentColor;
+    border-radius: 2px;
+
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform var(--transition-time) ease;
+}
+
+header a:hover::after,
+header a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+header nav {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.site-header nav a {
-    padding: 8px 12px;
-
+header nav a {
     color: var(--text);
+    font-weight: 500;
 
-    border-radius: var(--radius-small);
-
-    font-weight: 600;
-    text-decoration: none;
+    transition:
+        transform var(--transition-time) ease,
+        color var(--transition-time) ease;
 }
 
-.site-header nav a:hover {
-    background: var(--soft-purple);
+header nav a:hover {
+    transform: translateY(-3px) scale(1.03);
 }
 
 .nav-toggle {
@@ -121,7 +154,7 @@ const links = [
         display: flex;
     }
 
-    .site-header .site-nav {
+    header .site-nav {
         flex-direction: column;
         gap: 6px;
 
@@ -150,7 +183,7 @@ const links = [
             visibility 0s linear 0.18s;
     }
 
-    .site-header .site-nav.open {
+    header .site-nav.open {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
