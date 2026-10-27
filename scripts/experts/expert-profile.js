@@ -102,7 +102,58 @@ export function renderExpertProfile(panel, expert, onClose) {
     `;
 
     panel.querySelector(".profile-close").addEventListener("click", onClose);
-    initTimeline(panel.querySelector(".profile-timeline"), expert.timeline);
+
+    /* =========================================================
+    TIMELINE: SHOW INSTRUCTIONS BEFORE FIRST CLICK
+
+    When an expert profile first opens:
+    - Hide the automatically displayed first story.
+    - Show an instruction encouraging students to click.
+    - Reveal the story when any timeline pin is clicked.
+
+    Works automatically for EVERY expert.
+    ========================================================= */
+
+    const timeline = panel.querySelector(".profile-timeline");
+
+    // Build the timeline using our existing function.
+    initTimeline(timeline, expert.timeline);
+
+    const display = timeline.querySelector(".timeline-display");
+
+    if (display) {
+
+        // 1. Initially hide the story and photograph.
+        display.hidden = true;
+
+        // 2. Create the instruction box.
+        const hint = document.createElement("p");
+        hint.className = "timeline-prompt";
+        hint.textContent =
+            `↑ Choose a coloured pin above to explore ${expert.name}'s story!`;
+
+        display.before(hint);
+
+        // 3. Remove the initial selected-pin appearance.
+        timeline.querySelectorAll(".timeline-step").forEach(step => {
+            step.classList.remove("is-active");
+            step.setAttribute("aria-pressed", "false");
+        });
+
+        // 4. When a pin is clicked, reveal its story.
+        const revealStory = (event) => {
+            if (!event.target.closest(".timeline-step")) return;
+
+            display.hidden = false;
+            hint.remove();
+
+            // Instructions are no longer needed after first click.
+            timeline.removeEventListener("click", revealStory, true);
+        };
+
+        timeline.addEventListener("click", revealStory, true);
+    }
+
 
 }
 

@@ -31,7 +31,7 @@ export const expertProfiles = {
                 {
                     title: "Curious beginnings",
                     colour: "#F43559",
-                    image: `${imageFolder}portrait.jpg`,
+                    image: `${imageFolder}chairs.jpg`,
                     imageAlt: "Portrait of Kezia today; an early-years photograph is not yet available",
                     points: [
                         "Kezia was the first person in her family to pursue science.",
@@ -45,9 +45,9 @@ export const expertProfiles = {
                     image: `${imageFolder}tennis.jpg`,
                     imageAlt: "Illustration of a school notebook, representing Kezia's school years",
                     points: [
+                        "Kezia enjoyed music back in school, learning piano back when she was 4 years old.",
                         "Kezia enjoyed science and was good at maths, but physics was challenging.",
-                        "She also found sport difficult at school.",
-                        "Stereotypes sometimes made science feel discouraging, but she kept exploring her interests."
+                        "She also found sport difficult.",
                     ]
                 },
                 {
@@ -134,42 +134,45 @@ export const expertProfiles = {
 
             timeline: [
                 {
-                    title: "Curious beginnings",
+                    title: "Creative beginnings",
                     colour: "#F43559",
-                    image: `${imageFolder}portrait.jpg`,
+                    image: `${imageFolder}dictionary.jpg`,
                     imageAlt: "Portrait of Paddy today",
                     points: [
-                        "Paddy loved learning about philosophy, literature, cinema, and the arts.",
-                        "At school, he loved studyng English literature, Chemistry and Biology.",
+                        "Paddy loved learning about philosophy, literature, cinema, and the art",
+"At school, he loved studyng English literature, Chemistry and Biology",
+"He was terrible at Maths.",
                     ]
                 },
                 {
-                    title: "Challenges in school",
+                    title: "Changing Pathways",
                     colour: "#E9B400",
-                    image: `${imageFolder}dictionary.jpg`,
+                    image: `${imageFolder}paths.jpg`,
                     imageAlt: "Illustration representing Paddy's school experience",
                     points: [
-                        "Paddy found maths difficult at school.",
-                        "He was more interested in subjects such as English and the humanities.",
-                        "When he later moved into science, he took a maths bridging course to develop the skills he needed."
-                    ]
-                },
-                {
-                    title: "Changing Paths",
-                    colour: "#50B96D",
-                    image: `${imageFolder}path-placeholder.svg`,
-                    imageAlt: "Illustration showing a pathway from the arts into neuroscience",
-                    imageFit: "contain",
-                    points: [
                         "Paddy continued to pursue arts and humanities by enrolling in a Bachelor of Arts degree at the University of Melbourne.",
-                        "Paddy discovered that he wanted to study Science instead, but his knowledge of Maths wasn't enough to get him in.",
-                        "Paddy completed a Maths bridging course at university, and eventually got into Science."
+"Paddy discovered that he wanted to study Science instead, but his knowledge of Maths wasn't enough to get him in.",
+"Paddy completed a Maths bridging course at university, and eventually got into Science.",
+"We can enter science through many different pathways!",
                     ]
                 },
                 {
                     title: "Journeys in Neuroscience",
-                    colour: "#4F71CB",
+                    colour: "#50B96D",
                     image: `${imageFolder}brain-imaging.jpg`,
+                    imageAlt: "Illustration showing a pathway from the arts into neuroscience",
+                    imageFit: "contain",
+                    points: [
+                        "Paddy's interest in Neuroscience came from his love of Philosophy.",
+"He read a book about neuroplasticity - the brain's ability to change and adapt.",
+"This inspired him to study the brain more deeply, majoring in Neuroscience.",
+"He is currently doing his doctorate in Neuroscience.",
+                    ]
+                },
+                {
+                    title: "Future Plans",
+                    colour: "#4F71CB",
+                    image: `${imageFolder}future.jpg`,
                     imageAlt: "Colourful microscope image of a lab-grown brain organoid",
                     points: [
                         "Paddy's interest in Neuroscience came from his love of Philosophy.",
@@ -177,22 +180,12 @@ export const expertProfiles = {
                         "This inspired him to study the brain more deeply, majoring in Neuroscience.",
                         "He is currently doing his doctorate in Neuroscience."
                     ]
-                },
-                {
-                    title: "Future Plans",
-                    colour: "#00A7B8",
-                    image: `${imageFolder}genes.jpg`,
-                    imageAlt: "Image of genes",
-                    points: [
-                        "Paddy aims to continue to pursue neuroscience in the future.",
-                        "He aims to do so while doing the things that he love most - hiking and traveling."
-                    ]
                 }
             ],
 
             hobbies: {
                 heading: "Hobbies and interests",
-                text: "Outside the lab, Paddy enjoys hiking, running, reading about the humanities and going to the cinema. He has also gone on overnight hikes in New Zealand.",
+                text: "Paddy loves to read about philosophy, watch cinema, run, and hike. Paddy also does futsal with his colleagues at MCRI.",
                 image: `${imageFolder}hiking.jpeg`,
                 imageAlt: "Paddy hiking outdoors",
 
@@ -298,7 +291,7 @@ export const expertProfiles = {
                 // STAGE 2: DREAM OCCUPATION
 
                 {
-                    title: "Dream Occupation",
+                    title: "Dreams",
                     colour: "#E9B400",
                     image: `${imageFolder}muna-university.jpg`,
                     imageAlt: "Image representing Muna's school experiences",
@@ -319,7 +312,7 @@ export const expertProfiles = {
                     image: `${imageFolder}travel.jpeg`,
                     imageAlt: "Image representing Muna's university studies",
                     points: [
-                        "Muna discovered a love for microbiology - the study of tiny living things, such as bacteria.",
+                        "Muna discovered a love for microbiology, the study of tiny living things, such as bacteria.",
                         "She completed her undergraduate and masters in microbiology in Pakistan.",
                         "She then got a full scholarship to do a PhD in Australia.",
                         "She realised that she loved both research and teaching."
@@ -335,10 +328,10 @@ export const expertProfiles = {
                     image: `${imageFolder}bacteria.jpg`,
                     imageAlt: "Image representing E. coli bacteria",
                     points: [
-                        "Muna studies bacteria, such as E. coli, which can cause urinary tract infections (UTIs).",
-                        "She works with real patient samples from hospitals.",
-                        "Her research explores antibiotic resistance - when bacteria can survive medicines designed to kill them.",
-                        "Understanding these bacteria could help scientists investigate better ways to treat infections."
+                        "Muna studies the bacteria E. coli, which can cause urinary tract infections (UTIs).",
+                        "She works with atient samples from hospitals.",
+                        "Her research explores how some bacteria can survive medicines designed to kill them. This is called antibiotic resistance",
+                        "This will help scientists develop better ways to treat infections."
                     ]
                 },
 
@@ -351,10 +344,10 @@ export const expertProfiles = {
                     image: `${imageFolder}poster.jpeg`,
                     imageAlt: "Image representing Muna's future in science",
                     points: [
-                        "In the future, Muna wants to continue working as a researcher.",
+                        "Muna wants to continue working as a researcher.",
                         "She is also interested in teaching, public health and other careers in science.",
                         "As a GTAC STEM Coach, she has learned to explain science to kids and young people.",
-                        "Working with students has helped her become a more confident science communicator."
+                        "Working with students has helped her become a confident science communicator."
                     ]
                 }
 
@@ -480,17 +473,16 @@ millicent: (() => {
             // STAGE 1: CURIOUS BEGINNINGS
 
             {
-                title: "Curious beginnings",
+                title: "Breaking Barriers",
                 colour: "#F43559",
 
-                image: stagePhoto,
+                image: `${imageFolder}nigeria.jpg`,
                 imageAlt: "Millicent performing on stage as an adult",
 
                 points: [
-                    "Millicent grew up in Nigeria and loved reading, writing and acting from a young age.",
-                    "She dreamed of becoming a news presenter and enjoyed performing in school theatre.",
-                    "Her mum supported her ambition to keep studying, including overseas.",
-                    "Even though her family had different hopes for her career, she wanted to follow her own interests."
+                    "Millicent grew up in Nigeria, where girls in her culture were expected to grow up and marry.",
+"Her dad did not support her going into science, but she wanted 'to be more than what my culture programmed me to be'.",
+"Millicent stepped out of her comfort zone and pursued science."
                 ]
             },
 
@@ -498,17 +490,19 @@ millicent: (() => {
             // STAGE 2: CHALLENGES AND CHOICES
 
             {
-                title: "Challenges and choices",
+                title: "Choosing Between Arts and Science",
                 colour: "#E9B400",
 
-                image: `${imageFolder}school.svg`,
+                image: `${imageFolder}paths.jpg`,
                 imageAlt: "Illustration representing different pathways through science and the arts",
-                imageFit: "contain",
+
 
                 points: [
-                    "Millicent originally applied to study medicine but did not get a place.",
-                    "Instead, she continued studying science and discovered new interests along the way.",
-                    "During her master's degree, she had less time for acting and radio, but her creative interests never disappeared."
+                    "She loved acting and was part of a theatre group back in school.",
+                    "She realised she didn't have to choose between arts and science, she chose to do both.",
+"She applied to study medicine but did not get a place.",
+                    "She continued studying science and discovered new interests along the way.",
+                    "During her master's degree, she had less time for acting and radio, but her creative interests stayed."
                 ]
             },
 
@@ -519,13 +513,12 @@ millicent: (() => {
                 title: "Finding her path",
                 colour: "#50B96D",
 
-                image: `${imageFolder}journey.svg`,
+                image: `${imageFolder}harvard.jpg`,
                 imageAlt: "Illustration of Millicent's journey from Nigeria to the USA and Australia",
-                imageFit: "contain",
 
                 points: [
                     "Millicent studied in Nigeria before moving to the USA for her master's degree.",
-                    "She worked on brain research at Brigham and Women's Hospital, linked to Harvard Medical School.",
+                    "For her Masters, she worked on brain research at Brigham and Women's Hospital, linked to Harvard Medical School.",
                     "After learning about the connection between gut microbes and the brain, she came to Melbourne for PhD research."
                 ]
             },
@@ -900,7 +893,7 @@ laura: (() => {
             // STAGE 1: CURIOUS BEGINNINGS
 
             {
-                title: "Curious beginnings",
+                title: "Creative beginnings",
                 colour: "#F43559",
 
                 image: `${imageFolder}portrait.jpg`,
