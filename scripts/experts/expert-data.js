@@ -31,7 +31,7 @@ export const expertProfiles = {
                 {
                     title: "Curious beginnings",
                     colour: "#F43559",
-                    image: `${imageFolder}portrait.jpg`,
+                    image: `${imageFolder}chairs.jpg`,
                     imageAlt: "Portrait of Kezia today; an early-years photograph is not yet available",
                     points: [
                         "Kezia was the first person in her family to pursue science.",
@@ -179,15 +179,6 @@ export const expertProfiles = {
                         "He read a book about neuroplasticity - the brain's ability to change and adapt.",
                         "This inspired him to study the brain more deeply, majoring in Neuroscience.",
                         "He is currently doing his doctorate in Neuroscience."
-                    ]
-                },
-                {
-                    title: "DELETE THIS",
-                    colour: "#00A7B8",
-                    image: `${imageFolder}genes.jpg`,
-                    imageAlt: "Image of genes",
-                    points: [
-                        ""
                     ]
                 }
             ],
