@@ -1,0 +1,54 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"actionButtons": {
+			"commands": [
+				{
+					"name": "▶ Start Server",
+					"command": "npm run dev",
+					"singleInstance": true
+				},
+				{
+					"name": "■ Stop Server",
+					"useVsCodeApi": true,
+					"command": "workbench.action.terminal.kill"
+				},
+				{
+					"name": "▶ Build",
+					"command": "npm run build"
+				},
+				{
+					"name": "🌐 Start & Preview",
+					"useVsCodeApi": true,
+					"command": "multiCommand.startAndPreview"
+				}
+			]
+		},
+		"multiCommand.commands": [
+			{
+				"command": "multiCommand.startAndPreview",
+				"interval": 3000,
+				"sequence": [
+					{
+						"command": "workbench.action.terminal.new"
+					},
+					{
+						"command": "workbench.action.terminal.sendSequence",
+						"args": {
+							"text": "npm run dev\r"
+						}
+					},
+					{
+						"command": "simpleBrowser.show",
+						"args": "http://localhost:5173/"
+					}
+				]
+			}
+		],
+		"powershell.cwd": "vue-project"
+	}
+}

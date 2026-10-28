@@ -3,7 +3,13 @@
 #   powershell -ExecutionPolicy Bypass -File setup.ps1
 
 $ErrorActionPreference = 'Stop'
-Set-Location $PSScriptRoot
+Set-Location (Split-Path $PSScriptRoot -Parent)
+
+$answer = Read-Host 'This will setup the project by installing node.js and other extensions. Continue? (Y/n)'
+if ($answer -match '^\s*n') {
+    Write-Host 'Cancelled.'
+    exit
+}
 
 $minNode = [version]'22.18.0'
 
@@ -42,7 +48,7 @@ if ($LASTEXITCODE -ne 0) { throw 'npm install failed.' }
 if (-not (Get-Command code -ErrorAction SilentlyContinue)) {
     Write-Warning "VS Code 'code' command not found. Install VS Code (https://code.visualstudio.com), then re-run to install extensions."
 } else {
-    $extFile = Join-Path $PSScriptRoot '.vscode\extensions.json'
+    $extFile = Join-Path (Split-Path $PSScriptRoot -Parent) '.vscode\extensions.json'
     if (Test-Path $extFile) {
         $recommendations = (Get-Content $extFile -Raw | ConvertFrom-Json).recommendations
         foreach ($ext in $recommendations) {

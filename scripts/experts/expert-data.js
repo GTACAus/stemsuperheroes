@@ -161,7 +161,6 @@ export const expertProfiles = {
                     colour: "#50B96D",
                     image: `${imageFolder}brain-imaging.jpg`,
                     imageAlt: "Illustration showing a pathway from the arts into neuroscience",
-                    imageFit: "contain",
                     points: [
                         "Paddy's interest in Neuroscience came from his love of Philosophy.",
 "He read a book about neuroplasticity - the brain's ability to change and adapt.",
@@ -530,7 +529,7 @@ millicent: (() => {
                 title: "Research with an impact",
                 colour: "#4F71CB",
 
-                image: `${imageFolder}gut-brain.svg`,
+                image: `${imageFolder}prebiotics.jpg`,
                 imageAlt: "Diagram representing the connection between gut microbes and the brain",
                 imageFit: "contain",
 
@@ -591,7 +590,7 @@ millicent: (() => {
         impact: {
             heading: "Why does her research matter?",
 
-            image: `${imageFolder}gut-brain.svg`,
+            image: `${imageFolder}microbiome.jpg`,
             imageAlt: "Diagram showing gut microbes and a brain",
 
             points: [
@@ -659,7 +658,7 @@ michael: (() => {
 
         name: "Michael",
 
-        role: "Biomedical Engineer",
+        role: "Biomedical Engineer and Provisional Psychologist",
 
         organisation: "Gene Technology Access Centre (GTAC), Melbourne",
 
@@ -694,9 +693,12 @@ michael: (() => {
                 imageAlt: "Portrait of Michael today",
 
                 points: [
-                    "Michael grew up in Indonesia, struggled with mathematics back in high school, but loved books and literature.",
-                    "He studied psychology at the University of Melbourne, the study of how people think, feel and behave.",
-                    "He became interested in how science can help us understand people and solve problems."
+                    "Michael grew up in Indonesia, struggled with mathematics back in high school.",
+                    "He loved books and literature.",
+                    "He was interested in how science, because science help us understand people and solve problems.",
+                    "He studied a Bachelor of Arts majored in Psychology and Economics at the University of Melbourne.", 
+                    "Psychology is the study of how people think, feel and behave.",
+                    
                 ]
             },
 
@@ -707,14 +709,15 @@ michael: (() => {
                 title: "Exploring Engineering",
                 colour: "#E9B400",
 
-                image: `${imageFolder}choices.svg`,
+                image: `${imageFolder}engineer`,
                 imageAlt: "Illustration of psychology and engineering as connected fields",
                 imageFit: "contain",
 
                 points: [
-                    "After studying psychology, Michael chose to explore biomedical engineering.",
-                    "Biomedical engineering combines biology, maths and technology to solve health problems.",
-                    "Here, he discovered a love for mathematics."
+                    "After finishing his Bachelor of Arts, Michael explored Biomedical Engineering by doing a Masters degree.",
+                    "Biomedical Engineering combines Biology, Maths and Technology to solve health problems.",
+                    "The first year of Masters was challenging because he had to relearn Maths and Biology.",
+                    "Here, he discovered a love for Linear Algebra and Maths."
                 ]
             },
 
@@ -729,7 +732,7 @@ michael: (() => {
                 imageAlt: "Illustration representing laboratory research during Michael's PhD in Taiwan",
 
                 points: [
-                    "He then moved to Taiwan to do a PhD, learn Mandarin Chinese, and reconnect with his East Asian cultural roots.",
+                    "He then moved to Taiwan to do his doctorate, learn Mandarin Chinese, and reconnect with his East Asian cultural roots.",
                     "He worked with doctors and other engineers to design medical testing tools that people can use at home."
                 ]
             },
@@ -745,7 +748,7 @@ michael: (() => {
                 imageAlt: "Illustration of paper-based screening and infection testing tools",
 
                 points: [
-                    "After finishing his PhD, Michael did consulting at a Big 3 consulting firm.",
+                    "After finishing his PhD, Michael did consulting at a Big 3 consulting firm in Taiwan.",
                     "He used his knowledge of engineering to work with clients on product design and manufacturing."
                 ]
             },
@@ -757,7 +760,7 @@ michael: (() => {
                 title: "Future in Psychology",
                 colour: "#00A7B8",
 
-                image: `${imageFolder}education.svg`,
+                image: `${imageFolder}future.jpg`,
                 imageAlt: "Illustration of science education and understanding how people learn",
 
                 points: [
@@ -893,17 +896,17 @@ laura: (() => {
             // STAGE 1: CURIOUS BEGINNINGS
 
             {
-                title: "Creative beginnings",
+                title: "Curious beginnings",
                 colour: "#F43559",
 
-                image: `${imageFolder}portrait.jpg`,
+                image: `${imageFolder}library.jpg`,
                 imageAlt: "Portrait of Laura today",
 
                 points: [
                     "Laura grew up in Spain, in a family without a background in science.",
                     "As a child, she always asked 'Why?' and wanted to understand the reasons behind things.",
                     "She loved books so much that she once dreamed of becoming a librarian!",
-                    "Her curiosity eventually helped her discover a love of science."
+                    "Her curiosity is what lead her to her love of science."
                 ]
             },
 
@@ -914,7 +917,7 @@ laura: (() => {
                 title: "Challenges in school",
                 colour: "#E9B400",
 
-                image: `${imageFolder}school.jpg`,
+                image: `${imageFolder}piano.jpg`,
                 imageAlt: "Image representing Laura's school years",
 
                 points: [
@@ -932,14 +935,16 @@ laura: (() => {
                 title: "Finding her path",
                 colour: "#50B96D",
 
-                image: `${imageFolder}studies.jpg`,
+                image: `${imageFolder}paths.jpg`,
                 imageAlt: "Image representing Laura's studies in science",
 
                 points: [
-                    "Laura considered several careers, including becoming a gardener or botanist - someone who studies plants.",
-                    "A family experience with cancer inspired her interest in understanding the disease.",
-                    "She studied biochemistry, followed by a master's degree in immunology - the study of the immune system.",
-                    "She came to Australia on a six-month university exchange and later continued her journey in immunology research."
+                    "Laura considered several careers.", 
+                    "She wanted to be a Botanist. A Botanist studies plants.",
+                    "One of her family member had cancer. This made Laura want to understand the science behind cancer.",
+                    "She did a Bachelor of Science and majored in Biochemistry.",
+                    "She then finished a Master's Degree in Immunology. Immunology is the study of the immune system.",
+                    "She came to Australia on a 6-month university exchange, and later continued her journey in Immunology research."
                 ]
             },
 
@@ -950,14 +955,14 @@ laura: (() => {
                 title: "Research with an impact",
                 colour: "#4F71CB",
 
-                image: `${imageFolder}research.jpg`,
+                image: `${imageFolder}cell.jpg`,
                 imageAlt: "Microscope image representing immune cell interactions",
 
                 points: [
                     "Laura investigates how immune cells interact with each other.",
-                    "Some cells can take tiny pieces of material from other cells - almost like a robber stealing something!",
-                    "She uses powerful microscopes to investigate these interactions and how cells behave.",
-                    "Understanding these interactions helps scientists learn more about how our immune system works."
+                    "Some cells take tiny pieces of material from other cells, like a robber stealing something!",
+                    "She uses powerful microscopes to look at how cells behave.",
+                    "This helps scientists learn more about our immune system."
                 ]
             },
 
@@ -968,14 +973,14 @@ laura: (() => {
                 title: "Looking to the Future",
                 colour: "#00A7B8",
 
-                image: `${imageFolder}future.jpg`,
+                image: `${imageFolder}immuno.jpg`,
                 imageAlt: "Image representing future cancer immunotherapy research",
 
                 points: [
                     "Laura hopes to return to cancer research in the future.",
-                    "She is especially interested in cancer immunotherapy - helping the body's immune system recognise and fight cancer.",
-                    "She is considering research opportunities in both universities and the science industry.",
-                    "Her goal is to contribute to research that could help improve cancer treatments."
+                    "She is interested in research of Cancer Immunotherapy. This is the study of how the immune system fight cancer.",
+                    "She wants to do research in universities and the science industry.",
+                    "Her goal is to contribute to research that improves cancer treatments."
                 ]
             }
 
@@ -1011,7 +1016,7 @@ laura: (() => {
         impact: {
             heading: "Why does her research matter?",
 
-            image: `${imageFolder}research.jpg`,
+            image: `${imageFolder}future.jpg`,
             imageAlt: "Microscope image representing immune cells",
 
             points: [
@@ -1033,7 +1038,7 @@ laura: (() => {
 
         advice: [
             "Don't be discouraged when things don't work the first time!",
-            "Science involves trying experiments, learning from mistakes and trying again.",
+            "Science involves trying, failing, learning from mistakes and trying again.",
             "Keep asking questions. The world makes more sense when you ask the right questions!"
         ]
 
@@ -1110,14 +1115,14 @@ kevin: (() => {
                 title: "Curious beginnings",
                 colour: "#F43559",
 
-                image: `${imageFolder}portrait.jpg`,
+                image: `${imageFolder}indonesia.jpg`,
                 imageAlt: "Portrait of Kevin today",
 
                 points: [
-                    "Kevin grew up in Indonesia in a family where science and technology were part of everyday life.",
-                    "His family encouraged curiosity and logical thinking.",
-                    "At school, he enjoyed science because it helped him understand and explain how the world works.",
-                    "He even dreamed of becoming a palaeontologist - a scientist who studies ancient life and fossils!"
+                    "Kevin grew up in Indonesia. Science and technology were part of his family life.",
+                    "His family was big on curiosity and logical thinking.",
+                    "At school, he enjoyed science. Science helped him understand and explain how the world works.",
+                    "He dreamed of becoming a Palaeontologist, a scientist who studies ancient life and fossils!"
                 ]
             },
 
@@ -1128,14 +1133,14 @@ kevin: (() => {
                 title: "Challenges and choices",
                 colour: "#E9B400",
 
-                image: `${imageFolder}school.jpg`,
+                image: `${imageFolder}medicine.jpg`,
                 imageAlt: "Image representing Kevin's early career choices",
 
                 points: [
-                    "Kevin studied medicine in Indonesia, partly because of his family's expectations.",
-                    "He enjoyed learning about science and the human body, but realised he preferred research over treating patients directly.",
-                    "He faced a difficult decision: continue along the medical pathway or try something different.",
-                    "Kevin chose to explore research, even though he wasn't completely sure where it would lead."
+                    "Kevin studied medicine in Indonesia, because of his family's expectations.",
+                    "After He finish his medical degree, he faced a difficult decision: continue along the medical pathway or try something different.", 
+                    "He enjoyed learning about science and the human body.",
+                    "Kevin chose research over treating patients directly, even though he did not know where it would lead."
                 ]
             },
 
@@ -1150,9 +1155,9 @@ kevin: (() => {
                 imageAlt: "Image representing Kevin's journey into research",
 
                 points: [
-                    "Kevin received a scholarship to complete a master's degree overseas.",
-                    "He then worked as a research assistant in Hong Kong, gaining experience in laboratory science.",
-                    "He chose to continue his studies in Australia, where he pursued a PhD.",
+                    "Kevin received a scholarship to complete a Master's degree overseas.",
+                    "He then worked as a research assistant in Hong Kong, gaining experience in the laboratory.",
+                    "He chose to continue his studies in Australia, where he pursued his Doctorate Degree.",
                     "His journey took him from medicine into stem cell and immunology research."
                 ]
             },

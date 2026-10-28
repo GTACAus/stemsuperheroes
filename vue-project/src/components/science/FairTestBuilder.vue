@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue';
 import Button from '../Button.vue';
+import ActivityFeedback from './ActivityFeedback.vue';
 
 const stages = [
   { id: 'change', label: '1. Change', prompt: 'Choose the one variable that will be different.' },
@@ -20,9 +21,17 @@ const variables = [
     options: ['No Layers vs. 1 Layer', 'No Layers vs. 2 Layers', '1 Layer vs. 2 Layers'],
     controlOptions: ['No Layers', '1 Layer', '2 Layers'],
   },
-  { id: 'height', label: 'Drop Height', options: ['1m', '1.5m'] },
-  { id: 'surface', label: 'Surface Type', options: ['Carpet', 'Wood'] },
-  { id: 'direction', label: 'Direction of Drop', options: ['Pointy End', 'Blunt End'] },
+  {
+    id: 'height',
+    label: 'Drop Height',
+    // Experiment A is always dropped from the baseline; Change picks B's height
+    options: ['1.5m', '3m'],
+    baseline: '1m',
+    controlOptions: ['1m', '1.5m', '3m'],
+  },
+  // fixedPair: Change compares both options (A = first, B = second) with no dropdown
+  { id: 'surface', label: 'Surface Type', options: ['Grass', 'Concrete'], fixedPair: true },
+  { id: 'direction', label: 'Direction of Drop', options: ['Blunt End', 'Pointy End'], fixedPair: true },
 ];
 
 // TODO: add these images to public/assets/images/fair-test/
@@ -58,9 +67,9 @@ const layerImages = {
     '2 Layers': `${imageBase}layers-paper-2.png`
   },
 };
-// Egg position down the ruler (matches the 1.5m / 1m markers)
-const heightTop = { '1m': '39%', '1.5m': '21%' };
-const surfaceClass = { Carpet: 'soft-surface', Wood: 'hard-surface' };
+// Egg position down the ruler (matches the ruler markers)
+const heightTop = { '1m': '61%', '1.5m': '53%', '3m': '31%' };
+const surfaceClass = { Grass: 'soft-surface', Concrete: 'hard-surface' };
 
 const measureLabel = 'Level of Protection';
 const measureImage = ''; // TODO: replace with the real image path
@@ -111,7 +120,8 @@ const lanes = computed(() =>
     if (changeId.value === 'layers') {
       settings.layers = layerPairs[changeValues.value.layers][name === 'A' ? 0 : 1];
     } else if (changeId.value) {
-      settings[changeId.value] = name === 'A' ? getVariable(changeId.value).options[0] : changeValues.value[changeId.value];
+      const variable = getVariable(changeId.value);
+      settings[variable.id] = name === 'A' ? variable.baseline || variable.options[0] : changeValues.value[variable.id];
     }
     return { name, ...settings };
   })
@@ -120,14 +130,35 @@ const lanes = computed(() =>
 // An egg is only shown wrapped when it has layers
 const isWrapped = (lane) => lane.layers !== 'No Layers';
 
-const changeSummary = computed(() =>
-  changeId.value ? `${getVariable(changeId.value).label}: ${changeValues.value[changeId.value]}` : ''
-);
+const changeSummary = computed(() => {
+  if (!changeId.value) return '';
+  const variable = getVariable(changeId.value);
+  return {
+    id: variable.id,
+    label: variable.label,
+    value: variable.fixedPair ? variable.options.join(' vs. ') : changeValues.value[variable.id]
+  }
+});
+
 const measureSummary = computed(() => (measureSelected.value ? measureLabel : ''));
-// One line per variable that isn't being changed, with its chosen value once set
+// One line per controlled variable that has a chosen value
 const controlSummary = computed(() =>
-  controllableVariables.value.map((v) => `${v.label}: ${controlValues.value[v.id] || 'Not selected yet'}`)
+  controllableVariables.value
+    .filter((v) => controlValues.value[v.id])
+    .map((v) => ({ id: v.id, label: v.label, value: controlValues.value[v.id] }))
 );
+
+// null until the student checks their design, then 'success' or 'try-again'
+const feedback = ref(null);
+
+// Change and Measure picked, and a value chosen for every controlled variable
+function checkAllSelected() {
+  return Boolean(changeId.value) && measureSelected.value && controllableVariables.value.every((v) => controlValues.value[v.id]);
+}
+
+function checkDesign() {
+  feedback.value = checkAllSelected() ? 'success' : 'try-again';
+}
 
 function reset() {
   currentStage.value = 'change';
@@ -136,6 +167,7 @@ function reset() {
   measureSelected.value = false;
   controlId.value = '';
   controlValues.value = {};
+  feedback.value = null;
 }
 </script>
 
@@ -196,7 +228,12 @@ function reset() {
           </Button>
         </div>
 
-        <div v-if="changeId" class="revealed-menu">
+        <!-- Fixed comparisons (surface, direction) have no dropdown, just the two settings -->
+        <div v-if="changeId && getVariable(changeId).fixedPair" class="revealed-menu">
+          <strong>{{ getVariable(changeId).options.join(' vs. ') }}</strong>
+        </div>
+
+        <div v-else-if="changeId" class="revealed-menu">
           <label for="change-select">{{ getVariable(changeId).label }}</label>
           <select id="change-select" v-model="changeValues[changeId]">
             <option v-for="option in getVariable(changeId).options" :key="option" :value="option">
@@ -264,7 +301,11 @@ function reset() {
 
       <div class="fair-test-visual">
         <div class="fair-test-canvas" aria-label="Visual experiment builder">
-          <div class="ruler" aria-hidden="true"></div>
+          <div v-if="changeId === 'height' || controlValues.height" class="ruler" aria-hidden="true">
+            <span class="ruler-mark" style="top: 32%">3 m</span>
+            <span class="ruler-mark" style="top: 66%">1.5 m</span>
+            <span class="ruler-mark" style="top: 77%">1 m</span>
+          </div>
 
           <template v-for="lane in lanes" :key="lane.name">
             <div class="lane-label" :class="`lane-${lane.name.toLowerCase()}`">Experiment {{ lane.name }}</div>
@@ -274,7 +315,7 @@ function reset() {
               :class="`lane-${lane.name.toLowerCase()}`"
               :style="{
                 top: heightTop[lane.height],
-                transform: `translate(-50%, -50%) rotate(${lane.direction === 'Blunt End' ? 180 : 0}deg)`,
+                transform: `translate(-50%, -50%) rotate(${lane.direction === 'Pointy End' ? 180 : 0}deg)`,
               }"
               :src="isWrapped(lane) ? eggImages[lane.material][lane.layers] : defaultEggImage"
               :alt="
@@ -316,7 +357,8 @@ function reset() {
       <div class="blueprint-grid">
         <article class="blueprint-card blueprint-change">
           <strong>Change</strong>
-          <span>{{ changeSummary || 'Not selected yet' }}</span>
+          <span v-if="!changeSummary">Not selected yet</span>
+          <span v-if="changeSummary"><strong>{{ changeSummary.label }}:</strong> {{ changeSummary.value }}</span>
         </article>
         <article class="blueprint-card blueprint-measure">
           <strong>Measure</strong>
@@ -324,13 +366,23 @@ function reset() {
         </article>
         <article class="blueprint-card blueprint-control">
           <strong>Control</strong>
-          <span v-for="item in controlSummary" :key="item">{{ item }}</span>
+          <span v-if="!controlSummary.length">Not selected yet</span>
+          <span v-for="item in controlSummary" :key="item"><strong>{{ item.label }}:</strong> {{ item.value }}</span>
         </article>
       </div>
 
+      <ActivityFeedback
+        v-if="feedback"
+        :success="feedback === 'success'"
+        success-feedback="You have chosen what to change, what to measure and what to keep the same."
+        try-again-feedback="Make sure you have chosen what to change, what to measure, and a setting for every variable you keep the same."
+      />
+
       <div class="fair-test-actions">
         <Button type="button" class="reset-button" @click="reset">Reset</Button>
-        <Button type="button" class="check-fair-test-button">Check fair test experiment design</Button>
+        <Button type="button" class="check-fair-test-button" @click="checkDesign">
+          Check fair test experiment design
+        </Button>
       </div>
     </div>
   </section>
@@ -516,8 +568,7 @@ function reset() {
 }
 
 /* Horizontal height markers */
-.ruler::before,
-.ruler::after {
+.ruler-mark {
   position: absolute;
   left: 88px;
   width: 72px;
@@ -528,17 +579,6 @@ function reset() {
   color: var(--purple);
   font-size: 1rem;
   font-weight: 700;
-}
-
-/* Just below the egg's resting position at each height */
-.ruler::before {
-  content: '1.5 m';
-  top: 32%;
-}
-
-.ruler::after {
-  content: '1 m';
-  top: 58%;
 }
 
 /* ---------- Lanes ---------- */
@@ -593,12 +633,20 @@ function reset() {
   font-weight: 700;
 }
 
+.soft-surface span {
+  color: var(--paper);
+}
+
 .hard-surface {
-  background: repeating-linear-gradient(90deg, #d5a56e 0 42px, #c08d55 42px 45px);
+  background: repeating-linear-gradient(90deg, #dddddd 0 42px, #b8b8b8 42px 45px);
 }
 
 .soft-surface {
-  background: repeating-linear-gradient(0deg, #ded7ff 0 7px, #c7b9fa 7px 10px);
+  /* Blades of grass (thin vertical strokes at two spacings) over a green base */
+  background:
+    repeating-linear-gradient(80deg, transparent 0 5px, #2e7d32 5px 7px, transparent 7px 11px),
+    repeating-linear-gradient(100deg, transparent 0 8px, #81c784 8px 10px, transparent 10px 15px),
+    linear-gradient(to bottom, #66bb6a, #388e3c);
 }
 
 /* Experiment A / B horizontal positions */
@@ -688,6 +736,11 @@ function reset() {
   border-top: 6px solid var(--border-top-color);
   border-radius: var(--radius-small);
   box-shadow: var(--shadow-medium)
+}
+
+.blueprint-card > strong {
+  font-size: 20px;
+  text-align: center;
 }
 
 .blueprint-change {
