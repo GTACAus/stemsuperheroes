@@ -10,45 +10,47 @@ const links = [
 </script>
 
 <template>
-  <header>
-    <RouterLink id="home" to="/">GTAC STEM</RouterLink>
-    <Button
-      class="nav-toggle"
-      type="button"
-      aria-label="Toggle navigation"
-      aria-controls="site-navigation"
-      :aria-expanded="String(open)"
-      @click="open = !open"
-    >
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </Button>
-    <nav class="site-nav" :class="{ open }" id="site-navigation">
-      <RouterLink v-for="link in links" :key="link.to" :to="link.to" @click="open = false">
-        {{ link.label }}
-      </RouterLink>
-    </nav>
-  </header>
+  <div class="header-wrapper">  
+    <header>
+      <RouterLink id="home" to="/">GTAC STEM</RouterLink>
+      <Button
+        class="nav-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-controls="site-navigation"
+        :aria-expanded="String(open)"
+        @click="open = !open"
+      >
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </Button>
+      <nav class="site-nav" :class="{ open }" id="site-navigation">
+        <RouterLink v-for="link in links" :key="link.to" :to="link.to" @click="open = false">
+          {{ link.label }}
+        </RouterLink>
+      </nav>
+    </header>
+  </div>
 </template>
 
 <style scoped>
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    
+.header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+  background: color-mix(in srgb, var(--cream) 90%, transparent 10%);
+}
+header {  
     width: min(var(--content-width), 94%);
     margin: 0 auto 10px;
-    padding: 20px 10px;
-    border-radius: 10px;
+    padding: 20px 30px;
     
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
-
-    background: var(--cream);
 }
 
 header a {
