@@ -939,10 +939,11 @@ laura: (() => {
                 imageAlt: "Image representing Laura's studies in science",
 
                 points: [
-                    "Laura considered several careers. She wanted to be a botanist, someone who studies plants.",
+                    "Laura considered several careers.", 
+                    "She wanted to be a Botanist. A Botanist studies plants.",
                     "One of her family member had cancer. This made Laura want to understand the science behind cancer.",
-                    "She did a Bachelor of Science and majored in Biochemistry, followed by a Master's Degree in Immunology.",
-                    "Immunology is the study of the immune system.",
+                    "She did a Bachelor of Science and majored in Biochemistry.",
+                    "She then finished a Master's Degree in Immunology. Immunology is the study of the immune system.",
                     "She came to Australia on a 6-month university exchange, and later continued her journey in Immunology research."
                 ]
             },
@@ -959,8 +960,8 @@ laura: (() => {
 
                 points: [
                     "Laura investigates how immune cells interact with each other.",
-                    "Some cells take tiny pieces of material from other cells, almost like a robber stealing something!",
-                    "She uses powerful microscopes to investigate how cells behave.",
+                    "Some cells take tiny pieces of material from other cells, like a robber stealing something!",
+                    "She uses powerful microscopes to look at how cells behave.",
                     "This helps scientists learn more about our immune system."
                 ]
             },
@@ -1037,7 +1038,7 @@ laura: (() => {
 
         advice: [
             "Don't be discouraged when things don't work the first time!",
-            "Science involves trying experiments, learning from mistakes and trying again.",
+            "Science involves trying, failing, learning from mistakes and trying again.",
             "Keep asking questions. The world makes more sense when you ask the right questions!"
         ]
 
@@ -1114,14 +1115,14 @@ kevin: (() => {
                 title: "Curious beginnings",
                 colour: "#F43559",
 
-                image: `${imageFolder}portrait.jpg`,
+                image: `${imageFolder}indonesia.jpg`,
                 imageAlt: "Portrait of Kevin today",
 
                 points: [
-                    "Kevin grew up in Indonesia in a family where science and technology were part of everyday life.",
-                    "His family encouraged curiosity and logical thinking.",
-                    "At school, he enjoyed science because it helped him understand and explain how the world works.",
-                    "He even dreamed of becoming a palaeontologist - a scientist who studies ancient life and fossils!"
+                    "Kevin grew up in Indonesia. Science and technology were part of his family life.",
+                    "His family was big on curiosity and logical thinking.",
+                    "At school, he enjoyed science. Science helped him understand and explain how the world works.",
+                    "He dreamed of becoming a Palaeontologist, a scientist who studies ancient life and fossils!"
                 ]
             },
 
@@ -1132,14 +1133,14 @@ kevin: (() => {
                 title: "Challenges and choices",
                 colour: "#E9B400",
 
-                image: `${imageFolder}school.jpg`,
+                image: `${imageFolder}medicine.jpg`,
                 imageAlt: "Image representing Kevin's early career choices",
 
                 points: [
-                    "Kevin studied medicine in Indonesia, partly because of his family's expectations.",
-                    "He enjoyed learning about science and the human body, but realised he preferred research over treating patients directly.",
-                    "He faced a difficult decision: continue along the medical pathway or try something different.",
-                    "Kevin chose to explore research, even though he wasn't completely sure where it would lead."
+                    "Kevin studied medicine in Indonesia, because of his family's expectations.",
+                    "After He finish his medical degree, he faced a difficult decision: continue along the medical pathway or try something different.", 
+                    "He enjoyed learning about science and the human body.",
+                    "Kevin chose research over treating patients directly, even though he did not know where it would lead."
                 ]
             },
 
@@ -1154,9 +1155,9 @@ kevin: (() => {
                 imageAlt: "Image representing Kevin's journey into research",
 
                 points: [
-                    "Kevin received a scholarship to complete a master's degree overseas.",
-                    "He then worked as a research assistant in Hong Kong, gaining experience in laboratory science.",
-                    "He chose to continue his studies in Australia, where he pursued a PhD.",
+                    "Kevin received a scholarship to complete a Master's degree overseas.",
+                    "He then worked as a research assistant in Hong Kong, gaining experience in the laboratory.",
+                    "He chose to continue his studies in Australia, where he pursued his Doctorate Degree.",
                     "His journey took him from medicine into stem cell and immunology research."
                 ]
             },
