@@ -161,7 +161,6 @@ export const expertProfiles = {
                     colour: "#50B96D",
                     image: `${imageFolder}brain-imaging.jpg`,
                     imageAlt: "Illustration showing a pathway from the arts into neuroscience",
-                    imageFit: "contain",
                     points: [
                         "Paddy's interest in Neuroscience came from his love of Philosophy.",
 "He read a book about neuroplasticity - the brain's ability to change and adapt.",
@@ -530,7 +529,7 @@ millicent: (() => {
                 title: "Research with an impact",
                 colour: "#4F71CB",
 
-                image: `${imageFolder}gut-brain.svg`,
+                image: `${imageFolder}prebiotics.jpg`,
                 imageAlt: "Diagram representing the connection between gut microbes and the brain",
                 imageFit: "contain",
 
@@ -591,7 +590,7 @@ millicent: (() => {
         impact: {
             heading: "Why does her research matter?",
 
-            image: `${imageFolder}gut-brain.svg`,
+            image: `${imageFolder}microbiome.jpg`,
             imageAlt: "Diagram showing gut microbes and a brain",
 
             points: [
@@ -659,7 +658,7 @@ michael: (() => {
 
         name: "Michael",
 
-        role: "Biomedical Engineer",
+        role: "Biomedical Engineer and Provisional Psychologist",
 
         organisation: "Gene Technology Access Centre (GTAC), Melbourne",
 
@@ -694,9 +693,12 @@ michael: (() => {
                 imageAlt: "Portrait of Michael today",
 
                 points: [
-                    "Michael grew up in Indonesia, struggled with mathematics back in high school, but loved books and literature.",
-                    "He studied psychology at the University of Melbourne, the study of how people think, feel and behave.",
-                    "He became interested in how science can help us understand people and solve problems."
+                    "Michael grew up in Indonesia, struggled with mathematics back in high school.",
+                    "He loved books and literature.",
+                    "He was interested in how science, because science help us understand people and solve problems.",
+                    "He studied a Bachelor of Arts majored in Psychology and Economics at the University of Melbourne.", 
+                    "Psychology is the study of how people think, feel and behave.",
+                    
                 ]
             },
 
@@ -707,14 +709,15 @@ michael: (() => {
                 title: "Exploring Engineering",
                 colour: "#E9B400",
 
-                image: `${imageFolder}choices.svg`,
+                image: `${imageFolder}engineer`,
                 imageAlt: "Illustration of psychology and engineering as connected fields",
                 imageFit: "contain",
 
                 points: [
-                    "After studying psychology, Michael chose to explore biomedical engineering.",
-                    "Biomedical engineering combines biology, maths and technology to solve health problems.",
-                    "Here, he discovered a love for mathematics."
+                    "After finishing his Bachelor of Arts, Michael explored Biomedical Engineering by doing a Masters degree.",
+                    "Biomedical Engineering combines Biology, Maths and Technology to solve health problems.",
+                    "The first year of Masters was challenging because he had to relearn Maths and Biology.",
+                    "Here, he discovered a love for Linear Algebra and Maths."
                 ]
             },
 
@@ -729,7 +732,7 @@ michael: (() => {
                 imageAlt: "Illustration representing laboratory research during Michael's PhD in Taiwan",
 
                 points: [
-                    "He then moved to Taiwan to do a PhD, learn Mandarin Chinese, and reconnect with his East Asian cultural roots.",
+                    "He then moved to Taiwan to do his doctorate, learn Mandarin Chinese, and reconnect with his East Asian cultural roots.",
                     "He worked with doctors and other engineers to design medical testing tools that people can use at home."
                 ]
             },
@@ -745,7 +748,7 @@ michael: (() => {
                 imageAlt: "Illustration of paper-based screening and infection testing tools",
 
                 points: [
-                    "After finishing his PhD, Michael did consulting at a Big 3 consulting firm.",
+                    "After finishing his PhD, Michael did consulting at a Big 3 consulting firm in Taiwan.",
                     "He used his knowledge of engineering to work with clients on product design and manufacturing."
                 ]
             },
@@ -757,7 +760,7 @@ michael: (() => {
                 title: "Future in Psychology",
                 colour: "#00A7B8",
 
-                image: `${imageFolder}education.svg`,
+                image: `${imageFolder}future.jpg`,
                 imageAlt: "Illustration of science education and understanding how people learn",
 
                 points: [
