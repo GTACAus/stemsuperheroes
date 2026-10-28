@@ -1842,6 +1842,226 @@ juliana: (() => {
 
 
 /* =====================================================
+   ASHA (NIRASHAA BOUND) - CANCER GENOMICS RESEARCHER
+
+   Sources:
+   - Interview: 24 March 2026
+   - GTAC STEM Superheroes Showcase
+   - Published ovarian cancer research (2025)
+
+   All images are stored locally.
+   The existing timeline and profile functions are reused.
+   ===================================================== */
+
+asha: (() => {
+
+    /* ================================================
+       A. IMAGE FOLDER
+
+       All Asha's photographs are stored here.
+       ================================================ */
+
+    const imageFolder = "assets/images/experts/asha/";
+
+    return {
+
+        /* ================================================
+           B. BASIC INFORMATION
+           ================================================ */
+
+        name: "Asha",
+
+        role: "Cancer Genomics Researcher",
+
+        organisation: "Cancer research at WEHI and RMIT University, Melbourne",
+
+        portrait: `${imageFolder}portrait.jpg`,
+
+        superpower: "Studying DNA, RNA and immune cells to understand why ovarian cancer patients respond differently to treatments",
+
+        imageFolder,
+
+
+        /* ================================================
+           C. INTERACTIVE TIMELINE
+
+           Five clickable stages.
+
+           Each stage includes:
+           - Title
+           - Colour
+           - Image
+           - Story points
+
+           timeline.js handles the interactions.
+           ================================================ */
+
+        timeline: [
+
+            // STAGE 1: CURIOUS BEGINNINGS
+
+            {
+                title: "Curious beginnings",
+                colour: "#F43559",
+
+                image: `${imageFolder}portrait.jpg`,
+                imageAlt: "Portrait of Asha today",
+
+                points: [
+                    "Asha was born in Singapore and moved to Melbourne, Australia, in Year 8.",
+                    "Growing up in a Singaporean-Indian family, Asha experienced different cultures and communities.",
+                    "Asha identifies as biracial and non-binary, showing that scientists come from many different backgrounds.",
+                    "They enjoyed understanding how things worked and developed an interest in biology."
+                ]
+            },
+
+
+            // STAGE 2: DISCOVERING SCIENCE
+
+            {
+                title: "Discovering science",
+                colour: "#E9B400",
+
+                image: `${imageFolder}theatre.jpg`,
+                imageAlt: "Image representing Asha's interest in theatre",
+
+                points: [
+                    "Asha enjoyed biology at school because they liked learning how living things work.",
+                    "They also loved theatre and volunteered backstage during school productions.",
+                    "For a long time, Asha was unsure what career they wanted.",
+                    "They discovered that enjoying creative activities and being interested in science did not have to be separate things."
+                ]
+            },
+
+
+            // STAGE 3: FINDING THEIR PATH
+
+            {
+                title: "Finding their path",
+                colour: "#50B96D",
+
+                image: `${imageFolder}laboratory.jpg`,
+                imageAlt: "Image representing laboratory research at WEHI",
+
+                points: [
+                    "While studying at university, Asha worked as a cleaner at WEHI, a medical research institute in Melbourne.",
+                    "They became interested in the science happening around them and later gained experience as a research assistant.",
+                    "Asha completed honours research and went on to pursue a PhD.",
+                    "Their journey shows that opportunities in science can come from unexpected places!"
+                ]
+            },
+
+
+            // STAGE 4: RESEARCH WITH AN IMPACT
+
+            {
+                title: "Research with an impact",
+                colour: "#4F71CB",
+
+                image: `${imageFolder}ovarian-cancer.jpg`,
+                imageAlt: "Image representing cancer cells and genetic research",
+
+                points: [
+                    "Asha researched ovarian cancer, a disease in which abnormal cells grow in the ovaries.",
+                    "They contributed to a clinical trial study involving 114 women receiving different combinations of cancer medicines.",
+                    "Asha investigated tumour samples, including DNA changes and immune activity, to help understand differences between patients.",
+                    "The research could help scientists identify which treatments might work best for different people."
+                ]
+            },
+
+
+            // STAGE 5: LOOKING TO THE FUTURE
+
+            {
+                title: "Looking to the Future",
+                colour: "#00A7B8",
+
+                image: `${imageFolder}clinical-trials.jpg`,
+                imageAlt: "Image representing clinical trials and healthcare research",
+
+                points: [
+                    "Asha is interested in moving from laboratory research into roles that support clinical trials.",
+                    "Clinical trials are studies that investigate how safe and effective medical treatments are for people.",
+                    "They hope to use their experience with scientific research and data to support work that could help patients.",
+                    "Asha's story shows that STEM offers many different careers, including important roles outside the laboratory."
+                ]
+            }
+
+        ],
+
+
+        /* ================================================
+           D. HOBBIES AND INTERESTS
+
+           One image is displayed by default.
+
+           For multiple pictures, add a "photos"
+           array like Paddy's profile.
+           ================================================ */
+
+        hobbies: {
+            heading: "Hobbies and interests",
+
+            text: "Outside science, Asha loves making chainmail jewellery and crafts by connecting lots of small metal rings! They also enjoyed theatre and helping backstage during school productions.",
+
+            image: `${imageFolder}chainmail.jpg`,
+            imageAlt: "Handmade chainmail jewellery created by connecting metal rings"
+        },
+
+
+        /* ================================================
+           E. WHY THEIR RESEARCH MATTERS
+
+           Three points displayed with coloured icons.
+           The image appears beside the information.
+           ================================================ */
+
+        impact: {
+            heading: "Why does their research matter?",
+
+            image: `${imageFolder}ovarian-cancer.jpg`,
+            imageAlt: "Image representing DNA and ovarian cancer research",
+
+            points: [
+                "Investigates genetic changes and immune activity in ovarian cancer",
+                "Helps scientists understand why different patients respond differently to cancer medicines",
+                "Could guide more personalised treatment decisions in the future, although further research is needed"
+            ]
+        },
+
+
+        /* ================================================
+           F. ADVICE FOR STUDENTS
+
+           Based on Asha's interview and original
+           GTAC STEM Superheroes profile.
+           ================================================ */
+
+        adviceHeading: "Asha's advice",
+
+        advice: [
+            "Follow what you're genuinely interested in, even if it takes you in an unexpected direction.",
+            "Do not be afraid to try different things and discover what you enjoy!",
+            "Understanding how something works is the first step to fixing it.",
+            "You don't have to follow exactly the same path as everyone else."
+        ]
+
+        /* ================================================
+           G. OPTIONAL VIDEO
+
+           No video has been added for Asha.
+
+           If Asha provides a research video,
+           add a "video" property here like Paddy's.
+           ================================================ */
+
+    };
+
+})(),
+
+
+
+/* =====================================================
    MEAGAN - MARSUPIAL BIOLOGY RESEARCHER
 
    Sources:
