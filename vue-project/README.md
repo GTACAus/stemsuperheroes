@@ -30,7 +30,7 @@ Alternatively, follow these steps:
 
 ### 2. Run This Command to Install Dependencies and Extensions:
 ```powershell
-powershell -ExecutionPolicy Bypass -File setup.ps1
+powershell -ExecutionPolicy Bypass -File powershell_scripts/setup.ps1
 ```
 
 ### 3. Restart VS Code to Apply Everything
@@ -41,8 +41,8 @@ Near the bottom left of the VS Code window, there are four buttons with the foll
 
 <table border="1">
   <tr>
-    <td>▶ Start Server</td>
-    <td>Starts a server so that you can preview the page</td>
+    <td>🌐 Start & Preview</td>
+    <td>Starts the server and previews the page in the browser</td>
   </tr>
   <tr>
     <td>■ Stop Server</td>
@@ -52,8 +52,12 @@ Near the bottom left of the VS Code window, there are four buttons with the foll
     <td>▶ Build</td>
     <td>Builds the complete page's HTML, CSS, and Javascript</td>
   </tr>
-  <tr>
-    <td>🌐 Preview Page</td>
-    <td>Previews the page in the browser (You have to start the server first)</td>
-  </tr>
 </table>
+
+## Uninstalling Dependencies
+If you want to uninstall the project dependencies (node.js, and extensions), either:
+- Double click on `uninstall_all.cmd` or,
+- Run this command in the terminal:
+```powershell
+powershell -ExecutionPolicy Bypass -File powershell_scripts/uninstall.ps1
+```
