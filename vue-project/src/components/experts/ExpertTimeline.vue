@@ -5,10 +5,12 @@ import { computed, ref } from 'vue';
 // { title, colour, points, image, imageAlt, imageFit?, draft? }
 const props = defineProps({
   stages: { type: Array, required: true },
+  // Shown in place of the story until a pin is clicked.
+  prompt: { type: String, default: '↑ Choose a coloured pin above to explore the story!' },
 });
 
-const selected = ref(0);
-const stage = computed(() => props.stages[selected.value]);
+const selected = ref(null);
+const stage = computed(() => (selected.value === null ? null : props.stages[selected.value]));
 </script>
 
 <template>
@@ -31,7 +33,8 @@ const stage = computed(() => props.stages[selected.value]);
       </div>
     </div>
     <p class="timeline-swipe-hint">Swipe the timeline sideways to see all {{ stages.length }} stages →</p>
-    <div class="timeline-display">
+    <p v-if="!stage" class="timeline-prompt">{{ prompt }}</p>
+    <div v-else class="timeline-display">
       <div class="timeline-story" :class="{ 'is-draft': stage.draft }" aria-live="polite" aria-atomic="true">
         <h4 class="timeline-story-heading">{{ stage.title }}</h4>
         <ul class="timeline-story-points">
@@ -56,20 +59,23 @@ const stage = computed(() => props.stages[selected.value]);
 .timeline-track {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(5, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 4px;
   min-width: 570px;
   padding: 0 4px;
 }
-.timeline-track::before {
+/* Connects each pin to the next, so it works for any number of stages. */
+.timeline-step:not(:last-child)::before {
   content: "";
   position: absolute;
-  left: 10%;
-  right: 10%;
   top: 19px;
+  left: calc(50% + 25px);
+  width: calc(100% + 4px - 50px);
   height: 7px;
   background: #37275c;
   border-radius: 999px;
+  pointer-events: none;
+  z-index: -1;
 }
 .timeline-step {
   position: relative;
@@ -117,6 +123,22 @@ const stage = computed(() => props.stages[selected.value]);
   gap: 16px;
   align-items: stretch;
   margin-top: 17px;
+}
+.timeline-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  margin: 17px 0 0;
+  padding: 24px;
+  background: #c9f4df;
+  border: 2px dashed #69ddb4;
+  border-radius: 15px;
+  color: #37275c;
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1.5;
+  text-align: center;
 }
 .timeline-story {
   min-height: 245px;

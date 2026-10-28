@@ -29,7 +29,10 @@ const impactIcons = ['🔎', '♡', '✿'];
   <section class="profile-section" :aria-label="`${expert.name}'s story`">
     <h3 class="profile-section-heading">{{ expert.name }}’s Story</h3>
     <div class="profile-timeline">
-      <ExpertTimeline :stages="expert.timeline" />
+      <ExpertTimeline
+        :stages="expert.timeline"
+        :prompt="`↑ Choose a coloured pin above to explore ${expert.name}’s story!`"
+      />
     </div>
   </section>
 
