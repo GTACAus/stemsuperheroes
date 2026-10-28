@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue';
 import Button from '../Button.vue';
+import ActivityFeedback from './ActivityFeedback.vue';
 
 const stages = [
   { id: 'change', label: '1. Change', prompt: 'Choose the one variable that will be different.' },
@@ -132,13 +133,32 @@ const isWrapped = (lane) => lane.layers !== 'No Layers';
 const changeSummary = computed(() => {
   if (!changeId.value) return '';
   const variable = getVariable(changeId.value);
-  return `${variable.label}: ${variable.fixedPair ? variable.options.join(' vs. ') : changeValues.value[variable.id]}`;
+  return {
+    id: variable.id,
+    label: variable.label,
+    value: variable.fixedPair ? variable.options.join(' vs. ') : changeValues.value[variable.id]
+  }
 });
+
 const measureSummary = computed(() => (measureSelected.value ? measureLabel : ''));
-// One line per variable that isn't being changed, with its chosen value once set
+// One line per controlled variable that has a chosen value
 const controlSummary = computed(() =>
-  controllableVariables.value.map((v) => `${v.label}: ${controlValues.value[v.id] || 'Not selected yet'}`)
+  controllableVariables.value
+    .filter((v) => controlValues.value[v.id])
+    .map((v) => ({ id: v.id, label: v.label, value: controlValues.value[v.id] }))
 );
+
+// null until the student checks their design, then 'success' or 'try-again'
+const feedback = ref(null);
+
+// Change and Measure picked, and a value chosen for every controlled variable
+function checkAllSelected() {
+  return Boolean(changeId.value) && measureSelected.value && controllableVariables.value.every((v) => controlValues.value[v.id]);
+}
+
+function checkDesign() {
+  feedback.value = checkAllSelected() ? 'success' : 'try-again';
+}
 
 function reset() {
   currentStage.value = 'change';
@@ -147,6 +167,7 @@ function reset() {
   measureSelected.value = false;
   controlId.value = '';
   controlValues.value = {};
+  feedback.value = null;
 }
 </script>
 
@@ -336,7 +357,8 @@ function reset() {
       <div class="blueprint-grid">
         <article class="blueprint-card blueprint-change">
           <strong>Change</strong>
-          <span>{{ changeSummary || 'Not selected yet' }}</span>
+          <span v-if="!changeSummary">Not selected yet</span>
+          <span v-if="changeSummary"><strong>{{ changeSummary.label }}:</strong> {{ changeSummary.value }}</span>
         </article>
         <article class="blueprint-card blueprint-measure">
           <strong>Measure</strong>
@@ -344,13 +366,23 @@ function reset() {
         </article>
         <article class="blueprint-card blueprint-control">
           <strong>Control</strong>
-          <span v-for="item in controlSummary" :key="item">{{ item }}</span>
+          <span v-if="!controlSummary.length">Not selected yet</span>
+          <span v-for="item in controlSummary" :key="item"><strong>{{ item.label }}:</strong> {{ item.value }}</span>
         </article>
       </div>
 
+      <ActivityFeedback
+        v-if="feedback"
+        :success="feedback === 'success'"
+        success-feedback="You have chosen what to change, what to measure and what to keep the same."
+        try-again-feedback="Make sure you have chosen what to change, what to measure, and a setting for every variable you keep the same."
+      />
+
       <div class="fair-test-actions">
         <Button type="button" class="reset-button" @click="reset">Reset</Button>
-        <Button type="button" class="check-fair-test-button">Check fair test experiment design</Button>
+        <Button type="button" class="check-fair-test-button" @click="checkDesign">
+          Check fair test experiment design
+        </Button>
       </div>
     </div>
   </section>
@@ -704,6 +736,11 @@ function reset() {
   border-top: 6px solid var(--border-top-color);
   border-radius: var(--radius-small);
   box-shadow: var(--shadow-medium)
+}
+
+.blueprint-card > strong {
+  font-size: 20px;
+  text-align: center;
 }
 
 .blueprint-change {
