@@ -10,75 +10,110 @@ const links = [
 </script>
 
 <template>
-  <header class="site-header">
-    <RouterLink to="/">GTAC STEM</RouterLink>
-    <Button
-      class="nav-toggle"
-      type="button"
-      aria-label="Toggle navigation"
-      aria-controls="site-navigation"
-      :aria-expanded="String(open)"
-      @click="open = !open"
-    >
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </Button>
-    <nav class="site-nav" :class="{ open }" id="site-navigation">
-      <RouterLink v-for="link in links" :key="link.to" :to="link.to" @click="open = false">
-        {{ link.label }}
-      </RouterLink>
-    </nav>
-  </header>
+  <div class="header-wrapper">  
+    <header>
+      <RouterLink id="home" to="/">GTAC STEM</RouterLink>
+      <Button
+        class="nav-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-controls="site-navigation"
+        :aria-expanded="String(open)"
+        @click="open = !open"
+      >
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </Button>
+      <nav class="site-nav" :class="{ open }" id="site-navigation">
+        <RouterLink v-for="link in links" :key="link.to" :to="link.to" @click="open = false">
+          {{ link.label }}
+        </RouterLink>
+      </nav>
+    </header>
+  </div>
 </template>
 
 <style scoped>
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    
+.header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+  background: color-mix(in srgb, var(--cream) 90%, transparent 10%);
+}
+header {  
     width: min(var(--content-width), 94%);
-    margin: 0 auto;
-    padding: 20px 10px;
-    border-radius: 10px;
+    margin: 0 auto 10px;
+    padding: 20px 30px;
     
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
-
-    background: var(--cream);
 }
 
-.site-header > a {
+header a {
+    --transition-time: 0.15s;
+    
+    position: relative; /* anchors the ::after underline to the link, not the header */
+    font-size: 1.1rem;
+    text-decoration: none;
+
+    transition:
+        color var(--transition-time) ease;
+}
+
+header a:hover{
+    color: var(--purple);
+}
+
+header #home {
     color: var(--purple);
 
-    font-size: 1.1rem;
     font-weight: 700;
-
-    text-decoration: none;
+    font-size: 25px;
 }
 
-.site-header nav {
+header a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+
+    width: 100%;
+    height: 3px;
+
+    background: currentColor;
+    border-radius: 2px;
+
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform var(--transition-time) ease;
+}
+
+header a:hover::after,
+header a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+header nav {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.site-header nav a {
-    padding: 8px 12px;
-
+header nav a {
     color: var(--text);
+    font-weight: 500;
 
-    border-radius: var(--radius-small);
-
-    font-weight: 600;
-    text-decoration: none;
+    transition:
+        transform var(--transition-time) ease,
+        color var(--transition-time) ease;
 }
 
-.site-header nav a:hover {
-    background: var(--soft-purple);
+header nav a:hover {
+    transform: translateY(-3px) scale(1.03);
 }
 
 .nav-toggle {
@@ -121,7 +156,7 @@ const links = [
         display: flex;
     }
 
-    .site-header .site-nav {
+    header .site-nav {
         flex-direction: column;
         gap: 6px;
 
@@ -150,7 +185,7 @@ const links = [
             visibility 0s linear 0.18s;
     }
 
-    .site-header .site-nav.open {
+    header .site-nav.open {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
