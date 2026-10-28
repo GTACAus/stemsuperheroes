@@ -140,7 +140,7 @@ export const expertProfiles = {
                     imageAlt: "Portrait of Paddy today",
                     points: [
                         "Paddy loved learning about philosophy, literature, cinema, and the art",
-"At school, he loved studyng English literature, Chemistry and Biology",
+"At school, he loved studying English literature, Chemistry and Biology",
 "He was terrible at Maths.",
                     ]
                 },
