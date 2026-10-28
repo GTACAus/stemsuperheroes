@@ -2,9 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": ".."
 		}
 	],
 	"settings": {
@@ -51,6 +48,7 @@
 					}
 				]
 			}
-		]
+		],
+		"powershell.cwd": "vue-project"
 	}
 }
