@@ -896,17 +896,17 @@ laura: (() => {
             // STAGE 1: CURIOUS BEGINNINGS
 
             {
-                title: "Creative beginnings",
+                title: "Curious beginnings",
                 colour: "#F43559",
 
-                image: `${imageFolder}portrait.jpg`,
+                image: `${imageFolder}library.jpg`,
                 imageAlt: "Portrait of Laura today",
 
                 points: [
                     "Laura grew up in Spain, in a family without a background in science.",
                     "As a child, she always asked 'Why?' and wanted to understand the reasons behind things.",
                     "She loved books so much that she once dreamed of becoming a librarian!",
-                    "Her curiosity eventually helped her discover a love of science."
+                    "Her curiosity is what lead her to her love of science."
                 ]
             },
 
@@ -917,7 +917,7 @@ laura: (() => {
                 title: "Challenges in school",
                 colour: "#E9B400",
 
-                image: `${imageFolder}school.jpg`,
+                image: `${imageFolder}piano.jpg`,
                 imageAlt: "Image representing Laura's school years",
 
                 points: [
@@ -935,14 +935,15 @@ laura: (() => {
                 title: "Finding her path",
                 colour: "#50B96D",
 
-                image: `${imageFolder}studies.jpg`,
+                image: `${imageFolder}paths.jpg`,
                 imageAlt: "Image representing Laura's studies in science",
 
                 points: [
-                    "Laura considered several careers, including becoming a gardener or botanist - someone who studies plants.",
-                    "A family experience with cancer inspired her interest in understanding the disease.",
-                    "She studied biochemistry, followed by a master's degree in immunology - the study of the immune system.",
-                    "She came to Australia on a six-month university exchange and later continued her journey in immunology research."
+                    "Laura considered several careers. She wanted to be a botanist, someone who studies plants.",
+                    "One of her family member had cancer. This made Laura want to understand the science behind cancer.",
+                    "She did a Bachelor of Science and majored in Biochemistry, followed by a Master's Degree in Immunology.",
+                    "Immunology is the study of the immune system.",
+                    "She came to Australia on a 6-month university exchange, and later continued her journey in Immunology research."
                 ]
             },
 
@@ -953,14 +954,14 @@ laura: (() => {
                 title: "Research with an impact",
                 colour: "#4F71CB",
 
-                image: `${imageFolder}research.jpg`,
+                image: `${imageFolder}cell.jpg`,
                 imageAlt: "Microscope image representing immune cell interactions",
 
                 points: [
                     "Laura investigates how immune cells interact with each other.",
-                    "Some cells can take tiny pieces of material from other cells - almost like a robber stealing something!",
-                    "She uses powerful microscopes to investigate these interactions and how cells behave.",
-                    "Understanding these interactions helps scientists learn more about how our immune system works."
+                    "Some cells take tiny pieces of material from other cells, almost like a robber stealing something!",
+                    "She uses powerful microscopes to investigate how cells behave.",
+                    "This helps scientists learn more about our immune system."
                 ]
             },
 
@@ -971,14 +972,14 @@ laura: (() => {
                 title: "Looking to the Future",
                 colour: "#00A7B8",
 
-                image: `${imageFolder}future.jpg`,
+                image: `${imageFolder}immuno.jpg`,
                 imageAlt: "Image representing future cancer immunotherapy research",
 
                 points: [
                     "Laura hopes to return to cancer research in the future.",
-                    "She is especially interested in cancer immunotherapy - helping the body's immune system recognise and fight cancer.",
-                    "She is considering research opportunities in both universities and the science industry.",
-                    "Her goal is to contribute to research that could help improve cancer treatments."
+                    "She is interested in research of Cancer Immunotherapy. This is the study of how the immune system fight cancer.",
+                    "She wants to do research in universities and the science industry.",
+                    "Her goal is to contribute to research that improves cancer treatments."
                 ]
             }
 
@@ -1014,7 +1015,7 @@ laura: (() => {
         impact: {
             heading: "Why does her research matter?",
 
-            image: `${imageFolder}research.jpg`,
+            image: `${imageFolder}future.jpg`,
             imageAlt: "Microscope image representing immune cells",
 
             points: [
