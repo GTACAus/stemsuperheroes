@@ -42,7 +42,7 @@ export const expertProfiles = {
                 {
                     title: "Challenges in school",
                     colour: "#E9B400",
-                    image: `${imageFolder}tennis.jpg`,
+                    image: `${imageFolder}mathematics.jpg`,
                     imageAlt: "Illustration of a school notebook, representing Kezia's school years",
                     points: [
                         "Kezia enjoyed music back in school, learning piano back when she was 4 years old.",
@@ -171,13 +171,11 @@ export const expertProfiles = {
                 {
                     title: "Future Plans",
                     colour: "#4F71CB",
-                    image: `${imageFolder}future.jpg`,
+                    image: `${imageFolder}future.jpeg`,
                     imageAlt: "Colourful microscope image of a lab-grown brain organoid",
                     points: [
-                        "Paddy's interest in Neuroscience came from his love of Philosophy.",
-                        "He read a book about neuroplasticity - the brain's ability to change and adapt.",
-                        "This inspired him to study the brain more deeply, majoring in Neuroscience.",
-                        "He is currently doing his doctorate in Neuroscience."
+                        "Paddy aims to continue to pursue neuroscience in the future.",
+                        "He aims to do so while doing the things that he love most - hiking and traveling.",
                     ]
                 }
             ],
