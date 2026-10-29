@@ -18,12 +18,12 @@ export const expertProfiles = [
     {
         name: "Paddy",
         role: "Childhood Brain Cancer Researcher",
-        subtitle: "STEM Coach",
+        subtitle: "GTAC STEM Coach",
         organisation: "Neuroscience research focused on childhood brain cancer",
         portrait: `${base}/paddy/portrait.jpg`,
         portraitAlt: "Paddy, a neuro-oncologist",
         back: {
-            superpower: "Growing tiny brain-like models from stem cells to investigate childhood brain cancer",
+            superpower: "Understanding childhood cancer by creating models of the brain in the lab",
             coolFact: "Paddy studied Neuroscience because he loves Philosophy",
             impact: "His work helps researchers test ideas for treating brain cancers in safer lab models.",
             lesson: "Follow your nose"
@@ -36,7 +36,7 @@ export const expertProfiles = [
                 imageAlt: "Portrait of Paddy today",
                 points: [
                     "Paddy loved learning about philosophy, literature, cinema, and the art",
-                    "At school, he loved studyng English literature, Chemistry and Biology",
+                    "At school, he loved studying English literature, Chemistry and Biology",
                     "He was terrible at Maths."
                 ]
             },
@@ -57,7 +57,6 @@ export const expertProfiles = [
                 colour: "#50B96D",
                 image: `${base}/paddy/brain-imaging.jpg`,
                 imageAlt: "Illustration showing a pathway from the arts into neuroscience",
-                imageFit: "contain",
                 points: [
                     "Paddy's interest in Neuroscience came from his love of Philosophy.",
                     "He read a book about neuroplasticity - the brain's ability to change and adapt.",
@@ -71,10 +70,8 @@ export const expertProfiles = [
                 image: `${base}/paddy/future.jpeg`,
                 imageAlt: "Colourful microscope image of a lab-grown brain organoid",
                 points: [
-                    "Paddy's interest in Neuroscience came from his love of Philosophy.",
-                    "He read a book about neuroplasticity - the brain's ability to change and adapt.",
-                    "This inspired him to study the brain more deeply, majoring in Neuroscience.",
-                    "He is currently doing his doctorate in Neuroscience."
+                    "Paddy aims to continue to pursue neuroscience in the future.",
+                    "He aims to do so while doing the things that he love most - hiking and traveling."
                 ]
             }
         ],
@@ -121,15 +118,15 @@ export const expertProfiles = [
     {
         name: "Kezia",
         role: "Infectious Disease Researcher",
-        subtitle: "Postdoctoral researcher, Seattle",
+        subtitle: "GTAC STEM Coach",
         organisation: "Postdoctoral researcher in Seattle, USA (previously at the Peter Doherty Institute, Melbourne)",
         portrait: `${base}/kezia/portrait.jpg`,
         portraitAlt: "Kezia, an infectious disease researcher",
         back: {
-            superpower: "Discovering how immune cells respond to infections such as HIV and tuberculosis (TB)",
-            coolFact: "She loves cooking and running",
-            impact: "Her research helps us understand how the body fights viruses.",
-            lesson: "Stay curious!"
+            superpower: "Discovering how immune cells respond to infections like HIV and TB",
+            coolFact: "She once considered becoming a fashion designer!",
+            impact: "Her work explores possible HIV treatments and better TB vaccines.",
+            lesson: "Stay curious and learn from others!"
         },
         timeline: [
             {
@@ -146,7 +143,7 @@ export const expertProfiles = [
             {
                 title: "Challenges in school",
                 colour: "#E9B400",
-                image: `${base}/kezia/tennis.jpg`,
+                image: `${base}/kezia/mathematics.jpg`,
                 imageAlt: "Illustration of a school notebook, representing Kezia's school years",
                 points: [
                     "Kezia enjoyed music back in school, learning piano back when she was 4 years old.",
@@ -222,10 +219,10 @@ export const expertProfiles = [
         portrait: `${base}/muna/portrait.jpg`,
         portraitAlt: "Muna, Microbiology Researcher",
         back: {
-            superpower: "Studying bacteria that cause infections and investigating antibiotic resistance",
-            coolFact: "She loves exploring cafés and trying new coffees",
-            impact: "Her research helps scientists understand antibiotic resistance",
-            lesson: "Explore different interests and discover what you enjoy!"
+            superpower: "Investigating bacteria and how they respond to antibiotics",
+            coolFact: "Muna was the first woman in her extended family to attend university!",
+            impact: "Her research helps scientists understand bacteria that can cause infections.",
+            lesson: "Explore different paths. It's okay to change direction!"
         },
         timeline: [
             {
@@ -311,17 +308,220 @@ export const expertProfiles = [
         ]
     },
     {
+        name: "Misty",
+        role: "Brain Cancer Immunologist",
+        subtitle: "STEM Expert",
+        organisation: "Professor and Laboratory Head at WEHI and The Brain Cancer Centre, Melbourne",
+        portrait: `${base}/misty/portrait.jpg`,
+        portraitAlt: "Portrait of Misty Jenkins",
+        back: {
+            superpower: "Training immune cells to recognise and attack brain tumours!",
+            coolFact: "Misty volunteered with St John Ambulance when she was just 11 years old!",
+            impact: "Her research could lead to new treatments for children and adults with brain cancer.",
+            lesson: "Have a vision to help people. It makes your work meaningful!"
+        },
+        timeline: [
+            {
+                title: "Curious beginnings",
+                colour: "#F43559",
+                image: `${base}/misty/ballarat.jpg`,
+                imageAlt: "Portrait of Misty today",
+                points: [
+                    "Misty grew up in Ballarat, Victoria, and was the first person in her family to attend university.",
+                    "As a teenager, she was fascinated by the human body, anatomy and diseases.",
+                    "She was always curious and wanted to understand how things worked.",
+                    "Her teachers encouraged her curiosity, determination and interest in learning."
+                ]
+            },
+            {
+                title: "Exploring her interests",
+                colour: "#E9B400",
+                image: `${base}/misty/paramedic.jpg`,
+                imageAlt: "Image representing first aid and St John Ambulance volunteering",
+                points: [
+                    "At just 11 years old, Misty began volunteering with St John Ambulance and even took part in first aid competitions!",
+                    "At school, she enjoyed maths and studied physics, chemistry and mathematics, but did not take biology.",
+                    "She also loved drama, theatre and performing on stage.",
+                    "Misty believes that performing helped her become confident speaking to large audiences - an important skill for a scientist.",
+                    "She worked part-time jobs while studying and learned valuable communication and teamwork skills."
+                ]
+            },
+            {
+                title: "Finding her path",
+                colour: "#50B96D",
+                image: `${base}/misty/cambridge.jpg`,
+                imageAlt: "Image representing Misty's research journey and university studies",
+                points: [
+                    "Misty studied science at the University of Melbourne, specialising in biotechnology and immunology - the study of the immune system.",
+                    "For her PhD, she contacted Peter Doherty, a scientist who had won a Nobel Prize, and was surprised when he called her back!",
+                    "They met for coffee, and he offered her an opportunity to join his research laboratory.",
+                    "After her PhD, she worked as a researcher at the universities of Oxford and Cambridge in the UK.",
+                    "She later returned to Australia and continued her research at Peter MacCallum Cancer Centre before joining WEHI."
+                ]
+            },
+            {
+                title: "Research with an impact",
+                colour: "#4F71CB",
+                image: `${base}/misty/microscope.jpg`,
+                imageAlt: "Image representing immune T cells attacking cancer cells",
+                points: [
+                    "Misty leads a research team investigating new ways to treat brain cancer, including cancers affecting children.",
+                    "Her team studies T cells, which are immune cells that help protect our bodies from disease.",
+                    "They are developing CAR T cells - immune cells specially engineered to recognise and attack certain cancer cells.",
+                    "Researchers also use powerful microscopes to study how immune cells interact with brain tumours.",
+                    "These treatments are still being investigated for brain cancer. Scientists must carefully test their safety and effectiveness."
+                ]
+            },
+            {
+                title: "Looking to the Future",
+                colour: "#00A7B8",
+                image: `${base}/misty/conference.jpg`,
+                imageAlt: "Image representing future advances in brain cancer treatment",
+                points: [
+                    "Misty wanted to lead her own research team so she could explore new ideas and make a meaningful difference.",
+                    "Building a research program was challenging. In her first year, she submitted 21 applications for research funding!",
+                    "She works with other scientists, doctors, charities and supporters through initiatives including The Brain Cancer Centre.",
+                    "Her long-term goal is to help develop better treatments for people with brain cancer, particularly children.",
+                    "Misty believes science is a creative activity where determination, teamwork and new ideas can help solve difficult problems."
+                ]
+            }
+        ],
+        hobbies: {
+            heading: "Hobbies and interests",
+            text: "Misty loves theatre, musicals, performing and karaoke! She has been involved in community theatre and enjoys spending time on stage. She believes that these experiences helped her develop the confidence to communicate science to large audiences.",
+            image: `${base}/misty/theater.jpg`,
+            imageAlt: "Image representing Misty's interest in theatre and performing"
+        },
+        impact: {
+            heading: "Why does her research matter?",
+            image: `${base}/misty/genes.jpg`,
+            imageAlt: "Image representing T cells and brain cancer immunotherapy",
+            points: [
+                "Develops specialised immune cells that may be able to recognise and attack brain cancer cells",
+                "Helps scientists understand why some brain tumours are difficult for the immune system to fight",
+                "Could contribute to safer and more effective brain cancer treatments in the future"
+            ]
+        },
+        adviceHeading: "Misty's advice",
+        advice: [
+            "Have a purpose and a vision to help people. It makes your work more meaningful!",
+            "Science is creative! You need to think outside the box, not just get good grades.",
+            "Develop life skills through jobs, hobbies and activities. Communication and teamwork are important in science.",
+            "Find mentors who encourage you and help you grow.",
+            "Follow your interests, stay determined and don't be afraid to try something new."
+        ]
+    },
+    {
+        name: "Megan",
+        role: "Bioethicist and Stem Cell Researcher",
+        subtitle: "STEM Expert",
+        organisation: "Murdoch Children's Research Institute and the University of Melbourne",
+        portrait: `${base}/megan/portrait.jpg`,
+        portraitAlt: "Portrait of Megan Munsie",
+        back: {
+            superpower: "Connecting science and society to help people make informed decisions!",
+            coolFact: "Megan worked in IVF laboratories before becoming a bioethicist!",
+            impact: "Her work helps make research safer, fairer and easier for people to understand.",
+            lesson: "Ask questions and check the evidence behind scientific claims!"
+        },
+        timeline: [
+            {
+                title: "Curious beginnings",
+                colour: "#F43559",
+                image: `${base}/megan/book.jpg`,
+                imageAlt: "Portrait of Megan today",
+                points: [
+                    "Megan loved biology at school, but she also enjoyed English, history and the humanities.",
+                    "She was fascinated by DNA, inheritance and how living things work.",
+                    "At school, she felt she had to choose between science and the humanities.",
+                    "Later, she discovered that she could combine both interests in her career!"
+                ]
+            },
+            {
+                title: "Science meets people",
+                colour: "#E9B400",
+                image: `${base}/megan/ivf.png`,
+                imageAlt: "Image representing a clinical embryology laboratory",
+                points: [
+                    "After completing a science degree, Megan began working as a clinical embryologist in IVF laboratories.",
+                    "IVF is a medical treatment that can help people have babies.",
+                    "Megan saw how scientific discoveries and new technologies could change people's lives.",
+                    "She also realised that these technologies raised important questions about science, society and what is right or fair."
+                ]
+            },
+            {
+                title: "Finding her path",
+                colour: "#50B96D",
+                image: `${base}/megan/study.png`,
+                imageAlt: "Image representing Megan's university research",
+                points: [
+                    "Megan returned to university to study reproductive science, completing her master's degree part-time.",
+                    "She then completed a PhD investigating stem cells and how cells can be changed to develop in different ways.",
+                    "Her research introduced her to important ethical and legal questions about new technologies.",
+                    "Megan discovered bioethics - exploring what is right, fair and responsible in science and medicine."
+                ]
+            },
+            {
+                title: "Research with an impact",
+                colour: "#4F71CB",
+                image: `${base}/megan/conference.jpg`,
+                imageAlt: "Image representing stem cells and medical research",
+                points: [
+                    "Today, Megan investigates the ethical and social questions surrounding stem-cell research and new medical technologies.",
+                    "Stem cells are special cells that can make more cells, and some can develop into different types of cells.",
+                    "She explores questions about patient safety, scientific evidence, informed consent and fairness.",
+                    "Her work helps scientists and doctors consider how to develop and use new treatments responsibly."
+                ]
+            },
+            {
+                title: "Connecting science and society",
+                colour: "#00A7B8",
+                image: `${base}/megan/community.jpg`,
+                imageAlt: "Image representing scientists and communities sharing ideas",
+                points: [
+                    "Megan works with scientists, doctors, patients, communities and policymakers to discuss new scientific discoveries.",
+                    "She helps people understand the difference between promising research and treatments that have been proven to work.",
+                    "In 2026, her team began a project exploring how children and young people should have a voice in decisions about their donated cells being used for research.",
+                    "Her career shows that you can make a difference in STEM by helping people understand science and make informed decisions."
+                ]
+            }
+        ],
+        hobbies: {
+            heading: "Hobbies and interests",
+            text: "Megan enjoys cooking, trying new foods and discovering different cuisines when she travels! Her science career also takes her to conferences around the world.",
+            image: `${base}/megan/travel.jpeg`,
+            imageAlt: "Megan visiting a historic site during her travels"
+        },
+        impact: {
+            heading: "Why does her work matter?",
+            image: `${base}/megan/boston.jpg`,
+            imageAlt: "Image representing stem-cell research and ethical questions",
+            points: [
+                "Helps patients and families understand the difference between promising research and proven treatments",
+                "Encourages scientists to consider safety, consent and fairness when developing new medical technologies",
+                "Connects scientists with the community so decisions are based on evidence and different perspectives"
+            ]
+        },
+        adviceHeading: "Megan's advice",
+        advice: [
+            "Follow your curiosity! Your interests might lead you somewhere unexpected.",
+            "You do not have to choose between science and the humanities - both are important.",
+            "There is a lot of misinformation in science and it is our job to discover the truth.",
+            "Ask questions, look for evidence and listen to different points of view."
+        ]
+    },
+    {
         name: "Millicent",
         role: "Neuroscientist",
-        subtitle: "The Florey",
+        subtitle: "GTAC STEM Coach",
         organisation: "PhD research at The Florey and the University of Melbourne",
         portrait: `${base}/millicent/portrait.jpg`,
         portraitAlt: "Millicent, Neuroscientist",
         back: {
-            superpower: "Investigating how the tiny microbes living in our gut may affect the brain and Huntington's disease",
-            coolFact: "She loves acting, reading, writing and presenting",
-            impact: "Her research explores how the gut and the brain are connected",
-            lesson: "Find what excites you and pursue it!"
+            superpower: "Exploring how gut microbes and brain health are connected.",
+            coolFact: "She loves acting and has hosted radio shows!",
+            impact: "Her research could guide future ways to support people with Huntington's disease.",
+            lesson: "You can be creative AND love science!"
         },
         timeline: [
             {
@@ -362,7 +562,7 @@ export const expertProfiles = [
             {
                 title: "Research with an impact",
                 colour: "#4F71CB",
-                image: `${base}/millicent/gut-brain.svg`,
+                image: `${base}/millicent/prebiotics.jpg`,
                 imageAlt: "Diagram representing the connection between gut microbes and the brain",
                 imageFit: "contain",
                 points: [
@@ -392,7 +592,7 @@ export const expertProfiles = [
         },
         impact: {
             heading: "Why does her research matter?",
-            image: `${base}/millicent/gut-brain.svg`,
+            image: `${base}/millicent/microbiome.jpg`,
             imageAlt: "Diagram showing gut microbes and a brain",
             points: [
                 "Explores connections between the gut microbiome and brain health.",
@@ -409,15 +609,15 @@ export const expertProfiles = [
     },
     {
         name: "Michael",
-        role: "Biomedical Engineer",
-        subtitle: "GTAC, Melbourne",
+        role: "Biomedical Engineer and Provisional Psychologist",
+        subtitle: "GTAC STEM Coach",
         organisation: "Gene Technology Access Centre (GTAC), Melbourne",
         portrait: `${base}/michael/portrait.jpg`,
         portraitAlt: "Michael, Biomedical Engineer",
         back: {
-            superpower: "Using mathematics, engineering and an understanding of people to design better tools for healthcare",
-            coolFact: "He enjoys bouldering, a type of climbing",
-            impact: "His research aims to make medical testing more practical and accessible",
+            superpower: "Using engineering and biology to make practical tools for healthcare",
+            coolFact: "Michael has studied both biomedical engineering and psychology!",
+            impact: "His research investigated new ways to screen for bacteria and test for infections.",
             lesson: "The mind is as important as the machine."
         },
         timeline: [
@@ -427,21 +627,24 @@ export const expertProfiles = [
                 image: `${base}/michael/books.jpg`,
                 imageAlt: "Portrait of Michael today",
                 points: [
-                    "Michael grew up in Indonesia, struggled with mathematics back in high school, but loved books and literature.",
-                    "He studied psychology at the University of Melbourne, the study of how people think, feel and behave.",
-                    "He became interested in how science can help us understand people and solve problems."
+                    "Michael grew up in Indonesia, struggled with mathematics back in high school.",
+                    "He loved books and literature.",
+                    "He was interested in how science, because science help us understand people and solve problems.",
+                    "He studied a Bachelor of Arts majored in Psychology and Economics at the University of Melbourne.",
+                    "Psychology is the study of how people think, feel and behave."
                 ]
             },
             {
                 title: "Exploring Engineering",
                 colour: "#E9B400",
-                image: `${base}/michael/choices.svg`,
+                image: `${base}/michael/engineer`,
                 imageAlt: "Illustration of psychology and engineering as connected fields",
                 imageFit: "contain",
                 points: [
-                    "After studying psychology, Michael chose to explore biomedical engineering.",
-                    "Biomedical engineering combines biology, maths and technology to solve health problems.",
-                    "Here, he discovered a love for mathematics."
+                    "After finishing his Bachelor of Arts, Michael explored Biomedical Engineering by doing a Masters degree.",
+                    "Biomedical Engineering combines Biology, Maths and Technology to solve health problems.",
+                    "The first year of Masters was challenging because he had to relearn Maths and Biology.",
+                    "Here, he discovered a love for Linear Algebra and Maths."
                 ]
             },
             {
@@ -450,7 +653,7 @@ export const expertProfiles = [
                 image: `${base}/michael/medical-testing.jpg`,
                 imageAlt: "Illustration representing laboratory research during Michael's PhD in Taiwan",
                 points: [
-                    "He then moved to Taiwan to do a PhD, learn Mandarin Chinese, and reconnect with his East Asian cultural roots.",
+                    "He then moved to Taiwan to do his doctorate, learn Mandarin Chinese, and reconnect with his East Asian cultural roots.",
                     "He worked with doctors and other engineers to design medical testing tools that people can use at home."
                 ]
             },
@@ -460,14 +663,14 @@ export const expertProfiles = [
                 image: `${base}/michael/consulting.jpg`,
                 imageAlt: "Illustration of paper-based screening and infection testing tools",
                 points: [
-                    "After finishing his PhD, Michael did consulting at a Big 3 consulting firm.",
+                    "After finishing his PhD, Michael did consulting at a Big 3 consulting firm in Taiwan.",
                     "He used his knowledge of engineering to work with clients on product design and manufacturing."
                 ]
             },
             {
                 title: "Future in Psychology",
                 colour: "#00A7B8",
-                image: `${base}/michael/education.svg`,
+                image: `${base}/michael/future.jpg`,
                 imageAlt: "Illustration of science education and understanding how people learn",
                 points: [
                     "After returning to Australia, Michael went back to study Psychology.",
@@ -506,28 +709,28 @@ export const expertProfiles = [
         portrait: `${base}/laura/portrait.jpg`,
         portraitAlt: "Laura, Immunologist",
         back: {
-            superpower: "Being a cell detective - investigating how immune cells communicate and sometimes steal tiny pieces from other cells",
-            coolFact: "She loves ice skating and books",
-            impact: "Her research shows how immune cells communicate with each other",
-            lesson: "Don't be discouraged when things don't work the first time!"
+            superpower: "Being a cell detective, investigating how immune cells steal tiny pieces from other cells!",
+            coolFact: "As a child, Laura always asked \"Why?\" and wanted to understand the reason behind everything.",
+            impact: "Her research helps us understand how immune cells communicate and respond to disease.",
+            lesson: "The world makes more sense when you ask the right questions."
         },
         timeline: [
             {
-                title: "Creative beginnings",
+                title: "Curious beginnings",
                 colour: "#F43559",
-                image: `${base}/laura/portrait.jpg`,
+                image: `${base}/laura/library.jpg`,
                 imageAlt: "Portrait of Laura today",
                 points: [
                     "Laura grew up in Spain, in a family without a background in science.",
                     "As a child, she always asked 'Why?' and wanted to understand the reasons behind things.",
                     "She loved books so much that she once dreamed of becoming a librarian!",
-                    "Her curiosity eventually helped her discover a love of science."
+                    "Her curiosity is what lead her to her love of science."
                 ]
             },
             {
                 title: "Challenges in school",
                 colour: "#E9B400",
-                image: `${base}/laura/school.jpg`,
+                image: `${base}/laura/piano.jpg`,
                 imageAlt: "Image representing Laura's school years",
                 points: [
                     "Laura enjoyed many school subjects, including maths, but biology was her favourite.",
@@ -539,37 +742,39 @@ export const expertProfiles = [
             {
                 title: "Finding her path",
                 colour: "#50B96D",
-                image: `${base}/laura/studies.jpg`,
+                image: `${base}/laura/paths.jpg`,
                 imageAlt: "Image representing Laura's studies in science",
                 points: [
-                    "Laura considered several careers, including becoming a gardener or botanist - someone who studies plants.",
-                    "A family experience with cancer inspired her interest in understanding the disease.",
-                    "She studied biochemistry, followed by a master's degree in immunology - the study of the immune system.",
-                    "She came to Australia on a six-month university exchange and later continued her journey in immunology research."
+                    "Laura considered several careers.",
+                    "She wanted to be a Botanist. A Botanist studies plants.",
+                    "One of her family member had cancer. This made Laura want to understand the science behind cancer.",
+                    "She did a Bachelor of Science and majored in Biochemistry.",
+                    "She then finished a Master's Degree in Immunology. Immunology is the study of the immune system.",
+                    "She came to Australia on a 6-month university exchange, and later continued her journey in Immunology research."
                 ]
             },
             {
                 title: "Research with an impact",
                 colour: "#4F71CB",
-                image: `${base}/laura/research.jpg`,
+                image: `${base}/laura/cell.jpg`,
                 imageAlt: "Microscope image representing immune cell interactions",
                 points: [
                     "Laura investigates how immune cells interact with each other.",
-                    "Some cells can take tiny pieces of material from other cells - almost like a robber stealing something!",
-                    "She uses powerful microscopes to investigate these interactions and how cells behave.",
-                    "Understanding these interactions helps scientists learn more about how our immune system works."
+                    "Some cells take tiny pieces of material from other cells, like a robber stealing something!",
+                    "She uses powerful microscopes to look at how cells behave.",
+                    "This helps scientists learn more about our immune system."
                 ]
             },
             {
                 title: "Looking to the Future",
                 colour: "#00A7B8",
-                image: `${base}/laura/future.jpg`,
+                image: `${base}/laura/immuno.jpg`,
                 imageAlt: "Image representing future cancer immunotherapy research",
                 points: [
                     "Laura hopes to return to cancer research in the future.",
-                    "She is especially interested in cancer immunotherapy - helping the body's immune system recognise and fight cancer.",
-                    "She is considering research opportunities in both universities and the science industry.",
-                    "Her goal is to contribute to research that could help improve cancer treatments."
+                    "She is interested in research of Cancer Immunotherapy. This is the study of how the immune system fight cancer.",
+                    "She wants to do research in universities and the science industry.",
+                    "Her goal is to contribute to research that improves cancer treatments."
                 ]
             }
         ],
@@ -581,7 +786,7 @@ export const expertProfiles = [
         },
         impact: {
             heading: "Why does her research matter?",
-            image: `${base}/laura/research.jpg`,
+            image: `${base}/laura/future.jpg`,
             imageAlt: "Microscope image representing immune cells",
             points: [
                 "Investigates how immune cells interact and communicate with each other",
@@ -592,7 +797,7 @@ export const expertProfiles = [
         adviceHeading: "Laura's advice",
         advice: [
             "Don't be discouraged when things don't work the first time!",
-            "Science involves trying experiments, learning from mistakes and trying again.",
+            "Science involves trying, failing, learning from mistakes and trying again.",
             "Keep asking questions. The world makes more sense when you ask the right questions!"
         ]
     },
@@ -604,34 +809,34 @@ export const expertProfiles = [
         portrait: `${base}/kevin/portrait.jpg`,
         portraitAlt: "Kevin, Stem Cell Researcher",
         back: {
-            superpower: "Growing T cells, a type of immune cell, from stem cells in the lab to explore future medical treatments",
-            coolFact: "He loves Pokémon and history-themed video games",
-            impact: "His research explores how stem cells become T cells, a key part of our immune system",
-            lesson: "Don't be afraid to make mistakes. That's how we learn!"
+            superpower: "Growing immune superhero cells from stem cells in the lab!",
+            coolFact: "Kevin originally studied medicine before discovering his passion for research!",
+            impact: "His research could contribute to future treatments for cancer and other diseases.",
+            lesson: "Don't be afraid to make mistakes or change direction!"
         },
         timeline: [
             {
                 title: "Curious beginnings",
                 colour: "#F43559",
-                image: `${base}/kevin/portrait.jpg`,
+                image: `${base}/kevin/indonesia.jpg`,
                 imageAlt: "Portrait of Kevin today",
                 points: [
-                    "Kevin grew up in Indonesia in a family where science and technology were part of everyday life.",
-                    "His family encouraged curiosity and logical thinking.",
-                    "At school, he enjoyed science because it helped him understand and explain how the world works.",
-                    "He even dreamed of becoming a palaeontologist - a scientist who studies ancient life and fossils!"
+                    "Kevin grew up in Indonesia. Science and technology were part of his family life.",
+                    "His family was big on curiosity and logical thinking.",
+                    "At school, he enjoyed science. Science helped him understand and explain how the world works.",
+                    "He dreamed of becoming a Palaeontologist, a scientist who studies ancient life and fossils!"
                 ]
             },
             {
                 title: "Challenges and choices",
                 colour: "#E9B400",
-                image: `${base}/kevin/school.jpg`,
+                image: `${base}/kevin/medicine.jpg`,
                 imageAlt: "Image representing Kevin's early career choices",
                 points: [
-                    "Kevin studied medicine in Indonesia, partly because of his family's expectations.",
-                    "He enjoyed learning about science and the human body, but realised he preferred research over treating patients directly.",
-                    "He faced a difficult decision: continue along the medical pathway or try something different.",
-                    "Kevin chose to explore research, even though he wasn't completely sure where it would lead."
+                    "Kevin studied medicine in Indonesia, because of his family's expectations.",
+                    "After He finish his medical degree, he faced a difficult decision: continue along the medical pathway or try something different.",
+                    "He enjoyed learning about science and the human body.",
+                    "Kevin chose research over treating patients directly, even though he did not know where it would lead."
                 ]
             },
             {
@@ -640,9 +845,9 @@ export const expertProfiles = [
                 image: `${base}/kevin/pathway.jpg`,
                 imageAlt: "Image representing Kevin's journey into research",
                 points: [
-                    "Kevin received a scholarship to complete a master's degree overseas.",
-                    "He then worked as a research assistant in Hong Kong, gaining experience in laboratory science.",
-                    "He chose to continue his studies in Australia, where he pursued a PhD.",
+                    "Kevin received a scholarship to complete a Master's degree overseas.",
+                    "He then worked as a research assistant in Hong Kong, gaining experience in the laboratory.",
+                    "He chose to continue his studies in Australia, where he pursued his Doctorate Degree.",
                     "His journey took him from medicine into stem cell and immunology research."
                 ]
             },
@@ -697,15 +902,15 @@ export const expertProfiles = [
     {
         name: "Maria",
         role: "Malaria Immunologist",
-        subtitle: "Peter Doherty Institute",
+        subtitle: "GTAC STEM Coach",
         organisation: "The Peter Doherty Institute for Infection and Immunity, University of Melbourne",
         portrait: `${base}/maria/portrait.jpg`,
         portraitAlt: "Maria, Malaria Immunologist",
         back: {
-            superpower: "Investigating how antibodies help immune cells recognise and remove malaria-infected red blood cells",
-            coolFact: "She enjoys reading fiction and looking after a neighbour's cat",
-            impact: "Her research explains how antibodies and immune cells fight malaria",
-            lesson: "Don't feel limited by where you come from."
+            superpower: "Discovering how antibodies and immune cells help fight malaria!",
+            coolFact: "Maria earned a gold medal for her university studies in Pakistan!",
+            impact: "Her research helps scientists understand protection against malaria and investigate future vaccines.",
+            lesson: "Curiosity can grow into work that saves lives."
         },
         timeline: [
             {
@@ -793,14 +998,14 @@ export const expertProfiles = [
     {
         name: "Paul",
         role: "Cancer Biology Researcher",
-        subtitle: "Peter MacCallum Cancer Centre",
+        subtitle: "GTAC STEM Coach",
         organisation: "Cancer biology research at Peter MacCallum Cancer Centre, Melbourne",
         portrait: `${base}/paul/portrait.jpg`,
         portraitAlt: "Paul, Cancer Biology Researcher",
         back: {
-            superpower: "Investigating how genes and oxygen supply influence brain tumour growth using fruit-fly models",
-            coolFact: "He plays soccer with colleagues from his research institute",
-            impact: "His fruit-fly research shows how genetic changes can make brain cells grow out of control",
+            superpower: "Investigating how oxygen and genes influence the growth of brain tumours!",
+            coolFact: "Paul has studied science in Nigeria, Israel and Australia!",
+            impact: "His research using fruit flies could help scientists discover new ways to slow brain tumours.",
             lesson: "If you want change, be part of the solution."
         },
         timeline: [
@@ -892,14 +1097,14 @@ export const expertProfiles = [
     {
         name: "Juliana",
         role: "Vascular Biology Researcher",
-        subtitle: "Peter MacCallum Cancer Centre",
+        subtitle: "GTAC STEM Coach",
         organisation: "Vascular biology research at Peter MacCallum Cancer Centre, Melbourne",
         portrait: `${base}/juliana/portrait.jpg`,
         portraitAlt: "Juliana, Vascular Biology Researcher",
         back: {
-            superpower: "Using zebrafish to study abnormal blood vessels and test potential medicines for vascular malformations",
-            coolFact: "She loves dancing and chicken parma!",
-            impact: "Her research explores how genetic changes affect blood vessel development",
+            superpower: "Using zebrafish to test potential medicines for abnormal blood vessels!",
+            coolFact: "Juliana grew up in rural Brazil and was the first in her family to attend university!",
+            impact: "Her research could help scientists discover new treatments for blood vessel malformations.",
             lesson: "Education opens doors - keep going, even if it's hard."
         },
         timeline: [
@@ -985,16 +1190,116 @@ export const expertProfiles = [
         ]
     },
     {
+        name: "Asha",
+        role: "Cancer Genomics Researcher",
+        subtitle: "GTAC STEM Coach",
+        organisation: "Cancer research at WEHI and RMIT University, Melbourne",
+        portrait: `${base}/asha/portrait.jpg`,
+        portraitAlt: "Portrait of Asha",
+        back: {
+            superpower: "Investigating DNA and immune cells to understand ovarian cancer!",
+            coolFact: "Asha once worked as a cleaner at a research institute before becoming a researcher there!",
+            impact: "Their research could help doctors choose more suitable cancer treatments for patients.",
+            lesson: "Understanding how something works is the first step to fixing it."
+        },
+        timeline: [
+            {
+                title: "Curious beginnings",
+                colour: "#F43559",
+                image: `${base}/asha/portrait.jpg`,
+                imageAlt: "Portrait of Asha today",
+                points: [
+                    "Asha was born in Singapore and moved to Melbourne, Australia, in Year 8.",
+                    "Growing up in a Singaporean-Indian family, Asha experienced different cultures and communities.",
+                    "Asha identifies as biracial and non-binary, showing that scientists come from many different backgrounds.",
+                    "They enjoyed understanding how things worked and developed an interest in biology."
+                ]
+            },
+            {
+                title: "Discovering science",
+                colour: "#E9B400",
+                image: `${base}/asha/theatre.jpg`,
+                imageAlt: "Image representing Asha's interest in theatre",
+                points: [
+                    "Asha enjoyed biology at school because they liked learning how living things work.",
+                    "They also loved theatre and volunteered backstage during school productions.",
+                    "For a long time, Asha was unsure what career they wanted.",
+                    "They discovered that enjoying creative activities and being interested in science did not have to be separate things."
+                ]
+            },
+            {
+                title: "Finding their path",
+                colour: "#50B96D",
+                image: `${base}/asha/laboratory.jpg`,
+                imageAlt: "Image representing laboratory research at WEHI",
+                points: [
+                    "While studying at university, Asha worked as a cleaner at WEHI, a medical research institute in Melbourne.",
+                    "They became interested in the science happening around them and later gained experience as a research assistant.",
+                    "Asha completed honours research and went on to pursue a PhD.",
+                    "Their journey shows that opportunities in science can come from unexpected places!"
+                ]
+            },
+            {
+                title: "Research with an impact",
+                colour: "#4F71CB",
+                image: `${base}/asha/ovarian-cancer.jpg`,
+                imageAlt: "Image representing cancer cells and genetic research",
+                points: [
+                    "Asha researched ovarian cancer, a disease in which abnormal cells grow in the ovaries.",
+                    "They contributed to a clinical trial study involving 114 women receiving different combinations of cancer medicines.",
+                    "Asha investigated tumour samples, including DNA changes and immune activity, to help understand differences between patients.",
+                    "The research could help scientists identify which treatments might work best for different people."
+                ]
+            },
+            {
+                title: "Looking to the Future",
+                colour: "#00A7B8",
+                image: `${base}/asha/clinical-trials.jpg`,
+                imageAlt: "Image representing clinical trials and healthcare research",
+                points: [
+                    "Asha is interested in moving from laboratory research into roles that support clinical trials.",
+                    "Clinical trials are studies that investigate how safe and effective medical treatments are for people.",
+                    "They hope to use their experience with scientific research and data to support work that could help patients.",
+                    "Asha's story shows that STEM offers many different careers, including important roles outside the laboratory."
+                ]
+            }
+        ],
+        hobbies: {
+            heading: "Hobbies and interests",
+            text: "Outside science, Asha loves making chainmail jewellery and crafts by connecting lots of small metal rings! They also enjoyed theatre and helping backstage during school productions.",
+            image: `${base}/asha/chainmail.jpg`,
+            imageAlt: "Handmade chainmail jewellery created by connecting metal rings"
+        },
+        impact: {
+            heading: "Why does their research matter?",
+            image: `${base}/asha/ovarian-cancer.jpg`,
+            imageAlt: "Image representing DNA and ovarian cancer research",
+            points: [
+                "Investigates genetic changes and immune activity in ovarian cancer",
+                "Helps scientists understand why different patients respond differently to cancer medicines",
+                "Could guide more personalised treatment decisions in the future, although further research is needed"
+            ]
+        },
+        adviceHeading: "Asha's advice",
+        advice: [
+            "Follow what you're genuinely interested in, even if it takes you in an unexpected direction.",
+            "Do not be afraid to try different things and discover what you enjoy!",
+            "Understanding how something works is the first step to fixing it.",
+            "You don't have to follow exactly the same path as everyone else."
+        ]
+    },
+    {
         name: "Meagan",
         role: "Marsupial Biology Researcher",
+        subtitle: "GTAC STEM Coach",
         organisation: "Genetics, immunology and marsupial research in Melbourne",
         portrait: `${base}/meagan/portrait.jpg`,
         portraitAlt: "Meagan, Marsupial Biology Researcher",
         back: {
-            superpower: "Using genetics and immunology to understand how marsupials develop and how science might help protect wildlife",
-            coolFact: "She enjoys acrobatics and circus sports!",
-            impact: "Her research helps us understand how marsupials grow and develop",
-            lesson: "Science is all around you! Start by asking questions."
+            superpower: "Using genetics and immunology to understand marsupials and help protect wildlife!",
+            coolFact: "A Year 10 genetics project helped Meagan discover what she wanted to study!",
+            impact: "Her research interests could help scientists better understand and protect marsupials.",
+            lesson: "Science starts with curiosity about the world around you!"
         },
         timeline: [
             {
