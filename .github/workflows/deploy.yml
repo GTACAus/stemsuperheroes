@@ -1,4 +1,14 @@
-name: Deploy Vue site to GitHub Pages
+
+# =====================================================
+# GTAC STEM WEBSITE - GITHUB PAGES DEPLOYMENT
+#
+# Publishes the CURRENT HTML, CSS and JavaScript.
+#
+# The old vue-project folder is kept as a backup,
+# but is NOT built or published.
+# =====================================================
+
+name: Deploy GTAC STEM Website
 
 on:
   push:
@@ -15,36 +25,43 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+
+  # ================================================
+  # BUILD STATIC WEBSITE
+  # ================================================
+
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: vue-project
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Prepare website files
+        run: |
+          mkdir -p _site
+          cp ./*.html _site/
+          cp -r assets scripts styles _site/
+
+      # Publish HTML website, NOT Vue
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v3
         with:
-          node-version: 24
-          cache: npm
-          cache-dependency-path: vue-project/package-lock.json
+          path: _site
 
-      - run: npm ci
-      - run: npm run build
-      # GitHub Pages has no URL rewriting: serve the app for unknown paths so
-      # refreshing /local-stem-experts works.
-      - run: cp dist/index.html dist/404.html
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: vue-project/dist
+  # ================================================
+  # DEPLOY TO GITHUB PAGES
+  # ================================================
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - id: deployment
+      - name: Deploy website
+        id: deployment
         uses: actions/deploy-pages@v4
