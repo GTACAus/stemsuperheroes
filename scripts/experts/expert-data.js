@@ -2291,9 +2291,460 @@ meagan: (() => {
 
     };
 
+})(),
+
+
+/* =====================================================
+   MEGAN MUNSIE - BIOETHICIST / STEM EXPERT
+
+   Sources:
+   - Interview: 10 March 2026
+   - Original GTAC STEM Superheroes Showcase
+   - Murdoch Children's Research Institute profile
+   - University of Melbourne research information
+
+   NOTE: Megan is a STEM EXPERT, not a STEM Coach.
+
+   All images are stored locally.
+   Uses the existing reusable profile and timeline code.
+   ===================================================== */
+
+megan: (() => {
+
+    /* ================================================
+       A. IMAGE FOLDER
+
+       All Megan's images are stored here.
+       ================================================ */
+
+    const imageFolder = "assets/images/experts/megan/";
+
+    return {
+
+        /* ================================================
+           B. BASIC INFORMATION
+           ================================================ */
+
+        name: "Megan",
+
+        role: "Bioethicist and Stem Cell Researcher",
+
+        organisation: "Murdoch Children's Research Institute and the University of Melbourne",
+
+        portrait: `${imageFolder}portrait.jpg`,
+
+        superpower: "Connecting scientists, patients, policymakers and communities to make responsible decisions about new medical technologies",
+
+        imageFolder,
+
+
+        /* ================================================
+           C. INTERACTIVE TIMELINE
+
+           Five clickable stages.
+
+           Each stage contains:
+           - Title
+           - Colour
+           - Image
+           - Story points
+
+           timeline.js handles the interactions.
+           ================================================ */
+
+        timeline: [
+
+            // STAGE 1: CURIOUS BEGINNINGS
+
+            {
+                title: "Curious beginnings",
+                colour: "#F43559",
+
+                image: `${imageFolder}book.jpg`,
+                imageAlt: "Portrait of Megan today",
+
+                points: [
+                    "Megan loved biology at school, but she also enjoyed English, history and the humanities.",
+                    "She was fascinated by DNA, inheritance and how living things work.",
+                    "At school, she felt she had to choose between science and the humanities.",
+                    "Later, she discovered that she could combine both interests in her career!"
+                ]
+            },
+
+
+            // STAGE 2: SCIENCE MEETS PEOPLE
+
+            {
+                title: "Science meets people",
+                colour: "#E9B400",
+
+                image: `${imageFolder}ivf.png`,
+                imageAlt: "Image representing a clinical embryology laboratory",
+
+                points: [
+                    "After completing a science degree, Megan began working as a clinical embryologist in IVF laboratories.",
+                    "IVF is a medical treatment that can help people have babies.",
+                    "Megan saw how scientific discoveries and new technologies could change people's lives.",
+                    "She also realised that these technologies raised important questions about science, society and what is right or fair."
+                ]
+            },
+
+
+            // STAGE 3: FINDING HER PATH
+
+            {
+                title: "Finding her path",
+                colour: "#50B96D",
+
+                image: `${imageFolder}study.png`,
+                imageAlt: "Image representing Megan's university research",
+
+                points: [
+                    "Megan returned to university to study reproductive science, completing her master's degree part-time.",
+                    "She then completed a PhD investigating stem cells and how cells can be changed to develop in different ways.",
+                    "Her research introduced her to important ethical and legal questions about new technologies.",
+                    "Megan discovered bioethics - exploring what is right, fair and responsible in science and medicine."
+                ]
+            },
+
+
+            // STAGE 4: RESEARCH WITH AN IMPACT
+
+            {
+                title: "Research with an impact",
+                colour: "#4F71CB",
+
+                image: `${imageFolder}conference.jpg`,
+                imageAlt: "Image representing stem cells and medical research",
+
+                points: [
+                    "Today, Megan investigates the ethical and social questions surrounding stem-cell research and new medical technologies.",
+                    "Stem cells are special cells that can make more cells, and some can develop into different types of cells.",
+                    "She explores questions about patient safety, scientific evidence, informed consent and fairness.",
+                    "Her work helps scientists and doctors consider how to develop and use new treatments responsibly."
+                ]
+            },
+
+
+            // STAGE 5: CONNECTING SCIENCE AND SOCIETY
+
+            {
+                title: "Connecting science and society",
+                colour: "#00A7B8",
+
+                image: `${imageFolder}community.jpg`,
+                imageAlt: "Image representing scientists and communities sharing ideas",
+
+                points: [
+                    "Megan works with scientists, doctors, patients, communities and policymakers to discuss new scientific discoveries.",
+                    "She helps people understand the difference between promising research and treatments that have been proven to work.",
+                    "In 2026, her team began a project exploring how children and young people should have a voice in decisions about their donated cells being used for research.",
+                    "Her career shows that you can make a difference in STEM by helping people understand science and make informed decisions."
+                ]
+            }
+
+        ],
+
+
+        /* ================================================
+           D. HOBBIES AND INTERESTS
+
+           Uses Megan's existing travel photograph.
+
+           To display multiple photos later,
+           add a "photos" array like Paddy's profile.
+           ================================================ */
+
+        hobbies: {
+            heading: "Hobbies and interests",
+
+            text: "Megan enjoys cooking, trying new foods and discovering different cuisines when she travels! Her science career also takes her to conferences around the world.",
+
+            image: `${imageFolder}travel.jpeg`,
+            imageAlt: "Megan visiting a historic site during her travels"
+        },
+
+
+        /* ================================================
+           E. WHY HER WORK MATTERS
+
+           Three points displayed with coloured icons.
+           One accompanying image.
+           ================================================ */
+
+        impact: {
+            heading: "Why does her work matter?",
+
+            image: `${imageFolder}boston.jpg`,
+            imageAlt: "Image representing stem-cell research and ethical questions",
+
+            points: [
+                "Helps patients and families understand the difference between promising research and proven treatments",
+                "Encourages scientists to consider safety, consent and fairness when developing new medical technologies",
+                "Connects scientists with the community so decisions are based on evidence and different perspectives"
+            ]
+        },
+
+
+        /* ================================================
+           F. ADVICE FOR STUDENTS
+
+           Based on Megan's interview and old GTAC profile.
+           ================================================ */
+
+        adviceHeading: "Megan's advice",
+
+        advice: [
+            "Follow your curiosity! Your interests might lead you somewhere unexpected.",
+            "You do not have to choose between science and the humanities - both are important.",
+            "There is a lot of misinformation in science and it is our job to discover the truth.",
+            "Ask questions, look for evidence and listen to different points of view."
+        ]
+
+        /* ================================================
+           G. OPTIONAL VIDEO
+
+           No video has been added yet.
+
+           GTAC already has educational videos featuring
+           Megan discussing stem cells and ethics.
+
+           A video can be added in the future using the
+           existing video property, like Paddy's profile.
+           ================================================ */
+
+    };
+
+})(),
+
+
+/* =====================================================
+   MISTY JENKINS - BRAIN CANCER IMMUNOLOGIST
+
+   STEM EXPERT - NOT A GTAC STEM COACH
+
+   Sources:
+   - Interview: 22 April 2026
+   - Original GTAC STEM Superheroes Showcase
+   - WEHI Brain Cancer Immunotherapy Laboratory
+   - The Brain Cancer Centre
+
+   All images are stored locally.
+   Uses the existing reusable profile and timeline.
+   ===================================================== */
+
+misty: (() => {
+
+    /* ================================================
+       A. IMAGE FOLDER
+
+       All Misty's images are stored here.
+       ================================================ */
+
+    const imageFolder = "assets/images/experts/misty/";
+
+    return {
+
+        /* ================================================
+           B. BASIC INFORMATION
+           ================================================ */
+
+        name: "Misty",
+
+        role: "Brain Cancer Immunologist",
+
+        organisation: "Professor and Laboratory Head at WEHI and The Brain Cancer Centre, Melbourne",
+
+        portrait: `${imageFolder}portrait.jpg`,
+
+        superpower: "Engineering immune cells to recognise and attack brain cancer cells, to investigate better treatments for children and adults",
+
+        imageFolder,
+
+
+        /* ================================================
+           C. INTERACTIVE TIMELINE
+
+           Five clickable stages.
+
+           Each stage has:
+           - Title
+           - Colour
+           - Image
+           - Bullet points
+
+           timeline.js handles the interactions.
+           ================================================ */
+
+        timeline: [
+
+            // STAGE 1: CURIOUS BEGINNINGS
+
+            {
+                title: "Curious beginnings",
+                colour: "#F43559",
+
+                image: `${imageFolder}ballarat.jpg`,
+                imageAlt: "Portrait of Misty today",
+
+                points: [
+                    "Misty grew up in Ballarat, Victoria, and was the first person in her family to attend university.",
+                    "As a teenager, she was fascinated by the human body, anatomy and diseases.",
+                    "She was always curious and wanted to understand how things worked.",
+                    "Her teachers encouraged her curiosity, determination and interest in learning."
+                ]
+            },
+
+
+            // STAGE 2: EXPLORING HER INTERESTS
+
+            {
+                title: "Exploring her interests",
+                colour: "#E9B400",
+
+                image: `${imageFolder}paramedic.jpg`,
+                imageAlt: "Image representing first aid and St John Ambulance volunteering",
+
+                points: [
+                    "At just 11 years old, Misty began volunteering with St John Ambulance and even took part in first aid competitions!",
+                    "At school, she enjoyed maths and studied physics, chemistry and mathematics, but did not take biology.",
+                    "She also loved drama, theatre and performing on stage.",
+                    "Misty believes that performing helped her become confident speaking to large audiences - an important skill for a scientist.",
+                    "She worked part-time jobs while studying and learned valuable communication and teamwork skills."
+                ]
+            },
+
+
+            // STAGE 3: FINDING HER PATH
+
+            {
+                title: "Finding her path",
+                colour: "#50B96D",
+
+                image: `${imageFolder}cambridge.jpg`,
+                imageAlt: "Image representing Misty's research journey and university studies",
+
+                points: [
+                    "Misty studied science at the University of Melbourne, specialising in biotechnology and immunology - the study of the immune system.",
+                    "For her PhD, she contacted Peter Doherty, a scientist who had won a Nobel Prize, and was surprised when he called her back!",
+                    "They met for coffee, and he offered her an opportunity to join his research laboratory.",
+                    "After her PhD, she worked as a researcher at the universities of Oxford and Cambridge in the UK.",
+                    "She later returned to Australia and continued her research at Peter MacCallum Cancer Centre before joining WEHI."
+                ]
+            },
+
+
+            // STAGE 4: RESEARCH WITH AN IMPACT
+
+            {
+                title: "Research with an impact",
+                colour: "#4F71CB",
+
+                image: `${imageFolder}microscope.jpg`,
+                imageAlt: "Image representing immune T cells attacking cancer cells",
+
+                points: [
+                    "Misty leads a research team investigating new ways to treat brain cancer, including cancers affecting children.",
+                    "Her team studies T cells, which are immune cells that help protect our bodies from disease.",
+                    "They are developing CAR T cells - immune cells specially engineered to recognise and attack certain cancer cells.",
+                    "Researchers also use powerful microscopes to study how immune cells interact with brain tumours.",
+                    "These treatments are still being investigated for brain cancer. Scientists must carefully test their safety and effectiveness."
+                ]
+            },
+
+
+            // STAGE 5: LOOKING TO THE FUTURE
+
+            {
+                title: "Looking to the Future",
+                colour: "#00A7B8",
+
+                image: `${imageFolder}conference.jpg`,
+                imageAlt: "Image representing future advances in brain cancer treatment",
+
+                points: [
+                    "Misty wanted to lead her own research team so she could explore new ideas and make a meaningful difference.",
+                    "Building a research program was challenging. In her first year, she submitted 21 applications for research funding!",
+                    "She works with other scientists, doctors, charities and supporters through initiatives including The Brain Cancer Centre.",
+                    "Her long-term goal is to help develop better treatments for people with brain cancer, particularly children.",
+                    "Misty believes science is a creative activity where determination, teamwork and new ideas can help solve difficult problems."
+                ]
+            }
+
+        ],
+
+
+        /* ================================================
+           D. HOBBIES AND INTERESTS
+
+           One image is displayed by default.
+
+           To display multiple photographs,
+           add a "photos" array like Paddy's profile.
+           ================================================ */
+
+        hobbies: {
+            heading: "Hobbies and interests",
+
+            text: "Misty loves theatre, musicals, performing and karaoke! She has been involved in community theatre and enjoys spending time on stage. She believes that these experiences helped her develop the confidence to communicate science to large audiences.",
+
+            image: `${imageFolder}theater.jpg`,
+            imageAlt: "Image representing Misty's interest in theatre and performing"
+        },
+
+
+        /* ================================================
+           E. WHY HER RESEARCH MATTERS
+
+           Three points with coloured icons.
+           One accompanying image.
+           ================================================ */
+
+        impact: {
+            heading: "Why does her research matter?",
+
+            image: `${imageFolder}genes.jpg`,
+            imageAlt: "Image representing T cells and brain cancer immunotherapy",
+
+            points: [
+                "Develops specialised immune cells that may be able to recognise and attack brain cancer cells",
+                "Helps scientists understand why some brain tumours are difficult for the immune system to fight",
+                "Could contribute to safer and more effective brain cancer treatments in the future"
+            ]
+        },
+
+
+        /* ================================================
+           F. ADVICE FOR STUDENTS
+
+           Based on Misty's interview and GTAC showcase.
+           ================================================ */
+
+        adviceHeading: "Misty's advice",
+
+        advice: [
+            "Have a purpose and a vision to help people. It makes your work more meaningful!",
+            "Science is creative! You need to think outside the box, not just get good grades.",
+            "Develop life skills through jobs, hobbies and activities. Communication and teamwork are important in science.",
+            "Find mentors who encourage you and help you grow.",
+            "Follow your interests, stay determined and don't be afraid to try something new."
+        ]
+
+        /* ================================================
+           G. OPTIONAL VIDEO
+
+           No video has been added yet.
+
+           If Misty provides a science video,
+           add a "video" property like Paddy's profile.
+
+           The existing expert-profile.js already
+           supports this feature.
+           ================================================ */
+
+    };
+
 })()
-
-
 
 
 };
