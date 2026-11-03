@@ -20,8 +20,9 @@ defineProps({
 
 <style scoped>
 .feedback {
+  position: relative;
   margin-top: 18px;
-  padding: 14px 18px;
+  padding: 20px 18px;
 
   background: var(--background-color);
   border: 2px solid var(--charcoal);
@@ -30,6 +31,29 @@ defineProps({
 
   line-height: 1.5;
   animation: pop-fade-in 0.5s ease;
+}
+
+.feedback::before {
+  position: absolute;
+  top: -14px;
+  left: 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--accent-color);
+  border: 2px solid var(--charcoal);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.feedback.success::before {
+  content: "SUCCESS";
+}
+
+.feedback.try-again::before {
+  content: "TRY AGAIN";
 }
 
 .feedback.success {
