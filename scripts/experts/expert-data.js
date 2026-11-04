@@ -2744,7 +2744,735 @@ misty: (() => {
 
     };
 
+})(),
+
+
+/* =====================================================
+   SUE FAWCETT - GENETIC COUNSELLOR
+
+   STEM EXPERT - NOT A GTAC STEM COACH
+
+   Sources:
+   - Interview: 30 October 2026
+   - The Royal Women's Hospital, Clinical Genetics Service
+
+   All images are stored locally.
+   Uses the existing reusable profile and timeline code.
+   ===================================================== */
+
+sue: (() => {
+
+    /* ================================================
+       A. IMAGE FOLDER
+
+       All Sue's images are stored here.
+       ================================================ */
+
+    const imageFolder = "assets/images/experts/sue/";
+
+    return {
+
+        /* ================================================
+           B. BASIC INFORMATION
+
+           Name, role, workplace, portrait and superpower.
+           ================================================ */
+
+        name: "Sue",
+
+        role: "Genetic Counsellor and Genetic Services Manager",
+
+        organisation: "The Royal Women's Hospital, Melbourne",
+
+        portrait: `${imageFolder}portrait.jpg`,
+
+        superpower: "Combining genetics, empathy and communication to help people understand their genes and make informed decisions about their health",
+
+        imageFolder,
+
+
+        /* ================================================
+           C. INTERACTIVE TIMELINE
+
+           Five clickable stages.
+
+           Each stage includes:
+           - Title
+           - Colour
+           - Image
+           - Story points
+
+           timeline.js handles the interactions.
+           ================================================ */
+
+        timeline: [
+
+            // STAGE 1: CURIOUS BEGINNINGS
+
+            {
+                title: "Curious beginnings",
+                colour: "#F43559",
+
+                image: `${imageFolder}portrait.jpg`,
+                imageAlt: "Portrait of Sue today",
+
+                points: [
+                    "Sue grew up in a family where studying science at university was unusual.",
+                    "Sue and her brother were the first in their family to attend university.",
+                    "In Year 11, an inspiring biology teacher named Greg Hunt helped her discover how exciting science could be.",
+                    "Looking through microscopes at things like the structure of a leaf showed her how amazing and complex living things are.",
+                    "This curiosity eventually led her towards genetics - the study of genes and how traits are passed on."
+                ]
+            },
+
+
+            // STAGE 2: CHALLENGES AND CHOICES
+
+            {
+                title: "Challenges and choices",
+                colour: "#E9B400",
+
+                image: `${imageFolder}biology.jpg`,
+                imageAlt: "Image representing biology and observing leaves through a microscope",
+
+                points: [
+                    "Sue loved biology, English, languages and history, but she found mathematics difficult and didn't enjoy it.",
+                    "At first, she wanted to become a physiotherapist, someone who helps people improve their movement and physical health.",
+                    "She didn't receive the VCE score she needed for physiotherapy, so she explored another pathway.",
+                    "Sue began studying biological sciences at La Trobe University.",
+                    "She studied plants, animals and genetics, eventually becoming particularly interested in human genetics."
+                ]
+            },
+
+
+            // STAGE 3: FINDING HER PATH
+
+            {
+                title: "Finding her path",
+                colour: "#50B96D",
+
+                image: `${imageFolder}pathway.jpg`,
+                imageAlt: "Image representing Sue's journey through laboratory science and genetic counselling",
+
+                points: [
+                    "After university, Sue worked as a research assistant at Peter MacCallum Cancer Centre.",
+                    "She then spent around three years working at a biotechnology company.",
+                    "Although she loved genetics, she realised that she didn't want to spend her entire career working in a laboratory or in business.",
+                    "She discovered genetic counselling, a career combining genetics with helping people.",
+                    "In 1996, she moved to Newcastle to study a postgraduate diploma in genetic counselling.",
+                    "Her first genetic counselling job took her to Bathurst, before she began working at The Royal Women's Hospital."
+                ]
+            },
+
+
+            // STAGE 4: SCIENCE MEETS PEOPLE
+
+            {
+                title: "Science meets people",
+                colour: "#4F71CB",
+
+                image: `${imageFolder}counselling.jpg`,
+                imageAlt: "Image representing a genetic counsellor helping someone understand health information",
+
+                points: [
+                    "A genetic counsellor helps people understand how genes can affect their health and their families.",
+                    "Genes are sections of DNA that carry instructions for how our bodies develop and function.",
+                    "At The Royal Women's Hospital, Sue's team helps people understand genetic conditions and testing options, including during pregnancy or when planning a family.",
+                    "Genetic counsellors explain complicated science in ways that people can understand.",
+                    "They listen carefully, answer questions and support people to make their own informed decisions.",
+                    "Sue loves that her job combines her interest in science with making people's experiences a little easier."
+                ]
+            },
+
+
+            // STAGE 5: LEADING WITH EMPATHY
+
+            {
+                title: "Leading with empathy",
+                colour: "#00A7B8",
+
+                image: `${imageFolder}leadership.jpg`,
+                imageAlt: "Image representing leadership, teamwork and healthcare",
+
+                points: [
+                    "Today, Sue is a Genetic Services Manager, helping lead a team of genetic counselling professionals.",
+                    "She continues to learn about new discoveries because the science of genetics is always changing.",
+                    "She believes that listening, empathy and communication are just as important as understanding scientific information.",
+                    "Genetic counselling can involve difficult conversations, so supporting the wellbeing of healthcare workers is important too.",
+                    "Sue encourages students interested in healthcare to develop people skills through volunteering, part-time jobs and community activities.",
+                    "Her journey shows that science can lead to a meaningful career helping people, even outside the laboratory."
+                ]
+            }
+
+        ],
+
+
+        /* ================================================
+           D. HOBBIES AND INTERESTS
+
+           Displays one photograph by default.
+
+           To display multiple photos later,
+           add a "photos" array like Paddy's profile.
+           ================================================ */
+
+        hobbies: {
+            heading: "Hobbies and interests",
+
+            text: "Sue loves reading and has been part of a monthly book club with her friends for more than 10 years! She has also started bootscooting (line dancing). When she was younger, she enjoyed ballet, and she still likes watching performances.",
+
+            image: `${imageFolder}book-club.jpg`,
+            imageAlt: "Image representing Sue's love of reading and book clubs"
+        },
+
+
+        /* ================================================
+           E. WHY HER WORK MATTERS
+
+           Three points displayed with coloured icons.
+           One accompanying photograph.
+
+           Unlike laboratory researchers, Sue's impact
+           comes largely from her work with people.
+           ================================================ */
+
+        impact: {
+            heading: "Why does her work matter?",
+
+            image: `${imageFolder}counselling.jpg`,
+            imageAlt: "Image representing genetic counselling and personalised healthcare",
+
+            points: [
+                "Helps individuals and families understand genetic conditions and what test results might mean",
+                "Supports people to make informed choices about genetic testing, health and family planning",
+                "Combines scientific knowledge with listening, empathy and communication to provide person-centred care"
+            ]
+        },
+
+
+        /* ================================================
+           F. ADVICE FOR STUDENTS
+
+           Educational takeaways based on Sue's interview.
+
+           These are paraphrases, not direct quotations.
+           ================================================ */
+
+        adviceHeading: "Sue's advice",
+
+        advice: [
+            "You don't have to love every subject to find a career you enjoy in science.",
+            "Follow your interests. Sometimes a different pathway can lead you somewhere wonderful!",
+            "Learn how to communicate, listen and work with people. These skills matter in STEM too.",
+            "Try volunteering, joining activities or gaining work experience to develop life skills.",
+            "If you're interested in a career, talk to someone who already does that job and find out what it's really like."
+        ]
+
+        /* ================================================
+           G. OPTIONAL VIDEO
+
+           No video has been added for Sue.
+
+           If Sue provides a video about genetic
+           counselling, add a "video" property here.
+
+           Your existing expert-profile.js already
+           supports this optional feature.
+           ================================================ */
+
+    };
+
+})(),
+
+
+/* =====================================================
+   VIJAY RAJAGOPAL - COMPUTATIONAL PHYSIOLOGIST
+
+   STEM EXPERT - NOT A GTAC STEM COACH
+
+   Sources:
+   - Interview: 24 March 2026
+   - Original GTAC STEM Superheroes Showcase
+   - University of Melbourne research information
+
+   All images are stored locally.
+   Uses the existing reusable profile and timeline code.
+   ===================================================== */
+
+vijay: (() => {
+
+    /* ================================================
+       A. IMAGE FOLDER
+
+       All Vijay's images are stored here.
+       ================================================ */
+
+    const imageFolder = "assets/images/experts/vijay/";
+
+    return {
+
+        /* ================================================
+           B. BASIC INFORMATION
+
+           Name, role, workplace, portrait and superpower.
+           ================================================ */
+
+        name: "Vijay",
+
+        role: "Computational Physiologist",
+
+        organisation: "Associate Professor, Department of Biomedical Engineering, University of Melbourne",
+
+        portrait: `${imageFolder}portrait.jpg`,
+
+        superpower: "Using mathematics, physics and computer simulations to understand how our heart, blood vessels and cells work",
+
+        imageFolder,
+
+
+        /* ================================================
+           C. INTERACTIVE TIMELINE
+
+           Five clickable stages.
+
+           Each stage has:
+           - Title
+           - Colour
+           - Image
+           - Story points
+
+           timeline.js handles the interactions.
+           ================================================ */
+
+        timeline: [
+
+            // STAGE 1: CURIOUS BEGINNINGS
+
+            {
+                title: "Curious beginnings",
+                colour: "#F43559",
+
+                image: `${imageFolder}portrait.jpg`,
+                imageAlt: "Portrait of Vijay today",
+
+                points: [
+                    "Vijay was born in southern India, where he grew up with his family.",
+                    "His father was a chemical engineer and his grandfather worked at the Reserve Bank of India.",
+                    "Although his family had some experience with engineering, Vijay did not grow up expecting to become a scientist.",
+                    "When he was in secondary school, he moved from India to New Zealand.",
+                    "His journey would eventually lead him to discover how engineering and mathematics could help us understand the human body."
+                ]
+            },
+
+
+            // STAGE 2: CHALLENGES IN SCHOOL
+
+            {
+                title: "Challenges in school",
+                colour: "#E9B400",
+
+                image: `${imageFolder}school.jpg`,
+                imageAlt: "Image representing Vijay's school experiences",
+
+                points: [
+                    "Vijay did not find mathematics particularly easy when he was younger.",
+                    "He learned that sometimes he needed to slow down, practise and give himself more time to understand difficult ideas.",
+                    "He originally imagined becoming a pilot or a mechatronics engineer, someone who combines mechanical engineering, electronics and computing.",
+                    "He did not plan to become a scientist or study medicine.",
+                    "His experience taught him that finding a subject difficult does not mean you cannot succeed in it."
+                ]
+            },
+
+
+            // STAGE 3: FINDING HIS PATH
+
+            {
+                title: "Finding his path",
+                colour: "#50B96D",
+
+                image: `${imageFolder}journey.jpg`,
+                imageAlt: "Image representing Vijay's studies in engineering and biomedical science",
+
+                points: [
+                    "Vijay studied Engineering Science at university in New Zealand.",
+                    "He learned how mathematics, physics and computer programming could be used to solve real-world problems.",
+                    "He discovered that these tools could also help scientists understand the human body.",
+                    "Although he initially considered working in industry, he became interested in continuing his studies through a PhD.",
+                    "His research journey took him into biomedical engineering, where engineers use technology and scientific knowledge to investigate problems in medicine.",
+                    "After his PhD and further research experience, he eventually established his own research group at the University of Melbourne."
+                ]
+            },
+
+
+            // STAGE 4: RESEARCH WITH AN IMPACT
+
+            {
+                title: "Research with an impact",
+                colour: "#4F71CB",
+
+                image: `${imageFolder}heart-model.jpg`,
+                imageAlt: "Computer model representing heart cells and their activity",
+
+                points: [
+                    "Vijay uses mathematics, physics and computers to create models of how cells and organs work.",
+                    "A computer model is like a digital experiment that helps scientists explore what might happen inside the body.",
+                    "His team investigates how calcium signals help heart muscle cells contract and grow.",
+                    "They also study how red blood cells move through tiny blood vessels called capillaries.",
+                    "These models help scientists understand what happens in healthy bodies and what might change during diseases such as heart disease."
+                ]
+            },
+
+
+            // STAGE 5: LOOKING TO THE FUTURE
+
+            {
+                title: "Looking to the Future",
+                colour: "#00A7B8",
+
+                image: `${imageFolder}future.jpg`,
+                imageAlt: "Illustration representing digital models of the human heart",
+
+                points: [
+                    "Vijay's research team is developing increasingly detailed computer models of living cells and organs.",
+                    "Scientists sometimes call these models digital twins because they represent parts of the real world inside a computer.",
+                    "Researchers hope these models will help them better understand heart disease and investigate possible treatments.",
+                    "Computer simulations may also help scientists decide which ideas are worth testing in the laboratory.",
+                    "Vijay continues exploring how mathematics, computing and biology can work together to improve healthcare."
+                ]
+            }
+
+        ],
+
+
+        /* ================================================
+           D. HOBBIES AND INTERESTS
+
+           One image is displayed by default.
+
+           To display multiple photographs,
+           add a "photos" array like Paddy's profile.
+           ================================================ */
+
+        hobbies: {
+            heading: "Hobbies and interests",
+
+            text: "Outside science, Vijay enjoys a good cup of coffee and playing flight simulator games from the comfort of his sofa! He also once tried performing stand-up comedy. Science and humour can go hand in hand!",
+
+            image: `${imageFolder}hobbies.jpg`,
+            imageAlt: "Image representing Vijay's interests in flight simulators, coffee and comedy"
+        },
+
+
+        /* ================================================
+           E. WHY HIS RESEARCH MATTERS
+
+           Three points displayed with coloured icons.
+           One accompanying image.
+
+           Vijay's work uses computational models
+           rather than relying only on laboratory
+           experiments.
+           ================================================ */
+
+        impact: {
+            heading: "Why does his research matter?",
+
+            image: `${imageFolder}heart-model.jpg`,
+            imageAlt: "Computer model representing the human heart and its cells",
+
+            points: [
+                "Helps scientists understand how heart cells grow, contract and respond to different signals",
+                "Uses computer simulations to investigate how blood cells move through tiny blood vessels",
+                "Could help scientists investigate new ways to understand, prevent and treat diseases in the future"
+            ]
+        },
+
+
+        /* ================================================
+           F. ADVICE FOR STUDENTS
+
+           Based on Vijay's interview and existing
+           GTAC STEM Superheroes profile.
+
+           Advice is paraphrased for primary students,
+           except for the first point, which preserves
+           the lesson from the original GTAC showcase.
+           ================================================ */
+
+        adviceHeading: "Vijay's advice",
+
+        advice: [
+            "Just because you find something hard, doesn't mean you are bad at it. It just means you need more time.",
+            "Everyone has different talents. You might discover what you are good at later than you expect!",
+            "Focus on understanding the fundamentals and give yourself time to learn.",
+            "Don't be discouraged if you don't understand something straight away.",
+            "Explore different interests. You never know where your curiosity might take you!"
+        ]
+
+        /* ================================================
+           G. OPTIONAL VIDEO
+
+           No video has been added for Vijay.
+
+           If Vijay provides a computer simulation of
+           heart cells, blood vessels or calcium signals,
+           add a "video" property here like Paddy's.
+
+           The existing expert-profile.js already
+           supports this optional feature.
+           ================================================ */
+
+    };
+
+})(),
+
+
+/* =====================================================
+   CHRIS FREELANCE - EVOLUTIONARY BIOLOGIST
+
+   STEM EXPERT - NOT A GTAC STEM COACH
+
+   Sources:
+   - Interview: 18 March 2026
+   - Original GTAC STEM Superheroes Showcase
+   - University of Melbourne researcher information
+   - Ecological Society of Australia research article
+
+   All images are stored locally.
+   Uses the existing reusable profile and timeline code.
+   ===================================================== */
+
+chris: (() => {
+
+    /* ================================================
+       A. IMAGE FOLDER
+
+       All Chris's images are stored here.
+       ================================================ */
+
+    const imageFolder = "assets/images/experts/chris/";
+
+    return {
+
+        /* ================================================
+           B. BASIC INFORMATION
+
+           Name, role, workplace, portrait and superpower.
+           ================================================ */
+
+        name: "Chris",
+
+        role: "Evolutionary Biologist",
+
+        organisation: "Senior Lecturer and Melbourne Histology Platform Manager, University of Melbourne",
+
+        portrait: `${imageFolder}portrait.jpg`,
+
+        superpower: "Investigating why animals have different body structures and sensory organs, and how these help them survive in their environments",
+
+        imageFolder,
+
+
+        /* ================================================
+           C. INTERACTIVE TIMELINE
+
+           Five clickable stages.
+
+           Each stage includes:
+           - Title
+           - Colour
+           - Image
+           - Story points
+
+           timeline.js handles the interactions.
+           ================================================ */
+
+        timeline: [
+
+            // STAGE 1: CURIOUS BEGINNINGS
+
+            {
+                title: "Curious beginnings",
+                colour: "#F43559",
+
+                image: `${imageFolder}portrait.jpg`,
+                imageAlt: "Portrait of Chris today",
+
+                points: [
+                    "Chris grew up in regional Victoria, in the Macedon Ranges.",
+                    "He was the first person in his family to attend university.",
+                    "At primary school, he didn't have separate science classes, but he enjoyed learning and exploring different subjects.",
+                    "In high school, science became one of his favourite subjects.",
+                    "He also completed work experience in a medical science laboratory, giving him an early introduction to research."
+                ]
+            },
+
+
+            // STAGE 2: CHALLENGES IN SCHOOL
+
+            {
+                title: "Challenges in school",
+                colour: "#E9B400",
+
+                image: `${imageFolder}maths.jpg`,
+                imageAlt: "Image representing school mathematics and learning",
+
+                points: [
+                    "Chris enjoyed science, but he didn't always find mathematics easy.",
+                    "In Year 11, he struggled with Maths Methods, particularly probability and statistics.",
+                    "He received extra help and learned that sometimes understanding something takes more time and practice.",
+                    "Even at university, he found some physics subjects challenging.",
+                    "Chris discovered that grades don't always reflect what someone is capable of achieving.",
+                    "He encourages students to be persistent and not give up just because a subject feels difficult."
+                ]
+            },
+
+
+            // STAGE 3: FINDING HIS PATH
+
+            {
+                title: "Finding his path",
+                colour: "#50B96D",
+
+                image: `${imageFolder}university.jpg`,
+                imageAlt: "Image representing Chris's journey through university and scientific research",
+
+                points: [
+                    "Chris originally considered becoming a medical doctor, but eventually realised medicine wasn't the right pathway for him.",
+                    "He began studying neuroscience, the science of the brain and nervous system.",
+                    "He was also fascinated by animals, their behaviour and how they experience the world.",
+                    "His interests led him towards zoology, ecology and evolutionary biology.",
+                    "During university, he gained experience working as a research assistant.",
+                    "For his PhD, he investigated how the environment can influence the evolution of animals' sensory organs.",
+                    "Chris's career shows that discovering new interests can change where your science journey takes you."
+                ]
+            },
+
+
+            // STAGE 4: RESEARCH WITH AN IMPACT
+
+            {
+                title: "Research with an impact",
+                colour: "#4F71CB",
+
+                image: `${imageFolder}stick-insect.jpg`,
+                imageAlt: "Lord Howe Island stick insect studied in conservation research",
+
+                points: [
+                    "Chris studies evolutionary biology and sensory ecology - how animals' senses help them interact with their environments.",
+                    "Animals may have eyes, antennae and other sensory organs that look different, even when they perform similar jobs.",
+                    "He investigated Lord Howe Island stick insects, comparing insects living in the wild with those bred in captivity.",
+                    "He found that captive-bred insects had smaller compound eyes and fewer scent-detecting receptors on their antennae.",
+                    "These differences might affect how well insects find food, locate mates or detect danger after being returned to the wild.",
+                    "His discoveries help scientists consider how to improve conservation programs for threatened species."
+                ]
+            },
+
+
+            // STAGE 5: SCIENCE AND COMMUNICATION
+
+            {
+                title: "Science and communication",
+                colour: "#00A7B8",
+
+                image: `${imageFolder}microscope.jpg`,
+                imageAlt: "Image representing microscopy and scientific research at the University of Melbourne",
+
+                points: [
+                    "Today, Chris works at the University of Melbourne as a Senior Lecturer and manager of the Melbourne Histology Platform.",
+                    "Histology involves studying thin sections of biological material, often using microscopes.",
+                    "He helps researchers use microscopes and other techniques to investigate cells, tissues and living things.",
+                    "Chris is also passionate about making science understandable and accessible to everyone.",
+                    "He hosts a podcast called 'Divergent in STEMM', where scientists and other STEM professionals share their experiences of thinking and learning differently.",
+                    "Through research, education and communication, Chris helps people discover that there are many different ways to succeed in science."
+                ]
+            }
+
+        ],
+
+
+        /* ================================================
+           D. HOBBIES AND INTERESTS
+
+           One image is displayed by default.
+
+           To display multiple photographs,
+           add a "photos" array like Paddy's profile.
+           ================================================ */
+
+        hobbies: {
+            heading: "Hobbies and interests",
+
+            text: "Chris loves astrophotography - taking photographs of stars and the night sky! He also enjoys science communication and hosts his own podcast, Divergent in STEMM, where he talks with people about their experiences working in science.",
+
+            image: `${imageFolder}astrophotography.jpg`,
+            imageAlt: "Photograph of stars in the night sky, representing Chris's interest in astrophotography"
+        },
+
+
+        /* ================================================
+           E. WHY HIS RESEARCH MATTERS
+
+           Three impact points displayed with icons.
+           One accompanying image.
+
+           Focuses on the connection between sensory
+           ecology, evolution and conservation.
+           ================================================ */
+
+        impact: {
+            heading: "Why does his research matter?",
+
+            image: `${imageFolder}stick-insect.jpg`,
+            imageAlt: "Lord Howe Island stick insect",
+
+            points: [
+                "Helps explain why animals have different sensory organs and how these structures help them survive",
+                "Investigates differences between wild animals and animals raised in captivity",
+                "Provides knowledge that could help conservation scientists protect threatened species and plan wildlife reintroductions"
+            ]
+        },
+
+
+        /* ================================================
+           F. ADVICE FOR STUDENTS
+
+           Based on Chris's interview and the original
+           GTAC STEM Superheroes Showcase.
+
+           The advice is adapted for primary students.
+           ================================================ */
+
+        adviceHeading: "Chris's advice",
+
+        advice: [
+            "You don't have to be fantastic at maths to become a successful scientist!",
+            "If something is difficult, don't give up. Ask for help, practise and keep trying.",
+            "Grades don't define everything you're capable of achieving.",
+            "Follow what interests you. Your career might take you somewhere you never expected!",
+            "Be persistent and fight for what you want."
+        ]
+
+        /* ================================================
+           G. OPTIONAL VIDEO
+
+           No video is currently added for Chris.
+
+           You could later include:
+           - A research video showing insect sensory organs
+           - A microscopy demonstration
+           - A short introduction to his podcast
+
+           Add a "video" property here using Paddy's
+           existing video feature as a template.
+           ================================================ */
+
+    };
+
 })()
+
+
+
 
 
 };
