@@ -225,7 +225,7 @@ export const expertProfiles = [
             superpower: "Studying bacteria that cause infections and investigating antibiotic resistance",
             coolFact: "She loves exploring cafés and trying new coffees",
             impact: "Her research helps scientists understand antibiotic resistance",
-            lesson: "Explore different interests and discover what you enjoy!"
+            lesson: "Explore different interests and discover what excites you."
         },
         timeline: [
             {
@@ -234,7 +234,7 @@ export const expertProfiles = [
                 image: `${base}/muna/pakistan.jpg`,
                 imageAlt: "Muna's Home",
                 points: [
-                    "Muna grew up in Pakistan and always loved biology.",
+                    "Muna grew up in Pakistan and was always curious about biology and how living things work.",
                     "When she was younger, she dreamed of becoming a doctor.",
                     "She became the first woman in her extended family to attend university and later study overseas!"
                 ]
@@ -245,9 +245,9 @@ export const expertProfiles = [
                 image: `${base}/muna/muna-university.jpg`,
                 imageAlt: "Image representing Muna's school experiences",
                 points: [
-                    "She wanted to be a doctor, but getting into medical school in Pakistan was very competitive.",
-                    "She received an offer from a private medical university, but it was too expensive.",
-                    "She changed her plans, but she knew she wanted to be in science."
+                    "She wanted to be a doctor, but getting into public medical school in Pakistan was very competitive.",
+                    "She received an offer from a private medical university, but the cost was too high for her to pursue it.",
+                    "She had to change her plans, but she knew she still wanted a future in science."
                 ]
             },
             {
@@ -256,10 +256,11 @@ export const expertProfiles = [
                 image: `${base}/muna/travel.jpeg`,
                 imageAlt: "Image representing Muna's university studies",
                 points: [
-                    "Muna discovered a love for microbiology, the study of tiny living things, such as bacteria.",
-                    "She completed her undergraduate and masters in microbiology in Pakistan.",
-                    "She then got a full scholarship to do a PhD in Australia.",
-                    "She realised that she loved both research and teaching."
+                    "Muna discovered a love for microbiology, the study of tiny living things such as bacteria.",
+                    "She completed her undergraduate and master's degrees in microbiology in Pakistan.",
+                    "What started as a different path from medicine became a subject she was passionate about.",
+                    "She then received a full scholarship to pursue her PhD in Australia.",
+                    "Along the way, she realised that she loved both research and teaching."
                 ]
             },
             {
@@ -268,10 +269,10 @@ export const expertProfiles = [
                 image: `${base}/muna/bacteria.jpg`,
                 imageAlt: "Image representing E. coli bacteria",
                 points: [
-                    "Muna studies the bacteria E. coli, which can cause urinary tract infections (UTIs).",
-                    "She works with atient samples from hospitals.",
-                    "Her research explores how some bacteria can survive medicines designed to kill them. This is called antibiotic resistance",
-                    "This will help scientists develop better ways to treat infections."
+                    "Muna studies E. coli, a type of bacteria that can cause urinary tract infections (UTIs).",
+                    "She studies the genome (DNA) of the bacteria to understand how different bacteria are related to each other and how they change over time.",
+                    "Her research explores how some bacteria survive antibiotics, medicines designed to kill them; this is called antibiotic resistance.",
+                    "Her research can help scientists better understand antibiotic-resistant bacteria and find better ways to prevent or treat infections."
                 ]
             },
             {
@@ -280,10 +281,10 @@ export const expertProfiles = [
                 image: `${base}/muna/poster.jpeg`,
                 imageAlt: "Image representing Muna's future in science",
                 points: [
-                    "Muna wants to continue working as a researcher.",
-                    "She is also interested in teaching, public health and other careers in science.",
-                    "As a GTAC STEM Coach, she has learned to explain science to kids and young people.",
-                    "Working with students has helped her become a confident science communicator."
+                    "Muna wants to continue contributing to research that can improve human health.",
+                    "She is interested in exploring opportunities in research, teaching and public health.",
+                    "She hopes to use both her research and communication skills to make science accessible to others.",
+                    "She would also like to inspire young people to stay curious and explore where STEM can take them."
                 ]
             }
         ],
@@ -305,9 +306,9 @@ export const expertProfiles = [
         },
         adviceHeading: "Muna's advice",
         advice: [
-            "Explore different interests and discover what you enjoy!",
-            "Your journey into science doesn't have to follow a straight path.",
-            "If something isn't right for you, it's okay to change direction and try something else."
+            "Explore different interests and discover what excites you.",
+            "Your journey into science doesn't have to follow the path you first imagined. Sometimes a different path can lead to opportunities you never expected.",
+            "Don't be afraid to change direction. Stay curious, keep learning and be open to where your journey takes you."
         ]
     },
     {
