@@ -150,14 +150,14 @@ const stage = computed(() => (selected.value === null ? null : props.stages[sele
 .timeline-story-heading { margin: 0 0 12px; font-size: 1.1rem; }
 .timeline-story-points { margin: 0; padding-left: 22px; line-height: 1.58; }
 .timeline-story-points li + li { margin-top: 8px; }
-.timeline-photo-wrap { margin: 0; min-width: 0; background: #f5f4ee; border-radius: 15px; overflow: hidden; }
-.timeline-photo { display: block; width: 100%; height: 100%; min-height: 245px; max-height: 330px; object-fit: cover; }
+/* The story text sets the section height; the photo fills the space so tall or short images can't distort the layout. */
+.timeline-photo-wrap { position: relative; min-width: 0; min-height: 245px; margin: 0; background: #f5f4ee; border-radius: 15px; overflow: hidden; }
+.timeline-photo { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
 @media (max-width: 650px) {
   .timeline-swipe-hint { display: block; margin: 0 0 8px; color: var(--muted); font-size: .75rem; font-weight: 700; text-align: center; }
   .timeline-display { grid-template-columns: minmax(0, 1fr); }
   .timeline-story { min-height: 0; }
-  .timeline-photo { max-height: 270px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .timeline-pin { transition: none; }

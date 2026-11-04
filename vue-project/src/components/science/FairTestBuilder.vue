@@ -30,7 +30,7 @@ const variables = [
     controlOptions: ['1m', '1.5m', '3m'],
   },
   // fixedPair: Change compares both options (A = first, B = second) with no dropdown
-  { id: 'surface', label: 'Surface Type', options: ['Grass', 'Concrete'], fixedPair: true },
+  { id: 'surface', label: 'Surface Type', options: ['Soft Surface', 'Hard Surface'], fixedPair: true },
   { id: 'direction', label: 'Direction of Drop', options: ['Blunt End', 'Pointy End'], fixedPair: true },
 ];
 
@@ -69,10 +69,10 @@ const layerImages = {
 };
 // Egg position down the ruler (matches the ruler markers)
 const heightTop = { '1m': '61%', '1.5m': '53%', '3m': '31%' };
-const surfaceClass = { Grass: 'soft-surface', Concrete: 'hard-surface' };
+const surfaceClass = { "Soft Surface": 'soft-surface', "Hard Surface": 'hard-surface' };
 
 const measureLabel = 'Level of Protection';
-const measureImage = ''; // TODO: replace with the real image path
+const measureImage = `${imageBase}protection-scale.png`; // TODO: replace with the real image path
 
 // Student choices
 const changeId = ref(''); // variable being changed
@@ -257,10 +257,10 @@ function reset() {
           </Button>
         </div>
 
-        <div v-if="measureSelected" class="measure-image">
+        <figure v-if="measureSelected" class="measure-image">
+          <figcaption>Scale for amount of damage to the egg</figcaption>
           <img v-if="measureImage" :src="measureImage" :alt="measureLabel" />
-          <span v-else>Image placeholder</span>
-        </div>
+        </figure>
       </template>
 
       <!-- Control: all variables; the one being changed is disabled -->
@@ -333,13 +333,13 @@ function reset() {
           <h4>Number of layers</h4>
 
           <figure>
-            <div v-if="isWrapped(lanes[1]) && lanes[0].layers == '1 Layer' && lanes[1].layers == '2 Layers'">
+            <figure v-if="isWrapped(lanes[1]) && lanes[0].layers == '1 Layer' && lanes[1].layers == '2 Layers'">
               <img
                 :src="layerImages[lanes[0].material][lanes[0].layers]"
                 :alt="`${lanes[0].layers} of ${lanes[0].material}`"
               />
               <figcaption>{{ lanes[0].layers }}</figcaption>
-            </div>
+            </figure>
             <img
               :src="isWrapped(lanes[1]) ? layerImages[lanes[1].material][lanes[1].layers] : defaultEggImage"
               :alt="isWrapped(lanes[1]) ? `${lanes[1].layers} of ${lanes[1].material}` : 'Egg with no protection'"
@@ -499,17 +499,38 @@ function reset() {
 }
 
 .measure-image {
-  display: grid;
-  place-items: center;
+  position: relative;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  justify-self: center;
   min-height: 220px;
+  width: 50vw;
   margin-top: 14px;
 
-  background: var(--soft-yellow);
-  border: 2px dashed var(--charcoal);
+  background-color: white;
+  border: 2px solid var(--charcoal);
   border-radius: var(--radius-small);
 
   color: var(--muted);
+  overflow: hidden;
+
+  animation: pop-fade-in 0.5s ease;;
+}
+
+.measure-image figcaption {
+  position: absolute;
+  top: 20px;
+
+  padding: 10px;
+  border: 2px solid var(--charcoal);
+  border-radius: var(--radius-small);
+  box-shadow: var(--shadow-small);
+
+  font-weight: 700;
 }
 
 .measure-image img {
@@ -521,9 +542,10 @@ function reset() {
   padding: 20px;
   margin-bottom: 24px;
 
-  background: var(--paper);
+  background: var(--cream);
   border: 2px solid var(--charcoal);
   border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-medium);
 }
 
 .fair-test-heading h3 {
@@ -677,7 +699,7 @@ function reset() {
 
   padding: 14px;
 
-  background: var(--soft-purple);
+  background: var(--soft-orange);
   border: 2px solid var(--charcoal);
   border-radius: var(--radius-small);
 }
@@ -709,7 +731,7 @@ function reset() {
   font-weight: 700;
 }
 
-.layers-panel div figcaption {
+.layers-panel figure figcaption {
   margin-top: 5px;
 }
 

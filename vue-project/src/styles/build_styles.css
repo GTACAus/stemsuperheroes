@@ -139,8 +139,6 @@ select {
 
     border: 2px solid var(--charcoal);
     border-radius: var(--radius-small);
-
-    /* box-shadow: var(--shadow-small); */
 }
 
 .gtac-svg-icon svg {
