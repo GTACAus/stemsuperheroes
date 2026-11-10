@@ -225,11 +225,12 @@ export const expertProfiles = {
             imageAlt: "Paddy hiking outdoors",
             caption: "Hiking",
           },
+          
           {
             image: `${imageFolder}running.png`,
             imageAlt: "Paddy at a running event",
             caption: "Running",
-          },
+          }, /* This is the carousel photo, not the gallery photo. */
         ],
       },
 
@@ -242,16 +243,22 @@ export const expertProfiles = {
          Remove a photo entry here to deselect it.
          ================================================ */
       gallery: [
+
+
         {
           image: `${imageFolder}hiking.jpeg`,
           imageAlt: "Paddy hiking outdoors",
           caption: "Hiking",
         },
+
+
         {
           image: `${imageFolder}running.png`,
           imageAlt: "Paddy at a running event",
           caption: "Running",
         },
+
+
       ],
 
       impact: {
@@ -340,7 +347,7 @@ export const expertProfiles = {
         {
           title: "Dreams",
           colour: "#E9B400",
-          image: `${imageFolder}muna-university.jpg`,
+          image: `${imageFolder}uvas2.png`,
           imageAlt: "Image representing Muna's school experiences",
           points: [
             "She wanted to be a doctor, but getting into public medical school in Pakistan was very competitive.",
@@ -1304,7 +1311,7 @@ export const expertProfiles = {
       name: "Maria",
       role: "Malaria Immunologist",
       organisation:
-        "The Peter Doherty Institute for Infection and Immunity, University of Melbourne",
+        "The Peter Doherty Institute for Infection and Immunity, and the University of Melbourne",
       portrait: `${imageFolder}portrait.jpg`,
       superpower:
         "Help our body recognise and remove malaria-infected red blood cells",
@@ -3505,14 +3512,15 @@ export const expertProfiles = {
           title: "Curious beginnings",
           colour: "#F43559",
 
-          image: `${imageFolder}portrait.jpg`,
+          image: `${imageFolder}nature.jpg`,
           imageAlt: "Portrait of Maja today",
 
           points: [
             "At school, Maja enjoyed both creative and scientific subjects, including fine art, biology, chemistry and French.",
-            "She loved learning about the natural world and originally imagined becoming a veterinarian.",
-            "She enjoyed nature documentaries and admired how people like David Attenborough could make science fascinating.",
-            "Although she loved both science and art, she never imagined that one day she could combine them in a single career!",
+            "She loved learning about the natural world, and enjoyed nature documentaries.",
+            "She admired how people like David Attenborough could make science fascinating.",
+            "She wanted to be a veterinarian.",
+            "Although she loved science and art, she never imagined that she could combine them in her career!",
           ],
         },
 
@@ -3522,16 +3530,15 @@ export const expertProfiles = {
           title: "Challenges and choices",
           colour: "#E9B400",
 
-          image: `${imageFolder}school.jpg`,
+          image: `${imageFolder}maja2.jpeg`,
           imageAlt:
             "Illustration representing Maja's interests in science and art",
 
           points: [
-            "Maja enjoyed biology and chemistry, but found physics and mathematics challenging.",
-            "She went on to study biomedical science and completed a PhD in molecular biology at Monash University.",
-            "A PhD involves investigating a research question and making new discoveries.",
-            "After her PhD, Maja worked in scientific sales, but she began to miss the creative side of her life.",
-            "She realised that neither laboratory research nor scientific sales was quite the career she wanted.",
+            "Maja enjoyed biology and chemistry, but found Physics and Maths challenging.",
+            "She went on to study Biomedical Science and completed a Doctorate in Molecular Biology at Monash University.",
+            "After her studies, Maja worked in scientific sales, but she missed the creative side of her life.",
+            "She realised that neither laboratory research nor scientific sales was the career she wanted.",
           ],
         },
 
@@ -3541,16 +3548,17 @@ export const expertProfiles = {
           title: "Finding her path",
           colour: "#50B96D",
 
-          image: `${imageFolder}career-path.jpg`,
+          image: `${imageFolder}future.jpg`,
           imageAlt:
             "Image representing Maja's journey from molecular biology to 3D animation",
 
           points: [
             "While working in scientific sales, Maja met Drew Berry, a biomedical animator who created amazing animations of the tiny world inside our cells.",
             "Seeing his work made her realise that science and art could be combined into one career.",
-            "She decided to learn new skills, studying multimedia and design at Swinburne University and 3D animation at the Australian Film Television and Radio School.",
-            "Maja later received a research fellowship to learn from Drew Berry at the Walter and Eliza Hall Institute.",
-            "She had found a career where her scientific knowledge and creativity were equally important!",
+            "She decided to go back to study.",
+            "She studied Multimedia and Design at Swinburne University, and 3D Animation at the Australian Film Television and Radio School.",
+            "Maja later received a research fellowship to learn from Drew Berry.",
+            "She now found a career where she can use her scientific knowledge and creativity.",
           ],
         },
 
@@ -3560,7 +3568,7 @@ export const expertProfiles = {
           title: "Making the invisible visible",
           colour: "#4F71CB",
 
-          image: `${imageFolder}molecule-animation.jpg`,
+          image: `${imageFolder}animation.jpg`,
           imageAlt: "3D scientific illustration of molecules or proteins",
 
           points: [
@@ -3579,7 +3587,7 @@ export const expertProfiles = {
           title: "Bringing science to life",
           colour: "#00A7B8",
 
-          image: `${imageFolder}cancer-animation.jpg`,
+          image: `${imageFolder}career.jpg`,
           imageAlt:
             "Biomedical animation representing cancer cells and their interactions",
 
@@ -3601,19 +3609,33 @@ export const expertProfiles = {
            To display multiple photographs,
            add a "photos" array like Paddy's profile.
            ================================================ */
-
-      hobbies: {
+ hobbies: {
         heading: "Hobbies and interests",
-
-        text: "Maja loves flamenco dancing! She has practised flamenco for many years, takes classes with friends and has travelled to Spain to learn more. She also enjoys nature and the way documentaries bring the natural world to life.",
-
+        text: "Maja loves flamenco dancing! She has practised flamenco for many years, takes classes with friends and has travelled to Spain to learn more.",
         images: [
           {
-            image: `${imageFolder}flamenco.jpg`,
-            imageAlt: "Image representing Maja's interest in flamenco dancing",
+            image: `${imageFolder}flamenco.png`,
+            imageAlt: "Maja dancing flamenco",
           },
         ],
+
+        photos: [
+          {
+            image: `${imageFolder}flamenco2.jpg`,
+            imageAlt: "Maja dancing flamenco",
+            caption: "Maja dancing flamenco",
+          },
+          
+          {
+            image: `${imageFolder}flamenco.png`,
+            imageAlt: "Maja dancing flamenco",
+            caption: "Maja dancing flamenco",
+          }, /* This is the carousel photo, not the gallery photo. */
+        ],
       },
+
+
+
 
       /* ================================================
            E. WHY HER WORK MATTERS
