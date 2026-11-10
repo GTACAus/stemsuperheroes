@@ -1,11 +1,27 @@
 <script setup>
-import ExpertTimeline from './ExpertTimeline.vue';
-import ProfileToolbar from './ProfileToolbar.vue';
+import { computed } from "vue";
+import ExpertTimeline from "./ExpertTimeline.vue";
+import ProfileToolbar from "./ProfileToolbar.vue";
 
-defineProps({ expert: { type: Object, required: true } });
-defineEmits(['close']);
+const props = defineProps({
+  expert: { type: Object, required: true },
+});
+defineEmits(["close"]);
 
-const impactIcons = ['🔎', '♡', '✿'];
+const impactIcons = ["🔎", "♡", "✿"];
+const profileIconType = computed(() => {
+  const isImage = /\.(png|jpg|jpeg|gif|webp|svg)(\?.*)?$/i.test(
+    props.expert.impact.image,
+  );
+  const isVideo = /\.(mp4|webm|ogg|mov|m4v)(\?.*)?$/i.test(
+    props.expert.impact.image,
+  );
+  if (isImage) {
+    return "img";
+  } else if (isVideo) {
+    return "video";
+  }
+});
 </script>
 
 <template>
@@ -14,11 +30,19 @@ const impactIcons = ['🔎', '♡', '✿'];
   </ProfileToolbar>
 
   <div class="profile-intro">
-    <img class="profile-portrait" :src="expert.portrait" :alt="`Portrait of ${expert.name}`" />
+    <img
+      class="profile-portrait"
+      :src="expert.portrait"
+      :alt="`Portrait of ${expert.name}`"
+    />
     <div class="profile-intro-text">
       <h2 id="active-expert-name">{{ expert.name }}</h2>
-      <p class="profile-meta">💼 <span>{{ expert.role }}</span></p>
-      <p class="profile-meta">📍 <span>{{ expert.organisation }}</span></p>
+      <p class="profile-meta">
+        💼 <span>{{ expert.role }}</span>
+      </p>
+      <p class="profile-meta">
+        📍 <span>{{ expert.organisation }}</span>
+      </p>
       <div class="profile-superpower">
         <strong>⚡ STEM Superpower</strong>
         <p>{{ expert.back.superpower }}</p>
@@ -40,18 +64,33 @@ const impactIcons = ['🔎', '♡', '✿'];
     <section class="profile-section profile-hobbies">
       <h3 class="profile-section-heading">{{ expert.hobbies.heading }}</h3>
       <p>{{ expert.hobbies.text }}</p>
-      <img :src="expert.hobbies.image" :alt="expert.hobbies.imageAlt" loading="lazy" />
+      <img
+        :src="expert.hobbies.image"
+        :alt="expert.hobbies.imageAlt"
+        loading="lazy"
+      />
     </section>
     <section class="profile-section profile-impact">
       <h3 class="profile-section-heading">{{ expert.impact.heading }}</h3>
       <div class="profile-impact-layout">
         <ul class="profile-impact-list">
           <li v-for="(point, i) in expert.impact.points" :key="point">
-            <span :class="`impact-icon impact-icon-${i % 3}`" aria-hidden="true">{{ impactIcons[i % 3] }}</span>
+            <span
+              :class="`impact-icon impact-icon-${i % 3}`"
+              aria-hidden="true"
+              >{{ impactIcons[i % 3] }}</span
+            >
             <span>{{ point }}</span>
           </li>
         </ul>
-        <img :src="expert.impact.image" :alt="expert.impact.imageAlt" loading="lazy" />
+        <component
+          :is="profileIconType"
+          :src="expert.impact.image"
+          :alt="profileIconType === 'img' ? expert.impact.imageAlt : undefined"
+          :controls="profileIconType === 'video'"
+          :playsinline="profileIconType === 'video'"
+          loading="lazy"
+        />
       </div>
     </section>
   </div>
@@ -69,11 +108,8 @@ const impactIcons = ['🔎', '♡', '✿'];
       preload="metadata"
       :poster="expert.video.poster"
     >
-      <source
-        :src="expert.video.src"
-        type="video/mp4"
-      >
-        Your browser does not support this video.
+      <source :src="expert.video.src" type="video/mp4" />
+      Your browser does not support this video.
     </video>
 
     <p class="profile-video-caption">
@@ -92,9 +128,9 @@ const impactIcons = ['🔎', '♡', '✿'];
 <style scoped>
 .profile-eyebrow {
   color: var(--purple);
-  font-size: .78rem;
+  font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: .07em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
 }
 
@@ -115,7 +151,9 @@ const impactIcons = ['🔎', '♡', '✿'];
   border: 3px solid var(--charcoal);
   border-radius: 16px;
 }
-.profile-intro-text { min-width: 0; }
+.profile-intro-text {
+  min-width: 0;
+}
 .profile-intro-text h2 {
   margin: 0 0 12px;
   color: #37275c;
@@ -136,8 +174,15 @@ const impactIcons = ['🔎', '♡', '✿'];
   background: var(--mint);
   border-radius: 13px;
 }
-.profile-superpower strong { color: #37275c; font-size: 1.1rem; }
-.profile-superpower p { margin: 6px 0 0; font-weight: 600; line-height: 1.5; }
+.profile-superpower strong {
+  color: #37275c;
+  font-size: 1.1rem;
+}
+.profile-superpower p {
+  margin: 6px 0 0;
+  font-weight: 600;
+  line-height: 1.5;
+}
 
 /* ---------- Sections ---------- */
 .profile-section {
@@ -156,14 +201,19 @@ const impactIcons = ['🔎', '♡', '✿'];
   font-size: clamp(1.15rem, 2.2vw, 1.5rem);
   line-height: 1.25;
 }
-.profile-timeline { min-width: 0; }
+.profile-timeline {
+  min-width: 0;
+}
 .profile-info-grid {
   display: grid;
-  grid-template-columns: minmax(0, .95fr) minmax(0, 1.25fr);
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
   gap: 16px;
   margin-top: 16px;
 }
-.profile-hobbies p { margin: 0 0 12px; font-weight: 600; }
+.profile-hobbies p {
+  margin: 0 0 12px;
+  font-weight: 600;
+}
 .profile-hobbies img {
   width: 100%;
   height: 210px;
@@ -176,15 +226,30 @@ const impactIcons = ['🔎', '♡', '✿'];
   align-items: stretch;
   gap: 14px;
 }
-.profile-impact-layout > img {
+.profile-impact-layout > img,
+.profile-impact-layout > video {
   width: 100%;
   height: 100%;
   min-height: 210px;
   object-fit: cover;
   border-radius: 12px;
 }
-.profile-impact-list { display: grid; align-content: center; gap: 14px; margin: 0; padding: 0; list-style: none; }
-.profile-impact-list li { display: flex; align-items: center; gap: 10px; font-size: .95rem; line-height: 1.4; font-weight: 650; }
+.profile-impact-list {
+  display: grid;
+  align-content: center;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.profile-impact-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  font-weight: 650;
+}
 .impact-icon {
   flex: 0 0 39px;
   display: grid;
@@ -194,28 +259,66 @@ const impactIcons = ['🔎', '♡', '✿'];
   border-radius: 50%;
   font-size: 1.2rem;
 }
-.impact-icon-0 { background: #74a5ff; }
-.impact-icon-1 { background: #ff875a; }
-.impact-icon-2 { background: #67e5c1; }
-.profile-advice { margin-top: 16px; }
-.profile-advice ul { margin: 0; padding-left: 20px; line-height: 1.6; font-weight: 600; }
+.impact-icon-0 {
+  background: #74a5ff;
+}
+.impact-icon-1 {
+  background: #ff875a;
+}
+.impact-icon-2 {
+  background: #67e5c1;
+}
+.profile-advice {
+  margin-top: 16px;
+}
+.profile-advice ul {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.6;
+  font-weight: 600;
+}
 
 @media (max-width: 850px) {
-  .profile-info-grid { grid-template-columns: 1fr; }
-  .profile-impact-layout { grid-template-columns: minmax(0, 1fr) minmax(125px, 30%); }
+  .profile-info-grid {
+    grid-template-columns: 1fr;
+  }
+  .profile-impact-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(125px, 30%);
+  }
 }
 @media (max-width: 650px) {
-  .profile-intro { grid-template-columns: 125px minmax(0, 1fr); }
-  .profile-portrait { min-height: 155px; max-height: 230px; }
-  .profile-intro-text h2 { font-size: 2rem; }
-  .profile-meta { font-size: .88rem; }
+  .profile-intro {
+    grid-template-columns: 125px minmax(0, 1fr);
+  }
+  .profile-portrait {
+    min-height: 155px;
+    max-height: 230px;
+  }
+  .profile-intro-text h2 {
+    font-size: 2rem;
+  }
+  .profile-meta {
+    font-size: 0.88rem;
+  }
 }
 @media (max-width: 460px) {
-  .profile-intro { grid-template-columns: 1fr; }
-  .profile-portrait { width: min(100%, 230px); height: 210px; }
-  .profile-superpower { margin-top: 13px; }
-  .profile-impact-layout { grid-template-columns: 1fr; }
-  .profile-impact-layout > img { max-height: 240px; }
+  .profile-intro {
+    grid-template-columns: 1fr;
+  }
+  .profile-portrait {
+    width: min(100%, 230px);
+    height: 210px;
+  }
+  .profile-superpower {
+    margin-top: 13px;
+  }
+  .profile-impact-layout {
+    grid-template-columns: 1fr;
+  }
+  .profile-impact-layout > img,
+  .profile-impact-layout > video {
+    max-height: 240px;
+  }
 }
 
 /* =========================================================
@@ -226,36 +329,36 @@ const impactIcons = ['🔎', '♡', '✿'];
    ========================================================= */
 
 .profile-video {
-    margin-top: 16px;
-    min-width: 0;
+  margin-top: 16px;
+  min-width: 0;
 }
 
 /* ---------- Video player ---------- */
 
 .profile-video video {
-    display: block;
+  display: block;
 
-    width: 100%;
-    max-width: 760px;
+  width: 100%;
+  max-width: 760px;
 
-    aspect-ratio: 16 / 9;
-    height: auto;
+  aspect-ratio: 16 / 9;
+  height: auto;
 
-    object-fit: contain;
+  object-fit: contain;
 
-    margin: 16px auto;
-    background: #111;
+  margin: 16px auto;
+  background: #111;
 
-    border-radius: 12px;
+  border-radius: 12px;
 }
 
 /* ---------- Video caption ---------- */
 
 .profile-video-caption {
-    margin: 12px 0 0;
+  margin: 12px 0 0;
 
-    color: var(--muted);
-    font-size: 0.85rem;
-    line-height: 1.5;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
 }
 </style>

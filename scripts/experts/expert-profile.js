@@ -7,16 +7,33 @@
 import { initTimeline } from "../activities/timeline.js";
 
 function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, char => ({
-        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-    })[char]);
+  return String(value ?? "").replace(
+    /[&<>"']/g,
+    (char) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      })[char],
+  );
+}
+
+function createExpertMedia(expert) {
+  const src = expert.impact.image;
+  const isVideo = /\.(mp4|webm|ogg|mov|m4v)([?#].*)?$/i.test(src);
+
+  return isVideo
+    ? `<video src="${src}" controls playsinline preload="metadata"></video>`
+    : `<img src="${src}" alt="${expert.impact.imageAlt || ""}" loading="lazy">`;
 }
 
 export function renderExpertProfile(panel, expert, onClose) {
-    const e = escapeHTML;
-    panel.setAttribute("aria-labelledby", "active-expert-name");
+  const e = escapeHTML;
+  panel.setAttribute("aria-labelledby", "active-expert-name");
 
-    panel.innerHTML = `
+  panel.innerHTML = `
         <div class="profile-toolbar">
             <span class="profile-eyebrow">Meet a STEM Superhero</span>
             <button class="profile-close" type="button" aria-label="Close this expert profile">✕ Close</button>
@@ -50,12 +67,16 @@ export function renderExpertProfile(panel, expert, onClose) {
                 <h3 class="profile-section-heading">${e(expert.impact.heading)}</h3>
                 <div class="profile-impact-layout">
                     <ul class="profile-impact-list">
-                        ${expert.impact.points.map((point, i) => `
+                        ${expert.impact.points
+                          .map(
+                            (point, i) => `
                             <li><span class="impact-icon impact-icon-${i % 3}" aria-hidden="true">${["🔎", "♡", "✿"][i % 3]}</span>
                                 <span>${e(point)}</span></li>
-                        `).join("")}
+                        `,
+                          )
+                          .join("")}
                     </ul>
-                    <img src="${e(expert.impact.image)}" alt="${e(expert.impact.imageAlt)}" loading="lazy">
+                    ${createExpertMedia(expert)}
                 </div>
             </section>
         </div>
@@ -65,7 +86,9 @@ export function renderExpertProfile(panel, expert, onClose) {
             Only displayed if the expert has a video
             ========================================= -->
         
-        ${expert.video ? `
+        ${
+          expert.video
+            ? `
             <section class="profile-section profile-video">
                 <h3 class="profile-section-heading">
                     ${e(expert.video.heading)}
@@ -90,20 +113,22 @@ export function renderExpertProfile(panel, expert, onClose) {
                     ${e(expert.video.caption)}
                 </p>
             </section>
-        ` : ""} 
+        `
+            : ""
+        } 
 
         <section class="profile-section profile-advice">
             <h3 class="profile-section-heading">
                 ${e(expert.adviceHeading || "Advice")}
             </h3>
-            <ul>${expert.advice.map(item => `<li>${e(item)}</li>`).join("")}</ul>
+            <ul>${expert.advice.map((item) => `<li>${e(item)}</li>`).join("")}</ul>
         </section>
 
     `;
 
-    panel.querySelector(".profile-close").addEventListener("click", onClose);
+  panel.querySelector(".profile-close").addEventListener("click", onClose);
 
-    /* =========================================================
+  /* =========================================================
     TIMELINE: SHOW INSTRUCTIONS BEFORE FIRST CLICK
 
     When an expert profile first opens:
@@ -114,53 +139,49 @@ export function renderExpertProfile(panel, expert, onClose) {
     Works automatically for EVERY expert.
     ========================================================= */
 
-    const timeline = panel.querySelector(".profile-timeline");
+  const timeline = panel.querySelector(".profile-timeline");
 
-    // Build the timeline using our existing function.
-    initTimeline(timeline, expert.timeline);
+  // Build the timeline using our existing function.
+  initTimeline(timeline, expert.timeline);
 
-    const display = timeline.querySelector(".timeline-display");
+  const display = timeline.querySelector(".timeline-display");
 
-    if (display) {
+  if (display) {
+    // 1. Initially hide the story and photograph.
+    display.hidden = true;
 
-        // 1. Initially hide the story and photograph.
-        display.hidden = true;
+    // 2. Create the instruction box.
+    const hint = document.createElement("p");
+    hint.className = "timeline-prompt";
+    hint.textContent = `↑ Choose a coloured pin above to explore ${expert.name}'s story!`;
 
-        // 2. Create the instruction box.
-        const hint = document.createElement("p");
-        hint.className = "timeline-prompt";
-        hint.textContent =
-            `↑ Choose a coloured pin above to explore ${expert.name}'s story!`;
+    display.before(hint);
 
-        display.before(hint);
+    // 3. Remove the initial selected-pin appearance.
+    timeline.querySelectorAll(".timeline-step").forEach((step) => {
+      step.classList.remove("is-active");
+      step.setAttribute("aria-pressed", "false");
+    });
 
-        // 3. Remove the initial selected-pin appearance.
-        timeline.querySelectorAll(".timeline-step").forEach(step => {
-            step.classList.remove("is-active");
-            step.setAttribute("aria-pressed", "false");
-        });
+    // 4. When a pin is clicked, reveal its story.
+    const revealStory = (event) => {
+      if (!event.target.closest(".timeline-step")) return;
 
-        // 4. When a pin is clicked, reveal its story.
-        const revealStory = (event) => {
-            if (!event.target.closest(".timeline-step")) return;
+      display.hidden = false;
+      hint.remove();
 
-            display.hidden = false;
-            hint.remove();
+      // Instructions are no longer needed after first click.
+      timeline.removeEventListener("click", revealStory, true);
+    };
 
-            // Instructions are no longer needed after first click.
-            timeline.removeEventListener("click", revealStory, true);
-        };
-
-        timeline.addEventListener("click", revealStory, true);
-    }
-
-
+    timeline.addEventListener("click", revealStory, true);
+  }
 }
 
 export function renderLegacyThingLink(panel, url, name, onClose) {
-    const e = escapeHTML;
-    panel.removeAttribute("aria-labelledby");
-    panel.innerHTML = `
+  const e = escapeHTML;
+  panel.removeAttribute("aria-labelledby");
+  panel.innerHTML = `
         <div class="profile-toolbar">
             <strong>${e(name)}’s STEM profile</strong>
             <button class="profile-close" type="button" aria-label="Close this expert profile">✕ Close</button>
@@ -170,5 +191,5 @@ export function renderLegacyThingLink(panel, url, name, onClose) {
                     src="${e(url)}" loading="lazy" allowfullscreen></iframe>
         </div>
     `;
-    panel.querySelector(".profile-close").addEventListener("click", onClose);
+  panel.querySelector(".profile-close").addEventListener("click", onClose);
 }
