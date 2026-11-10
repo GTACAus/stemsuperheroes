@@ -3310,4 +3310,234 @@ export const expertProfiles = {
            ================================================ */
     };
   })(),
+
+  /* =====================================================
+   MAJA DIVJAK - BIOMEDICAL ANIMATOR
+
+   STEM EXPERT - NOT A GTAC STEM COACH
+
+   Sources:
+   - Interview: 10 February 2026
+   - Original GTAC STEM Superheroes Showcase
+   - Peter MacCallum Cancer Centre
+   - GTAC Biomedical Animation Gallery
+
+   All images are stored locally.
+   Uses the existing reusable profile and timeline code.
+   ===================================================== */
+
+  maja: (() => {
+    /* ================================================
+       A. IMAGE FOLDER
+
+       All Maja's images are stored here.
+       ================================================ */
+
+    const imageFolder = "assets/images/experts/maja/";
+
+    return {
+      /* ================================================
+           B. BASIC INFORMATION
+
+           Name, role, workplace, portrait and superpower.
+           ================================================ */
+
+      name: "Maja",
+
+      role: "Biomedical Animator",
+
+      organisation:
+        "Peter MacCallum Cancer Centre, Melbourne (previously at GTAC)",
+
+      portrait: `${imageFolder}portrait.jpg`,
+
+      superpower:
+        "Turning invisible molecules, cells and biological processes into scientifically accurate 3D animations that make complex science easier to understand",
+
+      imageFolder,
+
+      /* ================================================
+           C. INTERACTIVE TIMELINE
+
+           Five clickable stages.
+
+           Each stage includes:
+           - Title
+           - Colour
+           - Image
+           - Story points
+
+           timeline.js handles the interactions.
+           ================================================ */
+
+      timeline: [
+        // STAGE 1: CURIOUS BEGINNINGS
+
+        {
+          title: "Curious beginnings",
+          colour: "#F43559",
+
+          image: `${imageFolder}portrait.jpg`,
+          imageAlt: "Portrait of Maja today",
+
+          points: [
+            "At school, Maja enjoyed both creative and scientific subjects, including fine art, biology, chemistry and French.",
+            "She loved learning about the natural world and originally imagined becoming a veterinarian.",
+            "She enjoyed nature documentaries and admired how people like David Attenborough could make science fascinating.",
+            "Although she loved both science and art, she never imagined that one day she could combine them in a single career!",
+          ],
+        },
+
+        // STAGE 2: CHALLENGES AND CHOICES
+
+        {
+          title: "Challenges and choices",
+          colour: "#E9B400",
+
+          image: `${imageFolder}school.jpg`,
+          imageAlt:
+            "Illustration representing Maja's interests in science and art",
+
+          points: [
+            "Maja enjoyed biology and chemistry, but found physics and mathematics challenging.",
+            "She went on to study biomedical science and completed a PhD in molecular biology at Monash University.",
+            "A PhD involves investigating a research question and making new discoveries.",
+            "After her PhD, Maja worked in scientific sales, but she began to miss the creative side of her life.",
+            "She realised that neither laboratory research nor scientific sales was quite the career she wanted.",
+          ],
+        },
+
+        // STAGE 3: FINDING HER PATH
+
+        {
+          title: "Finding her path",
+          colour: "#50B96D",
+
+          image: `${imageFolder}career-path.jpg`,
+          imageAlt:
+            "Image representing Maja's journey from molecular biology to 3D animation",
+
+          points: [
+            "While working in scientific sales, Maja met Drew Berry, a biomedical animator who created amazing animations of the tiny world inside our cells.",
+            "Seeing his work made her realise that science and art could be combined into one career.",
+            "She decided to learn new skills, studying multimedia and design at Swinburne University and 3D animation at the Australian Film Television and Radio School.",
+            "Maja later received a research fellowship to learn from Drew Berry at the Walter and Eliza Hall Institute.",
+            "She had found a career where her scientific knowledge and creativity were equally important!",
+          ],
+        },
+
+        // STAGE 4: MAKING THE INVISIBLE VISIBLE
+
+        {
+          title: "Making the invisible visible",
+          colour: "#4F71CB",
+
+          image: `${imageFolder}molecule-animation.jpg`,
+          imageAlt: "3D scientific illustration of molecules or proteins",
+
+          points: [
+            "Maja creates animations of cells, proteins and molecules - structures that are often too small to see directly.",
+            "She works with scientists to understand their research and carefully plans how to explain it through a story.",
+            "She uses storyboards, scripts, scientific information and 3D animation software to bring that story to life.",
+            "Some animations use information about protein structures from scientific databases and computer predictions.",
+            "Maja adds colours and movement to make the science easier to understand. The molecules don't actually have those bright colours!",
+            "While working at GTAC, she created animations explaining infections such as whooping cough and tetanus.",
+          ],
+        },
+
+        // STAGE 5: BRINGING SCIENCE TO LIFE
+
+        {
+          title: "Bringing science to life",
+          colour: "#00A7B8",
+
+          image: `${imageFolder}cancer-animation.jpg`,
+          imageAlt:
+            "Biomedical animation representing cancer cells and their interactions",
+
+          points: [
+            "After working as a science animator at GTAC, Maja joined the Peter MacCallum Cancer Centre.",
+            "There, she creates 3D animations explaining what happens inside cells during cancer and how some treatments work.",
+            "For example, her animations can help people visualise how specially engineered immune cells recognise cancer cells.",
+            "Her work helps scientists communicate discoveries and makes complicated biology easier for students, patients and the public to understand.",
+            "Maja's career shows that science needs storytellers and artists, not just people working in laboratories.",
+          ],
+        },
+      ],
+
+      /* ================================================
+           D. HOBBIES AND INTERESTS
+
+           One photograph is displayed by default.
+
+           To display multiple photographs,
+           add a "photos" array like Paddy's profile.
+           ================================================ */
+
+      hobbies: {
+        heading: "Hobbies and interests",
+
+        text: "Maja loves flamenco dancing! She has practised flamenco for many years, takes classes with friends and has travelled to Spain to learn more. She also enjoys nature and the way documentaries bring the natural world to life.",
+
+        image: `${imageFolder}flamenco.jpg`,
+        imageAlt: "Image representing Maja's interest in flamenco dancing",
+      },
+
+      /* ================================================
+           E. WHY HER WORK MATTERS
+
+           Three points displayed with coloured icons.
+           One accompanying image.
+
+           Maja communicates scientific discoveries
+           through visual storytelling.
+           ================================================ */
+
+      impact: {
+        heading: "Why do her animations matter?",
+
+        image: `${imageFolder}molecule-animation.jpg`,
+        imageAlt: "Colourful 3D representation of a biological molecule",
+
+        points: [
+          "Makes tiny structures and processes inside our cells easier to see and understand",
+          "Helps researchers explain complex ideas about diseases, biology and medical treatments",
+          "Combines science, technology and art to make discoveries accessible to more people",
+        ],
+      },
+
+      /* ================================================
+           F. ADVICE FOR STUDENTS
+
+           Based on Maja's interview and original
+           GTAC STEM Superheroes profile.
+           ================================================ */
+
+      adviceHeading: "Maja's advice",
+
+      advice: [
+        "Creativity and science together can make complex ideas powerful and clear.",
+        "Stay curious! Ask questions such as 'What if?' and 'How does this work?'",
+        "You don't have to choose between being creative and enjoying science.",
+        "Don't be afraid to learn new skills or explore a completely different career.",
+        "Science is full of fascinating things waiting to be discovered and shared!",
+      ],
+
+      /* ================================================
+           G. OPTIONAL VIDEO
+
+           No video property is included yet.
+
+           Maja has created GTAC animations about:
+           - Whooping cough
+           - Tetanus
+
+           To include an approved video later,
+           add a "video" property using Paddy's
+           existing video feature.
+
+           No other JavaScript functions are needed.
+           ================================================ */
+    };
+  })(),
 };
