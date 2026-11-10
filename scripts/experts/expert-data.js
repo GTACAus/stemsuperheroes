@@ -1307,7 +1307,7 @@ export const expertProfiles = {
         "The Peter Doherty Institute for Infection and Immunity, University of Melbourne",
       portrait: `${imageFolder}portrait.jpg`,
       superpower:
-        "Investigating how antibodies help immune cells recognise and remove malaria-infected red blood cells",
+        "Help our body recognise and remove malaria-infected red blood cells",
       imageFolder,
 
       /* ================================================
@@ -1363,7 +1363,7 @@ export const expertProfiles = {
         {
           title: "Research with an impact",
           colour: "#4F71CB",
-          image: `${imageFolder}malaria.jpg`,
+          image: `${imageFolder}lab.png`,
           imageAlt: "Image representing malaria parasites and immune cells",
           points: [
             "Malaria is caused by parasites that can infect our red blood cells.",
@@ -1680,8 +1680,8 @@ export const expertProfiles = {
 
       portrait: `${imageFolder}portrait.jpg`,
 
-      superpower:
-        "Using zebrafish to study abnormal blood vessels and test potential medicines for vascular malformations",
+      superpower: "Using zebrafish to find new medicine to help people with malformed blood vessels!",
+
 
       imageFolder,
 
@@ -1749,15 +1749,15 @@ export const expertProfiles = {
           title: "Research with an impact",
           colour: "#4F71CB",
 
-          image: `${imageFolder}zebrafish.mp4`,
+          image: `${imageFolder}research.png`,
           imageAlt: "Zebrafish used to study how blood vessels develop",
 
-          points: [
-            "Juliana studies vascular malformations. This means blood vessels that form or develop abnormally. This happens sometimes because of defective changes in DNA.",
-            "She uses zebrafish to understand how different treatments affect their blood vessel development.",
-            "This help us find new medicines to treat people with problems in blood vessel development.",
-            "Findings in zebrafish are an early step in finding medicine that will work on people.",
-          ],
+                points: [
+                    "Juliana studies vascular malformation. This means blood vessels that do not develop properly. This happens sometimes because of mutation in DNA.",
+                    "She uses zebrafish to investigate how different treatments affect their blood vessel development.",
+                    "This research will help us find new medicines to treat people with problems in blood vessel development.",
+                    "Findings in zebrafish are an early step in finding medicine that work on people."
+                ],
         },
 
         // STAGE 5: LOOKING TO THE FUTURE
@@ -1807,12 +1807,12 @@ export const expertProfiles = {
       impact: {
         heading: "Why does her research matter?",
 
-        image: `${imageFolder}zebrafish.jpg`,
+        image: `${imageFolder}zebrafish.mp4`,
         imageAlt: "Zebrafish used in vascular biology research",
 
         points: [
-          "Investigates how genetic changes can affect the way blood vessels develop",
-          "Uses zebrafish to test whether potential medicines change abnormal blood vessel growth",
+          "Investigates how changes in DNA can affect blood vessel development",
+          "Uses zebrafish to find new medicines to treat people with abnormal blood vessel growth",
           "Could help researchers identify new treatment options for people with vascular malformations",
         ],
       },
@@ -1826,9 +1826,9 @@ export const expertProfiles = {
       adviceHeading: "Juliana's advice",
 
       advice: [
-        "Education opens doors - keep going, even if it's hard.",
-        "Try new things and make choices based on your own experiences.",
-        "Your background does not have to limit where science can take you.",
+        "Education opens doors! Keep going, even if it's hard.",
+        "Go try new things and make your own choices.",
+        "Your background does not limit where science takes you.",
       ],
 
       /* ================================================
@@ -3480,7 +3480,7 @@ export const expertProfiles = {
       portrait: `${imageFolder}portrait.jpg`,
 
       superpower:
-        "Turning invisible molecules, cells and biological processes into scientifically accurate 3D animations that make complex science easier to understand",
+        "Turning invisible molecules, cells and biological processes into 3D animations that make complex science easier to understand",
 
       imageFolder,
 
