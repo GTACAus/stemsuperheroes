@@ -94,8 +94,28 @@ export const expertProfiles = {
       hobbies: {
         heading: "Hobbies and interests",
         text: "Sport was tough at school, but now Kezia enjoys running! She learned to cook during COVID lockdowns and used to play piano and sing in a choir.",
-        image: `${imageFolder}running.jpg`,
-        imageAlt: "Kezia at a running event",
+        images: [
+          {
+            image: `${imageFolder}running.jpg`,
+            imageAlt: "Kezia at a running event",
+          },
+          {
+            image: `${imageFolder}running.jpg`,
+            imageAlt: "Kezia at a running event",
+          },
+          {
+            image: `${imageFolder}running.jpg`,
+            imageAlt: "Kezia at a running event",
+          },
+          {
+            image: `${imageFolder}running.jpg`,
+            imageAlt: "Kezia at a running event",
+          },
+          {
+            image: `${imageFolder}running.jpg`,
+            imageAlt: "Kezia at a running event",
+          },
+        ],
       },
 
       impact: {
@@ -185,8 +205,12 @@ export const expertProfiles = {
       hobbies: {
         heading: "Hobbies and interests",
         text: "Paddy loves to read about philosophy, watch cinema, run, and hike. Paddy also does futsal with his colleagues at MCRI.",
-        image: `${imageFolder}hiking.jpeg`,
-        imageAlt: "Paddy hiking outdoors",
+        images: [
+          {
+            image: `${imageFolder}hiking.jpeg`,
+            imageAlt: "Paddy hiking outdoors",
+          },
+        ],
 
         photos: [
           {
@@ -355,8 +379,9 @@ export const expertProfiles = {
       hobbies: {
         heading: "Hobbies and interests",
         text: "Outside science, Muna enjoys exploring different cafés and trying new coffees. She loves discovering interesting coffee spots around Melbourne!",
-        image: `${imageFolder}coffee.jpeg`,
-        imageAlt: "Coffee at a café",
+        images: [
+          { image: `${imageFolder}coffee.jpeg`, imageAlt: "Coffee at a café" },
+        ],
       },
 
       /* ================================================
@@ -556,8 +581,12 @@ export const expertProfiles = {
 
         text: "Millicent loves acting, reading, writing and presenting! She performed in theatre at school, hosted events and had her own radio show in Nigeria. She still enjoys the idea of broadcasting alongside science.",
 
-        image: `${imageFolder}radio.jpg`,
-        imageAlt: "Millicent performing on stage",
+        images: [
+          {
+            image: `${imageFolder}radio.jpg`,
+            imageAlt: "Millicent performing on stage",
+          },
+        ],
       },
 
       /* ================================================
@@ -757,8 +786,12 @@ export const expertProfiles = {
 
         text: "Outside work, Michael enjoys reading, cooking, swimming and bouldering (a type of climbing).",
 
-        image: `${imageFolder}hobbies.jpg`,
-        imageAlt: "Illustration of reading, climbing and other hobbies",
+        images: [
+          {
+            image: `${imageFolder}hobbies.jpg`,
+            imageAlt: "Illustration of reading, climbing and other hobbies",
+          },
+        ],
       },
 
       /* ================================================
@@ -956,8 +989,12 @@ export const expertProfiles = {
 
         text: "Laura enjoys ice skating and loves books! When she was at school, she also tried archery and played the piano.",
 
-        image: `${imageFolder}skating.jpg`,
-        imageAlt: "Image representing Laura's interest in ice skating",
+        images: [
+          {
+            image: `${imageFolder}skating.jpg`,
+            imageAlt: "Image representing Laura's interest in ice skating",
+          },
+        ],
       },
 
       /* ================================================
@@ -1158,8 +1195,12 @@ export const expertProfiles = {
 
         text: "Kevin enjoys playing video games, including Pokémon and Dynasty Warriors! He also likes history-themed games, reading non-fiction books about science and philosophy, and taking photographs while hiking.",
 
-        image: `${imageFolder}travel.jpg`,
-        imageAlt: "Image representing Kevin's hobbies",
+        images: [
+          {
+            image: `${imageFolder}travel.jpg`,
+            imageAlt: "Image representing Kevin's hobbies",
+          },
+        ],
       },
 
       /* ================================================
@@ -1328,8 +1369,12 @@ export const expertProfiles = {
       hobbies: {
         heading: "Hobbies and interests",
         text: "Maria enjoys reading fiction and drama, and she used to love drawing and painting. She also likes looking after a neighbour's cat!",
-        image: `${imageFolder}travel.jpg`,
-        imageAlt: "Image representing Maria's love of reading",
+        images: [
+          {
+            image: `${imageFolder}travel.jpg`,
+            imageAlt: "Image representing Maria's love of reading",
+          },
+        ],
       },
 
       /* ================================================
@@ -1521,8 +1566,12 @@ export const expertProfiles = {
 
         text: "Outside the laboratory, Paul enjoys playing soccer, including games with people at his research institute!",
 
-        image: `${imageFolder}soccer.jpg`,
-        imageAlt: "Image representing Paul's interest in soccer",
+        images: [
+          {
+            image: `${imageFolder}soccer.jpg`,
+            imageAlt: "Image representing Paul's interest in soccer",
+          },
+        ],
       },
 
       /* ================================================
@@ -1713,8 +1762,12 @@ export const expertProfiles = {
 
         text: "Juliana loves dancing, spending time with friends and discovering good food, especially chicken parma! She enjoys fantasy books and watching dramas, and she has been keen to try salsa classes and learn new languages.",
 
-        image: `${imageFolder}travel.jpeg`,
-        imageAlt: "Image representing Juliana's love of dancing",
+        images: [
+          {
+            image: `${imageFolder}travel.jpeg`,
+            imageAlt: "Image representing Juliana's love of dancing",
+          },
+        ],
       },
 
       /* ================================================
@@ -1914,9 +1967,13 @@ export const expertProfiles = {
 
         text: "Outside science, Asha loves making chainmail jewellery and crafts by connecting lots of small metal rings! They also enjoyed theatre and helping backstage during school productions.",
 
-        image: `${imageFolder}chainmail.jpg`,
-        imageAlt:
-          "Handmade chainmail jewellery created by connecting metal rings",
+        images: [
+          {
+            image: `${imageFolder}chainmail.jpg`,
+            imageAlt:
+              "Handmade chainmail jewellery created by connecting metal rings",
+          },
+        ],
       },
 
       /* ================================================
@@ -2118,8 +2175,12 @@ export const expertProfiles = {
         text: "Meagan enjoys acrobatics and circus sports! She has also tried soccer, athletics, basketball, ice hockey, and speech and debate.",
 
         // Single-image fallback
-        image: `${imageFolder}acrobatics.jpg`,
-        imageAlt: "Image representing Meagan's interest in acrobatics",
+        images: [
+          {
+            image: `${imageFolder}acrobatics.jpg`,
+            imageAlt: "Image representing Meagan's interest in acrobatics",
+          },
+        ],
 
         // Multiple-photo gallery
         photos: [
@@ -2341,8 +2402,12 @@ export const expertProfiles = {
 
         text: "Megan enjoys cooking, trying new foods and discovering different cuisines when she travels! Her science career also takes her to conferences around the world.",
 
-        image: `${imageFolder}travel.jpeg`,
-        imageAlt: "Megan visiting a historic site during her travels",
+        images: [
+          {
+            image: `${imageFolder}travel.jpeg`,
+            imageAlt: "Megan visiting a historic site during her travels",
+          },
+        ],
       },
 
       /* ================================================
@@ -2559,9 +2624,13 @@ export const expertProfiles = {
 
         text: "Misty loves theatre, musicals, performing and karaoke! She has been involved in community theatre and enjoys spending time on stage. She believes that these experiences helped her develop the confidence to communicate science to large audiences.",
 
-        image: `${imageFolder}theater.jpg`,
-        imageAlt:
-          "Image representing Misty's interest in theatre and performing",
+        images: [
+          {
+            image: `${imageFolder}theater.jpg`,
+            imageAlt:
+              "Image representing Misty's interest in theatre and performing",
+          },
+        ],
       },
 
       /* ================================================
@@ -2782,8 +2851,12 @@ export const expertProfiles = {
 
         text: "Sue loves reading and has been part of a monthly book club with her friends for more than 10 years! She has also started bootscooting (line dancing). When she was younger, she enjoyed ballet, and she still likes watching performances.",
 
-        image: `${imageFolder}book-club.jpg`,
-        imageAlt: "Image representing Sue's love of reading and book clubs",
+        images: [
+          {
+            image: `${imageFolder}book-club.jpg`,
+            imageAlt: "Image representing Sue's love of reading and book clubs",
+          },
+        ],
       },
 
       /* ================================================
@@ -3010,9 +3083,13 @@ export const expertProfiles = {
 
         text: "Outside science, Vijay enjoys a good cup of coffee and playing flight simulator games from the comfort of his sofa! He also once tried performing stand-up comedy. Science and humour can go hand in hand!",
 
-        image: `${imageFolder}hobbies.jpg`,
-        imageAlt:
-          "Image representing Vijay's interests in flight simulators, coffee and comedy",
+        images: [
+          {
+            image: `${imageFolder}hobbies.jpg`,
+            imageAlt:
+              "Image representing Vijay's interests in flight simulators, coffee and comedy",
+          },
+        ],
       },
 
       /* ================================================
@@ -3248,9 +3325,13 @@ export const expertProfiles = {
 
         text: "Chris loves astrophotography - taking photographs of stars and the night sky! He also enjoys science communication and hosts his own podcast, Divergent in STEMM, where he talks with people about their experiences working in science.",
 
-        image: `${imageFolder}astrophotography.jpg`,
-        imageAlt:
-          "Photograph of stars in the night sky, representing Chris's interest in astrophotography",
+        images: [
+          {
+            image: `${imageFolder}astrophotography.jpg`,
+            imageAlt:
+              "Photograph of stars in the night sky, representing Chris's interest in astrophotography",
+          },
+        ],
       },
 
       /* ================================================
@@ -3479,8 +3560,12 @@ export const expertProfiles = {
 
         text: "Maja loves flamenco dancing! She has practised flamenco for many years, takes classes with friends and has travelled to Spain to learn more. She also enjoys nature and the way documentaries bring the natural world to life.",
 
-        image: `${imageFolder}flamenco.jpg`,
-        imageAlt: "Image representing Maja's interest in flamenco dancing",
+        images: [
+          {
+            image: `${imageFolder}flamenco.jpg`,
+            imageAlt: "Image representing Maja's interest in flamenco dancing",
+          },
+        ],
       },
 
       /* ================================================

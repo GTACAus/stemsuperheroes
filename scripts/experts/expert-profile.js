@@ -29,6 +29,64 @@ function createExpertMedia(expert) {
     : `<img src="${src}" alt="${expert.impact.imageAlt || ""}" loading="lazy">`;
 }
 
+function createImageCarousel(carousel, carouselImages) {
+  const track = carousel.querySelector(".image-carousel-track");
+  const previousButton = carousel.querySelector(".image-carousel-prev");
+  const nextButton = carousel.querySelector(".image-carousel-next");
+
+  let currentIndex = 0;
+
+  // Create image elements
+  const imageElements = carouselImages.map((item, index) => {
+    const img = document.createElement("img");
+
+    img.src = item.image;
+    img.alt = item.imageAlt;
+    img.classList.add("image-carousel-item");
+    img.draggable = false;
+
+    track.appendChild(img);
+
+    img.addEventListener("click", () => {
+      if (index !== currentIndex) {
+        showImage(index);
+      }
+    });
+
+    return img;
+  });
+
+  function showImage(index) {
+    currentIndex = Math.max(0, Math.min(index, carouselImages.length - 1));
+
+    imageElements.forEach((img, i) => {
+      const offset = i - currentIndex;
+
+      img.classList.toggle("is-current", offset === 0);
+      img.classList.toggle("is-previous", offset === -1);
+      img.classList.toggle("is-next", offset === 1);
+      img.classList.toggle("is-hidden", Math.abs(offset) > 1);
+
+      img.setAttribute("aria-hidden", String(Math.abs(offset) > 1));
+    });
+
+    previousButton.disabled = currentIndex === 0;
+    nextButton.disabled = currentIndex === carouselImages.length - 1;
+  }
+
+  previousButton.addEventListener("click", () => {
+    showImage(currentIndex - 1);
+  });
+
+  nextButton.addEventListener("click", () => {
+    showImage(currentIndex + 1);
+  });
+
+  // Initialise
+  showImage(0);
+}
+// <img src="${e(expert.hobbies.image)}" alt="${e(expert.hobbies.imageAlt)}" loading="lazy">
+
 export function renderExpertProfile(panel, expert, onClose) {
   const e = escapeHTML;
   panel.setAttribute("aria-labelledby", "active-expert-name");
@@ -61,7 +119,17 @@ export function renderExpertProfile(panel, expert, onClose) {
             <section class="profile-section profile-hobbies">
                 <h3 class="profile-section-heading">${e(expert.hobbies.heading)}</h3>
                 <p>${e(expert.hobbies.text)}</p>
-                <img src="${e(expert.hobbies.image)}" alt="${e(expert.hobbies.imageAlt)}" loading="lazy">
+                <div class="image-carousel">
+                    <button class="image-carousel-prev" aria-label="Previous image">
+                        &#10094;
+                    </button>
+
+                    <div class="image-carousel-track"></div>
+
+                    <button class="image-carousel-next" aria-label="Next image">
+                        &#10095;
+                    </button>
+                </div>
             </section>
             <section class="profile-section profile-impact">
                 <h3 class="profile-section-heading">${e(expert.impact.heading)}</h3>
@@ -125,6 +193,11 @@ export function renderExpertProfile(panel, expert, onClose) {
         </section>
 
     `;
+  // Create the carousel
+  createImageCarousel(
+    document.querySelector(".image-carousel"),
+    expert.hobbies.images,
+  );
 
   panel.querySelector(".profile-close").addEventListener("click", onClose);
 
