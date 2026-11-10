@@ -6,6 +6,13 @@
    change their information and imageFolder.
 
    Layout and timeline functions stay unchanged.
+
+   OPTIONAL PHOTO GALLERY:
+   - Add a "gallery" array to ONLY those profiles where you
+     have deliberately selected extra photographs.
+   - Do not add it (or use gallery: []) to hide the section.
+   - expert-profile.js will display at most 5 selected photos.
+   - Photo selection is NEVER automatic from the folder.
    ========================================================= */
 
 export const expertProfiles = {
@@ -201,6 +208,27 @@ export const expertProfiles = {
           },
         ],
       },
+
+      /* ================================================
+         OPTIONAL PHOTO GALLERY - PADDY
+
+         ONLY these selected photos appear in the gallery.
+         The hobby, timeline and research images remain
+         separate. Display is capped at 5 in the renderer.
+         Remove a photo entry here to deselect it.
+         ================================================ */
+      gallery: [
+        {
+          image: `${imageFolder}hiking.jpeg`,
+          imageAlt: "Paddy hiking outdoors",
+          caption: "Hiking",
+        },
+        {
+          image: `${imageFolder}running.png`,
+          imageAlt: "Paddy at a running event",
+          caption: "Running",
+        },
+      ],
 
       impact: {
         heading: "Why does his research matter?",
@@ -2135,6 +2163,25 @@ export const expertProfiles = {
           },
         ],
       },
+
+      /* ================================================
+         OPTIONAL PHOTO GALLERY - MEAGAN
+
+         ONLY these selected photos appear in the gallery.
+         To change the collage, edit these entries only.
+         ================================================ */
+      gallery: [
+        {
+          image: `${imageFolder}acrobatics.jpg`,
+          imageAlt: "Meagan taking part in acrobatics",
+          caption: "Acrobatics",
+        },
+        {
+          image: `${imageFolder}ice-hockey.jpg`,
+          imageAlt: "Meagan taking part in ice hockey",
+          caption: "Ice hockey",
+        },
+      ],
 
       /* ================================================
            E. WHY HER RESEARCH MATTERS
