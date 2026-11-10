@@ -496,10 +496,10 @@ millicent: (() => {
 
                 points: [
                     "She loved acting and was part of a theatre group back in school.",
-                    "She realised she didn't have to choose between arts and science, she chose to do both.",
+                    "She realised she didn't have to choose between arts and science, you can do both.",
 "She applied to study medicine but did not get a place.",
-                    "She continued studying science and discovered new interests along the way.",
-                    "During her master's degree, she had less time for acting and radio, but her creative interests stayed."
+                    "She continued studying science and discovered new interests.",
+                    "During her Master's degree, she had less time for acting and radio, but her creative interests stayed."
                 ]
             },
 
@@ -510,13 +510,13 @@ millicent: (() => {
                 title: "Finding her path",
                 colour: "#50B96D",
 
-                image: `${imageFolder}harvard.jpg`,
+                image: `${imageFolder}brain.jpg`,
                 imageAlt: "Illustration of Millicent's journey from Nigeria to the USA and Australia",
 
                 points: [
-                    "Millicent studied in Nigeria before moving to the USA for her master's degree.",
+                    "Millicent studied in Nigeria before moving to the USA for her Master's.",
                     "For her Masters, she worked on brain research at Brigham and Women's Hospital, linked to Harvard Medical School.",
-                    "After learning about the connection between gut microbes and the brain, she came to Melbourne for PhD research."
+                    "After learning about the connection between gut microbes and the brain, she came to Melbourne for her Doctorate research."
                 ]
             },
 
@@ -533,9 +533,9 @@ millicent: (() => {
 
                 points: [
                     "Millicent investigates Huntington's disease, an inherited condition that affects the brain, movement and thinking.",
-                    "She studies how bacteria living in the gut may communicate with the brain.",
-                    "In mouse research, her team found that prebiotics, which help feed some gut bacteria, improved certain measures of gut health, movement and thinking-related performance.",
-                    "These results are from mice, not proven treatments for people."
+                    "She studies how bacteria living in the gut communicate with the brain.",
+                    "In her research, her team found that prebiotics, food for some gut bacteria, can improve gut health, movement and thinking-related performance in mice.",
+                    "The research was done on mice. It could have similar effects on people."
                 ]
             },
 
@@ -550,9 +550,10 @@ millicent: (() => {
                 imageAlt: "Illustration representing future clinical research",
 
                 points: [
-                    "In July 2026, Millicent submitted her PhD thesis about the gut and Huntington's disease.",
-                    "She hopes to work in clinical research, including studies that could improve patients' lives.",
-                    "She also shows us that a scientist can still love storytelling, acting and presenting."
+                    "In July 2026, Millicent submitted her Doctorate thesis about the gut and Huntington's disease.",
+                    "She look foward to working in clinical research.",
+                    "Her dream is to contribute to improving patients' lives.",
+                    "Millicent is a scientist that loves storytelling, acting and presenting."
                 ]
             }
 
@@ -902,8 +903,8 @@ laura: (() => {
 
                 points: [
                     "Laura grew up in Spain, in a family without a background in science.",
-                    "As a child, she always asked 'Why?' and wanted to understand the reasons behind things.",
-                    "She loved books so much that she once dreamed of becoming a librarian!",
+                    "As a child, she always asked 'Why?'. She always wanted to understand the reasons behind things.",
+                    "She loved books so much that she dreamed of becoming a librarian!",
                     "Her curiosity is what lead her to her love of science."
                 ]
             },
@@ -919,10 +920,10 @@ laura: (() => {
                 imageAlt: "Image representing Laura's school years",
 
                 points: [
-                    "Laura enjoyed many school subjects, including maths, but biology was her favourite.",
-                    "She also played piano and enjoyed learning new things.",
+                    "Laura enjoyed many school subjects, including Maths, but Biology was her favourite.",
+                    "She played the piano and enjoyed learning new things.",
                     "Sometimes she found it difficult to fit in with her group of friends.",
-                    "At university, she met people who shared her interests and enjoyed discussing the same ideas."
+                    "At university, she met people who shared her interests and enjoyed talking about similar ideas."
                 ]
             },
 
@@ -942,7 +943,7 @@ laura: (() => {
                     "One of her family member had cancer. This made Laura want to understand the science behind cancer.",
                     "She did a Bachelor of Science and majored in Biochemistry.",
                     "She then finished a Master's Degree in Immunology. Immunology is the study of the immune system.",
-                    "She came to Australia on a 6-month university exchange, and later continued her journey in Immunology research."
+                    "She came to Australia on a 6-month university exchange, and later continued her Immunology research."
                 ]
             },
 
@@ -958,9 +959,9 @@ laura: (() => {
 
                 points: [
                     "Laura investigates how immune cells interact with each other.",
-                    "Some cells take tiny pieces of material from other cells, like a robber stealing something!",
-                    "She uses powerful microscopes to look at how cells behave.",
-                    "This helps scientists learn more about our immune system."
+                    "Some cells take tiny pieces of material from other cells, like a robber stealing from a neighbour!",
+                    "She uses powerful microscopes to look at this behaviour of the immune cells.",
+                    "This helps us learn more about our immune system."
                 ]
             },
 
@@ -976,9 +977,8 @@ laura: (() => {
 
                 points: [
                     "Laura hopes to return to cancer research in the future.",
-                    "She is interested in research of Cancer Immunotherapy. This is the study of how the immune system fight cancer.",
-                    "She wants to do research in universities and the science industry.",
-                    "Her goal is to contribute to research that improves cancer treatments."
+                    "She is interested in research of Cancer Immunotherapy. This is the study of how our immune system fight cancer.",
+                    "Her wants to contribute to research that improves cancer treatments."
                 ]
             }
 
@@ -1119,7 +1119,8 @@ kevin: (() => {
                 points: [
                     "Kevin grew up in Indonesia. Science and technology were part of his family life.",
                     "His family was big on curiosity and logical thinking.",
-                    "At school, he enjoyed science. Science helped him understand and explain how the world works.",
+                    "At school, he enjoyed science.",
+                    "Science helped him understand and explain how the world works.",
                     "He dreamed of becoming a Palaeontologist, a scientist who studies ancient life and fossils!"
                 ]
             },
@@ -1131,14 +1132,14 @@ kevin: (() => {
                 title: "Challenges and choices",
                 colour: "#E9B400",
 
-                image: `${imageFolder}medicine.jpg`,
+                image: `${imageFolder}paths.jpg`,
                 imageAlt: "Image representing Kevin's early career choices",
 
                 points: [
                     "Kevin studied medicine in Indonesia, because of his family's expectations.",
-                    "After He finish his medical degree, he faced a difficult decision: continue along the medical pathway or try something different.", 
                     "He enjoyed learning about science and the human body.",
-                    "Kevin chose research over treating patients directly, even though he did not know where it would lead."
+                    "After finishing his medical degree, he faced a difficult decision: continue along the medical pathway, or try something different.",                 
+                    "Kevin chose research over treating patients directly."
                 ]
             },
 
@@ -1149,13 +1150,13 @@ kevin: (() => {
                 title: "Finding his path",
                 colour: "#50B96D",
 
-                image: `${imageFolder}pathway.jpg`,
+                image: `${imageFolder}scholar.jpg`,
                 imageAlt: "Image representing Kevin's journey into research",
 
                 points: [
                     "Kevin received a scholarship to complete a Master's degree overseas.",
                     "He then worked as a research assistant in Hong Kong, gaining experience in the laboratory.",
-                    "He chose to continue his studies in Australia, where he pursued his Doctorate Degree.",
+                    "He then continued his studies in Australia, where he pursued his Doctorate Degree.",
                     "His journey took him from medicine into stem cell and immunology research."
                 ]
             },
@@ -1167,15 +1168,14 @@ kevin: (() => {
                 title: "Research with an impact",
                 colour: "#4F71CB",
 
-                image: `${imageFolder}t-cells.jpg`,
+                image: `${imageFolder}cell.jpg`,
                 imageAlt: "Image representing T cells and stem cell research",
 
                 points: [
-                    "Kevin investigates how to grow T cells, a type of immune cell, from stem cells in the laboratory.",
+                    "Kevin investigates how to grow T-cells, a type of immune cell, from stem cells in the laboratory.",
                     "Stem cells are special because they can develop into different types of cells.",
-                    "Some T cells can recognise and destroy dangerous cells, including certain cancer cells.",
-                    "By learning how to make T cells in the lab, scientists hope to improve our understanding of the immune system and explore future treatments."
-                ]
+                    "Some T-cells can recognise and destroy dangerous cells, including certain cancer cells.",
+                    "His research help us understand our immune system. This is crucial for the development of future cancer treatments."              ]
             },
 
 
@@ -1189,10 +1189,10 @@ kevin: (() => {
                 imageAlt: "Image representing Kevin's future in research and teaching",
 
                 points: [
-                    "Kevin completed his PhD at the University of Melbourne in 2026.",
-                    "He hopes to continue research and investigate new ideas about stem cells and the immune system.",
-                    "He also loves teaching and is interested in helping students learn science at different levels.",
-                    "In the future, he may explore an academic career that combines research and education."
+                    "Kevin completed his Doctorate Degree at the University of Melbourne in 2026.",
+                    "He hopes to continue his research in stem cells and the immune system.",
+                    "He also loves teaching. He is passionate about helping students learn science at different levels.",
+                    "His future plan is to look for an academic career that combines research and education."
                 ]
             }
 
@@ -1213,7 +1213,7 @@ kevin: (() => {
 
             text: "Kevin enjoys playing video games, including Pokémon and Dynasty Warriors! He also likes history-themed games, reading non-fiction books about science and philosophy, and taking photographs while hiking.",
 
-            image: `${imageFolder}hobbies.jpg`,
+            image: `${imageFolder}travel.jpg`,
             imageAlt: "Image representing Kevin's hobbies"
         },
 
@@ -1250,7 +1250,7 @@ kevin: (() => {
         advice: [
             "Don't be afraid to make mistakes. That's how we learn!",
             "It's okay to change direction when you discover something new.",
-            "Take your time and approach unfamiliar subjects with curiosity and humility."
+            "Take your time! Try to approach unfamiliar subjects with curiosity and humility."
         ]
 
         /* ================================================
@@ -1313,12 +1313,12 @@ maria: (() => {
             {
                 title: "Curious beginnings",
                 colour: "#F43559",
-                image: `${imageFolder}portrait.jpg`,
+                image: `${imageFolder}Pakistan.jpg`,
                 imageAlt: "Portrait of Maria today",
                 points: [
-                    "Maria grew up in Pakistan, where her father worked as a doctor and inspired her interest in science.",
-                    "She was curious about how things worked and enjoyed learning about the human body.",
-                    "She wanted to become a doctor or a scientist, and her family encouraged her education."
+                    "Maria grew up in Pakistan. Her father is a doctor, and this inspired her interest in science.",
+                    "She was curious about how things worked, and enjoyed learning about the human body.",
+                    "She wanted to become a doctor or a scientist. Her family encouraged to keep studying."
                 ]
             },
 
@@ -1330,8 +1330,8 @@ maria: (() => {
                 imageAlt: "Image representing Maria's school years",
                 points: [
                     "Maria enjoyed trying small science experiments in high school.",
-                    "She used to feel afraid of mathematics, but gradually overcame that fear.",
-                    "She sometimes found big decisions difficult and put pressure on herself to do well.",
+                    "She was scared of Maths, but she slowly overcame that fear.",
+                    "She found it difficult to make big decisions, and she put pressure on herself to do well.",
                     "She learned that challenges do not have to stop you from exploring science."
                 ]
             },
@@ -1340,12 +1340,12 @@ maria: (() => {
             {
                 title: "Finding her path",
                 colour: "#50B96D",
-                image: `${imageFolder}journey.jpg`,
+                image: `${imageFolder}gold.jpg`,
                 imageAlt: "Image representing Maria's study journey from Pakistan to Australia",
                 points: [
-                    "In Pakistan, Maria studied biosciences at university and received a gold medal for her academic results.",
-                    "She then completed a master's degree in microbiology and immunology - the study of microbes and the immune system.",
-                    "She came to Australia to pursue PhD research into malaria and how the body fights infection.",
+                    "In Pakistan, Maria studied Biosciences at university and got a gold medal for her studies.",
+                    "She then completed a Master's degree in Microbiology and Immunology. This is the study of microbes and the immune system.",
+                    "She came to Australia to pursue Doctorate research into malaria and how the body fights infection.",
                     "Her science journey opened opportunities to meet researchers from around the world."
                 ]
             },
@@ -1358,9 +1358,9 @@ maria: (() => {
                 imageAlt: "Image representing malaria parasites and immune cells",
                 points: [
                     "Malaria is caused by parasites that can infect our red blood cells.",
-                    "Maria investigates how antibodies help mark infected cells so immune cells called neutrophils can recognise and remove them.",
+                    "Maria investigates how our body can recognise and remove red blood cells that are infected by malaria.",
                     "Her published research identified an important receptor that helps neutrophils carry out this job.",
-                    "Understanding these immune defences may help scientists design better malaria vaccines in the future."
+                    "Understanding these immune defences help scientists design better malaria vaccines in the future."
                 ]
             },
 
@@ -1368,7 +1368,7 @@ maria: (() => {
             {
                 title: "Looking to the Future",
                 colour: "#00A7B8",
-                image: `${imageFolder}future.jpg`,
+                image: `${imageFolder}presentation.jpg`,
                 imageAlt: "Image representing Maria's future opportunities in science and teaching",
                 points: [
                     "Maria has shared her work at science conferences and connected with researchers internationally.",
@@ -1387,7 +1387,7 @@ maria: (() => {
         hobbies: {
             heading: "Hobbies and interests",
             text: "Maria enjoys reading fiction and drama, and she used to love drawing and painting. She also likes looking after a neighbour's cat!",
-            image: `${imageFolder}reading.jpg`,
+            image: `${imageFolder}travel.jpg`,
             imageAlt: "Image representing Maria's love of reading"
         },
 
@@ -1698,8 +1698,8 @@ juliana: (() => {
                 title: "Curious beginnings",
                 colour: "#F43559",
 
-                image: `${imageFolder}portrait.jpg`,
-                imageAlt: "Portrait of Juliana today",
+                image: `${imageFolder}farm.jpg`,
+                imageAlt: "Juliana on the farm",
 
                 points: [
                     "Juliana grew up in a small farming community in Brazil with around 3,000 people.",
@@ -1715,13 +1715,13 @@ juliana: (() => {
                 title: "Challenges in school",
                 colour: "#E9B400",
 
-                image: `${imageFolder}school.jpg`,
+                image: `${imageFolder}english.jpg`,
                 imageAlt: "Image representing Juliana's school experiences in Brazil",
 
                 points: [
-                    "Juliana loved learning, but she did not find maths easy at school.",
-                    "Coming from a rural community, she had to adapt as she pursued studies in larger cities.",
-                    "She also worked on her English because scientists from different countries often share their discoveries in English."
+                    "Juliana loved learning. She find Maths difficult at school.",
+                    "Coming from a rural community, she had to adapt as she studied in larger cities.",
+                    "She worked hard on her English, because scientists from different countries always share discoveries in English."
                 ]
             },
 
@@ -1732,14 +1732,14 @@ juliana: (() => {
                 title: "Finding her path",
                 colour: "#50B96D",
 
-                image: `${imageFolder}journey.jpg`,
+                image: `${imageFolder}path.jpg`,
                 imageAlt: "Image representing Juliana's journey from Brazil to Australia",
 
                 points: [
-                    "Juliana studied biotechnology and later completed a master's degree in molecular biology in São Paulo, Brazil.",
-                    "She was offered a scholarship to continue researching at the University of Melbourne.",
+                    "Juliana studied Biotechnology, and completed a Master's degree in Molecular Biology in São Paulo, Brazil.",
+                    "She was offered a scholarship to continue her study at the University of Melbourne.",
                     "She joined a team studying blood vessels at Peter MacCallum Cancer Centre.",
-                    "Moving to Australia during the COVID-19 pandemic was stressful, but she continued pursuing science."
+                    "Moving to Australia during the COVID-19 pandemic was stressful, but she did not give up. She continued her research."
                 ]
             },
 
@@ -1750,14 +1750,14 @@ juliana: (() => {
                 title: "Research with an impact",
                 colour: "#4F71CB",
 
-                image: `${imageFolder}zebrafish.jpg`,
+                image: `${imageFolder}zebrafish.mp4`,
                 imageAlt: "Zebrafish used to study how blood vessels develop",
 
                 points: [
-                    "Juliana studies vascular malformations - blood vessels that form or develop abnormally, sometimes because of changes in DNA.",
-                    "She uses zebrafish to investigate blood vessel development and test potential medicines.",
-                    "By observing how the fish respond, researchers can identify promising ideas for further study.",
-                    "Findings in zebrafish are an early step and do not automatically mean a medicine will work in people."
+                    "Juliana studies vascular malformations. This means blood vessels that form or develop abnormally. This happens sometimes because of defective changes in DNA.",
+                    "She uses zebrafish to understand how different treatments affect their blood vessel development.",
+                    "This help us find new medicines to treat people with problems in blood vessel development.",
+                    "Findings in zebrafish are an early step in finding medicine that will work on people."
                 ]
             },
 
@@ -1793,7 +1793,7 @@ juliana: (() => {
 
             text: "Juliana loves dancing, spending time with friends and discovering good food, especially chicken parma! She enjoys fantasy books and watching dramas, and she has been keen to try salsa classes and learn new languages.",
 
-            image: `${imageFolder}dancing.jpg`,
+            image: `${imageFolder}travel.jpeg`,
             imageAlt: "Image representing Juliana's love of dancing"
         },
 
