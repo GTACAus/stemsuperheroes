@@ -3694,4 +3694,252 @@ export const expertProfiles = {
            ================================================ */
     };
   })(),
+
+
+/* =====================================================
+   KIARA SIMONIS - AVIAN SPECIALIST VETERINARIAN
+
+   STEM EXPERT - NOT A GTAC STEM COACH
+
+   Sources:
+   - Interview: 11 February 2026
+   - The Unusual Pet Vets biography
+
+   Uses the existing reusable profile, timeline,
+   hobbies carousel and optional photo gallery.
+   ===================================================== */
+
+kiara: (() => {
+
+    /* ================================================
+       A. IMAGE FOLDER
+
+       All Kiara's images are stored locally.
+       ================================================ */
+
+    const imageFolder = "assets/images/experts/kiara/";
+
+    return {
+
+        /* ================================================
+           B. BASIC INFORMATION
+           ================================================ */
+
+        name: "Kiara",
+
+        role: "Avian Specialist Veterinarian",
+
+        organisation: "The Unusual Pet Vets, Flemington, Melbourne",
+
+        portrait: `${imageFolder}portrait.jpeg`,
+
+        superpower: "Being an animal healer - using biology and veterinary medicine to care for birds, reptiles and other unusual pets",
+
+        imageFolder,
+
+
+        /* ================================================
+           C. INTERACTIVE TIMELINE
+
+           Five clickable stages.
+           timeline.js handles the interactions.
+           ================================================ */
+
+        timeline: [
+
+            // STAGE 1: A LOVE FOR ANIMALS
+
+            {
+                title: "A love for animals",
+                colour: "#F43559",
+
+                image: `${imageFolder}cockatiel.jpg`,
+                imageAlt: "Cockatiel, the type of bird that inspired Kiara's career",
+
+                points: [
+                    "Kiara loved animals from a very young age. She remembers watching the television vet Dr Harry at her grandmother's house.",
+                    "When she was around 10, she got a pet cockatiel called Tinkerbell.",
+                    "Caring for her bird inspired her dream of becoming a veterinarian who specialises in birds.",
+                    "Even as a primary school student, she knew she wanted to help animals feel better."
+                ]
+            },
+
+
+            // STAGE 2: CHALLENGES AT SCHOOL
+
+            {
+                title: "Challenges at school",
+                colour: "#E9B400",
+
+                image: `${imageFolder}school.jpg`,
+                imageAlt: "Image representing Kiara's school years and science subjects",
+
+                points: [
+                    "At school, Kiara enjoyed Biology, Chemistry and learning about plants and animals.",
+                    "But she found some Maths subjects, including Maths Methods, difficult.",
+                    "She felt pressure to achieve top marks, and a teacher even told her that she was not good enough to become a vet.",
+                    "Her ATAR was 72, which was not the result she had hoped for. She was disappointed, but she did not give up on her goal.",
+                    "Kiara learned that one exam score does not decide everything you can achieve."
+                ]
+            },
+
+
+            // STAGE 3: A DIFFERENT PATHWAY
+
+            {
+                title: "A different pathway",
+                colour: "#50B96D",
+
+                image: `${imageFolder}university.jpg`,
+                imageAlt: "Image representing Kiara studying biology and veterinary medicine",
+
+                points: [
+                    "Kiara did not enter her dream course straight after high school, so she took another university pathway.",
+                    "She focused on Science subjects she loved, especially Biology, while continuing to work towards veterinary medicine.",
+                    "Her determination paid off: she entered the Doctor of Veterinary Medicine program at the University of Melbourne.",
+                    "She graduated as a veterinarian in 2018.",
+                    "Her story shows that there can be more than one route to the career you want."
+                ]
+            },
+
+
+            // STAGE 4: LEARNING ABOUT UNUSUAL PETS
+
+            {
+                title: "Learning about unusual pets",
+                colour: "#4F71CB",
+
+                image: `${imageFolder}exotic-animals.jpg`,
+                imageAlt: "Image representing birds, reptiles and other unusual veterinary patients",
+
+                points: [
+                    "During veterinary school, Kiara deliberately looked for placements where she could work with birds and other unusual animals.",
+                    "Her experience included exotic animal veterinary clinics, a raptor rehabilitation centre and Healesville Sanctuary.",
+                    "She also learned from specialists overseas, including at an exotic animal hospital in Hong Kong.",
+                    "These placements helped her build the special skills needed to care for birds, reptiles, rabbits and guinea pigs.",
+                    "She discovered how much she enjoyed learning from veterinarians who specialise in animals other than cats and dogs."
+                ]
+            },
+
+
+            // STAGE 5: BECOMING A BIRD SPECIALIST
+
+            {
+                title: "Becoming a bird specialist",
+                colour: "#00A7B8",
+
+                image: `${imageFolder}chicken-ct.jpg`,
+                imageAlt: "CT scan or 3D medical image of a chicken",
+
+                points: [
+                    "Kiara began advanced specialist training in avian medicine and surgery in 2021.",
+                    "She trained with experienced bird veterinarians and visited the Dubai Falcon Hospital to learn more about specialist procedures.",
+                    "In 2025, she passed her Fellowship examinations and became one of Australia's relatively few avian veterinary specialists.",
+                    "At The Unusual Pet Vets, she helps birds and other unusual animals with illnesses and injuries.",
+                    "She even shared an example of a chicken CT scan - medical technology that can help vets build a detailed 3D view of an animal's body."
+                ]
+            }
+
+        ],
+
+
+        /* ================================================
+           D. HOBBIES AND INTERESTS
+
+           One main image by default.
+
+           Our existing carousel feature can also
+           support multiple selected hobby photos.
+           ================================================ */
+
+        hobbies: {
+            heading: "Hobbies and interests",
+
+            text: "Kiara loves birdwatching, spending time outdoors and caring for her pets. She also enjoys plants and cheering on an AFL team with her family! Her pets include birds, a dog, a snake and frogs.",
+
+            image: `${imageFolder}birdwatching.jpg`,
+            imageAlt: "Photograph representing Kiara's love of birdwatching"
+        },
+
+
+        /* ================================================
+           E. OPTIONAL EXTRA PHOTO GALLERY
+
+           IMPORTANT!
+
+           Only photographs listed here will appear.
+
+           - Does NOT automatically use all photos.
+           - Maximum of 5 selected photographs.
+           - Responsive collage.
+           - Empty array = NO gallery box.
+
+           When you have extra photos, replace [] with
+           the image objects you want to display.
+
+           Example:
+
+           gallery: [
+               {
+                   image: `${imageFolder}kiara-with-bird.jpg`,
+                   imageAlt: "Kiara holding a bird",
+                   caption: "Working with birds"
+               }
+           ],
+
+           ================================================ */
+
+        gallery: [],
+
+
+        /* ================================================
+           F. WHY HER WORK MATTERS
+
+           Three icon-led points and accompanying image.
+           ================================================ */
+
+        impact: {
+            heading: "Why does her work matter?",
+
+            image: `${imageFolder}chicken-ct.jpg`,
+            imageAlt: "Example of a medical scan used to investigate an animal's anatomy",
+
+            points: [
+                "Provides specialist veterinary care for birds and unusual pets that have different needs from cats and dogs",
+                "Uses scientific knowledge, examinations and medical scans to investigate animal illness and injuries",
+                "Helps animal owners understand how to keep their pets healthy and improve animal welfare"
+            ]
+        },
+
+
+        /* ================================================
+           G. ADVICE FOR STUDENTS
+
+           Based on Kiara's interview.
+           ================================================ */
+
+        adviceHeading: "Kiara's advice",
+
+        advice: [
+            "A single exam is not the end of the world.",
+            "There is more than one route to get to where you want to be.",
+            "You can only do the best you can. Don't give up because a subject or exam is difficult.",
+            "Keep following what you love, and look for opportunities to learn from others."
+        ]
+
+        /* ================================================
+           H. OPTIONAL VIDEO
+
+           No video added for Kiara.
+
+           Add a video property later if Kiara provides
+           one, using Paddy's existing video format.
+           ================================================ */
+
+    };
+
+})(),
+
+
+
 };
