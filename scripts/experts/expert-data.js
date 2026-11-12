@@ -2552,7 +2552,7 @@ export const expertProfiles = {
       portrait: `${imageFolder}portrait.jpg`,
 
       superpower:
-        "Engineering immune cells to recognise and attack brain cancer cells, to investigate better treatments for children and adults",
+        "Finding new cancer treatments, by making immune cells that recognise and attack the cancer cells in our brains.",
 
       imageFolder,
 
@@ -2584,7 +2584,7 @@ export const expertProfiles = {
             "Misty grew up in Ballarat, Victoria, and was the first person in her family to attend university.",
             "As a teenager, she was fascinated by the human body, anatomy and diseases.",
             "She was always curious and wanted to understand how things worked.",
-            "Her teachers encouraged her curiosity, determination and interest in learning.",
+            "Her teachers encouraged her to be curious, and determined.",
           ],
         },
 
@@ -2599,10 +2599,10 @@ export const expertProfiles = {
             "Image representing first aid and St John Ambulance volunteering",
 
           points: [
-            "At just 11 years old, Misty began volunteering with St John Ambulance and even took part in first aid competitions!",
-            "At school, she enjoyed maths and studied physics, chemistry and mathematics, but did not take biology.",
+            "When she was 11 years-old, Misty began volunteering with St John Ambulance. She use to take part in first aid competitions!",
+            "At school, she enjoyed Maths, Physics, Chemistry. She did not take biology.",
             "She also loved drama, theatre and performing on stage.",
-            "Misty believes that performing helped her become confident speaking to large audiences - an important skill for a scientist.",
+            "Performing helped her become confident speaking to large audiences. This is an important skill for a scientist.",
             "She worked part-time jobs while studying and learned valuable communication and teamwork skills.",
           ],
         },
@@ -2618,10 +2618,10 @@ export const expertProfiles = {
             "Image representing Misty's research journey and university studies",
 
           points: [
-            "Misty studied science at the University of Melbourne, specialising in biotechnology and immunology - the study of the immune system.",
-            "For her PhD, she contacted Peter Doherty, a scientist who had won a Nobel Prize, and was surprised when he called her back!",
+            "Misty studied Science at the University of Melbourne. She specialised in Biotechnology and Immunology.",
+            "For her Doctorate, she contacted Peter Doherty, a scientist who had won a Nobel Prize. She was surprised when he called her back!",
             "They met for coffee, and he offered her an opportunity to join his research laboratory.",
-            "After her PhD, she worked as a researcher at the universities of Oxford and Cambridge in the UK.",
+            "After her studies, she worked as a researcher at the Universities of Oxford and Cambridge in the UK.",
             "She later returned to Australia and continued her research at Peter MacCallum Cancer Centre before joining WEHI.",
           ],
         },
@@ -2636,11 +2636,11 @@ export const expertProfiles = {
           imageAlt: "Image representing immune T cells attacking cancer cells",
 
           points: [
-            "Misty leads a research team investigating new ways to treat brain cancer, including cancers affecting children.",
+            "Misty leads a research team investigating new ways to treat brain cancer, including cancers that affect children.",
             "Her team studies T cells, which are immune cells that help protect our bodies from disease.",
-            "They are developing CAR T cells - immune cells specially engineered to recognise and attack certain cancer cells.",
-            "Researchers also use powerful microscopes to study how immune cells interact with brain tumours.",
-            "These treatments are still being investigated for brain cancer. Scientists must carefully test their safety and effectiveness.",
+            "They are especially interested in CAR T cells. These are T cells that are made to recognise and attack cancer cells.",
+            "They use powerful microscopes to study how immune cells interact with brain tumours.",
+            "These treatments are in the testing stages for development for brain cancer. Scientists must carefully test their safety and effectiveness.",
           ],
         },
 
@@ -3670,9 +3670,8 @@ export const expertProfiles = {
       adviceHeading: "Maja's advice",
 
       advice: [
-        "Creativity and science together can make complex ideas powerful and clear.",
+        "Putting creativity and science together can make complex ideas powerful and clear.",
         "Stay curious! Ask questions such as 'What if?' and 'How does this work?'",
-        "You don't have to choose between being creative and enjoying science.",
         "Don't be afraid to learn new skills or explore a completely different career.",
         "Science is full of fascinating things waiting to be discovered and shared!",
       ],
