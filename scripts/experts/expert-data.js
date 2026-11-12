@@ -1875,7 +1875,7 @@ export const expertProfiles = {
 
       name: "Asha",
 
-      role: "Cancer Genomics Researcher",
+      role: "Cancer Researcher",
 
       organisation: "Cancer research at WEHI and RMIT University, Melbourne",
 
