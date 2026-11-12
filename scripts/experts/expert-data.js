@@ -2750,224 +2750,218 @@ export const expertProfiles = {
    Uses the existing reusable profile and timeline code.
    ===================================================== */
 
-  sue: (() => {
-    /* ================================================
-       A. IMAGE FOLDER
-
-       All Sue's images are stored here.
-       ================================================ */
+sue: (() => {
 
     const imageFolder = "assets/images/experts/sue/";
 
     return {
-      /* ================================================
-           B. BASIC INFORMATION
 
-           Name, role, workplace, portrait and superpower.
+        /* ================================================
+           A. BASIC INFORMATION
            ================================================ */
 
-      name: "Sue",
+        name: "Sue",
 
-      role: "Genetic Counsellor and Genetic Services Manager",
+        role: "Genetic Counsellor and Genetic Services Manager",
 
-      organisation: "The Royal Women's Hospital, Melbourne",
+        organisation: "The Royal Women's Hospital, Melbourne",
 
-      portrait: `${imageFolder}portrait.jpg`,
+        portrait: `${imageFolder}portrait.jpg`,
 
-      superpower:
-        "Combining genetics, empathy and communication to help people understand their genes and make informed decisions about their health",
+        superpower:
+            "Helping people understand their genes and make choices about their health.",
 
-      imageFolder,
+        imageFolder,
 
-      /* ================================================
-           C. INTERACTIVE TIMELINE
 
-           Five clickable stages.
+        /* ================================================
+           B. INTERACTIVE TIMELINE
 
-           Each stage includes:
-           - Title
-           - Colour
-           - Image
-           - Story points
+           Five stages telling Sue's story.
 
-           timeline.js handles the interactions.
+           Only portrait.jpg is available for the timeline
+           at the moment. You can replace the pictures
+           later without changing the story.
            ================================================ */
 
-      timeline: [
-        // STAGE 1: CURIOUS BEGINNINGS
+        timeline: [
 
-        {
-          title: "Curious beginnings",
-          colour: "#F43559",
+            // STAGE 1: A SPARK IN YEAR 11
 
-          image: `${imageFolder}portrait.jpg`,
-          imageAlt: "Portrait of Sue today",
+            {
+                title: "A spark in Year 11",
+                colour: "#F43559",
 
-          points: [
-            "Sue grew up in a family where studying science at university was unusual.",
-            "Sue and her brother were the first in their family to attend university.",
-            "In Year 11, an inspiring biology teacher named Greg Hunt helped her discover how exciting science could be.",
-            "Looking through microscopes at things like the structure of a leaf showed her how amazing and complex living things are.",
-            "This curiosity eventually led her towards genetics - the study of genes and how traits are passed on.",
-          ],
-        },
+                image: `${imageFolder}microscope.jpg`,
+                imageAlt: "Microscope image representing Sue's interest in biology",
 
-        // STAGE 2: CHALLENGES AND CHOICES
+                points: [
+                    "Sue and her brother were the first in their family to go to university.",
+                    "In Year 11, a teacher named Greg Hunt helped Sue fall in love with biology.",
+                    "She was amazed by what she could see under a microscope, even inside a leaf!",
+                    "Sue wanted to know more about how living things work."
+                ]
+            },
 
-        {
-          title: "Challenges and choices",
-          colour: "#E9B400",
 
-          image: `${imageFolder}biology.jpg`,
-          imageAlt:
-            "Image representing biology and observing leaves through a microscope",
+            // STAGE 2: A CHANGE OF PLAN
 
-          points: [
-            "Sue loved biology, English, languages and history, but she found mathematics difficult and didn't enjoy it.",
-            "At first, she wanted to become a physiotherapist, someone who helps people improve their movement and physical health.",
-            "She didn't receive the VCE score she needed for physiotherapy, so she explored another pathway.",
-            "Sue began studying biological sciences at La Trobe University.",
-            "She studied plants, animals and genetics, eventually becoming particularly interested in human genetics.",
-          ],
-        },
+            {
+                title: "A change of plan",
+                colour: "#E9B400",
 
-        // STAGE 3: FINDING HER PATH
+                image: `${imageFolder}portrait.jpg`,
+                imageAlt: "Portrait of Sue",
 
-        {
-          title: "Finding her path",
-          colour: "#50B96D",
+                points: [
+                    "Sue loved biology, English, history and languages. But maths was not her thing!",
+                    "She hoped to become a physiotherapist, someone who helps people move and recover from injury.",
+                    "She did not get the VCE score she needed for that course.",
+                    "So Sue studied biology at La Trobe University, where she grew to love genetics."
+                ]
+            },
 
-          image: `${imageFolder}pathway.jpg`,
-          imageAlt:
-            "Image representing Sue's journey through laboratory science and genetic counselling",
 
-          points: [
-            "After university, Sue worked as a research assistant at Peter MacCallum Cancer Centre.",
-            "She then spent around three years working at a biotechnology company.",
-            "Although she loved genetics, she realised that she didn't want to spend her entire career working in a laboratory or in business.",
-            "She discovered genetic counselling, a career combining genetics with helping people.",
-            "In 1996, she moved to Newcastle to study a postgraduate diploma in genetic counselling.",
-            "Her first genetic counselling job took her to Bathurst, before she began working at The Royal Women's Hospital.",
-          ],
-        },
+            // STAGE 3: FINDING HER PATH
 
-        // STAGE 4: SCIENCE MEETS PEOPLE
+            {
+                title: "Finding her path",
+                colour: "#50B96D",
 
-        {
-          title: "Science meets people",
-          colour: "#4F71CB",
+                image: `${imageFolder}portrait.jpg`,
+                imageAlt: "Portrait of Sue",
 
-          image: `${imageFolder}counselling.jpg`,
-          imageAlt:
-            "Image representing a genetic counsellor helping someone understand health information",
+                points: [
+                    "Sue first worked in cancer research at Peter Mac.",
+                    "Then she worked for a company that sold science products.",
+                    "But she wanted a job that mixed science with helping people.",
+                    "In 1996, she moved to Newcastle to study genetic counselling.",
+                    "Her first job was in Bathurst. Later, she joined the Royal Women's Hospital."
+                ]
+            },
 
-          points: [
-            "A genetic counsellor helps people understand how genes can affect their health and their families.",
-            "Genes are sections of DNA that carry instructions for how our bodies develop and function.",
-            "At The Royal Women's Hospital, Sue's team helps people understand genetic conditions and testing options, including during pregnancy or when planning a family.",
-            "Genetic counsellors explain complicated science in ways that people can understand.",
-            "They listen carefully, answer questions and support people to make their own informed decisions.",
-            "Sue loves that her job combines her interest in science with making people's experiences a little easier.",
-          ],
-        },
 
-        // STAGE 5: LEADING WITH EMPATHY
+            // STAGE 4: SCIENCE MEETS PEOPLE
 
-        {
-          title: "Leading with empathy",
-          colour: "#00A7B8",
+            {
+                title: "Science meets people",
+                colour: "#4F71CB",
 
-          image: `${imageFolder}leadership.jpg`,
-          imageAlt: "Image representing leadership, teamwork and healthcare",
+                image: `${imageFolder}portrait.jpg`,
+                imageAlt: "Portrait of Sue",
 
-          points: [
-            "Today, Sue is a Genetic Services Manager, helping lead a team of genetic counselling professionals.",
-            "She continues to learn about new discoveries because the science of genetics is always changing.",
-            "She believes that listening, empathy and communication are just as important as understanding scientific information.",
-            "Genetic counselling can involve difficult conversations, so supporting the wellbeing of healthcare workers is important too.",
-            "Sue encourages students interested in healthcare to develop people skills through volunteering, part-time jobs and community activities.",
-            "Her journey shows that science can lead to a meaningful career helping people, even outside the laboratory.",
-          ],
-        },
-      ],
+                points: [
+                    "Genes are parts of DNA. They help give our bodies instructions.",
+                    "Some changes in genes can affect our health.",
+                    "Sue helps people understand genetic tests and what the results may mean.",
+                    "She listens to their worries and talks through their choices.",
+                    "She helps people decide what is right for them, without making the choice for them."
+                ]
+            },
 
-      /* ================================================
-           D. HOBBIES AND INTERESTS
 
-           Displays one photograph by default.
+            // STAGE 5: LEADING A TEAM
 
-           To display multiple photos later,
-           add a "photos" array like Paddy's profile.
-           ================================================ */
+            {
+                title: "Leading a team",
+                colour: "#00A7B8",
 
-      hobbies: {
-        heading: "Hobbies and interests",
+                image: `${imageFolder}portrait.jpg`,
+                imageAlt: "Portrait of Sue",
 
-        text: "Sue loves reading and has been part of a monthly book club with her friends for more than 10 years! She has also started bootscooting (line dancing). When she was younger, she enjoyed ballet, and she still likes watching performances.",
+                points: [
+                    "Today, Sue leads a team of genetic counsellors at the Royal Women's Hospital.",
+                    "Her team uses science, but being a good listener matters just as much.",
+                    "Some talks can be hard. Sue and her team support each other too.",
+                    "Genetics keeps changing, so Sue is still learning new things at work."
+                ]
+            }
 
-        images: [
-          {
-            image: `${imageFolder}book-club.jpg`,
-            imageAlt: "Image representing Sue's love of reading and book clubs",
-          },
         ],
-      },
 
-      /* ================================================
+
+        /* ================================================
+           C. HOBBIES AND INTERESTS
+
+           One photo: bootscoot.jpg
+
+           The profile renderer will display this
+           as a single hobbies photograph.
+           ================================================ */
+
+        hobbies: {
+            heading: "Hobbies and interests",
+
+            text:
+                "Sue has met with her book club once a month for over 10 years! She also loves bootscooting (line dancing). She used to dance ballet and still enjoys watching it.",
+
+            image: `${imageFolder}bootscoot.jpg`,
+            imageAlt: "Sue enjoying bootscooting"
+        },
+
+
+        /* ================================================
+           D. OPTIONAL PHOTO GALLERY
+
+           No extra pictures selected yet.
+
+           The gallery box will NOT appear.
+
+           You can select up to 5 photos later.
+           ================================================ */
+
+        gallery: [],
+
+
+        /* ================================================
            E. WHY HER WORK MATTERS
 
-           Three points displayed with coloured icons.
-           One accompanying photograph.
-
-           Unlike laboratory researchers, Sue's impact
-           comes largely from her work with people.
+           Uses portrait.jpg until a suitable
+           work-related photograph is available.
            ================================================ */
 
-      impact: {
-        heading: "Why does her work matter?",
+        impact: {
+            heading: "Why does her work matter?",
 
-        image: `${imageFolder}counselling.jpg`,
-        imageAlt:
-          "Image representing genetic counselling and personalised healthcare",
+            image: `${imageFolder}portrait.jpg`,
+            imageAlt: "Sue, a genetic counsellor",
 
-        points: [
-          "Helps individuals and families understand genetic conditions and what test results might mean",
-          "Supports people to make informed choices about genetic testing, health and family planning",
-          "Combines scientific knowledge with listening, empathy and communication to provide person-centred care",
-        ],
-      },
+            points: [
+                "Explains what a genetic test can and cannot tell someone.",
+                "Helps families think through health choices, without telling them what to do.",
+                "Makes time for people's questions and worries."
+            ]
+        },
 
-      /* ================================================
+
+        /* ================================================
            F. ADVICE FOR STUDENTS
 
-           Educational takeaways based on Sue's interview.
-
-           These are paraphrases, not direct quotations.
+           Short, practical advice based on Sue's
+           interview. Not direct quotations.
            ================================================ */
 
-      adviceHeading: "Sue's advice",
+        adviceHeading: "Sue's advice",
 
-      advice: [
-        "You don't have to love every subject to find a career you enjoy in science.",
-        "Follow your interests. Sometimes a different pathway can lead you somewhere wonderful!",
-        "Learn how to communicate, listen and work with people. These skills matter in STEM too.",
-        "Try volunteering, joining activities or gaining work experience to develop life skills.",
-        "If you're interested in a career, talk to someone who already does that job and find out what it's really like.",
-      ],
+        advice: [
+            "You do not have to like every school subject to work in science.",
+            "Your first plan might change. That is OK!",
+            "If a job sounds fun, talk to someone who does it.",
+            "Practise listening to people. Science needs that skill too.",
+            "Try volunteering or joining a club to meet new people and learn new skills."
+        ]
 
-      /* ================================================
+
+        /* ================================================
            G. OPTIONAL VIDEO
 
            No video has been added for Sue.
-
-           If Sue provides a video about genetic
-           counselling, add a "video" property here.
-
-           Your existing expert-profile.js already
-           supports this optional feature.
            ================================================ */
+
     };
-  })(),
+
+})(),
+
 
   /* =====================================================
    VIJAY RAJAGOPAL - COMPUTATIONAL PHYSIOLOGIST
