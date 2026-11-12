@@ -2552,7 +2552,7 @@ export const expertProfiles = {
       portrait: `${imageFolder}portrait.jpg`,
 
       superpower:
-        "Engineering immune cells to recognise and attack brain cancer cells, to investigate better treatments for children and adults",
+        "creates immune cells to recognise and attack brain cancer cells. Her team wants to find better treatments for children and adults.",
 
       imageFolder,
 
@@ -2581,10 +2581,10 @@ export const expertProfiles = {
           imageAlt: "Portrait of Misty today",
 
           points: [
-            "Misty grew up in Ballarat, Victoria, and was the first person in her family to attend university.",
+            "Misty grew up in Ballarat, Victoria. She was the first person in her family to attend university.",
             "As a teenager, she was fascinated by the human body, anatomy and diseases.",
             "She was always curious and wanted to understand how things worked.",
-            "Her teachers encouraged her curiosity, determination and interest in learning.",
+            "Her teachers encouraged her to be curious, and determined.",
           ],
         },
 
@@ -2600,9 +2600,9 @@ export const expertProfiles = {
 
           points: [
             "At just 11 years old, Misty began volunteering with St John Ambulance and even took part in first aid competitions!",
-            "At school, she enjoyed maths and studied physics, chemistry and mathematics, but did not take biology.",
-            "She also loved drama, theatre and performing on stage.",
-            "Misty believes that performing helped her become confident speaking to large audiences - an important skill for a scientist.",
+            "At school, she enjoyed Maths and studied Physics, Chemistry and Mathematics, but did not take Biology.",
+            "She also loved Drama, Theatre and performing on stage.",
+            "Misty believes that performing helped her become confident speaking to large audiences. This is an important skill for a scientist.",
             "She worked part-time jobs while studying and learned valuable communication and teamwork skills.",
           ],
         },
@@ -2618,10 +2618,10 @@ export const expertProfiles = {
             "Image representing Misty's research journey and university studies",
 
           points: [
-            "Misty studied science at the University of Melbourne, specialising in biotechnology and immunology - the study of the immune system.",
-            "For her PhD, she contacted Peter Doherty, a scientist who had won a Nobel Prize, and was surprised when he called her back!",
+            "Misty studied science at the University of Melbourne, specialising in Biotechnology and Immunology.",
+            "For her doctorate, she contacted Peter Doherty, a scientist who had won a Nobel Prize, and was surprised when he called her back!",
             "They met for coffee, and he offered her an opportunity to join his research laboratory.",
-            "After her PhD, she worked as a researcher at the universities of Oxford and Cambridge in the UK.",
+            "After her studies, she worked as a researcher at the Universities of Oxford and Cambridge in the UK.",
             "She later returned to Australia and continued her research at Peter MacCallum Cancer Centre before joining WEHI.",
           ],
         },
@@ -2636,11 +2636,11 @@ export const expertProfiles = {
           imageAlt: "Image representing immune T cells attacking cancer cells",
 
           points: [
-            "Misty leads a research team investigating new ways to treat brain cancer, including cancers affecting children.",
-            "Her team studies T cells, which are immune cells that help protect our bodies from disease.",
-            "They are developing CAR T cells - immune cells specially engineered to recognise and attack certain cancer cells.",
-            "Researchers also use powerful microscopes to study how immune cells interact with brain tumours.",
-            "These treatments are still being investigated for brain cancer. Scientists must carefully test their safety and effectiveness.",
+            "Misty leads a research team looking for new ways to treat brain cancer, including cancers affecting children.",
+            "Her team studies T-cells, which are immune cells that help protect our bodies from disease.",
+            "They are making cells to recognise and attack certain cancer cells. These are called CAR T-cells.",
+            "They also use powerful microscopes to study how these cells communicate and interact with brain tumours.",
+            "These treatments are still being tested for brain cancer. Scientists must carefully test their safety and effectiveness.",
           ],
         },
 
@@ -2655,9 +2655,9 @@ export const expertProfiles = {
             "Image representing future advances in brain cancer treatment",
 
           points: [
-            "Misty wanted to lead her own research team so she could explore new ideas and make a meaningful difference.",
+            "Misty wants to lead her own research team so she could explore new ideas and make a difference.",
             "Building a research program was challenging. In her first year, she submitted 21 applications for research funding!",
-            "She works with other scientists, doctors, charities and supporters through initiatives including The Brain Cancer Centre.",
+            "She works with other scientists, doctors, and charities.",
             "Her long-term goal is to help develop better treatments for people with brain cancer, particularly children.",
             "Misty believes science is a creative activity where determination, teamwork and new ideas can help solve difficult problems.",
           ],
@@ -2680,12 +2680,17 @@ export const expertProfiles = {
 
         images: [
           {
-            image: `${imageFolder}theater.jpg`,
+            image: `${imageFolder}threatre.jpg`,
             imageAlt:
               "Image representing Misty's interest in theatre and performing",
           },
         ],
       },
+
+
+
+
+
 
       /* ================================================
            E. WHY HER RESEARCH MATTERS
@@ -2701,8 +2706,8 @@ export const expertProfiles = {
         imageAlt: "Image representing T cells and brain cancer immunotherapy",
 
         points: [
-          "Develops specialised immune cells that may be able to recognise and attack brain cancer cells",
-          "Helps scientists understand why some brain tumours are difficult for the immune system to fight",
+          "Making special cells to recognise and attack brain cancer cells",
+          "Helps us understand why some brain tumours are more difficult for our immune system to fight",
           "Could contribute to safer and more effective brain cancer treatments in the future",
         ],
       },
@@ -2716,7 +2721,7 @@ export const expertProfiles = {
       adviceHeading: "Misty's advice",
 
       advice: [
-        "Have a purpose and a vision to help people. It makes your work more meaningful!",
+        "Have a vision to help people. It gives your work more meaning!",
         "Science is creative! You need to think outside the box, not just get good grades.",
         "Develop life skills through jobs, hobbies and activities. Communication and teamwork are important in science.",
         "Find mentors who encourage you and help you grow.",
@@ -2913,6 +2918,11 @@ export const expertProfiles = {
         ],
       },
 
+
+
+
+
+      
       /* ================================================
            E. WHY HER WORK MATTERS
 
