@@ -2552,7 +2552,7 @@ export const expertProfiles = {
       portrait: `${imageFolder}portrait.jpg`,
 
       superpower:
-        "creates immune cells to recognise and attack brain cancer cells. Her team wants to find better treatments for children and adults.",
+        "Creates immune cells to recognise and attack brain cancer cells. Her team wants to find better treatments for children and adults.",
 
       imageFolder,
 
@@ -2599,10 +2599,10 @@ export const expertProfiles = {
             "Image representing first aid and St John Ambulance volunteering",
 
           points: [
-            "At just 11 years old, Misty began volunteering with St John Ambulance and even took part in first aid competitions!",
-            "At school, she enjoyed Maths and studied Physics, Chemistry and Mathematics, but did not take Biology.",
-            "She also loved Drama, Theatre and performing on stage.",
-            "Misty believes that performing helped her become confident speaking to large audiences. This is an important skill for a scientist.",
+            "When she was 11 years-old, Misty began volunteering with St John Ambulance. She use to take part in first aid competitions!",
+            "At school, she enjoyed Maths, Physics, Chemistry. She did not take biology.",
+            "She also loved drama, theatre and performing on stage.",
+            "Performing helped her become confident speaking to large audiences. This is an important skill for a scientist.",
             "She worked part-time jobs while studying and learned valuable communication and teamwork skills.",
           ],
         },
@@ -3680,9 +3680,8 @@ export const expertProfiles = {
       adviceHeading: "Maja's advice",
 
       advice: [
-        "Creativity and science together can make complex ideas powerful and clear.",
+        "Putting creativity and science together can make complex ideas powerful and clear.",
         "Stay curious! Ask questions such as 'What if?' and 'How does this work?'",
-        "You don't have to choose between being creative and enjoying science.",
         "Don't be afraid to learn new skills or explore a completely different career.",
         "Science is full of fascinating things waiting to be discovered and shared!",
       ],
