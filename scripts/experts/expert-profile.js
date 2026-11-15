@@ -57,18 +57,65 @@ function createExpertMedia(expert) {
 
    This DOES NOT select any photos for expert.gallery.
    --------------------------------------------------------- */
+
+/* =========================================================
+   GET HOBBY PHOTOGRAPHS
+
+   Supports THREE formats:
+
+   1. hobbies.image  = one photograph
+   2. hobbies.photos = array of photographs
+   3. hobbies.images = array of photographs
+
+   BEHAVIOUR:
+   - No photos: no image
+   - 1 photo: normal full-width image
+   - 2+ photos: interactive carousel
+
+   This is separate from the optional expert.gallery.
+   ========================================================= */
+
 function getHobbyPhotos(expert) {
-  const hobbies = expert.hobbies || {};
+    const hobbies = expert.hobbies || {};
 
-  if (Array.isArray(hobbies.photos)) {
-    const photos = hobbies.photos.filter(photo => photo && photo.image);
-    if (photos.length > 0) return photos;
-  }
+    // Support either name for an array of hobby photos.
+    const photoArray = Array.isArray(hobbies.photos)
+        ? hobbies.photos
+        : Array.isArray(hobbies.images)
+            ? hobbies.images
+            : [];
 
-  return hobbies.image
-    ? [{ image: hobbies.image, imageAlt: hobbies.imageAlt || "" }]
-    : [];
+    // Convert any valid photo entries to a consistent format.
+    const photos = photoArray
+        .map(photo => {
+            if (typeof photo === "string") {
+                return {
+                    image: photo,
+                    imageAlt: `Photo of ${expert.name}`
+                };
+            }
+
+            return photo;
+        })
+        .filter(photo => photo && photo.image);
+
+    // One or more photographs from an array.
+    if (photos.length > 0) {
+        return photos;
+    }
+
+    // Otherwise, use the standard single-image property.
+    if (hobbies.image) {
+        return [{
+            image: hobbies.image,
+            imageAlt: hobbies.imageAlt || ""
+        }];
+    }
+
+    // No hobby photographs available.
+    return [];
 }
+
 
 function renderHobbyMedia(expert, hobbyPhotos) {
   const e = escapeHTML;
