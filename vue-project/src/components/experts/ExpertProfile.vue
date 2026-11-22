@@ -1,27 +1,53 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import ExpertTimeline from "./ExpertTimeline.vue";
 import ProfileToolbar from "./ProfileToolbar.vue";
 
 const props = defineProps({
+  // One entry from data/expert-profiles.js
   expert: { type: Object, required: true },
 });
 defineEmits(["close"]);
 
 const impactIcons = ["🔎", "♡", "✿"];
-const profileIconType = computed(() => {
-  const isImage = /\.(png|jpg|jpeg|gif|webp|svg)(\?.*)?$/i.test(
-    props.expert.impact.image,
-  );
-  const isVideo = /\.(mp4|webm|ogg|mov|m4v)(\?.*)?$/i.test(
-    props.expert.impact.image,
-  );
-  if (isImage) {
-    return "img";
-  } else if (isVideo) {
-    return "video";
-  }
+
+// Research impact media: an .mp4 (etc.) plays as a video, anything else is an image.
+const impactIsVideo = computed(() =>
+  /\.(mp4|webm|ogg|mov|m4v)([?#].*)?$/i.test(String(props.expert.impact.image ?? "")),
+);
+
+// Hobby photos: hobbies.photos or hobbies.images (array), else hobbies.image (one).
+// 1 photo shows a plain image; 2+ photos show the carousel.
+const hobbyPhotos = computed(() => {
+  const hobbies = props.expert.hobbies || {};
+  const list = Array.isArray(hobbies.photos)
+    ? hobbies.photos
+    : Array.isArray(hobbies.images)
+      ? hobbies.images
+      : [];
+  const photos = list
+    .map((p) => (typeof p === "string" ? { image: p } : p))
+    .filter((p) => p && p.image);
+  if (photos.length) return photos;
+  return hobbies.image ? [{ image: hobbies.image, imageAlt: hobbies.imageAlt }] : [];
 });
+const carouselIndex = ref(0);
+function carouselClass(i) {
+  const offset = i - carouselIndex.value;
+  return {
+    "is-current": offset === 0,
+    "is-previous": offset === -1,
+    "is-next": offset === 1,
+    "is-hidden": Math.abs(offset) > 1,
+  };
+}
+
+// Optional extra photo collage: only photos listed in expert.gallery, at most 5.
+const galleryPhotos = computed(() =>
+  Array.isArray(props.expert.gallery)
+    ? props.expert.gallery.filter((p) => p && p.image).slice(0, 5)
+    : [],
+);
 </script>
 
 <template>
@@ -45,7 +71,7 @@ const profileIconType = computed(() => {
       </p>
       <div class="profile-superpower">
         <strong>⚡ STEM Superpower</strong>
-        <p>{{ expert.back.superpower }}</p>
+        <p>{{ expert.superpower }}</p>
       </div>
     </div>
   </div>
@@ -65,10 +91,50 @@ const profileIconType = computed(() => {
       <h3 class="profile-section-heading">{{ expert.hobbies.heading }}</h3>
       <p>{{ expert.hobbies.text }}</p>
       <img
-        :src="expert.hobbies.image"
-        :alt="expert.hobbies.imageAlt"
+        v-if="hobbyPhotos.length === 1"
+        :src="hobbyPhotos[0].image"
+        :alt="hobbyPhotos[0].imageAlt || `Photo of ${expert.name}`"
         loading="lazy"
       />
+      <div
+        v-else-if="hobbyPhotos.length > 1"
+        class="image-carousel"
+        role="region"
+        :aria-label="`${expert.name}'s hobbies photographs`"
+      >
+        <button
+          class="image-carousel-prev"
+          type="button"
+          aria-label="Previous photograph"
+          :disabled="carouselIndex === 0"
+          @click="carouselIndex--"
+        >
+          &#10094;
+        </button>
+        <div class="image-carousel-track">
+          <img
+            v-for="(photo, i) in hobbyPhotos"
+            :key="i"
+            class="image-carousel-item"
+            :class="carouselClass(i)"
+            :src="photo.image"
+            :alt="photo.imageAlt || `Photo of ${expert.name}`"
+            :aria-hidden="String(Math.abs(i - carouselIndex) > 1)"
+            loading="lazy"
+            draggable="false"
+            @click="carouselIndex = i"
+          />
+        </div>
+        <button
+          class="image-carousel-next"
+          type="button"
+          aria-label="Next photograph"
+          :disabled="carouselIndex === hobbyPhotos.length - 1"
+          @click="carouselIndex++"
+        >
+          &#10095;
+        </button>
+      </div>
     </section>
     <section class="profile-section profile-impact">
       <h3 class="profile-section-heading">{{ expert.impact.heading }}</h3>
@@ -83,17 +149,39 @@ const profileIconType = computed(() => {
             <span>{{ point }}</span>
           </li>
         </ul>
-        <component
-          :is="profileIconType"
+        <video
+          v-if="impactIsVideo"
           :src="expert.impact.image"
-          :alt="profileIconType === 'img' ? expert.impact.imageAlt : undefined"
-          :controls="profileIconType === 'video'"
-          :playsinline="profileIconType === 'video'"
+          controls
+          playsinline
+          preload="metadata"
+        ></video>
+        <img
+          v-else
+          :src="expert.impact.image"
+          :alt="expert.impact.imageAlt || ''"
           loading="lazy"
         />
       </div>
     </section>
   </div>
+
+  <section v-if="galleryPhotos.length" class="profile-section profile-gallery">
+    <h3 class="profile-section-heading">More moments with {{ expert.name }}</h3>
+    <div
+      class="profile-gallery-grid"
+      :class="{ 'profile-gallery-grid--single': galleryPhotos.length === 1 }"
+    >
+      <figure v-for="(photo, i) in galleryPhotos" :key="i" class="profile-gallery-item">
+        <img
+          :src="photo.image"
+          :alt="photo.imageAlt || photo.caption || `Photo of ${expert.name}`"
+          loading="lazy"
+        />
+        <figcaption v-if="photo.caption">{{ photo.caption }}</figcaption>
+      </figure>
+    </div>
+  </section>
 
   <section v-if="expert.video" class="profile-section profile-video">
     <h3 class="profile-section-heading">
@@ -118,7 +206,7 @@ const profileIconType = computed(() => {
   </section>
 
   <section class="profile-section profile-advice">
-    <h3 class="profile-section-heading">Advice</h3>
+    <h3 class="profile-section-heading">{{ expert.adviceHeading || "Advice" }}</h3>
     <ul>
       <li v-for="item in expert.advice" :key="item">{{ item }}</li>
     </ul>
@@ -318,6 +406,139 @@ const profileIconType = computed(() => {
   .profile-impact-layout > img,
   .profile-impact-layout > video {
     max-height: 240px;
+  }
+}
+
+/* =========================================================
+   OPTIONAL EXPERT PHOTO GALLERY (1-5 selected photos)
+   ========================================================= */
+.profile-gallery {
+  margin-top: 16px;
+}
+.profile-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 14px;
+}
+.profile-gallery-grid--single {
+  max-width: 520px;
+}
+.profile-gallery-item {
+  min-width: 0;
+  margin: 0;
+}
+.profile-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+}
+.profile-gallery-item figcaption {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .profile-gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+  }
+  .profile-gallery-item img {
+    height: 180px;
+  }
+}
+
+/* =========================================================
+   HOBBIES IMAGE CAROUSEL (2+ hobby photos)
+   ========================================================= */
+.image-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1000px;
+  height: clamp(250px, 45vw, 450px);
+  margin: 2rem auto;
+  overflow: hidden;
+}
+.image-carousel-track {
+  position: absolute;
+  inset: 0;
+  perspective: 1200px;
+  pointer-events: none;
+}
+.image-carousel-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 85%;
+  object-fit: contain;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, -50%) scale(1);
+  transition:
+    left 0.45s ease,
+    opacity 0.45s ease,
+    transform 0.45s ease;
+  pointer-events: none;
+}
+.image-carousel-item.is-current {
+  z-index: 3;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.image-carousel-item.is-previous {
+  z-index: 2;
+  left: 20%;
+  opacity: 0.6;
+  transform: translate(-50%, -50%) scale(0.8) rotateY(-30deg);
+  pointer-events: auto;
+  cursor: pointer;
+}
+.image-carousel-item.is-next {
+  z-index: 2;
+  left: 80%;
+  opacity: 0.6;
+  transform: translate(-50%, -50%) scale(0.8) rotateY(30deg);
+  pointer-events: auto;
+  cursor: pointer;
+}
+.image-carousel-item.is-hidden {
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.5);
+}
+.image-carousel-prev,
+.image-carousel-next {
+  position: relative;
+  z-index: 5;
+  width: 45px;
+  height: 45px;
+  border: 2px solid var(--line, #444);
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  font-size: 20px;
+}
+.image-carousel-prev:not(:disabled):hover,
+.image-carousel-next:not(:disabled):hover {
+  background: var(--soft-yellow);
+}
+.image-carousel-prev:disabled,
+.image-carousel-next:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+@media (prefers-reduced-motion: reduce) {
+  .image-carousel-item {
+    transition: none;
   }
 }
 

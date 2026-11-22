@@ -1,5 +1,6 @@
 <script setup>
 defineProps({
+  // One entry from data/expert-cards.js
   expert: { type: Object, required: true },
   flipped: Boolean,
   expanded: Boolean,
@@ -32,9 +33,9 @@ const rows = [
           <img :src="expert.portrait" :alt="expert.portraitAlt" />
         </div>
         <div class="expert-card-content">
-          <p class="expert-field">{{ expert.role }}</p>
+          <p class="expert-field">{{ expert.field }}</p>
           <h3>{{ expert.name }}</h3>
-          <p class="expert-role">{{ expert.subtitle ?? expert.organisation }}</p>
+          <p class="expert-role">{{ expert.role }}</p>
         </div>
       </div>
       <div class="expert-card-face expert-card-back">
@@ -48,13 +49,13 @@ const rows = [
             <span class="expert-detail-icon" aria-hidden="true">{{ row.icon }}</span>
             <div>
               <strong>{{ row.label }}</strong>
-              <p>{{ expert.back[row.key] }}</p>
+              <p>{{ expert[row.key] }}</p>
             </div>
           </div>
           <div class="expert-profile-chip">
-            <img :src="expert.portrait" alt="" />
+            <img :src="expert.chipImage ?? expert.portrait" alt="" />
             <div>
-              <strong>{{ expert.name }}</strong><span>{{ expert.role }}</span>
+              <strong>{{ expert.name }}</strong><span>{{ expert.field }}</span>
             </div>
           </div>
         </div>

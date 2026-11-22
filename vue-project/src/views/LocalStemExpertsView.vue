@@ -3,6 +3,7 @@ import { computed, nextTick, ref, useTemplateRef } from 'vue';
 import ExpertCard from '../components/experts/ExpertCard.vue';
 import ExpertProfile from '../components/experts/ExpertProfile.vue';
 import ThingLinkEmbed from '../components/experts/ThingLinkEmbed.vue';
+import { expertCards } from '../data/expert-cards.js';
 import { expertProfiles } from '../data/expert-profiles.js';
 
 const cardRefs = useTemplateRef('cards');
@@ -12,7 +13,8 @@ const flippedId = ref(null);
 // The shared panel renders after the last card in the active card's grid row.
 const panelAfterIndex = ref(-1);
 
-const activeExpert = computed(() => expertProfiles.find((e) => e.name === activeId.value));
+const activeCard = computed(() => expertCards.find((c) => c.id === activeId.value));
+const activeProfile = computed(() => activeCard.value && expertProfiles[activeCard.value.id]);
 
 function lastIndexInRow(index) {
   const els = cardRefs.value.map((c) => c.$el);
@@ -24,7 +26,7 @@ function lastIndexInRow(index) {
 }
 
 function close(restoreFocus = true) {
-  const index = expertProfiles.findIndex((e) => e.name === activeId.value);
+  const index = expertCards.findIndex((c) => c.id === activeId.value);
   activeId.value = null;
   flippedId.value = null;
   panelAfterIndex.value = -1;
@@ -32,14 +34,14 @@ function close(restoreFocus = true) {
 }
 
 async function open(index) {
-  const expert = expertProfiles[index];
-  if (activeId.value === expert.name) return close(false);
-  if (!expert.timeline && !expert.thinglinkUrl) {
-    console.warn(`${expert.name} needs a full profile or a thinglinkUrl.`);
+  const card = expertCards[index];
+  if (activeId.value === card.id) return close(false);
+  if (!expertProfiles[card.id] && !card.thinglinkUrl) {
+    console.warn(`Card "${card.id}" needs a matching profile in expert-profiles.js or a thinglinkUrl.`);
     return;
   }
   panelAfterIndex.value = lastIndexInRow(index);
-  activeId.value = expert.name;
+  activeId.value = card.id;
   await nextTick();
   document.getElementById('expert-details-panel')?.scrollIntoView({
     behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
@@ -48,11 +50,11 @@ async function open(index) {
 }
 
 function activate(index, { source }) {
-  const expert = expertProfiles[index];
+  const card = expertCards[index];
   const hasHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
   // On touch: first tap flips; second tap opens. Desktop and keyboard open directly.
-  if (source === 'pointer' && !hasHover && flippedId.value !== expert.name) {
-    flippedId.value = expert.name;
+  if (source === 'pointer' && !hasHover && flippedId.value !== card.id) {
+    flippedId.value = card.id;
     return;
   }
   open(index);
@@ -78,27 +80,27 @@ function activate(index, { source }) {
       </div>
 
       <div class="experts-grid">
-        <template v-for="(expert, i) in expertProfiles" :key="expert.name">
+        <template v-for="(card, i) in expertCards" :key="card.id">
           <ExpertCard
             ref="cards"
-            :expert="expert"
-            :flipped="flippedId === expert.name"
-            :expanded="activeId === expert.name"
+            :expert="card"
+            :flipped="flippedId === card.id"
+            :expanded="activeId === card.id"
             @activate="activate(i, $event)"
           />
           <section
-            v-if="activeExpert && panelAfterIndex === i"
+            v-if="activeCard && panelAfterIndex === i"
             id="expert-details-panel"
             class="expert-profile-panel"
-            :aria-labelledby="activeExpert.thinglinkUrl ? undefined : 'active-expert-name'"
+            :aria-labelledby="activeProfile ? 'active-expert-name' : undefined"
           >
+            <ExpertProfile v-if="activeProfile" :key="activeCard.id" :expert="activeProfile" @close="close()" />
             <ThingLinkEmbed
-              v-if="activeExpert.thinglinkUrl"
-              :url="activeExpert.thinglinkUrl"
-              :name="activeExpert.name"
+              v-else
+              :url="activeCard.thinglinkUrl"
+              :name="activeCard.name"
               @close="close()"
             />
-            <ExpertProfile v-else :expert="activeExpert" @close="close()" />
           </section>
         </template>
       </div>
