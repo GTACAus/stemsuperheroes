@@ -1,37 +1,67 @@
 <script setup>
-import { computed, ref } from 'vue';
-import Button from '../Button.vue';
-import ActivityFeedback from './ActivityFeedback.vue';
+import { computed, ref } from "vue";
+import Button from "../Button.vue";
+import ActivityFeedback from "./ActivityFeedback.vue";
 
 const stages = [
-  { id: 'change', label: '1. Change', prompt: 'Choose the one variable that will be different.' },
-  { id: 'measure', label: '2. Measure', prompt: 'Choose what you will measure.' },
-  { id: 'control', label: '3. Control', prompt: 'Choose the variables that stay the same.' },
+  {
+    id: "change",
+    label: "1. Change",
+    prompt: "Choose the one variable that will be different.",
+  },
+  {
+    id: "measure",
+    label: "2. Measure",
+    prompt: "Choose what you will measure.",
+  },
+  {
+    id: "control",
+    label: "3. Control",
+    prompt: "Choose the variables that stay the same.",
+  },
 ];
 
-const currentStage = ref('change');
+const currentStage = ref("change");
 
 // The variables students can change or control, each with its dropdown options
 const variables = [
-  { id: 'material', label: 'Materials', options: ['Foam', 'Bubble Wrap', 'Paper'] },
   {
-    id: 'layers',
-    label: 'Number of Layers',
-    // Change options compare two settings; Control options are a single shared setting
-    options: ['No Layers vs. 1 Layer', 'No Layers vs. 2 Layers', '1 Layer vs. 2 Layers'],
-    controlOptions: ['No Layers', '1 Layer', '2 Layers'],
+    id: "material",
+    label: "Materials",
+    options: ["Foam", "Bubble Wrap", "Paper"],
   },
   {
-    id: 'height',
-    label: 'Drop Height',
+    id: "layers",
+    label: "Number of Layers",
+    // Change options compare two settings; Control options are a single shared setting
+    options: [
+      "No Layers vs. 1 Layer",
+      "No Layers vs. 2 Layers",
+      "1 Layer vs. 2 Layers",
+    ],
+    controlOptions: ["No Layers", "1 Layer", "2 Layers"],
+  },
+  {
+    id: "height",
+    label: "Drop Height",
     // Experiment A is always dropped from the baseline; Change picks B's height
-    options: ['1.5m', '3m'],
-    baseline: '1m',
-    controlOptions: ['1m', '1.5m', '3m'],
+    options: ["1.5m", "3m"],
+    baseline: "1m",
+    controlOptions: ["1m", "1.5m", "3m"],
   },
   // fixedPair: Change compares both options (A = first, B = second) with no dropdown
-  { id: 'surface', label: 'Surface Type', options: ['Soft Surface', 'Hard Surface'], fixedPair: true },
-  { id: 'direction', label: 'Direction of Drop', options: ['Blunt End', 'Pointy End'], fixedPair: true },
+  {
+    id: "surface",
+    label: "Surface Type",
+    options: ["Soft Surface", "Hard Surface"],
+    fixedPair: true,
+  },
+  {
+    id: "direction",
+    label: "Direction of Drop",
+    options: ["Blunt End", "Pointy End"],
+    fixedPair: true,
+  },
 ];
 
 // TODO: add these images to public/assets/images/fair-test/
@@ -40,112 +70,134 @@ const defaultEggImage = `${imageBase}egg.png`;
 // Wrapped egg on the canvas: one image per material and layer count
 const eggImages = {
   Foam: {
-    '1 Layer': `${imageBase}egg-foam-1.png`,
-    '2 Layers': `${imageBase}egg-foam-2.png`
+    "1 Layer": `${imageBase}egg-foam-1.png`,
+    "2 Layers": `${imageBase}egg-foam-2.png`,
   },
-  'Bubble Wrap': {
-    '1 Layer': `${imageBase}egg-bubble-wrap-1.png`,
-    '2 Layers': `${imageBase}egg-bubble-wrap-2.png`,
+  "Bubble Wrap": {
+    "1 Layer": `${imageBase}egg-bubble-wrap-1.png`,
+    "2 Layers": `${imageBase}egg-bubble-wrap-2.png`,
   },
   Paper: {
-    '1 Layer': `${imageBase}egg-paper-1.png`,
-    '2 Layers': `${imageBase}egg-paper-2.png`
+    "1 Layer": `${imageBase}egg-paper-1.png`,
+    "2 Layers": `${imageBase}egg-paper-2.png`,
   },
 };
 // Layers panel: one image per material and layer count
 const layerImages = {
   Foam: {
-    '1 Layer': `${imageBase}layers-foam-1.png`,
-    '2 Layers': `${imageBase}layers-foam-2.png`
+    "1 Layer": `${imageBase}layers-foam-1.png`,
+    "2 Layers": `${imageBase}layers-foam-2.png`,
   },
-  'Bubble Wrap': {
-    '1 Layer': `${imageBase}layers-bubble-wrap-1.png`,
-    '2 Layers': `${imageBase}layers-bubble-wrap-2.png`,
+  "Bubble Wrap": {
+    "1 Layer": `${imageBase}layers-bubble-wrap-1.png`,
+    "2 Layers": `${imageBase}layers-bubble-wrap-2.png`,
   },
   Paper: {
-    '1 Layer': `${imageBase}layers-paper-1.png`,
-    '2 Layers': `${imageBase}layers-paper-2.png`
+    "1 Layer": `${imageBase}layers-paper-1.png`,
+    "2 Layers": `${imageBase}layers-paper-2.png`,
   },
 };
 // Egg position down the ruler (matches the ruler markers)
-const heightTop = { '1m': '61%', '1.5m': '53%', '3m': '31%' };
-const surfaceClass = { "Soft Surface": 'soft-surface', "Hard Surface": 'hard-surface' };
+const heightTop = { "1m": "61%", "1.5m": "53%", "3m": "31%" };
+const surfaceClass = {
+  "Soft Surface": "soft-surface",
+  "Hard Surface": "hard-surface",
+};
 
-const measureLabel = 'Level of Protection';
+const measureLabel = "Level of Protection";
 const measureImage = `${imageBase}protection-scale.png`; // TODO: replace with the real image path
 
 // Student choices
-const changeId = ref(''); // variable being changed
+const changeId = ref(""); // variable being changed
 const changeValues = ref({}); // { variableId: chosen option } for the change variable
 const measureSelected = ref(false);
-const controlId = ref(''); // control variable whose dropdown is open
+const controlId = ref(""); // control variable whose dropdown is open
 const controlValues = ref({}); // { variableId: chosen option } for each controlled variable
 
 const getVariable = (id) => variables.find((v) => v.id === id);
-const getControlOptions = (id) => getVariable(id).controlOptions || getVariable(id).options;
+const getControlOptions = (id) =>
+  getVariable(id).controlOptions || getVariable(id).options;
 
 // [Experiment A, Experiment B] layers for each Number of Layers comparison
 const layerPairs = {
-  'No Layers vs. 1 Layer': ['No Layers', '1 Layer'],
-  'No Layers vs. 2 Layers': ['No Layers', '2 Layers'],
-  '1 Layer vs. 2 Layers': ['1 Layer', '2 Layers'],
+  "No Layers vs. 1 Layer": ["No Layers", "1 Layer"],
+  "No Layers vs. 2 Layers": ["No Layers", "2 Layers"],
+  "1 Layer vs. 2 Layers": ["1 Layer", "2 Layers"],
 };
 
 function chooseChange(id) {
   changeId.value = id;
   // A variable that is now being changed can't also be controlled
   delete controlValues.value[id];
-  if (controlId.value === id) controlId.value = '';
+  if (controlId.value === id) controlId.value = "";
   // Experiment A uses the first option, so default B to the second to show a difference
-  if (!changeValues.value[id]) changeValues.value[id] = getVariable(id).options[1];
+  if (!changeValues.value[id])
+    changeValues.value[id] = getVariable(id).options[1];
 }
 
 function chooseControl(id) {
   controlId.value = id;
-  if (!controlValues.value[id]) controlValues.value[id] = getControlOptions(id)[0];
+  if (!controlValues.value[id])
+    controlValues.value[id] = getControlOptions(id)[0];
 }
 
 // Every variable except the one being changed (all of them until one is chosen)
-const controllableVariables = computed(() => variables.filter((v) => v.id !== changeId.value));
+const controllableVariables = computed(() =>
+  variables.filter((v) => v.id !== changeId.value),
+);
 
 // Resolved settings for each experiment: controlled values are shared (first option until set);
 // the changed variable is the first option in A and the dropdown choice in B
 const lanes = computed(() =>
-  ['A', 'B'].map((name) => {
+  ["A", "B"].map((name) => {
     const settings = {};
-    for (const v of variables) settings[v.id] = controlValues.value[v.id] || getControlOptions(v.id)[0];
+    for (const v of variables)
+      settings[v.id] = controlValues.value[v.id] || getControlOptions(v.id)[0];
     // Without a layers choice the egg is unwrapped, unless the material is being compared
-    if (!controlValues.value.layers && changeId.value === 'material') settings.layers = '1 Layer';
+    if (!controlValues.value.layers && changeId.value === "material")
+      settings.layers = "1 Layer";
 
-    if (changeId.value === 'layers') {
-      settings.layers = layerPairs[changeValues.value.layers][name === 'A' ? 0 : 1];
+    if (changeId.value === "layers") {
+      settings.layers =
+        layerPairs[changeValues.value.layers][name === "A" ? 0 : 1];
     } else if (changeId.value) {
       const variable = getVariable(changeId.value);
-      settings[variable.id] = name === 'A' ? variable.baseline || variable.options[0] : changeValues.value[variable.id];
+      settings[variable.id] =
+        name === "A"
+          ? variable.baseline || variable.options[0]
+          : changeValues.value[variable.id];
     }
     return { name, ...settings };
-  })
+  }),
 );
 
 // An egg is only shown wrapped when it has layers
-const isWrapped = (lane) => lane.layers !== 'No Layers';
+const isWrapped = (lane) => lane.layers !== "No Layers";
 
 const changeSummary = computed(() => {
-  if (!changeId.value) return '';
+  if (!changeId.value) return "";
   const variable = getVariable(changeId.value);
   return {
     id: variable.id,
     label: variable.label,
-    value: variable.fixedPair ? variable.options.join(' vs. ') : changeValues.value[variable.id]
-  }
+    value: variable.fixedPair
+      ? variable.options.join(" vs. ")
+      : changeValues.value[variable.id],
+  };
 });
 
-const measureSummary = computed(() => (measureSelected.value ? measureLabel : ''));
+const measureSummary = computed(() =>
+  measureSelected.value ? measureLabel : "",
+);
 // One line per controlled variable that has a chosen value
 const controlSummary = computed(() =>
   controllableVariables.value
     .filter((v) => controlValues.value[v.id])
-    .map((v) => ({ id: v.id, label: v.label, value: controlValues.value[v.id] }))
+    .map((v) => ({
+      id: v.id,
+      label: v.label,
+      value: controlValues.value[v.id],
+    })),
 );
 
 // null until the student checks their design, then 'success' or 'try-again'
@@ -153,19 +205,23 @@ const feedback = ref(null);
 
 // Change and Measure picked, and a value chosen for every controlled variable
 function checkAllSelected() {
-  return Boolean(changeId.value) && measureSelected.value && controllableVariables.value.every((v) => controlValues.value[v.id]);
+  return (
+    Boolean(changeId.value) &&
+    measureSelected.value &&
+    controllableVariables.value.every((v) => controlValues.value[v.id])
+  );
 }
 
 function checkDesign() {
-  feedback.value = checkAllSelected() ? 'success' : 'try-again';
+  feedback.value = checkAllSelected() ? "success" : "try-again";
 }
 
 function reset() {
-  currentStage.value = 'change';
-  changeId.value = '';
+  currentStage.value = "change";
+  changeId.value = "";
   changeValues.value = {};
   measureSelected.value = false;
-  controlId.value = '';
+  controlId.value = "";
   controlValues.value = {};
   feedback.value = null;
 }
@@ -176,21 +232,25 @@ function reset() {
     <h2 class="fair-test-title">Build Your Fair Test Plan</h2>
 
     <div class="fair-test-instructions">
-      <p>Follow the steps and watch as your <strong>fair test</strong> diagram is created.</p>
+      <p>
+        Follow the steps and watch as your <strong>fair test</strong> diagram is
+        created.
+      </p>
 
       <ol>
         <li>
           Click on the <strong><em>Change</em></strong> button. Then select the
-          <strong><em>independent variable</em></strong> - what you will change. Then use the drop-down menu to make a
-          choice from the selections offered.
+          <strong><em>independent variable</em></strong> - what you will change.
+          Then use the drop-down menu to make a choice from the selections
+          offered.
         </li>
         <li>
           Click on the <strong><em>Measure</em></strong> button. Then select the
           <strong>dependent variable</strong> - what you will measure.
         </li>
         <li>
-          Click on the <strong><em>Control</em></strong> button. Then select all the <strong>variables</strong> you
-          must keep the same.
+          Click on the <strong><em>Control</em></strong> button. Then select all
+          the <strong>variables</strong> you must keep the same.
         </li>
       </ol>
     </div>
@@ -229,14 +289,21 @@ function reset() {
         </div>
 
         <!-- Fixed comparisons (surface, direction) have no dropdown, just the two settings -->
-        <div v-if="changeId && getVariable(changeId).fixedPair" class="revealed-menu">
-          <strong>{{ getVariable(changeId).options.join(' vs. ') }}</strong>
+        <div
+          v-if="changeId && getVariable(changeId).fixedPair"
+          class="revealed-menu"
+        >
+          <strong>{{ getVariable(changeId).options.join(" vs. ") }}</strong>
         </div>
 
         <div v-else-if="changeId" class="revealed-menu">
           <label for="change-select">{{ getVariable(changeId).label }}</label>
           <select id="change-select" v-model="changeValues[changeId]">
-            <option v-for="option in getVariable(changeId).options" :key="option" :value="option">
+            <option
+              v-for="option in getVariable(changeId).options"
+              :key="option"
+              :value="option"
+            >
               {{ option }}
             </option>
           </select>
@@ -251,7 +318,8 @@ function reset() {
           <Button
             type="button"
             class="choice-button"
-            :class="{ selected: measureSelected }" @click="measureSelected = true"
+            :class="{ selected: measureSelected }"
+            @click="measureSelected = true"
           >
             {{ measureLabel }}
           </Button>
@@ -284,7 +352,11 @@ function reset() {
         <div v-if="controlId" class="revealed-menu">
           <label for="control-select">{{ getVariable(controlId).label }}</label>
           <select id="control-select" v-model="controlValues[controlId]">
-            <option v-for="option in getControlOptions(controlId)" :key="option" :value="option">
+            <option
+              v-for="option in getControlOptions(controlId)"
+              :key="option"
+              :value="option"
+            >
               {{ option }}
             </option>
           </select>
@@ -301,15 +373,24 @@ function reset() {
 
       <div class="fair-test-visual">
         <div class="fair-test-canvas" aria-label="Visual experiment builder">
-          <div v-if="changeId === 'height' || controlValues.height" class="ruler" aria-hidden="true">
+          <div
+            v-if="changeId === 'height' || controlValues.height"
+            class="ruler"
+            aria-hidden="true"
+          >
             <span class="ruler-mark" style="top: 32%">3 m</span>
             <span class="ruler-mark" style="top: 66%">1.5 m</span>
             <span class="ruler-mark" style="top: 77%">1 m</span>
           </div>
 
           <template v-for="lane in lanes" :key="lane.name">
-            <div class="lane-label" :class="`lane-${lane.name.toLowerCase()}`">Experiment {{ lane.name }}</div>
-            <div class="drop-line" :class="`lane-${lane.name.toLowerCase()}`"></div>
+            <div class="lane-label" :class="`lane-${lane.name.toLowerCase()}`">
+              Experiment {{ lane.name }}
+            </div>
+            <div
+              class="drop-line"
+              :class="`lane-${lane.name.toLowerCase()}`"
+            ></div>
             <img
               class="egg"
               :class="`lane-${lane.name.toLowerCase()}`"
@@ -317,12 +398,24 @@ function reset() {
                 top: heightTop[lane.height],
                 transform: `translate(-50%, -50%) rotate(${lane.direction === 'Pointy End' ? 180 : 0}deg)`,
               }"
-              :src="isWrapped(lane) ? eggImages[lane.material][lane.layers] : defaultEggImage"
+              :src="
+                isWrapped(lane)
+                  ? eggImages[lane.material][lane.layers]
+                  : defaultEggImage
+              "
               :alt="
-                isWrapped(lane) ? `Egg protected with ${lane.layers} of ${lane.material}` : 'Egg with no protection'
+                isWrapped(lane)
+                  ? `Egg protected with ${lane.layers} of ${lane.material}`
+                  : 'Egg with no protection'
               "
             />
-            <div class="surface" :class="[`lane-${lane.name.toLowerCase()}`, surfaceClass[lane.surface]]">
+            <div
+              class="surface"
+              :class="[
+                `lane-${lane.name.toLowerCase()}`,
+                surfaceClass[lane.surface],
+              ]"
+            >
               <span>{{ lane.surface }}</span>
             </div>
           </template>
@@ -333,7 +426,13 @@ function reset() {
           <h4>Number of layers</h4>
 
           <figure>
-            <figure v-if="isWrapped(lanes[1]) && lanes[0].layers == '1 Layer' && lanes[1].layers == '2 Layers'">
+            <figure
+              v-if="
+                isWrapped(lanes[1]) &&
+                lanes[0].layers == '1 Layer' &&
+                lanes[1].layers == '2 Layers'
+              "
+            >
               <img
                 :src="layerImages[lanes[0].material][lanes[0].layers]"
                 :alt="`${lanes[0].layers} of ${lanes[0].material}`"
@@ -341,8 +440,16 @@ function reset() {
               <figcaption>{{ lanes[0].layers }}</figcaption>
             </figure>
             <img
-              :src="isWrapped(lanes[1]) ? layerImages[lanes[1].material][lanes[1].layers] : defaultEggImage"
-              :alt="isWrapped(lanes[1]) ? `${lanes[1].layers} of ${lanes[1].material}` : 'Egg with no protection'"
+              :src="
+                isWrapped(lanes[1])
+                  ? layerImages[lanes[1].material][lanes[1].layers]
+                  : defaultEggImage
+              "
+              :alt="
+                isWrapped(lanes[1])
+                  ? `${lanes[1].layers} of ${lanes[1].material}`
+                  : 'Egg with no protection'
+              "
             />
             <figcaption>{{ lanes[1].layers }}</figcaption>
           </figure>
@@ -358,16 +465,21 @@ function reset() {
         <article class="blueprint-card blueprint-change">
           <strong>Change</strong>
           <span v-if="!changeSummary">Not selected yet</span>
-          <span v-if="changeSummary"><strong>{{ changeSummary.label }}:</strong> {{ changeSummary.value }}</span>
+          <span v-if="changeSummary"
+            ><strong>{{ changeSummary.label }}:</strong>
+            {{ changeSummary.value }}</span
+          >
         </article>
         <article class="blueprint-card blueprint-measure">
           <strong>Measure</strong>
-          <span>{{ measureSummary || 'Not selected yet' }}</span>
+          <span>{{ measureSummary || "Not selected yet" }}</span>
         </article>
         <article class="blueprint-card blueprint-control">
           <strong>Control</strong>
           <span v-if="!controlSummary.length">Not selected yet</span>
-          <span v-for="item in controlSummary" :key="item"><strong>{{ item.label }}:</strong> {{ item.value }}</span>
+          <span v-for="item in controlSummary" :key="item"
+            ><strong>{{ item.label }}:</strong> {{ item.value }}</span
+          >
         </article>
       </div>
 
@@ -380,7 +492,11 @@ function reset() {
 
       <div class="fair-test-actions">
         <Button type="button" class="reset-button" @click="reset">Reset</Button>
-        <Button type="button" class="check-fair-test-button" @click="checkDesign">
+        <Button
+          type="button"
+          class="check-fair-test-button"
+          @click="checkDesign"
+        >
           Check fair test experiment design
         </Button>
       </div>
@@ -427,7 +543,7 @@ function reset() {
   --background: var(--paper);
   --color: var(--text);
   --border-radius: 999px;
-  
+
   --background-hover: var(--soft-yellow);
   --translate-amount-hover: -2px;
   --box-shadow-hover: var(--shadow-medium);
@@ -456,7 +572,7 @@ function reset() {
   --padding: 12px 20px;
   --background: var(--paper);
   --color: var(--text);
-  
+
   --background-hover: var(--soft-green);
 
   --background-active: var(--mint);
@@ -508,7 +624,6 @@ function reset() {
 
   justify-self: center;
   min-height: 220px;
-  width: 50vw;
   margin-top: 14px;
 
   background-color: white;
@@ -518,7 +633,7 @@ function reset() {
   color: var(--muted);
   overflow: hidden;
 
-  animation: pop-fade-in 0.5s ease;;
+  animation: pop-fade-in 0.5s ease;
 }
 
 .measure-image figcaption {
@@ -660,14 +775,28 @@ function reset() {
 }
 
 .hard-surface {
-  background: repeating-linear-gradient(90deg, #dddddd 0 42px, #b8b8b8 42px 45px);
+  background: repeating-linear-gradient(
+    90deg,
+    #dddddd 0 42px,
+    #b8b8b8 42px 45px
+  );
 }
 
 .soft-surface {
   /* Blades of grass (thin vertical strokes at two spacings) over a green base */
   background:
-    repeating-linear-gradient(80deg, transparent 0 5px, #2e7d32 5px 7px, transparent 7px 11px),
-    repeating-linear-gradient(100deg, transparent 0 8px, #81c784 8px 10px, transparent 10px 15px),
+    repeating-linear-gradient(
+      80deg,
+      transparent 0 5px,
+      #2e7d32 5px 7px,
+      transparent 7px 11px
+    ),
+    repeating-linear-gradient(
+      100deg,
+      transparent 0 8px,
+      #81c784 8px 10px,
+      transparent 10px 15px
+    ),
     linear-gradient(to bottom, #66bb6a, #388e3c);
 }
 
@@ -757,7 +886,7 @@ function reset() {
   border: 2px solid var(--charcoal);
   border-top: 6px solid var(--border-top-color);
   border-radius: var(--radius-small);
-  box-shadow: var(--shadow-medium)
+  box-shadow: var(--shadow-medium);
 }
 
 .blueprint-card > strong {
@@ -800,7 +929,7 @@ function reset() {
 
   --background-hover: var(--purple);
   --color-hover: white;
-    
+
   --background-active: var(--purple);
   --color-active: white;
 }
