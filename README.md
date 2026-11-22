@@ -1,5 +1,13 @@
 # stemsuperheroes
-This template should help get you started developing with Vue 3 in Vite.
+The GTAC STEM Superheroes site, built with Vue 3 and Vite. Pushing to `main`
+deploys it to GitHub Pages (see `.github/workflows/deploy.yml`).
+
+- Expert flip cards: `src/data/expert-cards.js`
+- Expert profiles: `src/data/expert-profiles.js`
+- Images and videos: `public/assets/`
+
+The original plain HTML/CSS/JS version of the site is kept in
+[GTACAus/stemsuperheroes_legacy](https://github.com/GTACAus/stemsuperheroes_legacy).
 
 
 ## Recommended IDE Setup
@@ -25,7 +33,7 @@ To setup **Vue** for this project, start by double-clicking on `setup.cmd` in Fi
 Alternatively, follow these steps:
 
 ### 1. Open the VS Code Terminal
-- Right click on the `vue-project` folder
+- Right click on the `stemsuperheroes` folder
 - Select **Open in Integrated Terminal**
 
 ### 2. Run This Command to Install Dependencies and Extensions:

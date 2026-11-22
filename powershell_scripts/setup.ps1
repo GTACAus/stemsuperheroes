@@ -59,4 +59,4 @@ if (-not (Get-Command code -ErrorAction SilentlyContinue)) {
 }
 
 Write-Host ''
-Write-Host 'Setup complete. Open this folder in VS Code (File > Open Folder > vue-project) and allow automatic tasks to start the dev server.'
+Write-Host 'Setup complete. Open this folder in VS Code (File > Open Folder > stemsuperheroes) and allow automatic tasks to start the dev server.'

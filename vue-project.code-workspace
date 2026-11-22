@@ -49,6 +49,6 @@
 				]
 			}
 		],
-		"powershell.cwd": "vue-project"
+		"powershell.cwd": "${workspaceFolder}"
 	}
 }

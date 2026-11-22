@@ -1,7 +1,4 @@
-
-# Publish the NEW HTML website, not the old Vue project
-
-name: Deploy GTAC STEM Website
+name: Deploy Vue site to GitHub Pages
 
 on:
   push:
@@ -20,31 +17,30 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Get website files
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Prepare HTML website
-        run: |
-          mkdir _site
-          cp *.html _site/
-          cp -r assets scripts styles _site/
-
-      - name: Upload website
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/setup-node@v4
         with:
-          path: _site
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+      # GitHub Pages has no URL rewriting: serve the app for unknown paths so
+      # refreshing /local-stem-experts works.
+      - run: cp dist/index.html dist/404.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
-      - name: Deploy website
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
