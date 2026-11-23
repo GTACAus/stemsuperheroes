@@ -94,7 +94,7 @@ const selectedId = ref(null);
         />
       </section>
 
-      <section v-for="extra in extras[object.id]">
+      <section v-for="(extra, i) in extras[object.id]" :key="i">
         <component :is="extra" v-if="extra" />
       </section>
     </section>

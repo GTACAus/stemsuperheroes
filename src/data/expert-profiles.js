@@ -5,13 +5,13 @@
    To add another expert, duplicate the profile and
    change their information and imageFolder.
 
-   Layout and timeline functions stay unchanged.
+   Vue components handle layout and the interactive timeline.
 
    OPTIONAL PHOTO GALLERY:
    - Add a "gallery" array to ONLY those profiles where you
      have deliberately selected extra photographs.
    - Do not add it (or use gallery: []) to hide the section.
-   - expert-profile.js will display at most 5 selected photos.
+   - ExpertProfile.vue displays at most 5 selected photos.
    - Photo selection is NEVER automatic from the folder.
    ========================================================= */
 
@@ -106,23 +106,8 @@ export const expertProfiles = {
       hobbies: {
         heading: "Hobbies and interests",
         text: "Sport was tough at school, but now Kezia enjoys running! She learned to cook during COVID lockdowns and used to play piano and sing in a choir.",
+        // Add more DISTINCT hobby photos here if you want a carousel.
         images: [
-          {
-            image: `${imageFolder}running.jpg`,
-            imageAlt: "Kezia at a running event",
-          },
-          {
-            image: `${imageFolder}running.jpg`,
-            imageAlt: "Kezia at a running event",
-          },
-          {
-            image: `${imageFolder}running.jpg`,
-            imageAlt: "Kezia at a running event",
-          },
-          {
-            image: `${imageFolder}running.jpg`,
-            imageAlt: "Kezia at a running event",
-          },
           {
             image: `${imageFolder}running.jpg`,
             imageAlt: "Kezia at a running event",
@@ -172,9 +157,9 @@ export const expertProfiles = {
           image: `${imageFolder}dictionary.jpg`,
           imageAlt: "Portrait of Paddy today",
           points: [
-            "Paddy loved learning about philosophy, literature, cinema, and the art",
-            "At school, he loved studying English literature, Chemistry and Biology",
-            "He was terrible at Maths.",
+            "Paddy loved learning about philosophy, literature, cinema and the arts.",
+            "At school, he loved studying English literature, chemistry and biology.",
+            "He found maths very difficult.",
           ],
         },
         {
@@ -209,7 +194,7 @@ export const expertProfiles = {
           imageAlt: "Colourful microscope image of a lab-grown brain organoid",
           points: [
             "Paddy aims to continue to pursue neuroscience in the future.",
-            "He aims to do so while doing the things that he love most - hiking and traveling.",
+            "He hopes to keep doing what he loves, like hiking and travelling.",
           ],
         },
       ],
@@ -218,13 +203,6 @@ export const expertProfiles = {
         heading: "Hobbies and interests",
         text: "Paddy loves to read about philosophy, watch cinema, run, and hike. Paddy also does futsal with his colleagues at MCRI.",
         images: [
-          {
-            image: `${imageFolder}hiking.jpeg`,
-            imageAlt: "Paddy hiking outdoors",
-          },
-        ],
-
-        photos: [
           {
             image: `${imageFolder}hiking.jpeg`,
             imageAlt: "Paddy hiking outdoors",
@@ -272,7 +250,7 @@ export const expertProfiles = {
         imageAlt: "Fluorescent microscope image of a brain organoid",
         points: [
           "Helps scientists understand how childhood brain cancer develops.",
-          "Paddy grows human brains in a dish, and he uses this to study how neurons grow and communicate.",
+          "Paddy grows tiny brain-like models called organoids in a dish. He uses them to study how brain cells grow and communicate.",
           "May help scientists improve future treatments for children and families.",
         ],
       },
@@ -585,7 +563,7 @@ export const expertProfiles = {
             "Millicent investigates Huntington's disease, an inherited condition that affects the brain, movement and thinking.",
             "She studies how bacteria living in the gut communicate with the brain.",
             "In her research, her team found that prebiotics, food for some gut bacteria, can improve gut health, movement and thinking-related performance in mice.",
-            "The research was done on mice. It could have similar effects on people.",
+            "These results were found in mice. Scientists still need to test whether they apply to people.",
           ],
         },
 
@@ -600,7 +578,7 @@ export const expertProfiles = {
 
           points: [
             "In July 2026, Millicent submitted her Doctorate thesis about the gut and Huntington's disease.",
-            "She look foward to working in clinical research.",
+            "She looks forward to working in clinical research.",
             "Her dream is to contribute to improving patients' lives.",
             "Millicent is a scientist that loves storytelling, acting and presenting.",
           ],
@@ -735,10 +713,10 @@ export const expertProfiles = {
           imageAlt: "Portrait of Michael today",
 
           points: [
-            "Michael grew up in Indonesia, struggled with mathematics back in high school.",
+            "Michael grew up in Indonesia and struggled with maths in high school.",
             "He loved books and literature.",
-            "He was interested in how science, because science help us understand people and solve problems.",
-            "He studied a Bachelor of Arts majored in Psychology and Economics at the University of Melbourne.",
+            "He became interested in how science can help us understand people and solve problems.",
+            "He studied a Bachelor of Arts in psychology and economics at the University of Melbourne.",
             "Psychology is the study of how people think, feel and behave.",
           ],
         },
@@ -749,7 +727,7 @@ export const expertProfiles = {
           title: "Exploring Engineering",
           colour: "#E9B400",
 
-          image: `${imageFolder}engineer`,
+          image: `${imageFolder}medical-testing.svg`,
           imageAlt:
             "Illustration of psychology and engineering as connected fields",
           imageFit: "contain",
@@ -1010,7 +988,7 @@ export const expertProfiles = {
           points: [
             "Laura hopes to return to cancer research in the future.",
             "She is interested in research of Cancer Immunotherapy. This is the study of how our immune system fight cancer.",
-            "Her wants to contribute to research that improves cancer treatments.",
+            "She wants to contribute to research that improves cancer treatments.",
           ],
         },
       ],
@@ -1198,7 +1176,7 @@ export const expertProfiles = {
             "Kevin investigates how to grow T-cells, a type of immune cell, from stem cells in the laboratory.",
             "Stem cells are special because they can develop into different types of cells.",
             "Some T-cells can recognise and destroy dangerous cells, including certain cancer cells.",
-            "His research help us understand our immune system. This is crucial for the development of future cancer treatments.",
+            "His research helps us understand our immune system and may support future cancer treatment research.",
           ],
         },
 
@@ -1381,7 +1359,7 @@ export const expertProfiles = {
             "Malaria is caused by parasites that can infect our red blood cells.",
             "Maria investigates how our body can recognise and remove red blood cells that are infected by malaria.",
             "Her published research identified an important receptor that helps neutrophils carry out this job.",
-            "Understanding these immune defences help scientists design better malaria vaccines in the future.",
+            "Understanding these immune defences may help scientists design better malaria vaccines in the future.",
           ],
         },
 
@@ -1692,7 +1670,7 @@ export const expertProfiles = {
 
       portrait: `${imageFolder}portrait.jpg`,
 
-      superpower: "Using zebrafish to find new medicine to help people with malformed blood vessels!",
+      superpower: "Using zebrafish to study possible treatments for blood vessel problems!",
 
 
       imageFolder,
@@ -1731,7 +1709,7 @@ export const expertProfiles = {
           imageAlt: "Image representing Juliana's school experiences in Brazil",
 
           points: [
-            "Juliana loved learning. She find Maths difficult at school.",
+            "Juliana loved learning. She found maths difficult at school.",
             "Coming from a rural community, she had to adapt as she studied in larger cities.",
             "She worked hard on her English, because scientists from different countries always share discoveries in English.",
           ],
@@ -1767,8 +1745,8 @@ export const expertProfiles = {
                 points: [
                     "Juliana studies vascular malformation. This means blood vessels that do not develop properly. This happens sometimes because of mutation in DNA.",
                     "She uses zebrafish to investigate how different treatments affect their blood vessel development.",
-                    "This research will help us find new medicines to treat people with problems in blood vessel development.",
-                    "Findings in zebrafish are an early step in finding medicine that work on people."
+                    "This research may help scientists find new medicines for people with blood vessel problems.",
+                    "Results in zebrafish are an early step. Treatments must still be tested for safety and effectiveness in people."
                 ],
         },
 
@@ -2214,16 +2192,7 @@ export const expertProfiles = {
 
         text: "Meagan enjoys acrobatics and circus sports! She has also tried soccer, athletics, basketball, ice hockey, and speech and debate.",
 
-        // Single-image fallback
         images: [
-          {
-            image: `${imageFolder}acrobatics.jpg`,
-            imageAlt: "Image representing Meagan's interest in acrobatics",
-          },
-        ],
-
-        // Multiple-photo gallery
-        photos: [
           {
             image: `${imageFolder}acrobatics.jpg`,
             imageAlt: "Acrobatics activity",
@@ -2604,7 +2573,7 @@ export const expertProfiles = {
             "Image representing first aid and St John Ambulance volunteering",
 
           points: [
-            "When she was 11 years-old, Misty began volunteering with St John Ambulance. She use to take part in first aid competitions!",
+            "When she was 11 years old, Misty began volunteering with St John Ambulance. She used to take part in first aid competitions!",
             "At school, she enjoyed Maths, Physics, Chemistry. She did not take biology.",
             "She also loved drama, theatre and performing on stage.",
             "Performing helped her become confident speaking to large audiences. This is an important skill for a scientist.",
@@ -3617,13 +3586,6 @@ sue: (() => {
         heading: "Hobbies and interests",
         text: "Maja loves flamenco dancing! She has practised flamenco for many years, takes classes with friends and has travelled to Spain to learn more.",
         images: [
-          {
-            image: `${imageFolder}flamenco.png`,
-            imageAlt: "Maja dancing flamenco",
-          },
-        ],
-
-        photos: [
           {
             image: `${imageFolder}flamenco2.jpg`,
             imageAlt: "Maja dancing flamenco",

@@ -1,5 +1,5 @@
 <script setup>
-import { computed, nextTick, ref, useTemplateRef } from 'vue';
+import { computed, nextTick, onMounted, onUnmounted, ref, useTemplateRef } from 'vue';
 import ExpertCard from '../components/experts/ExpertCard.vue';
 import ExpertProfile from '../components/experts/ExpertProfile.vue';
 import ThingLinkEmbed from '../components/experts/ThingLinkEmbed.vue';
@@ -16,14 +16,24 @@ const panelAfterIndex = ref(-1);
 const activeCard = computed(() => expertCards.find((c) => c.id === activeId.value));
 const activeProfile = computed(() => activeCard.value && expertProfiles[activeCard.value.id]);
 
+// These breakpoints match the .experts-grid CSS below (3 / 2 / 1 columns).
+// Calculate by card index, not offsetTop: an open panel can itself change
+// the grid's rows when the screen resizes.
 function lastIndexInRow(index) {
-  const els = cardRefs.value.map((c) => c.$el);
-  let last = index;
-  els.forEach((el, i) => {
-    if (el.offsetTop === els[index].offsetTop) last = Math.max(last, i);
-  });
-  return last;
+  const columns = window.matchMedia('(max-width: 600px)').matches
+    ? 1
+    : window.matchMedia('(max-width: 850px)').matches ? 2 : 3;
+  return Math.min(expertCards.length - 1, Math.floor(index / columns) * columns + columns - 1);
 }
+
+function updatePanelPosition() {
+  if (!activeId.value) return;
+  const index = expertCards.findIndex((c) => c.id === activeId.value);
+  if (index >= 0) panelAfterIndex.value = lastIndexInRow(index);
+}
+
+onMounted(() => window.addEventListener('resize', updatePanelPosition));
+onUnmounted(() => window.removeEventListener('resize', updatePanelPosition));
 
 function close(restoreFocus = true) {
   const index = expertCards.findIndex((c) => c.id === activeId.value);

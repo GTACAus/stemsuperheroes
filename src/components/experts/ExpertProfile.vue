@@ -302,7 +302,7 @@ const galleryPhotos = computed(() =>
   margin: 0 0 12px;
   font-weight: 600;
 }
-.profile-hobbies img {
+.profile-hobbies > img {
   width: 100%;
   height: 210px;
   object-fit: cover;
