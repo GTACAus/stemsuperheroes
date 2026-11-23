@@ -3,6 +3,8 @@ import { ref } from 'vue';
 import Button from '@/components/Button.vue';
 import LearningOverview from '@/components/science/LearningOverview.vue';
 import HelmetDetails from '@/components/science/HelmetDetails.vue';
+import BreadDetails from '@/components/science/BreadDetails.vue';
+import YeastFairTestBuilder from '@/components/science/YeastFairTestBuilder.vue';
 import StwSection from '@/components/science/StwSection.vue';
 import FairTestBuilder from '@/components/science/FairTestBuilder.vue';
 import { scienceObjects } from '../data/science-objects.js';
@@ -12,6 +14,10 @@ const extras = {
   helmet: [
     HelmetDetails,
     FairTestBuilder
+  ],
+  bread: [
+    BreadDetails,
+    YeastFairTestBuilder
   ]
 };
 
