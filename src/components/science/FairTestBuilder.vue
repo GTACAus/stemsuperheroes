@@ -3,97 +3,77 @@ import { computed, ref, watch } from "vue";
 import Button from "../Button.vue";
 import ActivityFeedback from "./ActivityFeedback.vue";
 
+/* =========================================================
+   EGG DROP BIG KAHUNA - A/B FAIR TEST BUILDER
+
+   1. CHANGE: Choose one variable and set Egg A and Egg B
+      separately. Matching choices are disabled.
+   2. MEASURE: Choose egg damage.
+   3. CONTROL: Choose the settings that stay the same.
+
+   The diagram, ruler and summary all read the same settings.
+   No wrapping is a valid comparison group. For Materials,
+   the shared layer setting only applies to wrapped eggs.
+   ========================================================= */
+
 const stages = [
   { id: "change", label: "1. Change" },
   { id: "measure", label: "2. Measure" },
   { id: "control", label: "3. Control" },
 ];
-
 const currentStage = ref("change");
 
-// Options for the ONE changed variable and the shared controls.
 const variables = [
-  {
-    id: "material",
-    label: "Materials",
-    options: ["Foam vs. Bubble Wrap", "Foam vs. Paper", "Bubble Wrap vs. Paper"],
-    controlOptions: ["Foam", "Bubble Wrap", "Paper"],
-  },
-  {
-    id: "layers",
-    label: "Number of Layers",
-    // Unwrapped eggs are a deliberate option for testing protection.
-    options: ["Unwrapped vs. 1 Layer", "Unwrapped vs. 2 Layers", "1 Layer vs. 2 Layers"],
-    controlOptions: ["No Layers", "1 Layer", "2 Layers"],
-  },
-  {
-    id: "height",
-    label: "Drop Height",
-    options: ["1.5m", "3m"],
-    baseline: "1m",
-    controlOptions: ["1m", "1.5m", "3m"],
-  },
-  {
-    id: "surface",
-    label: "Surface Type",
-    options: ["Soft Surface", "Hard Surface"],
-    fixedPair: true,
-  },
-  {
-    id: "direction",
-    label: "Direction of Drop",
-    options: ["Blunt End", "Pointy End"],
-    fixedPair: true,
-  },
+  { id: "material", label: "Materials", options: ["No wrapping", "Foam", "Bubble Wrap", "Paper"] },
+  { id: "layers", label: "Number of Layers", options: ["No Layers", "1 Layer", "2 Layers"] },
+  { id: "height", label: "Drop Height", options: ["1m", "1.5m", "3m"] },
+  { id: "surface", label: "Surface Type", options: ["Soft Surface", "Hard Surface"] },
+  { id: "direction", label: "Direction of Drop", options: ["Blunt End", "Pointy End"] },
 ];
 
-// Artwork stored in public/assets/images/science/fair-test/.
+/* These starting pairs are already different and show up instantly. */
+const startingPairs = {
+  material: ["Foam", "Bubble Wrap"],
+  layers: ["No Layers", "1 Layer"],
+  height: ["1m", "1.5m"],
+  surface: ["Soft Surface", "Hard Surface"],
+  direction: ["Blunt End", "Pointy End"],
+};
+const startingControls = {
+  material: "Foam",
+  layers: "1 Layer",
+  height: "1m",
+  surface: "Soft Surface",
+  direction: "Blunt End",
+};
+const freshPairs = () => Object.fromEntries(
+  Object.entries(startingPairs).map(([id, pair]) => [id, [...pair]])
+);
+
+const changeId = ref("material");
+const comparisons = ref(freshPairs());
+const controls = ref({ ...startingControls });
+const measureSelected = ref(false);
+const showDamageScale = ref(false); // The image can be opened and closed independently.
+const controlConfirmed = ref(false);
+const feedback = ref(null);
+const feedbackMessage = ref("");
+
 const imageBase = `${import.meta.env.BASE_URL}assets/images/science/fair-test/`;
-const defaultEggImage = `${imageBase}egg.png`;
-// Wrapped egg on the canvas: one image per material and layer count
+const eggPlain = `${imageBase}egg.png`;
 const eggImages = {
-  Foam: {
-    "1 Layer": `${imageBase}egg-foam-1.png`,
-    "2 Layers": `${imageBase}egg-foam-2.png`,
-  },
-  "Bubble Wrap": {
-    "1 Layer": `${imageBase}egg-bubble-wrap-1.png`,
-    "2 Layers": `${imageBase}egg-bubble-wrap-2.png`,
-  },
-  Paper: {
-    "1 Layer": `${imageBase}egg-paper-1.png`,
-    "2 Layers": `${imageBase}egg-paper-2.png`,
-  },
+  Foam: { "1 Layer": `${imageBase}egg-foam-1.png`, "2 Layers": `${imageBase}egg-foam-2.png` },
+  "Bubble Wrap": { "1 Layer": `${imageBase}egg-bubble-wrap-1.png`, "2 Layers": `${imageBase}egg-bubble-wrap-2.png` },
+  Paper: { "1 Layer": `${imageBase}egg-paper-1.png`, "2 Layers": `${imageBase}egg-paper-2.png` },
 };
-// Layers panel: one image per material and layer count
-const layerImages = {
-  Foam: {
-    "1 Layer": `${imageBase}layers-foam-1.png`,
-    "2 Layers": `${imageBase}layers-foam-2.png`,
-  },
-  "Bubble Wrap": {
-    "1 Layer": `${imageBase}layers-bubble-wrap-1.png`,
-    "2 Layers": `${imageBase}layers-bubble-wrap-2.png`,
-  },
-  Paper: {
-    "1 Layer": `${imageBase}layers-paper-1.png`,
-    "2 Layers": `${imageBase}layers-paper-2.png`,
-  },
-};
-// A shared vertical position for each release height.
-// Both the ruler tick AND the bottom edge of the egg use these CSS values.
-// Each 1 m step has the same visual distance from the surface.
+const measureImage = `${imageBase}protection-scale.png`;
 const heightMarkers = ["3m", "1.5m", "1m"];
 const releaseLevel = {
   "1m": "var(--release-1m)",
   "1.5m": "var(--release-1-5m)",
   "3m": "var(--release-3m)",
 };
-const surfaceClass = {
-  "Soft Surface": "soft-surface",
-  "Hard Surface": "hard-surface",
-};
-
+const surfaceClass = { "Soft Surface": "soft-surface", "Hard Surface": "hard-surface" };
 const changedPart = {
   material: "the wrapping material",
   layers: "the number of layers",
@@ -102,62 +82,16 @@ const changedPart = {
   direction: "the drop direction",
 };
 
-const measureLabel = "Egg damage";
-const measureImage = `${imageBase}protection-scale.png`;
+const selectedVariable = computed(() => variables.find(v => v.id === changeId.value));
+const controllableVariables = computed(() => variables.filter(v => v.id !== changeId.value));
 
-// A useful A/B comparison is visible as soon as the activity opens.
-// These settings are suggestions: students can edit them and must confirm
-// the controls in Step 3 before checking their plan.
-const defaultControls = {
-  material: "Foam",
-  layers: "1 Layer",
-  height: "1m",
-  surface: "Soft Surface",
-  direction: "Blunt End",
-};
-const defaultComparison = {
-  material: "Foam vs. Bubble Wrap",
-  layers: "Unwrapped vs. 1 Layer",
-  height: "1.5m",
-  surface: "Hard Surface",
-  direction: "Pointy End",
-};
-
-const changeId = ref("material");
-const changeValues = ref({ material: defaultComparison.material });
-const measureSelected = ref(false);
-const controlValues = ref({ ...defaultControls });
-const controlConfirmed = ref(false);
-
-const getVariable = (id) => variables.find((v) => v.id === id);
-const getControlOptions = (id) => {
-  // A materials comparison MUST have wrapping; 'No Layers' is instead
-  // available when testing Number of Layers, height, surface or direction.
-  if (id === "layers" && changeId.value === "material") {
+/* No second variable can be chosen as a control if it is being changed. */
+function controlOptions(variable) {
+  if (variable.id === "material") return ["Foam", "Bubble Wrap", "Paper"];
+  if (variable.id === "layers" && changeId.value === "material") {
     return ["1 Layer", "2 Layers"];
   }
-  const variable = getVariable(id);
-  return variable.controlOptions || variable.options;
-};
-
-// Exact A/B pairs: only the chosen variable changes.
-const materialPairs = {
-  "Foam vs. Bubble Wrap": ["Foam", "Bubble Wrap"],
-  "Foam vs. Paper": ["Foam", "Paper"],
-  "Bubble Wrap vs. Paper": ["Bubble Wrap", "Paper"],
-};
-const layerPairs = {
-  "Unwrapped vs. 1 Layer": ["No Layers", "1 Layer"],
-  "Unwrapped vs. 2 Layers": ["No Layers", "2 Layers"],
-  "1 Layer vs. 2 Layers": ["1 Layer", "2 Layers"],
-};
-
-function chooseChange(id) {
-  if (changeId.value === id) return;
-  changeId.value = id;
-  changeValues.value = { [id]: defaultComparison[id] };
-  controlValues.value = { ...defaultControls };
-  controlConfirmed.value = false;
+  return variable.options;
 }
 
 function displaySetting(value) {
@@ -171,113 +105,98 @@ function displaySetting(value) {
   }[value] || value;
 }
 
-// Every variable except the one being changed (all of them until one is chosen)
-const controllableVariables = computed(() =>
-  variables.filter((v) => v.id !== changeId.value),
-);
-
-// Diagram, wrapping previews and table all read these SAME two lane objects.
-const lanes = computed(() =>
-  ["A", "B"].map((name) => {
-    const settings = { ...controlValues.value };
-    const index = name === "A" ? 0 : 1;
-
-    if (changeId.value === "layers") {
-      settings.layers = layerPairs[changeValues.value.layers][index];
-    } else if (changeId.value === "material") {
-      settings.material = materialPairs[changeValues.value.material][index];
-    } else if (changeId.value) {
-      const variable = getVariable(changeId.value);
-      settings[variable.id] = index === 0
-        ? (variable.baseline || variable.options[0])
-        : changeValues.value[variable.id];
-    }
-    return { name, ...settings };
-  }),
-);
-
-// An egg is only shown wrapped when it has layers.
-const isWrapped = (lane) => lane.layers !== "No Layers";
-const laneWrapLabel = (lane) =>
-  isWrapped(lane) ? `${lane.material} · ${displaySetting(lane.layers)}` : "No wrapping";
-
-// Avoid a large, empty layers panel when both eggs are unwrapped.
-// Still show both A and B when students are comparing layer counts.
-const showLayersPanel = computed(
-  () => changeId.value === "layers" || lanes.value.some(isWrapped),
-);
-
-// One preview when wrapping is identical; two labelled previews if it differs.
-const layerPreviews = computed(() => {
-  const [a, b] = lanes.value;
-  if (a.material === b.material && a.layers === b.layers) {
-    return [{ ...a, previewLabel: "Both eggs" }];
+/* Change the kind of comparison without clearing unrelated controls. */
+function chooseChange(id) {
+  if (changeId.value === id) return;
+  changeId.value = id;
+  if (id === "material" && controls.value.layers === "No Layers") {
+    controls.value.layers = "1 Layer";
   }
-  return lanes.value.map((lane) => ({
-    ...lane,
-    previewLabel: `Egg ${lane.name}`,
-  }));
-});
+}
 
-const layerPreviewSrc = (lane) =>
-  isWrapped(lane)
-    ? layerImages[lane.material]?.[lane.layers] || defaultEggImage
-    : defaultEggImage;
+/* Each egg has its OWN selector. The other egg's choice is unavailable. */
+function setEggChoice(eggIndex, value) {
+  const options = selectedVariable.value.options;
+  if (!options.includes(value)) return;
+  const otherIndex = eggIndex === 0 ? 1 : 0;
+  if (comparisons.value[changeId.value][otherIndex] === value) return;
+  comparisons.value[changeId.value][eggIndex] = value;
+}
+function isOtherEggChoice(eggIndex, value) {
+  return comparisons.value[changeId.value][eggIndex === 0 ? 1 : 0] === value;
+}
 
-// Every setting is filled from lanes, even before controls are confirmed.
-// Thus the table never disagrees with the egg diagram.
-const tableRows = computed(() =>
-  variables.map((variable) => ({
-    id: variable.id,
-    label: variable.label,
-    changed: changeId.value === variable.id,
-    a: displaySetting(lanes.value[0][variable.id]),
-    b: displaySetting(lanes.value[1][variable.id]),
-  })),
-);
+/* ALL visual elements use this exact A/B resolved experiment state. */
+const lanes = computed(() => ["A", "B"].map((name, index) => ({
+  name,
+  ...controls.value,
+  [changeId.value]: comparisons.value[changeId.value][index],
+})));
 
-const feedback = ref(null); // null | 'success' | 'try-again'
-const feedbackMessage = ref("");
+function isWrapped(lane) {
+  return lane.material !== "No wrapping" && lane.layers !== "No Layers";
+}
+function eggSrc(lane) {
+  return isWrapped(lane) ? eggImages[lane.material]?.[lane.layers] || eggPlain : eggPlain;
+}
+function eggDescription(lane) {
+  return isWrapped(lane)
+    ? `${lane.material}, ${displaySetting(lane.layers)}`
+    : "No wrapping";
+}
+function displayTableCell(lane, variableId) {
+  // An unwrapped egg has no physical wrapping layers. Show a dash rather
+  // than pretending a layer exists. Other settings remain shared.
+  if (variableId === "layers" && lane.material === "No wrapping") return "—";
+  return displaySetting(lane[variableId]);
+}
+const tableRows = computed(() => variables.map(v => ({
+  id: v.id,
+  label: v.id === "layers" && changeId.value === "material" ? "Layers (if wrapped)" : v.label,
+  changed: changeId.value === v.id,
+  a: displayTableCell(lanes.value[0], v.id),
+  b: displayTableCell(lanes.value[1], v.id),
+})));
+
 function clearFeedback() {
   feedback.value = null;
   feedbackMessage.value = "";
 }
-
-// Any edit to the A/B design clears control confirmation and old feedback.
-watch([changeId, changeValues, controlValues], () => {
+/* Edits invalidate the previous confirmation and success message. */
+watch([changeId, comparisons, controls], () => {
   controlConfirmed.value = false;
   clearFeedback();
 }, { deep: true, flush: "sync" });
 watch([measureSelected, controlConfirmed], clearFeedback, { flush: "sync" });
 
 function getDesignIssue() {
-  if (!changeId.value) return "Step 1: Choose what to change.";
+  const pair = comparisons.value[changeId.value];
+  if (!pair || pair[0] === pair[1]) return "Choose two different options for the eggs.";
   if (!measureSelected.value) return "Step 2: Choose what to measure.";
   if (!controlConfirmed.value) return "Step 3: Confirm the controls.";
 
   const [a, b] = lanes.value;
-  const changedIds = variables.filter((variable) => a[variable.id] !== b[variable.id]).map((v) => v.id);
-  if (changedIds.length !== 1 || changedIds[0] !== changeId.value) {
-    return "Change one setting. Keep the others the same.";
+  const changed = variables.filter(v => a[v.id] !== b[v.id]).map(v => v.id);
+  if (changed.length !== 1 || changed[0] !== changeId.value) {
+    return "Change just one thing between the eggs.";
   }
-  if (changeId.value === "material" && !isWrapped(a)) {
-    return "Use 1 or 2 layers to compare wrapping materials.";
+  if (changeId.value === "material" && controls.value.layers === "No Layers") {
+    return "Choose 1 or 2 layers for the wrapped egg.";
   }
   return "";
 }
-
 function checkDesign() {
   const issue = getDesignIssue();
   feedbackMessage.value = issue;
   feedback.value = issue ? "try-again" : "success";
 }
-
 function reset() {
   currentStage.value = "change";
   changeId.value = "material";
-  changeValues.value = { material: defaultComparison.material };
+  comparisons.value = freshPairs();
+  controls.value = { ...startingControls };
   measureSelected.value = false;
-  controlValues.value = { ...defaultControls };
+  showDamageScale.value = false;
   controlConfirmed.value = false;
   clearFeedback();
 }
@@ -286,10 +205,8 @@ function reset() {
 <template>
   <section class="gtac-section fair-test">
     <h2 class="fair-test-title">Build Your Fair Test Plan</h2>
-
     <p class="fair-test-instructions">Change one thing. Keep the rest the same.</p>
 
-    <!-- Progress steps -->
     <nav class="fair-test-progress" aria-label="Investigation sections">
       <Button
         v-for="stage in stages"
@@ -297,18 +214,15 @@ function reset() {
         type="button"
         class="fair-test-step"
         :class="{ active: currentStage === stage.id }"
+        :aria-pressed="currentStage === stage.id"
         @click="currentStage = stage.id"
-      >
-        {{ stage.label }}
-      </Button>
+      >{{ stage.label }}</Button>
     </nav>
 
-    <!-- Controls for the current stage -->
-    <div class="fair-test-controls" aria-label="Experiment choices">
-      <!-- Change: pick one variable, then choose its option -->
+    <div class="fair-test-controls">
+      <!-- Step 1: select the variable here; choose the two values ABOVE the eggs. -->
       <template v-if="currentStage === 'change'">
         <p class="control-instruction">What will you change?</p>
-
         <div class="choice-buttons">
           <Button
             v-for="variable in variables"
@@ -318,68 +232,58 @@ function reset() {
             :class="{ selected: changeId === variable.id }"
             :aria-pressed="changeId === variable.id"
             @click="chooseChange(variable.id)"
-          >
-            {{ variable.label }}
-          </Button>
+          >{{ variable.label }}</Button>
         </div>
-
-        <!-- Fixed comparisons (surface, direction) have no dropdown, just the two settings -->
-        <div
-          v-if="changeId && getVariable(changeId).fixedPair"
-          class="revealed-menu"
-        >
-          <strong>{{ getVariable(changeId).options.join(" vs. ") }}</strong>
-        </div>
-
-        <div v-else-if="changeId" class="revealed-menu">
-          <label for="change-select">{{ changeId === 'material' ? 'Compare materials' : getVariable(changeId).label }}</label>
-          <select id="change-select" v-model="changeValues[changeId]">
-            <option
-              v-for="option in getVariable(changeId).options"
-              :key="option"
-              :value="option"
-            >
-              {{ option }}
-            </option>
-          </select>
-        </div>
-
       </template>
 
-      <!-- Measure: one button that reveals an image -->
+      <!-- Step 2: egg damage is the measured outcome. -->
       <template v-else-if="currentStage === 'measure'">
         <p class="control-instruction">What will you measure?</p>
-
         <div class="choice-buttons">
           <Button
             type="button"
             class="choice-button"
             :class="{ selected: measureSelected }"
             :aria-pressed="measureSelected"
-            @click="measureSelected = true"
-          >
-            {{ measureLabel }}
-          </Button>
+            @click="measureSelected = true; showDamageScale = true"
+          >Egg damage</Button>
+          <button
+            v-if="measureSelected"
+            type="button"
+            class="measure-toggle"
+            :aria-expanded="showDamageScale"
+            aria-controls="egg-damage-scale"
+            @click="showDamageScale = !showDamageScale"
+          >{{ showDamageScale ? 'Hide scale' : 'View damage scale' }}</button>
         </div>
-
-        <figure v-if="measureSelected" class="measure-image">
-          <figcaption>How much did it crack?</figcaption>
-          <img v-if="measureImage" :src="measureImage" :alt="measureLabel" />
+        <figure
+          v-if="measureSelected"
+          v-show="showDamageScale"
+          id="egg-damage-scale"
+          class="measure-image"
+        >
+          <img
+            :src="measureImage"
+            alt="Egg damage scale: 1 means no cracks; 5 means the egg has broken open."
+          />
         </figure>
       </template>
 
-      <!-- Control: all unchanged variables start with sensible shared values. -->
+      <!-- Step 3: every control is shared by A and B and starts pre-filled. -->
       <template v-else>
         <p class="control-instruction">Keep these the same for both eggs:</p>
         <div class="control-grid">
-          <label v-for="variable in controllableVariables" :key="variable.id" class="control-field">
-            <span>{{ variable.label }}</span>
-            <select v-model="controlValues[variable.id]">
-              <option
-                v-for="option in getControlOptions(variable.id)"
-                :key="option"
-                :value="option"
-              >{{ displaySetting(option) }}</option>
+          <label
+            v-for="variable in controllableVariables"
+            :key="variable.id"
+            class="control-field"
+          >
+            <span>{{ variable.id === 'layers' && changeId === 'material'
+              ? 'Layers (if wrapped)' : variable.label }}</span>
+            <select v-model="controls[variable.id]">
+              <option v-for="option in controlOptions(variable)" :key="option" :value="option">
+                {{ displaySetting(option) }}
+              </option>
             </select>
           </label>
         </div>
@@ -392,107 +296,66 @@ function reset() {
       </template>
     </div>
 
-    <!-- Experiment diagram -->
     <div class="fair-test-card">
-      <div class="fair-test-heading">
-        <h3>Your Experiment</h3>
-      </div>
-
-      <div
-        class="fair-test-visual"
-        :class="{ 'fair-test-visual--full': !showLayersPanel }"
-      >
-        <div class="fair-test-canvas" aria-label="Visual experiment builder">
-          <!-- Height markers and egg bottoms share one calculated release level.
-               The distance is measured down to the TOP of the landing surface. -->
+      <h3>Your Experiment</h3>
+      <div class="fair-test-canvas" aria-label="Two egg-drop experiments with a height ruler">
+        <!-- ALWAYS show the same tall ruler. The marks align to the egg bottoms. -->
+        <div class="height-guide" aria-hidden="true">
+          <div class="height-guide-rail"></div>
           <div
-            v-if="changeId === 'height'"
-            class="height-guide"
-            aria-hidden="true"
+            v-for="marker in heightMarkers"
+            :key="marker"
+            class="height-guide-mark"
+            :style="{ top: releaseLevel[marker] }"
           >
-            <div class="height-guide-rail"></div>
-            <div
-              v-for="marker in heightMarkers"
-              :key="marker"
-              class="height-guide-mark"
-              :style="{ top: releaseLevel[marker] }"
-            >
-              <span class="height-guide-tick"></span>
-              <span>{{ marker.replace('m', ' m') }}</span>
-            </div>
+            <span class="height-guide-tick"></span>
+            <span>{{ displaySetting(marker) }}</span>
           </div>
-
-          <template v-for="lane in lanes" :key="lane.name">
-            <div class="lane-label" :class="`lane-${lane.name.toLowerCase()}`">
-              Experiment {{ lane.name }}
-            </div>
-            <div class="lane-wrap-label" :class="`lane-${lane.name.toLowerCase()}`">
-              {{ laneWrapLabel(lane) }}
-            </div>
-            <div
-              class="drop-line"
-              :class="`lane-${lane.name.toLowerCase()}`"
-            ></div>
-            <img
-              class="egg"
-              :class="`lane-${lane.name.toLowerCase()}`"
-              :style="{
-                top: releaseLevel[lane.height],
-                transform: `translate(-50%, -100%) rotate(${lane.direction === 'Pointy End' ? 180 : 0}deg)`,
-              }"
-              :src="
-                isWrapped(lane)
-                  ? eggImages[lane.material][lane.layers]
-                  : defaultEggImage
-              "
-              :alt="
-                isWrapped(lane)
-                  ? `Egg protected with ${lane.layers} of ${lane.material}`
-                  : 'Egg with no protection'
-              "
-            />
-            <div
-              class="surface"
-              :class="[
-                `lane-${lane.name.toLowerCase()}`,
-                surfaceClass[lane.surface],
-              ]"
-            >
-              <span>{{ lane.surface }}</span>
-            </div>
-          </template>
         </div>
 
-        <!-- Show layers only when a wrapping comparison is relevant. -->
-        <aside
-          v-if="showLayersPanel"
-          class="layers-panel"
-          aria-label="Wrapping layers"
-        >
-          <h4>Wrapping layers</h4>
-          <div class="layer-previews">
-            <figure v-for="preview in layerPreviews" :key="preview.previewLabel">
-              <strong class="layer-preview-title">{{ preview.previewLabel }}</strong>
-              <img
-                :src="layerPreviewSrc(preview)"
-                :alt="isWrapped(preview)
-                  ? `${preview.layers} of ${preview.material}`
-                  : 'Egg with no wrapping'"
-              />
-              <figcaption>{{ displaySetting(preview.layers) }}</figcaption>
-            </figure>
+        <template v-for="(lane, index) in lanes" :key="lane.name">
+          <div class="lane-heading" :class="`lane-${lane.name.toLowerCase()}`">
+            <span class="lane-title">Experiment {{ lane.name }}</span>
+            <label v-if="currentStage === 'change'" class="lane-choice">
+              <span class="sr-only">Choose {{ selectedVariable.label }} for Egg {{ lane.name }}</span>
+              <select
+                :value="comparisons[changeId][index]"
+                :aria-label="`${selectedVariable.label} for Egg ${lane.name}`"
+                @change="setEggChoice(index, $event.target.value)"
+              >
+                <option
+                  v-for="option in selectedVariable.options"
+                  :key="option"
+                  :value="option"
+                  :disabled="isOtherEggChoice(index, option)"
+                >{{ displaySetting(option) }}</option>
+              </select>
+            </label>
+            <span v-else class="lane-choice-summary">{{ displaySetting(lane[changeId]) }}</span>
           </div>
-        </aside>
+
+          <div class="drop-line" :class="`lane-${lane.name.toLowerCase()}`"></div>
+          <!-- Transparent padding in the PNG is compensated for below.
+               The metre positions and ruler tick marks remain unchanged. -->
+          <img
+            class="egg"
+            :class="`lane-${lane.name.toLowerCase()}`"
+            :style="{
+              top: `calc(${releaseLevel[lane.height]} + var(--egg-image-bottom-inset))`,
+              transform: `translate(-50%, -100%) rotate(${lane.direction === 'Pointy End' ? 180 : 0}deg)`,
+            }"
+            :src="eggSrc(lane)"
+            :alt="`Egg ${lane.name}: ${eggDescription(lane)}, dropped from ${displaySetting(lane.height)}`"
+          />
+          <div
+            class="surface"
+            :class="[`lane-${lane.name.toLowerCase()}`, surfaceClass[lane.surface]]"
+          ><span>{{ lane.surface }}</span></div>
+        </template>
       </div>
-      <p
-        v-if="changeId === 'height'"
-        class="height-guide-note"
-      >
-        Height = bottom of egg to surface.
-      </p>
     </div>
 
-    <!-- One live A/B table, driven by the same settings as the diagram. -->
+    <!-- Live table: never store duplicate A/B settings here. -->
     <div class="fair-test-blueprint">
       <div class="blueprint-title-row">
         <h3>Your fair test plan</h3>
@@ -500,24 +363,13 @@ function reset() {
           {{ controlConfirmed ? '✓ Controls set' : 'Suggested settings' }}
         </span>
       </div>
-
       <div class="blueprint-table-wrap">
         <table class="blueprint-table">
-          <thead>
-            <tr>
-              <th scope="col">Setting</th>
-              <th scope="col">Experiment A</th>
-              <th scope="col">Experiment B</th>
-            </tr>
-          </thead>
+          <thead><tr><th scope="col">Setting</th><th scope="col">Egg A</th><th scope="col">Egg B</th></tr></thead>
           <tbody>
-            <tr
-              v-for="row in tableRows"
-              :key="row.id"
-              :class="{ 'blueprint-row--change': row.changed }"
-            >
+            <tr v-for="row in tableRows" :key="row.id" :class="{ 'blueprint-row--change': row.changed }">
               <th scope="row">
-                <span>{{ row.label }}</span>
+                {{ row.label }}
                 <span v-if="row.changed" class="blueprint-pill blueprint-pill--change">Change</span>
               </th>
               <td>{{ row.a }}</td>
@@ -532,28 +384,23 @@ function reset() {
           </tbody>
         </table>
       </div>
+
       <ActivityFeedback
         v-if="feedback"
         :success="feedback === 'success'"
         :success-feedback="`Only ${changedPart[changeId]} changes. The rest matches.`"
         :try-again-feedback="feedbackMessage"
       />
-
       <div class="fair-test-actions">
         <Button type="button" class="reset-button" @click="reset">Reset</Button>
-        <Button
-          type="button"
-          class="check-fair-test-button"
-          @click="checkDesign"
-        >
-          Check plan
-        </Button>
+        <Button type="button" class="check-fair-test-button" @click="checkDesign">Check plan</Button>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
+
 .fair-test-title {
   margin: 0 0 20px;
   text-align: center;
@@ -643,42 +490,43 @@ function reset() {
   font: inherit;
 }
 
-.measure-image {
-  position: relative;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  justify-self: center;
-  min-height: 220px;
-  margin-top: 14px;
-
-  background-color: white;
+/* Small, optional reference image. It no longer takes over the page. */
+.measure-toggle {
+  padding: 9px 14px;
+  background: var(--paper);
+  color: var(--text);
   border: 2px solid var(--charcoal);
-  border-radius: var(--radius-small);
-
-  color: var(--muted);
-  overflow: hidden;
-
-  animation: pop-fade-in 0.5s ease;
-}
-
-.measure-image figcaption {
-  position: absolute;
-  top: 20px;
-
-  padding: 10px;
-  border: 2px solid var(--charcoal);
-  border-radius: var(--radius-small);
-  box-shadow: var(--shadow-small);
-
+  border-radius: 10px;
+  font: inherit;
   font-weight: 700;
+  cursor: pointer;
 }
-
+.measure-toggle:hover {
+  background: var(--soft-yellow);
+}
+.measure-toggle:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 2px;
+}
+.measure-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 720px);
+  margin: 12px auto 0;
+  padding: 8px;
+  background: white;
+  border: 2px solid var(--charcoal);
+  border-radius: var(--radius-small);
+  box-sizing: border-box;
+}
 .measure-image img {
+  display: block;
+  width: auto;
+  height: auto;
   max-width: 100%;
+  max-height: 235px;
+  object-fit: contain;
 }
 
 /* ---------- Shared controls ---------- */
@@ -1247,5 +1095,148 @@ function reset() {
     padding: 2px 5px;
     font-size: 0.65rem;
   }
+}
+
+/* ---------------- NEW A/B REDESIGN OVERRIDES BELOW ---------------- */
+
+/* Always-on tall ruler and full-width two-egg canvas.
+   Release positions are the BOTTOM edge of each egg, relative to
+   the TOP of the landing surface. The scale is 110 px per metre. */
+.fair-test-card { padding: 18px; }
+.fair-test-card > h3 { margin: 0 0 12px; }
+.fair-test-canvas {
+  --surface-bottom: 36px;
+  --surface-height: 60px;
+  /* Visible egg shell sits ~12px above the bottom of its PNG canvas. */
+  --egg-image-bottom-inset: 12px;
+  --landing-y: calc(100% - var(--surface-bottom) - var(--surface-height));
+  --release-1m: calc(var(--landing-y) - 110px);
+  --release-1-5m: calc(var(--landing-y) - 165px);
+  --release-3m: calc(var(--landing-y) - 330px);
+  height: 645px;
+  min-height: 0;
+  background: linear-gradient(to bottom,
+    #fffdf4 0 var(--landing-y),
+    #eee7d6 var(--landing-y) 100%);
+}
+.height-guide { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.height-guide-rail {
+  left: 5%; top: 92px;
+  bottom: calc(var(--surface-bottom) + var(--surface-height));
+  width: 64px;
+  border-width: 4px;
+  border-radius: 10px;
+}
+.height-guide-mark { left: calc(5% + 64px); font-size: 0.95rem; }
+.height-guide-tick { width: 54px; }
+
+/* Individual dropdowns are ON the diagram, directly above each egg. */
+.lane-heading {
+  position: absolute;
+  top: 14px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 29%;
+  max-width: 210px;
+  transform: translateX(-50%);
+}
+.lane-heading.lane-a { left: 45%; }
+.lane-heading.lane-b { left: 77%; }
+.lane-title {
+  padding: 6px 11px;
+  background: #fff;
+  border: 2px solid var(--charcoal);
+  border-radius: 999px;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.lane-choice { display: block; width: 100%; }
+.lane-choice select {
+  display: block;
+  width: 100%; min-width: 0;
+  padding: 7px 9px;
+  background: #fff;
+  border: 2px solid var(--charcoal);
+  border-radius: 9px;
+  font: inherit;
+  font-size: 0.93rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+.lane-choice select:focus-visible, .control-field select:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 2px;
+}
+.lane-choice-summary {
+  max-width: 100%;
+  padding: 6px 9px;
+  background: #fff;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+}
+.drop-line {
+  top: 120px;
+  bottom: calc(var(--surface-bottom) + var(--surface-height));
+}
+.egg { width: 95px; height: 90px; object-fit: contain; }
+.surface {
+  bottom: var(--surface-bottom);
+  width: 27%;
+  height: var(--surface-height);
+  text-align: center;
+}
+.drop-line.lane-a, .egg.lane-a { left: 45%; }
+.drop-line.lane-b, .egg.lane-b { left: 77%; }
+.surface.lane-a { left: 31.5%; }
+.surface.lane-b { left: 63.5%; }
+
+/* Keep the compact controls and table from the previous version. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .control-grid { grid-template-columns: minmax(0, 1fr); }
+  .fair-test-card { padding: 12px; }
+  .fair-test-canvas {
+    --surface-bottom: 28px;
+    --surface-height: 50px;
+    /* Smaller egg image has slightly less transparent bottom padding. */
+    --egg-image-bottom-inset: 10px;
+    --release-1m: calc(var(--landing-y) - 94px);
+    --release-1-5m: calc(var(--landing-y) - 141px);
+    --release-3m: calc(var(--landing-y) - 282px);
+    height: 570px;
+    min-height: 0;
+  }
+  .height-guide-rail { left: 1.5%; top: 84px; width: 24px; border-width: 3px; }
+  .height-guide-mark { left: calc(1.5% + 24px); gap: 4px; font-size: 0.72rem; }
+  .height-guide-tick { width: 24px; border-top-width: 2px; }
+  .lane-heading { top: 13px; width: 34%; gap: 5px; }
+  .lane-heading.lane-a { left: 44%; }
+  .lane-heading.lane-b { left: 79%; }
+  .lane-title { padding: 5px 7px; font-size: 0.81rem; }
+  .lane-choice select { padding: 6px 3px; font-size: 0.8rem; }
+  .lane-choice-summary { font-size: 0.78rem; padding: 5px 4px; }
+  .drop-line { top: 111px; }
+  .egg { width: 80px; height: 78px; }
+  .drop-line.lane-a, .egg.lane-a { left: 44%; }
+  .drop-line.lane-b, .egg.lane-b { left: 79%; }
+  .surface { width: 32%; height: var(--surface-height); font-size: 0.78rem; }
+  .surface.lane-a { left: 28%; }
+  .surface.lane-b { left: 63%; }
 }
 </style>
