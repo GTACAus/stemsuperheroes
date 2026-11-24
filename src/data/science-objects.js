@@ -48,11 +48,24 @@ export const scienceObjects = [
     name: 'Sunscreen',
     image: `${images}sunscreen.jpg`,
     imageAlt: 'Sunscreen',
-    // Placeholder: these are still the bread photos from the original page.
+    // Local crops of the two SEE photos from GTAC's original H5P screenshot.
+    // Replace with the original source photographs when available.
     observationImages: [
-      { src: `${images}bread-observation-1.jpg`, alt: 'White bread' },
-      { src: `${images}bread-observation-2.jpg`, alt: 'Baguette' },
+      { src: `${images}sunscreen-observation-1.jpg`, alt: 'Shoulder with visibly red skin after sun exposure' },
+      { src: `${images}sunscreen-observation-2.jpg`, alt: 'Back and shoulder with less visible redness' },
     ],
+    stwImageAspect: 'portrait',
+    // Only sunscreen uses these more specific See / Think / Wonder prompts.
+    stwPrompts: {
+      think: {
+        lead: 'Is there a difference between the pictures?',
+        question: 'What makes you think that?',
+      },
+      wonder: {
+        lead: 'What do these pictures make you wonder about sunscreen?',
+        question: 'What questions would you ask?',
+      },
+    },
     placeholders: {
       see: 'Type something you see...',
       think: 'Type what you think...',

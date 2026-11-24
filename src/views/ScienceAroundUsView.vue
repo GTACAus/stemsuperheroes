@@ -4,6 +4,7 @@ import Button from '@/components/Button.vue';
 import LearningOverview from '@/components/science/LearningOverview.vue';
 import HelmetDetails from '@/components/science/HelmetDetails.vue';
 import BreadDetails from '@/components/science/BreadDetails.vue';
+import SunscreenDetails from '@/components/science/SunscreenDetails.vue';
 import YeastFairTestBuilder from '@/components/science/YeastFairTestBuilder.vue';
 import StwSection from '@/components/science/StwSection.vue';
 import FairTestBuilder from '@/components/science/FairTestBuilder.vue';
@@ -18,6 +19,9 @@ const extras = {
   bread: [
     BreadDetails,
     YeastFairTestBuilder
+  ],
+  sunscreen: [
+    SunscreenDetails
   ]
 };
 
@@ -85,16 +89,23 @@ const selectedId = ref(null);
         <StwSection
           type="see"
           :images="object.observationImages"
+          :lead="object.stwPrompts?.see?.lead"
+          :question="object.stwPrompts?.see?.question"
+          :image-aspect="object.stwImageAspect || 'landscape'"
           :placeholder="object.placeholders.see"
           :aria-label="`Add an observation about the ${object.name.toLowerCase()} images`"
         />
         <StwSection
           type="think"
+          :lead="object.stwPrompts?.think?.lead"
+          :question="object.stwPrompts?.think?.question"
           :placeholder="object.placeholders.think"
           :aria-label="`Add a thought about the ${object.name.toLowerCase()} images`"
         />
         <StwSection
           type="wonder"
+          :lead="object.stwPrompts?.wonder?.lead"
+          :question="object.stwPrompts?.wonder?.question"
           :placeholder="object.placeholders.wonder"
           :aria-label="`Add a question about the ${object.name.toLowerCase()} images`"
         />

@@ -9,6 +9,10 @@ const props = defineProps({
   images: { type: Array, default: () => [] },
   placeholder: String,
   ariaLabel: String,
+  // Optional custom text for an object's prompts (used for Sunscreen).
+  lead: String,
+  question: String,
+  imageAspect: { type: String, default: 'landscape', validator: (v) => ['landscape', 'portrait'].includes(v) },
 });
 
 const content = {
@@ -84,11 +88,11 @@ const text = computed(() => content[props.type]);
     </div>
 
     <p class="stw-prompt">
-      {{ text.lead }}<br />
-      <strong>{{ text.question }}</strong>
+      {{ lead || text.lead }}<br />
+      <strong>{{ question || text.question }}</strong>
     </p>
 
-    <div v-if="images.length" class="stw-image-grid">
+    <div v-if="images.length" class="stw-image-grid" :class="{ 'stw-image-grid--portrait': imageAspect === 'portrait' }">
       <img v-for="image in images" :key="image.src" :src="image.src" :alt="image.alt" loading="lazy" />
     </div>
 
@@ -126,6 +130,10 @@ const text = computed(() => content[props.type]);
 
   border: 2px solid var(--charcoal);
   border-radius: var(--radius-small);
+}
+
+.stw-image-grid--portrait img {
+  aspect-ratio: 4 / 5;
 }
 
 @media (max-width: 650px) {
