@@ -17,6 +17,8 @@ const impactIsVideo = computed(() =>
 );
 
 // Hobby photos: hobbies.photos or hobbies.images (array), else hobbies.image (one).
+// Missing files are hidden automatically so you can add photos over time.
+const failedHobbyImages = ref([]);
 // 1 photo shows a plain image; 2+ photos show the carousel.
 const hobbyPhotos = computed(() => {
   const hobbies = props.expert.hobbies || {};
@@ -27,7 +29,7 @@ const hobbyPhotos = computed(() => {
       : [];
   const photos = list
     .map((p) => (typeof p === "string" ? { image: p } : p))
-    .filter((p) => p && p.image);
+    .filter((p) => p && p.image && !failedHobbyImages.value.includes(p.image));
   if (photos.length) return photos;
   return hobbies.image ? [{ image: hobbies.image, imageAlt: hobbies.imageAlt }] : [];
 });
@@ -39,6 +41,7 @@ const hobbyPhotoDialog = ref(null);
 
 watch(() => props.expert, () => {
   carouselIndex.value = 0;
+  failedHobbyImages.value = [];
   if (hobbyPhotoDialog.value?.open) hobbyPhotoDialog.value.close();
 });
 
@@ -51,6 +54,14 @@ const currentHobbyPhoto = computed(() =>
 const hobbyPhotoImageStyle = computed(() => ({
   objectPosition: currentHobbyPhoto.value?.cropPosition || '50% 50%',
 }));
+
+// A photo that has not been saved yet should not leave a broken image.
+// When it is added later, reloading the profile will show it automatically.
+function onHobbyPhotoError(src) {
+  if (!src || failedHobbyImages.value.includes(src)) return;
+  failedHobbyImages.value = [...failedHobbyImages.value, src];
+  carouselIndex.value = 0;
+}
 
 function openFullHobbyPhoto() {
   const dialog = hobbyPhotoDialog.value;
@@ -137,6 +148,7 @@ const galleryPhotos = computed(() =>
                 :style="hobbyPhotoImageStyle"
                 loading="lazy"
                 decoding="async"
+                @error="onHobbyPhotoError(currentHobbyPhoto.image)"
               />
               <span class="hobby-photo-expand" aria-hidden="true">⤢</span>
             </button>

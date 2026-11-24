@@ -2780,239 +2780,132 @@ sue: (() => {
 
 
   /* =====================================================
-   VIJAY RAJAGOPAL - COMPUTATIONAL PHYSIOLOGIST
+     VIJAY RAJAGOPAL - COMPUTATIONAL PHYSIOLOGIST
 
-   STEM EXPERT - NOT A GTAC STEM COACH
+     Short, student-friendly profile for Years 5-7.
+     Sources: GTAC interview, 24 March 2026; existing profile.
 
-   Sources:
-   - Interview: 24 March 2026
-   - Original GTAC STEM Superheroes Showcase
-   - University of Melbourne research information
-
-   All images are stored locally.
-   Uses the existing reusable profile and timeline code.
-   ===================================================== */
+     Timeline images are deliberate local placeholders.
+     Save matching .jpg files in public/assets/images/experts/vijay/.
+     Until they are saved, the timeline hides missing images.
+     ===================================================== */
 
   vijay: (() => {
-    /* ================================================
-       A. IMAGE FOLDER
-
-       All Vijay's images are stored here.
-       ================================================ */
-
     const imageFolder = `${base}/vijay/`;
 
     return {
-      /* ================================================
-           B. BASIC INFORMATION
-
-           Name, role, workplace, portrait and superpower.
-           ================================================ */
-
       name: "Vijay",
-
       role: "Computational Physiologist",
-
-      organisation:
-        "Associate Professor, Department of Biomedical Engineering, University of Melbourne",
-
+      organisation: "University of Melbourne",
       portrait: `${imageFolder}portrait.jpg`,
-
-      superpower:
-        "Using mathematics, physics and computer simulations to understand how our heart, blood vessels and cells work",
-
+      superpower: "Using computers, maths and physics to explore how our hearts and blood vessels work.",
       imageFolder,
 
-      /* ================================================
-           C. INTERACTIVE TIMELINE
-
-           Five clickable stages.
-
-           Each stage has:
-           - Title
-           - Colour
-           - Image
-           - Story points
-
-           timeline.js handles the interactions.
-           ================================================ */
-
+      /* Five stages. Each photo has its own meaningful subject.
+         See VIJAY-IMAGE-GUIDE.txt for Pexels suggestions. */
       timeline: [
-        // STAGE 1: CURIOUS BEGINNINGS
-
         {
-          title: "Curious beginnings",
+          title: "From India to New Zealand",
           colour: "#F43559",
-
-          image: `${imageFolder}portrait.jpg`,
-          imageAlt: "Portrait of Vijay today",
-
+          image: `${imageFolder}south-india.jpg`,
+          imageAlt: "Landscape in southern India, representing Vijay's childhood",
           points: [
-            "Vijay was born in southern India, where he grew up with his family.",
-            "His father was a chemical engineer and his grandfather worked at the Reserve Bank of India.",
-            "Although his family had some experience with engineering, Vijay did not grow up expecting to become a scientist.",
-            "When he was in secondary school, he moved from India to New Zealand.",
-            "His journey would eventually lead him to discover how engineering and mathematics could help us understand the human body.",
+            "Vijay grew up in southern India.",
+            "His dad worked as a chemical engineer.",
+            "As a teen, Vijay moved to New Zealand and started a new school.",
+            "He did not yet know that his future job would mix maths with medicine.",
           ],
         },
-
-        // STAGE 2: CHALLENGES IN SCHOOL
-
         {
-          title: "Challenges in school",
+          title: "Dreams of flying",
           colour: "#E9B400",
-
-          image: `${imageFolder}school.jpg`,
-          imageAlt: "Image representing Vijay's school experiences",
-
+          image: `${imageFolder}airplane-cockpit.jpg`,
+          imageAlt: "Inside an aircraft cockpit, representing Vijay's early interest in flying",
           points: [
-            "Vijay did not find mathematics particularly easy when he was younger.",
-            "He learned that sometimes he needed to slow down, practise and give himself more time to understand difficult ideas.",
-            "He originally imagined becoming a pilot or a mechatronics engineer, someone who combines mechanical engineering, electronics and computing.",
-            "He did not plan to become a scientist or study medicine.",
-            "His experience taught him that finding a subject difficult does not mean you cannot succeed in it.",
+            "Vijay once dreamed of becoming a pilot.",
+            "He also liked the idea of building clever machines.",
+            "Maths was not always easy, so he took his time to learn it.",
+            "His interest in how things work drew him towards engineering.",
           ],
         },
-
-        // STAGE 3: FINDING HIS PATH
-
         {
-          title: "Finding his path",
+          title: "Engineering opens a door",
           colour: "#50B96D",
-
-          image: `${imageFolder}journey.jpg`,
-          imageAlt:
-            "Image representing Vijay's studies in engineering and biomedical science",
-
+          image: `${imageFolder}computer-code.jpg`,
+          imageAlt: "Computer code, representing Vijay's engineering studies",
           points: [
-            "Vijay studied Engineering Science at university in New Zealand.",
-            "He learned how mathematics, physics and computer programming could be used to solve real-world problems.",
-            "He discovered that these tools could also help scientists understand the human body.",
-            "Although he initially considered working in industry, he became interested in continuing his studies through a PhD.",
-            "His research journey took him into biomedical engineering, where engineers use technology and scientific knowledge to investigate problems in medicine.",
-            "After his PhD and further research experience, he eventually established his own research group at the University of Melbourne.",
+            "At university in New Zealand, Vijay studied Engineering Science.",
+            "He learned to use maths, physics and computer code to solve problems.",
+            "Then he saw how these tools could help explain the human body.",
+            "He completed a PhD and went on to work as a researcher.",
           ],
         },
-
-        // STAGE 4: RESEARCH WITH AN IMPACT
-
         {
-          title: "Research with an impact",
+          title: "What makes a heart beat?",
           colour: "#4F71CB",
-
           image: `${imageFolder}heart-model.jpg`,
-          imageAlt:
-            "Computer model representing heart cells and their activity",
-
+          imageAlt: "An anatomical model of a human heart",
           points: [
-            "Vijay uses mathematics, physics and computers to create models of how cells and organs work.",
-            "A computer model is like a digital experiment that helps scientists explore what might happen inside the body.",
-            "His team investigates how calcium signals help heart muscle cells contract and grow.",
-            "They also study how red blood cells move through tiny blood vessels called capillaries.",
-            "These models help scientists understand what happens in healthy bodies and what might change during diseases such as heart disease.",
+            "Vijay studies how heart cells move and grow.",
+            "He uses computer models to explore what happens inside these cells.",
+            "One focus is calcium, which helps tell heart muscle cells when to squeeze.",
+            "His team uses these models to ask new questions about the heart.",
           ],
         },
-
-        // STAGE 5: LOOKING TO THE FUTURE
-
         {
-          title: "Looking to the Future",
+          title: "A closer look at blood",
           colour: "#00A7B8",
-
-          image: `${imageFolder}future.jpg`,
-          imageAlt:
-            "Illustration representing digital models of the human heart",
-
+          image: `${imageFolder}red-blood-cells.jpg`,
+          imageAlt: "Red blood cells, representing Vijay's research on blood flow",
           points: [
-            "Vijay's research team is developing increasingly detailed computer models of living cells and organs.",
-            "Scientists sometimes call these models digital twins because they represent parts of the real world inside a computer.",
-            "Researchers hope these models will help them better understand heart disease and investigate possible treatments.",
-            "Computer simulations may also help scientists decide which ideas are worth testing in the laboratory.",
-            "Vijay continues exploring how mathematics, computing and biology can work together to improve healthcare.",
+            "Vijay also studies how red blood cells move through tiny blood vessels.",
+            "His team uses computers to explore how blood flows through these narrow paths.",
+            "The results may help scientists learn more about health and disease.",
+            "Today, Vijay leads research at the University of Melbourne.",
           ],
         },
       ],
 
-      /* ================================================
-           D. HOBBIES AND INTERESTS
-
-           One image is displayed by default.
-
-           To display multiple photographs,
-           add a "photos" array like Paddy's profile.
-           ================================================ */
-
+      /* Hobbies are NOT photographs of Vijay; these are illustrative.
+         Missing hobby photos are hidden until you add them to the folder. */
       hobbies: {
         heading: "Hobbies and interests",
-
-        text: "Outside science, Vijay enjoys a good cup of coffee and playing flight simulator games from the comfort of his sofa! He also once tried performing stand-up comedy. Science and humour can go hand in hand!",
-
+        text: "Vijay enjoys a good coffee and playing flight simulator games on his sofa. He even tried stand-up comedy while doing his PhD!",
         images: [
           {
-            image: `${imageFolder}hobbies.jpg`,
-            imageAlt:
-              "Image representing Vijay's interests in flight simulators, coffee and comedy",
+            image: `${imageFolder}coffee.jpg`,
+            imageAlt: "A cup of coffee, one of Vijay's interests",
+            caption: "Coffee breaks",
+          },
+          {
+            image: `${imageFolder}flight-simulator.jpg`,
+            imageAlt: "A flight simulator setup, representing Vijay's favourite game",
+            caption: "Flight simulator games",
           },
         ],
       },
 
-      /* ================================================
-           E. WHY HIS RESEARCH MATTERS
+      // Only manually selected extra photographs appear in this gallery.
+      gallery: [],
 
-           Three points displayed with coloured icons.
-           One accompanying image.
-
-           Vijay's work uses computational models
-           rather than relying only on laboratory
-           experiments.
-           ================================================ */
-
+      /* No research photo yet - leave this section text-only.
+         Add a real research image here later if Vijay supplies one. */
       impact: {
-        heading: "Why does his research matter?",
-
-        image: `${imageFolder}heart-model.jpg`,
-        imageAlt: "Computer model representing the human heart and its cells",
-
+        heading: "Why does his work matter?",
         points: [
-          "Helps scientists understand how heart cells grow, contract and respond to different signals",
-          "Uses computer simulations to investigate how blood cells move through tiny blood vessels",
-          "Could help scientists investigate new ways to understand, prevent and treat diseases in the future",
+          "Helps scientists explore how heart cells work.",
+          "Shows how red blood cells move through tiny blood vessels.",
+          "May help researchers understand what changes when people get sick.",
         ],
       },
 
-      /* ================================================
-           F. ADVICE FOR STUDENTS
-
-           Based on Vijay's interview and existing
-           GTAC STEM Superheroes profile.
-
-           Advice is paraphrased for primary students,
-           except for the first point, which preserves
-           the lesson from the original GTAC showcase.
-           ================================================ */
-
       adviceHeading: "Vijay's advice",
-
       advice: [
-        "Just because you find something hard, doesn't mean you are bad at it. It just means you need more time.",
-        "Everyone has different talents. You might discover what you are good at later than you expect!",
-        "Focus on understanding the fundamentals and give yourself time to learn.",
-        "Don't be discouraged if you don't understand something straight away.",
-        "Explore different interests. You never know where your curiosity might take you!",
+        "You do not have to be good at something straight away.",
+        "Take your time to learn the basics. Keep practising!",
+        "Different people have different talents. Yours may surprise you.",
+        "Follow the ideas that interest you, even if your plans change.",
       ],
-
-      /* ================================================
-           G. OPTIONAL VIDEO
-
-           No video has been added for Vijay.
-
-           If Vijay provides a computer simulation of
-           heart cells, blood vessels or calcium signals,
-           add a "video" property here like Paddy's.
-
-           The existing expert-profile.js already
-           supports this optional feature.
-           ================================================ */
     };
   })(),
 
