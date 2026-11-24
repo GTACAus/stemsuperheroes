@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import ExpertTimeline from "./ExpertTimeline.vue";
 import ProfileToolbar from "./ProfileToolbar.vue";
 
@@ -31,16 +31,13 @@ const hobbyPhotos = computed(() => {
   if (photos.length) return photos;
   return hobbies.image ? [{ image: hobbies.image, imageAlt: hobbies.imageAlt }] : [];
 });
+// A simple photo viewer replaces the old layered/3D hobby carousel.
+// Keep one selected photo in view; reset when switching experts.
 const carouselIndex = ref(0);
-function carouselClass(i) {
-  const offset = i - carouselIndex.value;
-  return {
-    "is-current": offset === 0,
-    "is-previous": offset === -1,
-    "is-next": offset === 1,
-    "is-hidden": Math.abs(offset) > 1,
-  };
-}
+watch(() => props.expert, () => { carouselIndex.value = 0; });
+const currentHobbyPhoto = computed(() =>
+  hobbyPhotos.value[carouselIndex.value] || hobbyPhotos.value[0] || null,
+);
 
 // Optional extra photo collage: only photos listed in expert.gallery, at most 5.
 const galleryPhotos = computed(() =>
@@ -90,50 +87,55 @@ const galleryPhotos = computed(() =>
     <section class="profile-section profile-hobbies">
       <h3 class="profile-section-heading">{{ expert.hobbies.heading }}</h3>
       <p>{{ expert.hobbies.text }}</p>
-      <img
-        v-if="hobbyPhotos.length === 1"
-        :src="hobbyPhotos[0].image"
-        :alt="hobbyPhotos[0].imageAlt || `Photo of ${expert.name}`"
-        loading="lazy"
-      />
+      <!-- Simple hobby photo viewer: no overlapping cards or 3D perspective. -->
       <div
-        v-else-if="hobbyPhotos.length > 1"
-        class="image-carousel"
-        role="region"
-        :aria-label="`${expert.name}'s hobbies photographs`"
+        v-if="currentHobbyPhoto"
+        class="hobby-photo-viewer"
+        role="group"
+        :aria-label="`${expert.name}'s hobby photos`"
       >
-        <button
-          class="image-carousel-prev"
-          type="button"
-          aria-label="Previous photograph"
-          :disabled="carouselIndex === 0"
-          @click="carouselIndex--"
-        >
-          &#10094;
-        </button>
-        <div class="image-carousel-track">
+        <!-- The photograph sets its OWN size, preserving portrait/landscape proportions. -->
+        <div class="hobby-photo-stage">
           <img
-            v-for="(photo, i) in hobbyPhotos"
-            :key="i"
-            class="image-carousel-item"
-            :class="carouselClass(i)"
-            :src="photo.image"
-            :alt="photo.imageAlt || `Photo of ${expert.name}`"
-            :aria-hidden="String(Math.abs(i - carouselIndex) > 1)"
+            :key="currentHobbyPhoto.image"
+            :src="currentHobbyPhoto.image"
+            :alt="currentHobbyPhoto.imageAlt || `Photo of ${expert.name}`"
             loading="lazy"
-            draggable="false"
-            @click="carouselIndex = i"
+            decoding="async"
           />
         </div>
-        <button
-          class="image-carousel-next"
-          type="button"
-          aria-label="Next photograph"
-          :disabled="carouselIndex === hobbyPhotos.length - 1"
-          @click="carouselIndex++"
+
+        <!-- Navigation lives BELOW the photo, never on top of it. -->
+        <div
+          v-if="hobbyPhotos.length > 1 || currentHobbyPhoto.caption"
+          class="hobby-photo-footer"
+          :class="{ 'hobby-photo-footer--single': hobbyPhotos.length === 1 }"
         >
-          &#10095;
-        </button>
+          <button
+            v-if="hobbyPhotos.length > 1"
+            class="hobby-photo-arrow"
+            type="button"
+            :disabled="carouselIndex === 0"
+            :aria-label="`Previous photo of ${expert.name}`"
+            @click="carouselIndex--"
+          >&#10094;</button>
+          <span class="hobby-photo-description" aria-live="polite">
+            <span v-if="hobbyPhotos.length > 1" class="hobby-photo-count">
+              {{ carouselIndex + 1 }} / {{ hobbyPhotos.length }}
+            </span>
+            <span v-if="currentHobbyPhoto.caption" class="hobby-photo-caption">
+              {{ currentHobbyPhoto.caption }}
+            </span>
+          </span>
+          <button
+            v-if="hobbyPhotos.length > 1"
+            class="hobby-photo-arrow"
+            type="button"
+            :disabled="carouselIndex === hobbyPhotos.length - 1"
+            :aria-label="`Next photo of ${expert.name}`"
+            @click="carouselIndex++"
+          >&#10095;</button>
+        </div>
       </div>
     </section>
     <section class="profile-section profile-impact">
@@ -302,12 +304,6 @@ const galleryPhotos = computed(() =>
   margin: 0 0 12px;
   font-weight: 600;
 }
-.profile-hobbies > img {
-  width: 100%;
-  height: 210px;
-  object-fit: cover;
-  border-radius: 12px;
-}
 .profile-impact-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(112px, 36%);
@@ -452,93 +448,98 @@ const galleryPhotos = computed(() =>
 }
 
 /* =========================================================
-   HOBBIES IMAGE CAROUSEL (2+ hobby photos)
+   HOBBIES PHOTO VIEWER - ADAPTIVE IMAGE SIZING
+
+   - Each photo keeps its natural portrait/landscape shape.
+   - NO fixed-height background or empty side panels.
+   - Photos stay fully visible (no cropping).
+   - Arrows and caption are BELOW the image.
+   - Unrelated optional expert.gallery remains unchanged.
    ========================================================= */
-.image-carousel {
-  position: relative;
+.hobby-photo-viewer {
+  width: 100%;
+  margin: 16px auto 4px;
+}
+.hobby-photo-stage {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-  max-width: 1000px;
-  height: clamp(250px, 45vw, 450px);
-  margin: 2rem auto;
-  overflow: hidden;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
-.image-carousel-track {
-  position: absolute;
-  inset: 0;
-  perspective: 1200px;
-  pointer-events: none;
-}
-.image-carousel-item {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60%;
-  height: 85%;
+.hobby-photo-stage > img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 385px;
   object-fit: contain;
-  border-radius: 20px;
-  background: white;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  transform: translate(-50%, -50%) scale(1);
-  transition:
-    left 0.45s ease,
-    opacity 0.45s ease,
-    transform 0.45s ease;
-  pointer-events: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.09);
 }
-.image-carousel-item.is-current {
-  z-index: 3;
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+.hobby-photo-footer {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) 36px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 9px;
+  color: var(--muted, #626262);
+  font-size: 0.85rem;
+  line-height: 1.35;
+  text-align: center;
 }
-.image-carousel-item.is-previous {
-  z-index: 2;
-  left: 20%;
-  opacity: 0.6;
-  transform: translate(-50%, -50%) scale(0.8) rotateY(-30deg);
-  pointer-events: auto;
-  cursor: pointer;
+.hobby-photo-footer--single {
+  display: block;
 }
-.image-carousel-item.is-next {
-  z-index: 2;
-  left: 80%;
-  opacity: 0.6;
-  transform: translate(-50%, -50%) scale(0.8) rotateY(30deg);
-  pointer-events: auto;
-  cursor: pointer;
+.hobby-photo-description {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
 }
-.image-carousel-item.is-hidden {
-  z-index: 0;
-  opacity: 0;
-  pointer-events: none;
-  transform: translate(-50%, -50%) scale(0.5);
-}
-.image-carousel-prev,
-.image-carousel-next {
-  position: relative;
-  z-index: 5;
-  width: 45px;
-  height: 45px;
-  border: 2px solid var(--line, #444);
+.hobby-photo-arrow {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1.5px solid var(--charcoal, #323330);
   border-radius: 50%;
-  background: white;
+  background: #fff;
+  color: var(--charcoal, #323330);
+  font-size: 1.05rem;
   cursor: pointer;
-  font-size: 20px;
 }
-.image-carousel-prev:not(:disabled):hover,
-.image-carousel-next:not(:disabled):hover {
-  background: var(--soft-yellow);
+.hobby-photo-arrow:not(:disabled):hover {
+  background: var(--soft-yellow, #ffcc33);
 }
-.image-carousel-prev:disabled,
-.image-carousel-next:disabled {
-  opacity: 0.3;
+.hobby-photo-arrow:disabled {
+  opacity: 0.28;
   cursor: default;
 }
-@media (prefers-reduced-motion: reduce) {
-  .image-carousel-item {
-    transition: none;
+.hobby-photo-arrow:focus-visible {
+  outline: 3px solid #4e31db;
+  outline-offset: 3px;
+}
+.hobby-photo-count {
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 600px) {
+  .hobby-photo-stage > img {
+    max-height: 315px;
+  }
+  .hobby-photo-footer {
+    grid-template-columns: 34px minmax(0, 1fr) 34px;
+    gap: 6px;
+  }
+  .hobby-photo-arrow {
+    width: 34px;
+    height: 34px;
   }
 }
 
