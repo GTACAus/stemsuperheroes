@@ -31,13 +31,40 @@ const hobbyPhotos = computed(() => {
   if (photos.length) return photos;
   return hobbies.image ? [{ image: hobbies.image, imageAlt: hobbies.imageAlt }] : [];
 });
-// A simple photo viewer replaces the old layered/3D hobby carousel.
-// Keep one selected photo in view; reset when switching experts.
+// Hobbies viewer: one fixed square frame for every photo.
+// The optional cropPosition in expert-profiles.js controls what stays visible.
+// Clicking the photo opens its complete, uncropped original in a modal.
 const carouselIndex = ref(0);
-watch(() => props.expert, () => { carouselIndex.value = 0; });
+const hobbyPhotoDialog = ref(null);
+
+watch(() => props.expert, () => {
+  carouselIndex.value = 0;
+  if (hobbyPhotoDialog.value?.open) hobbyPhotoDialog.value.close();
+});
+
 const currentHobbyPhoto = computed(() =>
   hobbyPhotos.value[carouselIndex.value] || hobbyPhotos.value[0] || null,
 );
+
+// Example photo entry: { image: '...', cropPosition: '50% 30%' }
+// 50% 50% = centred; smaller second percentage = higher in image.
+const hobbyPhotoImageStyle = computed(() => ({
+  objectPosition: currentHobbyPhoto.value?.cropPosition || '50% 50%',
+}));
+
+function openFullHobbyPhoto() {
+  const dialog = hobbyPhotoDialog.value;
+  if (dialog && !dialog.open) dialog.showModal();
+}
+
+function closeFullHobbyPhoto() {
+  if (hobbyPhotoDialog.value?.open) hobbyPhotoDialog.value.close();
+}
+
+function onHobbyDialogClick(event) {
+  // Clicking outside the image closes the preview, as does Escape.
+  if (event.target === hobbyPhotoDialog.value) closeFullHobbyPhoto();
+}
 
 // Optional extra photo collage: only photos listed in expert.gallery, at most 5.
 const galleryPhotos = computed(() =>
@@ -87,56 +114,83 @@ const galleryPhotos = computed(() =>
     <section class="profile-section profile-hobbies">
       <h3 class="profile-section-heading">{{ expert.hobbies.heading }}</h3>
       <p>{{ expert.hobbies.text }}</p>
-      <!-- Simple hobby photo viewer: no overlapping cards or 3D perspective. -->
+      <!-- Consistent square photo frame with optional crop positioning. -->
       <div
         v-if="currentHobbyPhoto"
         class="hobby-photo-viewer"
         role="group"
         :aria-label="`${expert.name}'s hobby photos`"
       >
-        <!-- The photograph sets its OWN size, preserving portrait/landscape proportions. -->
         <div class="hobby-photo-stage">
-          <img
-            :key="currentHobbyPhoto.image"
-            :src="currentHobbyPhoto.image"
-            :alt="currentHobbyPhoto.imageAlt || `Photo of ${expert.name}`"
-            loading="lazy"
-            decoding="async"
-          />
+          <Transition name="hobby-photo-swap" mode="out-in">
+            <button
+              :key="`${carouselIndex}-${currentHobbyPhoto.image}`"
+              type="button"
+              class="hobby-photo-open"
+              :aria-label="`View full photo of ${expert.name}`"
+              title="View full photograph"
+              @click="openFullHobbyPhoto"
+            >
+              <img
+                :src="currentHobbyPhoto.image"
+                :alt="currentHobbyPhoto.imageAlt || `Photo of ${expert.name}`"
+                :style="hobbyPhotoImageStyle"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="hobby-photo-expand" aria-hidden="true">⤢</span>
+            </button>
+          </Transition>
         </div>
 
-        <!-- Navigation lives BELOW the photo, never on top of it. -->
-        <div
-          v-if="hobbyPhotos.length > 1 || currentHobbyPhoto.caption"
-          class="hobby-photo-footer"
-          :class="{ 'hobby-photo-footer--single': hobbyPhotos.length === 1 }"
-        >
-          <button
-            v-if="hobbyPhotos.length > 1"
-            class="hobby-photo-arrow"
-            type="button"
-            :disabled="carouselIndex === 0"
-            :aria-label="`Previous photo of ${expert.name}`"
-            @click="carouselIndex--"
-          >&#10094;</button>
-          <span class="hobby-photo-description" aria-live="polite">
-            <span v-if="hobbyPhotos.length > 1" class="hobby-photo-count">
+        <!-- Arrows and count sit directly below the image. -->
+        <div v-if="hobbyPhotos.length > 1 || currentHobbyPhoto.caption" class="hobby-photo-footer">
+          <div v-if="hobbyPhotos.length > 1" class="hobby-photo-controls">
+            <button
+              class="hobby-photo-arrow"
+              type="button"
+              :disabled="carouselIndex === 0"
+              :aria-label="`Previous photo of ${expert.name}`"
+              @click="carouselIndex--"
+            >&#10094;</button>
+            <span class="hobby-photo-count" aria-live="polite">
               {{ carouselIndex + 1 }} / {{ hobbyPhotos.length }}
             </span>
-            <span v-if="currentHobbyPhoto.caption" class="hobby-photo-caption">
-              {{ currentHobbyPhoto.caption }}
-            </span>
-          </span>
-          <button
-            v-if="hobbyPhotos.length > 1"
-            class="hobby-photo-arrow"
-            type="button"
-            :disabled="carouselIndex === hobbyPhotos.length - 1"
-            :aria-label="`Next photo of ${expert.name}`"
-            @click="carouselIndex++"
-          >&#10095;</button>
+            <button
+              class="hobby-photo-arrow"
+              type="button"
+              :disabled="carouselIndex === hobbyPhotos.length - 1"
+              :aria-label="`Next photo of ${expert.name}`"
+              @click="carouselIndex++"
+            >&#10095;</button>
+          </div>
+          <p v-if="currentHobbyPhoto.caption" class="hobby-photo-caption">
+            {{ currentHobbyPhoto.caption }}
+          </p>
         </div>
       </div>
+      <!-- Built-in dialog: show the original entire photo without cropping. -->
+      <dialog
+        ref="hobbyPhotoDialog"
+        class="hobby-photo-dialog"
+        :aria-label="`Full photo of ${expert.name}`"
+        @click="onHobbyDialogClick"
+      >
+        <button
+          type="button"
+          class="hobby-photo-close"
+          aria-label="Close full photograph"
+          @click="closeFullHobbyPhoto"
+        >✕ Close</button>
+        <img
+          v-if="currentHobbyPhoto"
+          :src="currentHobbyPhoto.image"
+          :alt="currentHobbyPhoto.imageAlt || `Photo of ${expert.name}`"
+        />
+        <p v-if="currentHobbyPhoto?.caption" class="hobby-photo-dialog-caption">
+          {{ currentHobbyPhoto.caption }}
+        </p>
+      </dialog>
     </section>
     <section class="profile-section profile-impact">
       <h3 class="profile-section-heading">{{ expert.impact.heading }}</h3>
@@ -448,64 +502,97 @@ const galleryPhotos = computed(() =>
 }
 
 /* =========================================================
-   HOBBIES PHOTO VIEWER - ADAPTIVE IMAGE SIZING
+   HOBBIES PHOTO VIEWER - SQUARE CROP + FULL PHOTO PREVIEW
 
-   - Each photo keeps its natural portrait/landscape shape.
-   - NO fixed-height background or empty side panels.
-   - Photos stay fully visible (no cropping).
-   - Arrows and caption are BELOW the image.
-   - Unrelated optional expert.gallery remains unchanged.
+   - All photos use the same 1:1 frame to avoid uneven card heights.
+   - object-fit: cover fills the square without stretching.
+   - cropPosition on an individual photo adjusts where it crops.
+   - Click or tap a photo to see the complete original in a dialog.
+   - The selected-photo gallery is unaffected.
    ========================================================= */
 .hobby-photo-viewer {
   width: 100%;
-  margin: 16px auto 4px;
+  margin: 14px auto 4px;
 }
 .hobby-photo-stage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  background: transparent;
-  border: none;
-  padding: 0;
+  position: relative;
+  width: min(100%, 340px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #f7f5f0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
-.hobby-photo-stage > img {
+.hobby-photo-open {
+  position: absolute;
+  inset: 0;
   display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 385px;
-  object-fit: contain;
-  border-radius: 10px;
-  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.09);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  border-radius: inherit;
+  background: transparent;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+.hobby-photo-open img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.hobby-photo-open:focus-visible {
+  outline: 4px solid #4e31db;
+  outline-offset: -5px;
+}
+.hobby-photo-expand {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #292929;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.14);
+  font-size: 1.25rem;
+  line-height: 1;
+  pointer-events: none;
+}
+.hobby-photo-swap-enter-active,
+.hobby-photo-swap-leave-active {
+  transition: opacity 160ms ease;
+}
+.hobby-photo-swap-enter-from,
+.hobby-photo-swap-leave-to {
+  opacity: 0;
 }
 .hobby-photo-footer {
-  display: grid;
-  grid-template-columns: 36px minmax(0, 1fr) 36px;
-  align-items: center;
-  gap: 10px;
-  margin-top: 9px;
+  width: min(100%, 340px);
+  margin: 9px auto 0;
   color: var(--muted, #626262);
   font-size: 0.85rem;
   line-height: 1.35;
   text-align: center;
 }
-.hobby-photo-footer--single {
-  display: block;
-}
-.hobby-photo-description {
-  min-width: 0;
-  display: flex;
+.hobby-photo-controls {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 34px;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 7px;
+  gap: 9px;
+  width: min(100%, 210px);
+  margin: 0 auto;
 }
 .hobby-photo-arrow {
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   padding: 0;
   border: 1.5px solid var(--charcoal, #323330);
   border-radius: 50%;
@@ -529,17 +616,74 @@ const galleryPhotos = computed(() =>
   font-weight: 750;
   font-variant-numeric: tabular-nums;
 }
+.hobby-photo-caption {
+  margin: 5px 0 0;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+/* Full-size preview opens only when the user clicks the photo. */
+.hobby-photo-dialog {
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: min(94vw, 1000px);
+  max-height: 92dvh;
+  padding: 12px;
+  overflow: auto;
+  border: 2px solid var(--charcoal, #323330);
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 14px 50px rgba(0, 0, 0, 0.25);
+}
+.hobby-photo-dialog::backdrop {
+  background: rgba(14, 18, 24, 0.7);
+}
+.hobby-photo-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.hobby-photo-dialog img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(92dvh - 95px);
+  object-fit: contain;
+  border-radius: 7px;
+}
+.hobby-photo-close {
+  align-self: flex-end;
+  padding: 6px 11px;
+  border: 1.5px solid var(--charcoal, #323330);
+  border-radius: 9px;
+  background: #fff;
+  color: #292929;
+  font-weight: 750;
+  cursor: pointer;
+}
+.hobby-photo-close:hover {
+  background: #ffcc33;
+}
+.hobby-photo-close:focus-visible {
+  outline: 3px solid #4e31db;
+  outline-offset: 2px;
+}
+.hobby-photo-dialog-caption {
+  margin: 0;
+  color: #3d3d3d;
+  text-align: center;
+}
 @media (max-width: 600px) {
-  .hobby-photo-stage > img {
-    max-height: 315px;
-  }
+  .hobby-photo-stage,
   .hobby-photo-footer {
-    grid-template-columns: 34px minmax(0, 1fr) 34px;
-    gap: 6px;
+    width: min(100%, 310px);
   }
-  .hobby-photo-arrow {
-    width: 34px;
-    height: 34px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hobby-photo-swap-enter-active,
+  .hobby-photo-swap-leave-active {
+    transition: none;
   }
 }
 
