@@ -19,6 +19,9 @@ import ActivityFeedback from './ActivityFeedback.vue';
       3. Sunlight vs shade
 
    The diagram and planning table derive from the same data.
+   Sun/shade affect a full scene; planned seconds are shown on a
+   real clock face (15s = quarter, 30s = half, 60s = full sweep).
+   Step 2 shows the only measure visually, with no redundant selection button.
    ========================================================= */
 
 const steps = [
@@ -64,9 +67,8 @@ const controls = reactive({
   time: 30,
   light: 'sun',
 });
-const measureSelected = ref(false);
 const controlsConfirmed = ref(false);
-const showColourScale = ref(false);
+const showColourScale = ref(true);
 const feedback = ref(null);
 const feedbackMessage = ref('');
 
@@ -118,9 +120,6 @@ function checkPlan() {
   if (a === b) {
     issue = 'Choose different options for Dish A and Dish B.';
     activeStep.value = 'change';
-  } else if (!measureSelected.value) {
-    issue = 'Choose what to measure in Step 2.';
-    activeStep.value = 'measure';
   } else if (!controlsConfirmed.value) {
     issue = 'Confirm the shared settings in Step 3.';
     activeStep.value = 'control';
@@ -136,9 +135,8 @@ function reset() {
   controls.cover = 'tissue';
   controls.time = 30;
   controls.light = 'sun';
-  measureSelected.value = false;
   controlsConfirmed.value = false;
-  showColourScale.value = false;
+  showColourScale.value = true;
   feedback.value = null;
   feedbackMessage.value = '';
 }
@@ -149,13 +147,14 @@ watch([variable, comparisons, controls], () => {
   feedback.value = null;
   feedbackMessage.value = '';
 }, { deep: true, flush: 'sync' });
-watch([measureSelected, controlsConfirmed], () => {
+watch(controlsConfirmed, () => {
   feedback.value = null;
   feedbackMessage.value = '';
 }, { flush: 'sync' });
 
-// A five-point reference scale, from the supplied infographic.
-// The colours are illustrative swatches, NOT test measurements.
+// A five-point bead-colour guide based on Heidi's infographic.
+// Each sample matches the appearance of the beads in the experiment diagram.
+// These are reference colours, NOT results of the planned experiment.
 const colourScale = [
   { score: 5, colour: '#f4f1fa', level: 'Most protection' },
   { score: 4, colour: '#d7d1e3', level: '' },
@@ -197,26 +196,38 @@ const beadPositions = [
         </div>
       </template>
 
-      <!-- STEP 2: Students plan a measurement, not an imagined result. -->
+      <!-- STEP 2: One fixed measure. The examples look like the UV beads below,
+           so children can immediately see what "bead colour" means. -->
       <template v-else-if="activeStep === 'measure'">
-        <p class="uv-prompt">What will you measure?</p>
-        <div class="uv-measure-actions">
-          <Button type="button" class="uv-measure"
-            :class="{ selected: measureSelected }" :aria-pressed="measureSelected"
-            @click="measureSelected = true">Bead colour</Button>
-          <button type="button" class="uv-colour-toggle"
-            :aria-expanded="showColourScale" @click="showColourScale = !showColourScale">
-            {{ showColourScale ? 'Hide colour scale' : 'View colour scale' }}
-          </button>
-        </div>
-        <div v-if="showColourScale" class="uv-scale-panel">
-          <p class="uv-scale-caption">Paler beads mean less UV reached them.</p>
-          <div class="uv-colour-scale" role="img" aria-label="UV protection scale: 5 most protection, pale beads; 1 least protection, dark purple beads">
-            <div v-for="swatch in colourScale" :key="swatch.score" class="uv-swatch" :style="{ background: swatch.colour }">
-              <strong>{{ swatch.score }}</strong>
+        <p class="uv-prompt">How will you measure UV exposure?</p>
+        <div class="uv-measure-guide">
+          <div class="uv-measure-intro">
+            <span class="uv-measure-pair" aria-hidden="true">
+              <span class="uv-sample-bead" style="--bead-tone: #f4f1fa"></span>
+              <span class="uv-measure-arrow">→</span>
+              <span class="uv-sample-bead" style="--bead-tone: #5857ad"></span>
+            </span>
+            <div class="uv-measure-copy">
+              <strong>Colour of the UV beads</strong>
+              <span>Pale = less UV · Purple = more UV</span>
             </div>
+            <button type="button" class="uv-colour-toggle"
+              :aria-expanded="showColourScale" aria-controls="uv-bead-colour-guide"
+              @click="showColourScale = !showColourScale">
+              {{ showColourScale ? 'Hide guide' : 'Show guide' }}
+            </button>
           </div>
-          <div class="uv-scale-key"><span>5 · Most protection</span><span>1 · Least protection</span></div>
+          <div v-show="showColourScale" id="uv-bead-colour-guide" class="uv-scale-panel">
+            <div class="uv-scale-heading">UV protection scale</div>
+            <div class="uv-colour-scale" role="img"
+              aria-label="UV protection guide: bead 5 is pale and means most protection; bead 1 is dark purple and means least protection">
+              <div v-for="swatch in colourScale" :key="swatch.score" class="uv-scale-sample">
+                <span class="uv-sample-bead" :style="{ '--bead-tone': swatch.colour }"></span>
+                <strong>{{ swatch.score }}</strong>
+              </div>
+            </div>
+            <div class="uv-scale-key"><span>5 · Most protection</span><span>1 · Least protection</span></div>
+          </div>
         </div>
       </template>
 
@@ -255,7 +266,7 @@ const beadPositions = [
     <div class="uv-experiment-card">
       <div class="uv-experiment-header">
         <h3>Your Experiment</h3>
-        <span class="uv-start-tag">Before UV exposure</span>
+        <span class="uv-start-tag">Before testing</span>
       </div>
       <div class="uv-diagram" role="group" aria-label="Two UV bead dishes before testing">
         <div v-for="(dish, i) in dishes" :key="dish.letter" class="uv-dish-column">
@@ -271,20 +282,47 @@ const beadPositions = [
             <span v-else class="uv-dish-choice">{{ valueLabel(variable, dish[variable]) }}</span>
           </div>
 
-          <div class="uv-setup" role="img" :aria-label="`Dish ${dish.letter}: ${coverLabel(dish.cover)}; ${dish.time} seconds; ${lightLabel(dish.light).toLowerCase()}; 10 beads`">
-            <div class="uv-setup-detail"><span aria-hidden="true">{{ dish.light === 'sun' ? '☀' : '◐' }}</span> {{ lightLabel(dish.light) }} <span aria-hidden="true">·</span> {{ dish.time }} s</div>
-            <div class="uv-cover-sample" :class="`uv-cover-${dish.cover}`">
-              <span>{{ coverLabel(dish.cover, true) }}</span>
+          <div class="uv-setup" role="img" :aria-label="`Dish ${dish.letter}: ${coverLabel(dish.cover)}; ${dish.time} seconds; ${lightLabel(dish.light).toLowerCase()}; 10 UV beads`">
+            <!-- ONE continuous scene: light falls on the actual dish.
+                 Shade has a roof; sun has visible rays reaching the beads. -->
+            <div class="uv-exposure-scene" :class="`uv-exposure-scene--${dish.light}`" aria-hidden="true">
+              <div class="uv-scene-sun"></div>
+              <div v-if="dish.light === 'sun'" class="uv-scene-beams"></div>
+              <div v-else class="uv-scene-canopy">
+                <span class="uv-canopy-roof"></span>
+              </div>
+              <span class="uv-scene-condition">{{ dish.light === 'sun' ? 'SUNLIGHT' : 'SHADE' }}</span>
+              <div class="uv-scene-workspace">
+                <div class="uv-cover-sample" :class="`uv-cover-${dish.cover}`">
+                  <span>{{ coverLabel(dish.cover, true) }}</span>
+                </div>
+                <div class="uv-dish">
+                  <span v-for="(position, beadIndex) in beadPositions" :key="beadIndex"
+                    class="uv-bead" :style="{ left: position[0] + '%', top: position[1] + '%' }"></span>
+                </div>
+              </div>
+              <span class="uv-scene-floor"></span>
             </div>
-            <div class="uv-dish" aria-hidden="true">
-              <span v-for="(position, beadIndex) in beadPositions" :key="beadIndex"
-                class="uv-bead" :style="{ left: position[0] + '%', top: position[1] + '%' }"></span>
+
+            <!-- An actual clock *face* changes: 15 = quarter, 30 = half,
+                 60 = a full revolution. This is a planned duration, NOT a timer. -->
+            <div class="uv-time-display" :aria-label="`Planned UV exposure: ${dish.time} seconds`">
+              <span class="uv-clock-face" :style="{ '--clock-sweep': `${dish.time * 6}deg` }" aria-hidden="true">
+                <span class="uv-clock-tick uv-clock-tick--top"></span>
+                <span class="uv-clock-tick uv-clock-tick--right"></span>
+                <span class="uv-clock-tick uv-clock-tick--bottom"></span>
+                <span class="uv-clock-tick uv-clock-tick--left"></span>
+                <span class="uv-clock-hand"></span>
+                <span class="uv-clock-center"></span>
+              </span>
+              <span class="uv-time-caption">
+                <span>Exposure time</span>
+                <strong>{{ dish.time }} seconds</strong>
+              </span>
             </div>
-            <p class="uv-bead-count">10 UV beads</p>
           </div>
         </div>
       </div>
-      <p class="uv-diagram-note">All beads start pale. Compare their colours <em>after</em> testing.</p>
     </div>
 
     <div class="uv-plan">
@@ -313,7 +351,7 @@ const beadPositions = [
           </tbody>
         </table>
       </div>
-      <p class="uv-measure-summary">Measure: <strong>bead colour</strong> after UV exposure.</p>
+      <p class="uv-measure-summary">Measure: <strong>UV bead colour</strong>.</p>
       <ActivityFeedback v-if="feedback" :success="feedback === 'success'"
         :success-feedback="`Only ${variableLabel.toLowerCase()} changes. The other settings match.`"
         :try-again-feedback="feedbackMessage" />
@@ -343,7 +381,7 @@ const beadPositions = [
 /* The same GTAC visual language as Egg Drop and Yeast: rounded boxes and bold outlines. */
 .uv-title { margin: 0 0 12px; text-align: center; }
 .uv-subtitle { margin: 0 0 16px; color: var(--muted); font-weight: 700; }
-.uv-steps, .uv-choice-row, .uv-measure-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.uv-steps, .uv-choice-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .uv-steps { margin-bottom: 20px; }
 .uv-step {
   --padding: 8px 16px; --background: var(--paper); --color: var(--text);
@@ -356,16 +394,24 @@ const beadPositions = [
 .uv-prompt { margin: 0 0 10px; font-weight: 700; }
 .uv-choice { --background: var(--paper); --color: var(--text); --background-hover: var(--soft-green); }
 .uv-choice.selected { --background: var(--mint); }
-.uv-measure { --background: var(--paper); --color: var(--text); }
-.uv-measure.selected { --background: var(--mint); }
-.uv-colour-toggle { border: 2px solid var(--charcoal); border-radius: 999px; padding: 8px 13px; background: var(--paper); font: inherit; font-weight: 700; cursor: pointer; }
+/* STEP 2: The guide uses the same bead illustration as the experiment. */
+.uv-measure-guide { max-width: 650px; padding: 12px; border: 2px solid var(--charcoal); border-radius: var(--radius-small); background: var(--paper); }
+.uv-measure-intro { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.uv-measure-pair { display: inline-flex; gap: 6px; align-items: center; padding: 3px 5px; }
+.uv-measure-arrow { font-weight: 900; color: var(--purple); }
+.uv-measure-copy { display: grid; gap: 3px; flex: 1 1 190px; }
+.uv-measure-copy strong { font-size: 1rem; }
+.uv-measure-copy span { font-size: .84rem; color: var(--muted); }
+.uv-colour-toggle { border: 2px solid var(--charcoal); border-radius: 999px; padding: 7px 11px; background: white; font: inherit; font-size: .86rem; font-weight: 700; cursor: pointer; }
 .uv-colour-toggle:hover { background: var(--soft-yellow); }
-.uv-scale-panel { max-width: 430px; margin-top: 13px; padding: 13px; background: var(--paper); border: 2px solid var(--charcoal); border-radius: var(--radius-small); }
-.uv-scale-caption { margin: 0 0 8px; font-size: .88rem; }
-.uv-colour-scale { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); border: 2px solid var(--charcoal); border-radius: 8px; overflow: hidden; }
-.uv-swatch { display: flex; justify-content: center; align-items: center; min-height: 40px; }
-.uv-swatch strong { background: #ffffffcc; border-radius: 50%; width: 26px; text-align: center; }
-.uv-scale-key { display: flex; justify-content: space-between; gap: 10px; margin-top: 8px; font-size: .8rem; font-weight: 700; }
+.uv-scale-panel { border-top: 1px solid #d7d1c7; margin-top: 12px; padding-top: 10px; }
+.uv-scale-heading { margin-bottom: 7px; font-size: .87rem; font-weight: 800; }
+.uv-colour-scale { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 6px; max-width: 450px; }
+.uv-scale-sample { min-width: 0; display: grid; gap: 4px; justify-items: center; padding: 7px 3px; border-radius: 9px; background: #f4f1ed; }
+.uv-scale-sample strong { font-size: .86rem; }
+/* Shared ring/donut appearance links the legend to the physical UV beads. */
+.uv-sample-bead { position: relative; display: inline-block; flex: 0 0 auto; width: 30px; aspect-ratio: 1; border: 1px solid #aab0c0; border-radius: 50%; background: radial-gradient(circle at 48% 44%, #fcfdff 0 24%, #a6a9c1 27%, var(--bead-tone, #e4e2f1) 45%, #fcfbff 87%); box-shadow: inset -2px -2px 3px #8084a130, 1px 2px 3px #5554; }
+.uv-scale-key { display: flex; justify-content: space-between; gap: 10px; max-width: 450px; margin-top: 6px; font-size: .75rem; font-weight: 700; }
 .uv-control-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
 .uv-control { display: grid; gap: 5px; min-width: 0; padding: 10px 12px; background: var(--paper); border: 2px solid var(--charcoal); border-radius: var(--radius-small); font-weight: 700; }
 .uv-control select { width: 100%; min-width: 0; padding: 8px 10px; background: white; border: 2px solid var(--charcoal); border-radius: 9px; font: inherit; }
@@ -382,10 +428,95 @@ const beadPositions = [
 .uv-dish-heading strong { padding: 4px 12px; border-radius: 999px; background: white; border: 2px solid var(--charcoal); }
 .uv-dish-select { width: min(100%,250px); min-height: 38px; padding: 6px 10px; background: white; border: 2px solid var(--charcoal); border-radius: 9px; font: inherit; font-weight: 700; }
 .uv-dish-choice { max-width: 100%; padding: 6px 9px; background: white; border-radius: 7px; font-size: .89rem; font-weight: 700; }
-.uv-setup { display: grid; justify-items: center; width: 100%; min-width: 0; }
-.uv-setup-detail { font-weight: 700; font-size: .85rem; margin-bottom: 12px; text-align: center; }
-.uv-setup-detail span { color: var(--purple); }
-.uv-cover-sample { width: min(90%,230px); min-height: 35px; display: grid; place-items: center; margin-bottom: 11px; padding: 5px 8px; border: 2px solid var(--charcoal); border-radius: 8px; font-size: .78rem; font-weight: 700; background: #efe9da; text-align: center; }
+/* Sun/shade is now the environment OF the dish, not a separate icon card. */
+.uv-setup { display: grid; justify-items: center; width: 100%; min-width: 0; gap: 12px; }
+.uv-exposure-scene {
+  position: relative; isolation: isolate; width: min(100%, 320px); min-height: 355px;
+  display: flex; flex-direction: column; align-items: center;
+  border: 2px solid #b0c5ce; border-radius: 17px; overflow: hidden;
+  background: linear-gradient(165deg, #d9f0fc 0%, #f1f9f4 43%, #fff8dc 100%);
+}
+.uv-exposure-scene--sun { border-color: #e1c670; }
+.uv-exposure-scene--shade {
+  border-color: #8da8b7;
+  background: linear-gradient(to bottom, #d9eaf4 0 104px, #d9e3e9 104px 100%);
+}
+/* One large sun at the top: its rays reach the experiment below. */
+.uv-scene-sun {
+  position: absolute; top: 19px; right: 32px; z-index: 1;
+  width: 75px; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 33% 27%, #fff6b5 0 13%, #ffdb51 42%, #ffbc36 100%);
+  border: 3px solid #e7a823;
+  box-shadow: 0 0 0 8px #ffe68b55, 0 0 30px 11px #ffe48588;
+}
+.uv-scene-sun::before {
+  content: ''; position: absolute; inset: -26px;
+  background: repeating-conic-gradient(from 7deg,#f3ba2a 0deg 7deg,transparent 7deg 45deg);
+  mask: radial-gradient(transparent 0 49%, black 51% 58%, transparent 60%);
+}
+.uv-exposure-scene--shade .uv-scene-sun { top: 14px; right: 25px; transform: scale(.78); opacity: .83; }
+.uv-scene-beams {
+  position: absolute; inset: 83px -12px 0; z-index: 1; pointer-events: none;
+  background: repeating-linear-gradient(112deg, transparent 0 23px, #ffd64d6b 24px 43px, transparent 44px 74px);
+  clip-path: polygon(59% 0%, 92% 0%, 100% 100%, 0 100%);
+}
+.uv-scene-condition {
+  position: absolute; top: 16px; left: 13px; z-index: 5;
+  display: inline-flex; align-items: center; padding: 5px 8px;
+  background: #fffdf6f2; border: 1px solid #d3cfbc;
+  border-radius: 999px; color: #384e52; font-size: .74rem; font-weight: 900; letter-spacing: .035em;
+}
+/* A real roof sits BETWEEN the sun and the dish. The lower scene is shaded. */
+.uv-scene-canopy { position: absolute; inset: 104px 0 auto; z-index: 3; height: 22px; }
+.uv-canopy-roof {
+  display: block; height: 22px; width: 100%;
+  border-top: 4px solid #344d60; border-bottom: 3px solid #344d60;
+  background: repeating-linear-gradient(90deg,#46738d 0px 32px,#83aec4 32px 64px);
+  box-shadow: 0 14px 15px #344a6080;
+}
+.uv-scene-canopy::before, .uv-scene-canopy::after {
+  content: ''; position: absolute; top: 21px; bottom: auto;
+  height: 205px; width: 7px; background: #68879a; border-inline: 1px solid #44596c; opacity: .65;
+}
+.uv-scene-canopy::before { left: 10px; }
+.uv-scene-canopy::after { right: 10px; }
+.uv-scene-workspace {
+  position: relative; z-index: 4; display: flex; flex-direction: column; align-items: center;
+  width: 100%; padding: 137px 10px 17px;
+}
+.uv-scene-floor {
+  position: absolute; z-index: 2; inset: auto 0 0; height: 27px;
+  border-top: 2px solid #d1d0bb; background: #e8e4d9;
+}
+.uv-exposure-scene--shade .uv-scene-floor { background: #c5d1d8; border-color: #aabac5; }
+/* Clock has a genuine quarter/half/full coloured face and a rotating second hand. */
+.uv-time-display {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  width: min(100%, 320px); padding: 10px 12px;
+  background: #fffdf5; border: 2px solid #d7d4cb; border-radius: 14px;
+}
+.uv-clock-face {
+  --clock-size: 62px;
+  position: relative; flex: 0 0 var(--clock-size); width: var(--clock-size); aspect-ratio: 1;
+  border: 3px solid #405665; border-radius: 50%;
+  background: conic-gradient(#8ae2c9 0deg var(--clock-sweep), #fff 0deg 360deg);
+  box-shadow: inset 0 0 0 4px #fff8, 0 2px 4px #25353a36;
+}
+.uv-clock-tick { position: absolute; z-index: 2; background: #546877; border-radius: 2px; }
+.uv-clock-tick--top { top: 4px; left: calc(50% - 1px); width: 2px; height: 8px; }
+.uv-clock-tick--right { right: 4px; top: calc(50% - 1px); width: 8px; height: 2px; }
+.uv-clock-tick--bottom { bottom: 4px; left: calc(50% - 1px); width: 2px; height: 8px; }
+.uv-clock-tick--left { left: 4px; top: calc(50% - 1px); width: 8px; height: 2px; }
+.uv-clock-hand {
+  position: absolute; z-index: 3; left: calc(50% - 1.5px); top: 11px;
+  width: 3px; height: calc(50% - 11px); background: #284456; border-radius: 3px;
+  transform-origin: bottom center; transform: rotate(var(--clock-sweep));
+}
+.uv-clock-center { position: absolute; z-index: 4; top: calc(50% - 4px); left: calc(50% - 4px); width: 8px; height: 8px; border-radius: 50%; background: #284456; border: 1px solid white; }
+.uv-time-caption { display: grid; gap: 2px; min-width: 0; }
+.uv-time-caption > span { font-size: .77rem; font-weight: 700; color: var(--muted); }
+.uv-time-caption strong { font-size: 1.15rem; line-height: 1.15; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.uv-cover-sample { position: relative; z-index: 4; width: min(90%,230px); min-height: 35px; display: grid; place-items: center; margin-bottom: 11px; padding: 5px 8px; border: 2px solid var(--charcoal); border-radius: 8px; font-size: .78rem; font-weight: 700; background: #efe9da; text-align: center; }
 .uv-cover-none { background: transparent; border-style: dashed; }
 .uv-cover-tissue { background: #faf4ec; }
 .uv-cover-paper { background: #f0dbab; }
@@ -393,10 +524,8 @@ const beadPositions = [
 .uv-cover-glass { background: linear-gradient(120deg,#d5eef5a8,#f4fdff88,#bce2efb5); }
 .uv-cover-glasses0 { background: linear-gradient(125deg,#e4eff6,#dce8ed); }
 .uv-cover-glasses3 { background: linear-gradient(125deg,#aeb9cb,#7b89a2); color: white; }
-.uv-dish { position: relative; width: min(100%,220px); aspect-ratio: 1; border-radius: 50%; border: 7px solid #a7b8bf; background: radial-gradient(circle at 42% 36%,#fbfaff 0%,#e6e7ee 78%,#c7ced9 100%); box-shadow: 0 8px 0 #c4cdd0, inset 0 0 0 3px #fff9; }
+.uv-dish { position: relative; z-index: 4; width: min(100%,190px); aspect-ratio: 1; border-radius: 50%; border: 7px solid #a7b8bf; background: radial-gradient(circle at 42% 36%,#fbfaff 0%,#e6e7ee 78%,#c7ced9 100%); box-shadow: 0 8px 0 #c4cdd0, inset 0 0 0 3px #fff9; }
 .uv-bead { position: absolute; width: 19%; aspect-ratio: 1; transform: translate(-50%,-50%); border-radius: 50%; background: radial-gradient(circle at 48% 44%,#fbfcff 0 25%,#8e91b2 27%,#e4e2f1 44%,#fcfbff 75%); border: 1.5px solid #b2b2c5; box-shadow: inset -2px -2px 4px #8084a133, 1px 2px 3px #5555; }
-.uv-bead-count { margin: 14px 0 0; font-size: .86rem; font-weight: 800; }
-.uv-diagram-note { margin: 10px 0 0; font-size: .86rem; color: var(--muted); }
 .uv-plan { margin-top: 22px; }
 .uv-plan-title { margin-bottom: 10px; }
 .uv-table-wrap { max-width: 100%; overflow-x: auto; border: 2px solid var(--charcoal); border-radius: var(--radius-small); }
@@ -429,8 +558,31 @@ const beadPositions = [
   .uv-dish-choice { font-size: .78rem; }
   .uv-dish { border-width: 4px; }
   .uv-bead { border-width: 1px; }
-  .uv-cover-sample { font-size: .73rem; min-height: 40px; }
-  .uv-setup-detail { font-size: .72rem; }
+  .uv-cover-sample { font-size: .68rem; min-height: 29px; margin-bottom: 9px; }
+  .uv-setup { gap: 8px; }
+  .uv-exposure-scene { min-height: 280px; border-radius: 13px; }
+  .uv-exposure-scene--shade { background: linear-gradient(to bottom, #d9eaf4 0 91px, #d9e3e9 91px 100%); }
+  .uv-scene-sun { width: 50px; top: 14px; right: 13px; }
+  .uv-scene-sun::before { inset: -16px; }
+  .uv-exposure-scene--shade .uv-scene-sun { top: 10px; right: 8px; }
+  .uv-scene-beams { top: 58px; }
+  .uv-scene-condition { top: 8px; left: 6px; font-size: .59rem; padding: 4px 5px; }
+  .uv-scene-canopy { top: 90px; height: 16px; }
+  .uv-canopy-roof { height: 16px; border-top-width: 3px; border-bottom-width: 2px; }
+  .uv-scene-canopy::before, .uv-scene-canopy::after { top: 15px; height: 163px; width: 4px; }
+  .uv-scene-workspace { padding: 125px 3px 12px; }
+  .uv-scene-floor { height: 16px; }
+  .uv-time-display { gap: 6px; padding: 6px; border-radius: 10px; }
+  .uv-clock-face { --clock-size: 46px; border-width: 2px; }
+  .uv-clock-hand { top: 8px; height: calc(50% - 8px); }
+  .uv-clock-tick--top { top: 2px; } .uv-clock-tick--right { right: 2px; }
+  .uv-clock-tick--bottom { bottom: 2px; } .uv-clock-tick--left { left: 2px; }
+  .uv-time-caption > span { font-size: .63rem; }
+  .uv-time-caption strong { font-size: .79rem; }
+  .uv-measure-guide { padding: 10px; }
+  .uv-measure-intro { gap: 7px; }
+  .uv-sample-bead { width: 25px; }
+  .uv-scale-key { font-size: .69rem; }
   .uv-table th, .uv-table td { padding: 9px 5px; font-size: .79rem; }
   .uv-change-pill { display: block; width: fit-content; margin: 3px 0 0; }
 }
@@ -438,5 +590,7 @@ const beadPositions = [
   .uv-diagram { gap: 6px; padding: 10px 4px; }
   .uv-dish-heading strong { padding: 4px 8px; }
   .uv-dish-select { font-size: .73rem; }
+  .uv-time-display { gap: 4px; padding: 5px 3px; }
+  .uv-time-caption strong { font-size: .73rem; }
 }
 </style>
