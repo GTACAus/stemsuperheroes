@@ -6,6 +6,7 @@ import HelmetDetails from '@/components/science/HelmetDetails.vue';
 import BreadDetails from '@/components/science/BreadDetails.vue';
 import SunscreenDetails from '@/components/science/SunscreenDetails.vue';
 import YeastFairTestBuilder from '@/components/science/YeastFairTestBuilder.vue';
+import UVBeadsFairTestBuilder from '@/components/science/UVBeadsFairTestBuilder.vue';
 import StwSection from '@/components/science/StwSection.vue';
 import FairTestBuilder from '@/components/science/FairTestBuilder.vue';
 import { scienceObjects } from '../data/science-objects.js';
@@ -21,7 +22,8 @@ const extras = {
     YeastFairTestBuilder
   ],
   sunscreen: [
-    SunscreenDetails
+    SunscreenDetails,
+    UVBeadsFairTestBuilder
   ]
 };
 
