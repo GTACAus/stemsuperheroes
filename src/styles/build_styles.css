@@ -170,3 +170,16 @@ select {
     transform: translateY(0);
   }
 }
+
+/* =========================================================
+   ACCESSIBILITY / SECTION NAVIGATION
+   ========================================================= */
+html { scroll-padding-top: 100px; }
+[id] { scroll-margin-top: 100px; }
+:where(a, button, input, select, textarea, summary):focus-visible {
+    outline: 3px solid var(--purple);
+    outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+}

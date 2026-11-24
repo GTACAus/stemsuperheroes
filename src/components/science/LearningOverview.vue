@@ -16,7 +16,7 @@ const props = defineProps({
 
       <h2 class="learning-subheading">Success criteria</h2>
       <ol class="success-criteria">
-        <li v-for="(itemContent, index) in successCriteria">
+        <li v-for="(itemContent, index) in successCriteria" :key="index">
           <span class="success-number">{{ index + 1 }}</span>
           <span>{{ itemContent }}</span>
         </li>

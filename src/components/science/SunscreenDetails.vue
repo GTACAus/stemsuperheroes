@@ -1,4 +1,7 @@
 <script setup>
+// 'all' also supports any existing use of this component outside the explorer.
+defineProps({ mode: { type: String, default: 'all' } });
+
 /* =========================================================
    SUNSCREEN - SCIENCE IS ALL AROUND US
 
@@ -22,7 +25,7 @@ const sunscreenExpertsScene = 'https://www.thinglink.com/view/scene/211345842775
 
 <template>
   <!-- A. SHORT SCIENCE EXPLANATION -->
-  <section class="gtac-section did-you-know">
+  <section v-if="mode !== 'experts'" class="gtac-section did-you-know">
     <div class="box-title heading-row">
       <span class="gtac-svg-icon title-icon" aria-hidden="true">
         <!-- UV rays and shield: inline SVG, no image asset needed. -->
@@ -94,7 +97,7 @@ const sunscreenExpertsScene = 'https://www.thinglink.com/view/scene/211345842775
   </section>
 
   <!-- C. SUNSCREEN STEM EXPERTS: existing ThingLink for now. -->
-  <section class="gtac-section sunscreen-experts">
+  <section v-if="mode !== 'explore'" class="gtac-section sunscreen-experts">
     <h3>Who helps protect us from the Sun?</h3>
     <p>Meet the STEM experts who develop and test sunscreen.</p>
 

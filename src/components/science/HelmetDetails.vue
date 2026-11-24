@@ -1,4 +1,7 @@
 <script setup>
+// 'all' also supports any existing use of this component outside the explorer.
+defineProps({ mode: { type: String, default: 'all' } });
+
 import ThingLinkBox from './ThingLinkBox.vue';
 import TrueFalseQuestion from './TrueFalseQuestion.vue';
 
@@ -7,7 +10,7 @@ const coffeeSpillImage = `${import.meta.env.BASE_URL}assets/images/science/coffe
 
 <template>
   <!-- Did you know - Helmet concepts exploration -->
-  <section class="gtac-section did-you-know">
+  <section v-if="mode !== 'experts'" class="gtac-section did-you-know">
     <div class="box-title did-you-know-title">
       <span class="gtac-svg-icon did-you-know-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -135,7 +138,7 @@ const coffeeSpillImage = `${import.meta.env.BASE_URL}assets/images/science/coffe
     </div>
   </section>
 
-  <section class="gtac-section">
+  <section v-if="mode !== 'explore'" class="gtac-section">
     <h3>Who Helps Keep Our Heads Safe?</h3>
 
     <p>Did you know that several STEM experts work together to make bike helmets safe?</p>

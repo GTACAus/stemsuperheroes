@@ -1,68 +1,73 @@
 <script setup>
-import { computed, nextTick, onMounted, onUnmounted, ref, useTemplateRef } from 'vue';
+/* =========================================================
+   STEM EXPERT CARDS
+   Show all experts in their original order.
+   The open profile appears beneath the selected card's row.
+   ========================================================= */
+import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue';
 import ExpertCard from '../components/experts/ExpertCard.vue';
 import ExpertProfile from '../components/experts/ExpertProfile.vue';
 import ThingLinkEmbed from '../components/experts/ThingLinkEmbed.vue';
 import { expertCards } from '../data/expert-cards.js';
 import { expertProfiles } from '../data/expert-profiles.js';
 
-const cardRefs = useTemplateRef('cards');
-
 const activeId = ref(null);
 const flippedId = ref(null);
-// The shared panel renders after the last card in the active card's grid row.
 const panelAfterIndex = ref(-1);
-
 const activeCard = computed(() => expertCards.find((c) => c.id === activeId.value));
 const activeProfile = computed(() => activeCard.value && expertProfiles[activeCard.value.id]);
+// Keep DOM elements by expert id for reliable focus restoration.
+const cardElements = new Map();
+function setCardElement(id, instance) {
+  if (instance?.$el) cardElements.set(id, instance.$el);
+  else cardElements.delete(id);
+}
 
-// These breakpoints match the .experts-grid CSS below (3 / 2 / 1 columns).
-// Calculate by card index, not offsetTop: an open panel can itself change
-// the grid's rows when the screen resizes.
 function lastIndexInRow(index) {
   const columns = window.matchMedia('(max-width: 600px)').matches
     ? 1
     : window.matchMedia('(max-width: 850px)').matches ? 2 : 3;
-  return Math.min(expertCards.length - 1, Math.floor(index / columns) * columns + columns - 1);
+  const last = Math.floor(index / columns) * columns + columns - 1;
+  return Math.min(expertCards.length - 1, last);
 }
-
 function updatePanelPosition() {
-  if (!activeId.value) return;
   const index = expertCards.findIndex((c) => c.id === activeId.value);
   if (index >= 0) panelAfterIndex.value = lastIndexInRow(index);
 }
-
 onMounted(() => window.addEventListener('resize', updatePanelPosition));
 onUnmounted(() => window.removeEventListener('resize', updatePanelPosition));
 
 function close(restoreFocus = true) {
-  const index = expertCards.findIndex((c) => c.id === activeId.value);
+  const closingId = activeId.value;
   activeId.value = null;
   flippedId.value = null;
   panelAfterIndex.value = -1;
-  if (restoreFocus && index >= 0) cardRefs.value[index].$el.focus({ preventScroll: true });
+  if (restoreFocus && closingId) {
+    nextTick(() => cardElements.get(closingId)?.focus({ preventScroll: true }));
+  }
 }
 
 async function open(index) {
   const card = expertCards[index];
+  if (!card) return;
   if (activeId.value === card.id) return close(false);
   if (!expertProfiles[card.id] && !card.thinglinkUrl) {
-    console.warn(`Card "${card.id}" needs a matching profile in expert-profiles.js or a thinglinkUrl.`);
+    console.warn(`Card "${card.id}" has no profile or ThingLink.`);
     return;
   }
   panelAfterIndex.value = lastIndexInRow(index);
   activeId.value = card.id;
   await nextTick();
   document.getElementById('expert-details-panel')?.scrollIntoView({
-    behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
     block: 'start',
   });
 }
-
 function activate(index, { source }) {
   const card = expertCards[index];
-  const hasHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
-  // On touch: first tap flips; second tap opens. Desktop and keyboard open directly.
+  if (!card) return;
+  const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  // Keep the familiar first-tap flip, second-tap open interaction on touch.
   if (source === 'pointer' && !hasHover && flippedId.value !== card.id) {
     flippedId.value = card.id;
     return;
@@ -72,27 +77,25 @@ function activate(index, { source }) {
 </script>
 
 <template>
-  <main class="page">
-    <section class="experts-hero">
+  <main id="main-content" class="page">
+    <section class="experts-hero" aria-labelledby="experts-page-title">
       <p class="experts-eyebrow">Meet local STEM people</p>
-      <h1>Local STEM Experts</h1>
+      <h1 id="experts-page-title">Local STEM Experts</h1>
       <p class="experts-intro">
-        Discover people working in science, technology, engineering and
-        mathematics, and learn about the pathways that brought them there.
+        Meet people working in STEM. Explore their stories, careers and paths.
       </p>
     </section>
 
     <section class="experts-content" aria-labelledby="experts-heading">
       <div class="experts-section-heading">
         <h2 id="experts-heading">Meet the experts</h2>
-        <p>Explore the profiles below to learn about different STEM careers and experiences.</p>
-        <p class="experts-tap-hint">On a touchscreen, tap once to flip a card and again to open the profile.</p>
+        <p class="experts-tap-hint">On a touchscreen, tap once to flip a card, then again to open.</p>
       </div>
 
       <div class="experts-grid">
         <template v-for="(card, i) in expertCards" :key="card.id">
           <ExpertCard
-            ref="cards"
+            :ref="instance => setCardElement(card.id, instance)"
             :expert="card"
             :flipped="flippedId === card.id"
             :expanded="activeId === card.id"
@@ -105,19 +108,13 @@ function activate(index, { source }) {
             :aria-labelledby="activeProfile ? 'active-expert-name' : undefined"
           >
             <ExpertProfile v-if="activeProfile" :key="activeCard.id" :expert="activeProfile" @close="close()" />
-            <ThingLinkEmbed
-              v-else
-              :url="activeCard.thinglinkUrl"
-              :name="activeCard.name"
-              @close="close()"
-            />
+            <ThingLinkEmbed v-else :url="activeCard.thinglinkUrl" :name="activeCard.name" @close="close()" />
           </section>
         </template>
       </div>
     </section>
   </main>
 </template>
-
 <style scoped>
 .experts-hero {
   padding: 50px 30px;

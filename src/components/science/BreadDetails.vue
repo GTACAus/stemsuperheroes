@@ -1,4 +1,7 @@
 <script setup>
+// 'all' also supports any existing use of this component outside the explorer.
+defineProps({ mode: { type: String, default: 'all' } });
+
 /* =========================================================
    BREAD - SCIENCE IS ALL AROUND US
 
@@ -20,7 +23,7 @@ const breadExpertsScene = 'https://www.thinglink.com/view/scene/2105852139921212
 
 <template>
   <!-- A. BREAD SCIENCE: match the visual language of HelmetDetails.vue. -->
-  <section class="gtac-section did-you-know">
+  <section v-if="mode !== 'experts'" class="gtac-section did-you-know">
     <div class="box-title did-you-know-title">
       <span class="gtac-svg-icon did-you-know-icon" aria-hidden="true">
         <!-- Simple bread icon; no image asset required. -->
@@ -84,7 +87,7 @@ const breadExpertsScene = 'https://www.thinglink.com/view/scene/2105852139921212
   </section>
 
   <!-- C. THE PEOPLE: original Bread STEM Experts ThingLink. -->
-  <section class="gtac-section bread-experts">
+  <section v-if="mode !== 'explore'" class="gtac-section bread-experts">
     <h3>Who helps bring bread to the table?</h3>
     <p>Lots of STEM experts work together, from growing wheat to baking bread.</p>
 
