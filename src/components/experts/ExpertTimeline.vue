@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 
 // Reusable for any ordered sequence of stages:
 // { title, colour, points, image, imageAlt, imageFit?, draft? }
@@ -11,6 +11,12 @@ const props = defineProps({
 
 const selected = ref(null);
 const stage = computed(() => (selected.value === null ? null : props.stages[selected.value]));
+
+// Hide a missing timeline photo without leaving a broken-image box.
+// As soon as the image is added to the public folder and the page reloads,
+// it will display automatically. Reset when a different pin is selected.
+const failedImage = ref(null);
+watch(selected, () => { failedImage.value = null; });
 </script>
 
 <template>
@@ -34,17 +40,18 @@ const stage = computed(() => (selected.value === null ? null : props.stages[sele
     </div>
     <p class="timeline-swipe-hint">Swipe the timeline sideways to see all {{ stages.length }} stages →</p>
     <p v-if="!stage" class="timeline-prompt">{{ prompt }}</p>
-    <div v-else class="timeline-display">
+    <div v-else class="timeline-display" :class="{ 'is-text-only': !stage.image || failedImage === stage.image }">
       <div class="timeline-story" :class="{ 'is-draft': stage.draft }" aria-live="polite" aria-atomic="true">
         <h4 class="timeline-story-heading">{{ stage.title }}</h4>
         <ul class="timeline-story-points">
           <li v-for="point in stage.points" :key="point">{{ point }}</li>
         </ul>
       </div>
-      <figure class="timeline-photo-wrap">
+      <figure v-if="stage.image && failedImage !== stage.image" class="timeline-photo-wrap">
         <img
           class="timeline-photo"
           :src="stage.image"
+          @error="failedImage = stage.image"
           :alt="stage.imageAlt || stage.title"
           :style="{ objectFit: stage.imageFit || 'cover' }"
         />
@@ -124,6 +131,14 @@ const stage = computed(() => (selected.value === null ? null : props.stages[sele
   align-items: stretch;
   margin-top: 17px;
 }
+/* A stage can have no photograph. Keep the story readable and centred. */
+.timeline-display.is-text-only {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.timeline-display.is-text-only .timeline-story { min-height: 0; }
 .timeline-prompt {
   display: flex;
   align-items: center;

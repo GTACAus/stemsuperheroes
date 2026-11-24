@@ -2,7 +2,7 @@
 /* =========================================================
    SCIENCE IS ALL AROUND US
 
-   Observe -> Explore -> Plan -> Meet STEM experts.
+   Observe -> Explore -> Meet STEM experts -> Plan a test.
    Each object is mounted only after it is chosen, but stays
    mounted after that so students don't lose written answers.
 
@@ -97,8 +97,8 @@ async function selectObject(id) {
         <nav class="science-section-nav" :aria-label="`${object.name} activity sections`">
           <a :href="`#${object.id}-observe`">1. Observe</a>
           <a :href="`#${object.id}-explore`">2. Explore</a>
-          <a :href="`#${object.id}-plan`">3. Plan a test</a>
-          <a :href="`#${object.id}-experts`">4. STEM experts</a>
+          <a :href="`#${object.id}-experts`">3. STEM experts</a>
+          <a :href="`#${object.id}-plan`">4. Plan a test</a>
         </nav>
 
         <section :id="`${object.id}-observe`" class="gtac-section science-content-section" aria-labelledby="`${object.id}-observe-title`">
@@ -134,12 +134,12 @@ async function selectObject(id) {
           <component :is="objectActivities[object.id].details" mode="explore" />
         </div>
 
-        <div :id="`${object.id}-plan`" class="science-stage" aria-label="Plan a fair test">
-          <component :is="objectActivities[object.id].kahuna" />
-        </div>
-
         <div :id="`${object.id}-experts`" class="science-stage" aria-label="Meet the STEM experts">
           <component :is="objectActivities[object.id].details" mode="experts" />
+        </div>
+
+        <div :id="`${object.id}-plan`" class="science-stage" aria-label="Plan a fair test">
+          <component :is="objectActivities[object.id].kahuna" />
         </div>
 
         <a href="#object-choices" class="science-back-link">↑ Choose another object</a>

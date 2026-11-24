@@ -194,7 +194,7 @@ const galleryPhotos = computed(() =>
     </section>
     <section class="profile-section profile-impact">
       <h3 class="profile-section-heading">{{ expert.impact.heading }}</h3>
-      <div class="profile-impact-layout">
+      <div class="profile-impact-layout" :class="{ 'is-text-only': !expert.impact?.image }">
         <ul class="profile-impact-list">
           <li v-for="(point, i) in expert.impact.points" :key="point">
             <span
@@ -213,7 +213,7 @@ const galleryPhotos = computed(() =>
           preload="metadata"
         ></video>
         <img
-          v-else
+          v-else-if="expert.impact.image"
           :src="expert.impact.image"
           :alt="expert.impact.imageAlt || ''"
           loading="lazy"
@@ -364,6 +364,8 @@ const galleryPhotos = computed(() =>
   align-items: stretch;
   gap: 14px;
 }
+/* When a photo is not supplied, the impact points use the entire card. */
+.profile-impact-layout.is-text-only { grid-template-columns: minmax(0, 1fr); }
 .profile-impact-layout > img,
 .profile-impact-layout > video {
   width: 100%;

@@ -1433,207 +1433,125 @@ export const expertProfiles = {
   })(),
 
   /* =====================================================
-   PAUL - CANCER BIOLOGY RESEARCHER
+     PAUL ORIH - CANCER BIOLOGY RESEARCHER
 
-   Sources:
-   - Interview: 25 March 2026
-   - GTAC STEM Superheroes Showcase
-   - Brain tumour research using fruit-fly models
+     Readability: written for Years 5-7.
+     Photos: one per timeline stage, with no repeated portrait.
+     If a suggested image has not been added yet, the
+     shared ExpertTimeline.vue hides the missing image.
 
-   All images are stored locally.
-   The existing timeline and profile functions are reused.
-   ===================================================== */
+     PLACEHOLDER IMAGES TO DOWNLOAD AS .jpg:
+     nigeria-landscape.jpg, leaf-microscope.jpg,
+     globe-books.jpg, fruit-fly.jpg
 
+     EXISTING PHOTOS USED:
+     portrait.jpg, lab.jpg, soccerfield.jpg
+     portrait2 is intentionally unused for now.
+     ===================================================== */
   paul: (() => {
-    /* ================================================
-       A. IMAGE FOLDER
-
-       All Paul's photographs are stored here.
-       ================================================ */
-
     const imageFolder = `${base}/paul/`;
 
     return {
-      /* ================================================
-           B. BASIC INFORMATION
-           ================================================ */
-
       name: "Paul",
-
       role: "Cancer Biology Researcher",
-
-      organisation:
-        "Cancer biology research at Peter MacCallum Cancer Centre, Melbourne",
-
+      organisation: "Peter MacCallum Cancer Centre, Melbourne",
       portrait: `${imageFolder}portrait.jpg`,
-
-      superpower:
-        "Investigating how genes and oxygen supply influence brain tumour growth using fruit-fly models",
-
+      superpower: "Using fruit flies to explore why brain tumours grow.",
       imageFolder,
 
-      /* ================================================
-           C. INTERACTIVE TIMELINE
-
-           Five clickable stages.
-           Each stage has its own image, colour and story.
-
-           The shared timeline.js handles the clicks.
-           ================================================ */
-
+      // Five short stages. Image paths are placeholders until the files exist.
       timeline: [
-        // STAGE 1: CURIOUS BEGINNINGS
-
         {
-          title: "Curious beginnings",
+          title: "Growing up with big ideas",
           colour: "#F43559",
-
-          image: `${imageFolder}portrait.jpg`,
-          imageAlt: "Portrait of Paul today",
-
+          image: `${imageFolder}nigeria-landscape.jpg`,
+          imageAlt: "A landscape in northern Nigeria, representing the region where Paul grew up",
           points: [
-            "Paul grew up in northern Nigeria, where opportunities to study science were not always easy to find.",
-            "His parents encouraged him to value education because it could open doors to new opportunities.",
-            "He became fascinated by scientific discoveries and inventions.",
-            "Paul wanted to use science to help solve problems and make a difference in the world.",
+            "Paul grew up in northern Nigeria, where science was not always easy to study.",
+            "His parents taught him that learning could open new doors.",
+            "He was curious about new inventions and how things worked.",
+            "Paul hoped to use science to help people and solve real problems.",
           ],
         },
-
-        // STAGE 2: CHALLENGES IN SCHOOL
-
         {
-          title: "Challenges in school",
+          title: "A love for biology",
           colour: "#E9B400",
-
-          image: `${imageFolder}school.jpg`,
-          imageAlt: "Image representing Paul's school experiences",
-
+          image: `${imageFolder}leaf-microscope.jpg`,
+          imageAlt: "A leaf being studied with a microscope, representing Paul's love of biology",
           points: [
-            "Paul enjoyed biology because it helped him understand nature and how living things work.",
-            "Maths was one of his strongest subjects, but he found physics difficult because it seemed too abstract.",
-            "His school had very limited laboratory equipment, so students had fewer chances to try practical experiments.",
-            "Despite these challenges, Paul remained interested in science and the discoveries scientists could make.",
+            "Paul loved biology because it helped explain how living things work.",
+            "Maths was also one of his favourite subjects.",
+            "His school had little lab equipment, so he could not carry out many science experiments.",
+            "Even so, he kept asking questions and wanted to learn more.",
           ],
         },
-
-        // STAGE 3: FINDING HIS PATH
-
         {
-          title: "Finding his path",
+          title: "Science around the world",
           colour: "#50B96D",
-
-          image: `${imageFolder}journey.jpg`,
-          imageAlt:
-            "Image representing Paul's science journey from Nigeria to Israel and Australia",
-
+          image: `${imageFolder}globe-books.jpg`,
+          imageAlt: "Books and a globe, representing Paul's studies in three countries",
           points: [
-            "Paul originally wanted to become a medical doctor, but entering that career pathway was difficult.",
-            "He decided to pursue science so he could still contribute to solving important problems.",
-            "After completing his undergraduate studies in Nigeria, he moved to Israel for a master's degree in developmental biology.",
-            "He then came to Australia to pursue a PhD in cancer biology and experience research in a new environment.",
-            "Studying in different countries helped Paul grow as both a scientist and a person.",
+            "Paul first wanted to become a doctor.",
+            "When that path was hard to enter, he chose to study science in Nigeria.",
+            "He later moved to Israel to study developmental biology, or how living things grow.",
+            "Then he came to Australia to study cancer.",
+            "Each move gave him new things to learn.",
           ],
         },
-
-        // STAGE 4: RESEARCH WITH AN IMPACT
-
         {
-          title: "Research with an impact",
+          title: "Inside Paul's lab",
           colour: "#4F71CB",
-
-          image: `${imageFolder}fruit-fly.jpg`,
-          imageAlt: "Image of a fruit fly used in scientific research",
-
+          image: `${imageFolder}lab.jpg`,
+          imageAlt: "Paul working in a research laboratory",
           points: [
-            "Paul studies how brain tumours develop and grow.",
-            "He uses fruit flies as models because scientists can change certain genes and observe how those changes affect cells in the brain.",
-            "Paul investigates how oxygen reaches growing tumours and how changes to this supply might influence their growth.",
-            "By understanding what makes tumours grow, scientists may discover new ways to investigate and eventually treat brain cancers.",
+            "Today, Paul is a cancer biology researcher at Peter Mac in Melbourne.",
+            "He wants to know why some brain cells grow too fast.",
+            "He uses fruit flies to test how changes in genes affect the growth of cells.",
+            "He also studies how oxygen reaches tumours and may help them grow.",
           ],
         },
-
-        // STAGE 5: LOOKING TO THE FUTURE
-
         {
-          title: "Looking to the Future",
+          title: "Small flies, big questions",
           colour: "#00A7B8",
-
-          image: `${imageFolder}future.jpg`,
-          imageAlt: "Image representing future discoveries in cancer research",
-
+          image: `${imageFolder}fruit-fly.jpg`,
+          imageAlt: "Close-up of a fruit fly, an animal used in scientific research",
           points: [
-            "Scientists hope research like Paul's will reveal new ways to slow the growth of brain tumours.",
-            "These discoveries are still being investigated in laboratory models and are not yet treatments for patients.",
-            "Paul knows that experiments do not always produce the results scientists expect.",
-            "He believes that asking new questions, learning from setbacks and continuing to explore are important parts of science.",
+            "A fruit fly is small, but it can help answer big questions.",
+            "Paul hopes his tests will give scientists new clues about brain cancer.",
+            "This work is still in the lab. It is not a treatment for patients yet.",
+            "When an experiment does not go as expected, Paul asks what he can learn from it.",
           ],
         },
       ],
 
-      /* ================================================
-           D. HOBBIES AND INTERESTS
-
-           One image is displayed by default.
-
-           To display multiple photos, add a "photos"
-           array like Paddy's profile.
-           ================================================ */
-
+      // One real hobby photograph. No repeated portrait.
       hobbies: {
         heading: "Hobbies and interests",
-
-        text: "Outside the laboratory, Paul enjoys playing soccer, including games with people at his research institute!",
-
-        images: [
-          {
-            image: `${imageFolder}soccer.jpg`,
-            imageAlt: "Image representing Paul's interest in soccer",
-          },
-        ],
+        text: "When Paul is not in the lab, he enjoys playing soccer. He sometimes plays with other researchers at work.",
+        image: `${imageFolder}soccerfield.jpg`,
+        imageAlt: "A soccer field under lights",
       },
 
-      /* ================================================
-           E. WHY HIS RESEARCH MATTERS
+      // Separate optional photo gallery. Add photos only if selected.
+      gallery: [],
 
-           Three points displayed with coloured icons.
-           The image appears beside the information.
-           ================================================ */
-
+      // No impact image yet: the Vue renderer displays text only.
       impact: {
-        heading: "Why does his research matter?",
-
-        image: `${imageFolder}fruit-fly.jpg`,
-        imageAlt: "Fruit fly used as a model organism in cancer research",
-
+        heading: "Why does his work matter?",
         points: [
-          "Uses fruit flies to investigate how genetic changes can cause brain cells to grow uncontrollably",
-          "Explores how oxygen supply and surrounding cells affect brain tumour growth",
-          "Could help scientists identify new ways to investigate and slow brain cancers in the future",
+          "Studies what makes some brain cells grow too fast.",
+          "Uses fruit flies to learn how genes and oxygen affect tumour growth.",
+          "May help scientists find new ways to study brain cancer.",
         ],
       },
-
-      /* ================================================
-           F. ADVICE FOR STUDENTS
-
-           Based on Paul's interview and GTAC showcase.
-           ================================================ */
 
       adviceHeading: "Paul's advice",
-
       advice: [
-        "If you want change, be part of the solution.",
-        "Don't give up when an experiment doesn't work. Unexpected results can help you learn!",
-        "Keep asking questions. Science teaches you to be curious, persistent and resilient.",
+        "Be curious about how the world works.",
+        "If your plan changes, look for another way forward.",
+        "Keep asking questions, even when a test does not work.",
+        "If you want to make a change, be part of the solution.",
       ],
-
-      /* ================================================
-           G. OPTIONAL VIDEO
-
-           No video has been added for Paul.
-
-           If he provides a video in the future,
-           add a "video" property like Paddy's.
-           ================================================ */
     };
   })(),
 
@@ -1831,213 +1749,132 @@ export const expertProfiles = {
   })(),
 
   /* =====================================================
-   ASHA (NIRASHAA BOUND) - CANCER GENOMICS RESEARCHER
+     ASHA (NIRASHAA BOUND) - CANCER RESEARCHER
 
-   Sources:
-   - Interview: 24 March 2026
-   - GTAC STEM Superheroes Showcase
-   - Published ovarian cancer research (2025)
-
-   All images are stored locally.
-   The existing timeline and profile functions are reused.
-   ===================================================== */
+     Student-friendly profile (about Years 5-7).
+     Only the five selected timeline files will be shown.
+     Missing timeline images stay hidden until added.
+     ===================================================== */
 
   asha: (() => {
-    /* ================================================
-       A. IMAGE FOLDER
-
-       All Asha's photographs are stored here.
-       ================================================ */
-
     const imageFolder = `${base}/asha/`;
 
     return {
-      /* ================================================
-           B. BASIC INFORMATION
-           ================================================ */
-
       name: "Asha",
-
       role: "Cancer Researcher",
-
       organisation: "Cancer research at WEHI and RMIT University, Melbourne",
-
       portrait: `${imageFolder}portrait.jpg`,
-
-      superpower:
-        "Studying DNA, RNA and immune cells to understand why ovarian cancer patients respond differently to treatments",
-
+      superpower: "Looking for clues in DNA and cancer cells to learn why treatments work differently for different people.",
       imageFolder,
 
-      /* ================================================
-           C. INTERACTIVE TIMELINE
-
-           Five clickable stages.
-
-           Each stage includes:
-           - Title
-           - Colour
-           - Image
-           - Story points
-
-           timeline.js handles the interactions.
-           ================================================ */
-
+      /* Five career stages. Save the matching photos into Asha's folder.
+         Stage 2 uses an image you already have (drawing).
+         Other images are placeholders for Pexels photographs. */
       timeline: [
-        // STAGE 1: CURIOUS BEGINNINGS
-
         {
-          title: "Curious beginnings",
+          title: "Growing up curious",
           colour: "#F43559",
-
-          image: `${imageFolder}portrait.jpg`,
-          imageAlt: "Portrait of Asha today",
-
+          image: `${imageFolder}singapore-gardens.jpg`,
+          imageAlt: "A green garden in Singapore, where Asha grew up",
           points: [
-            "Asha was born in Singapore and moved to Melbourne, Australia, in Year 8.",
-            "Growing up in a Singaporean-Indian family, Asha experienced different cultures and communities.",
-            "Asha identifies as biracial and non-binary, showing that scientists come from many different backgrounds.",
-            "They enjoyed understanding how things worked and developed an interest in biology.",
-          ],
+            "Asha grew up in Singapore and later moved to Australia.",
+            "They were curious about why things happen and how living things work.",
+            "Their mum encouraged them to explore science."
+          ]
         },
-
-        // STAGE 2: DISCOVERING SCIENCE
-
         {
-          title: "Discovering science",
+          title: "Biology and the stage",
           colour: "#E9B400",
-
-          image: `${imageFolder}theatre.jpg`,
-          imageAlt: "Image representing Asha's interest in theatre",
-
+          image: `${imageFolder}drawing.jpg`,
+          imageAlt: "A drawing of a costumed character, showing a creative interest",
           points: [
-            "Asha enjoyed biology at school because they liked learning how living things work.",
-            "They also loved theatre and volunteered backstage during school productions.",
-            "For a long time, Asha was unsure what career they wanted.",
-            "They discovered that enjoying creative activities and being interested in science did not have to be separate things.",
-          ],
+            "Biology was one of Asha's favourite subjects at school.",
+            "They also loved theatre and helped backstage in school plays.",
+            "Asha was not sure what job they wanted. They kept trying new things."
+          ]
         },
-
-        // STAGE 3: FINDING THEIR PATH
-
         {
-          title: "Finding their path",
+          title: "An unexpected start",
           colour: "#50B96D",
-
-          image: `${imageFolder}laboratory.jpg`,
-          imageAlt: "Image representing laboratory research at WEHI",
-
+          image: `${imageFolder}research-lab.jpg`,
+          imageAlt: "A researcher working with equipment in a science lab",
           points: [
-            "While studying at university, Asha worked as a cleaner at WEHI, a medical research institute in Melbourne.",
-            "They became interested in the science happening around them and later gained experience as a research assistant.",
-            "Asha completed honours research and went on to pursue a PhD.",
-            "Their journey shows that opportunities in science can come from unexpected places!",
-          ],
+            "Asha studied science at university and completed an honours project.",
+            "They also worked as a cleaner at WEHI, a medical research centre.",
+            "Later, they became a research assistant at the same centre.",
+            "Asha went on to study for a PhD, which is a major research project."
+          ]
         },
-
-        // STAGE 4: RESEARCH WITH AN IMPACT
-
         {
-          title: "Research with an impact",
+          title: "Clues about cancer",
           colour: "#4F71CB",
-
-          image: `${imageFolder}ovarian-cancer.jpg`,
-          imageAlt: "Image representing cancer cells and genetic research",
-
+          image: `${imageFolder}tissue-slide.jpg`,
+          imageAlt: "A scientist holding a glass slide used to study tissue samples",
           points: [
-            "Asha researched ovarian cancer, a disease in which abnormal cells grow in the ovaries.",
-            "They contributed to a clinical trial study involving 114 women receiving different combinations of cancer medicines.",
-            "Asha investigated tumour samples, including DNA changes and immune activity, to help understand differences between patients.",
-            "The research could help scientists identify which treatments might work best for different people.",
-          ],
+            "Asha helped study ovarian cancer using samples from 114 women.",
+            "Their team looked for changes in DNA and signs of immune cells.",
+            "They wanted to know why some cancer medicines help some people more than others.",
+            "This work may help guide better treatments in the future."
+          ]
         },
-
-        // STAGE 5: LOOKING TO THE FUTURE
-
         {
-          title: "Looking to the Future",
+          title: "Science that helps people",
           colour: "#00A7B8",
-
-          image: `${imageFolder}clinical-trials.jpg`,
-          imageAlt:
-            "Image representing clinical trials and healthcare research",
-
+          image: `${imageFolder}clinical-team.jpg`,
+          imageAlt: "Healthcare researchers working together on a study",
           points: [
-            "Asha is interested in moving from laboratory research into roles that support clinical trials.",
-            "Clinical trials are studies that investigate how safe and effective medical treatments are for people.",
-            "They hope to use their experience with scientific research and data to support work that could help patients.",
-            "Asha's story shows that STEM offers many different careers, including important roles outside the laboratory.",
-          ],
-        },
+            "Asha hopes to help with clinical trials in the future.",
+            "These are studies that test how safe and useful treatments are.",
+            "They want to use what they have learned to help patients.",
+            "For Asha, science is also about finding ways to make a real difference."
+          ]
+        }
       ],
 
-      /* ================================================
-           D. HOBBIES AND INTERESTS
-
-           One image is displayed by default.
-
-           For multiple pictures, add a "photos"
-           array like Paddy's profile.
-           ================================================ */
-
+      /* HOBBIES: three selected images already in Asha's folder.
+         Photos appear in order; they are NOT pulled in automatically. */
       hobbies: {
         heading: "Hobbies and interests",
-
-        text: "Outside science, Asha loves making chainmail jewellery and crafts by connecting lots of small metal rings! They also enjoyed theatre and helping backstage during school productions.",
-
+        text: "Asha loves making chainmail jewellery by linking tiny metal rings. They also enjoy creative projects and used to help backstage in school plays.",
         images: [
           {
             image: `${imageFolder}chainmail.jpg`,
-            imageAlt:
-              "Handmade chainmail jewellery created by connecting metal rings",
+            imageAlt: "A piece of handmade chainmail",
+            caption: "Chainmail"
           },
-        ],
+          {
+            image: `${imageFolder}pottery.jpg`,
+            imageAlt: "A pottery photo shared for Asha's profile",
+            caption: "Pottery"
+          },
+          {
+            image: `${imageFolder}pottery2.jpg`,
+            imageAlt: "Several small pottery pieces on a table",
+            caption: "Pottery pieces"
+          }
+        ]
       },
 
-      /* ================================================
-           E. WHY THEIR RESEARCH MATTERS
+      /* Extra collage: deliberately empty. Only explicitly added photos show. */
+      gallery: [],
 
-           Three points displayed with coloured icons.
-           The image appears beside the information.
-           ================================================ */
-
+      /* No impact image yet: avoids repeating Asha's portrait. */
       impact: {
         heading: "Why does their research matter?",
-
-        image: `${imageFolder}ovarian-cancer.jpg`,
-        imageAlt: "Image representing DNA and ovarian cancer research",
-
         points: [
-          "Investigates genetic changes and immune activity in ovarian cancer",
-          "Helps scientists understand why different patients respond differently to cancer medicines",
-          "Could guide more personalised treatment decisions in the future, although further research is needed",
-        ],
+          "Looks for clues about why cancer treatments work differently for different people.",
+          "Helps researchers learn more about changes in DNA and the body's immune system.",
+          "May help improve treatment choices in the future."
+        ]
       },
 
-      /* ================================================
-           F. ADVICE FOR STUDENTS
-
-           Based on Asha's interview and original
-           GTAC STEM Superheroes profile.
-           ================================================ */
-
       adviceHeading: "Asha's advice",
-
       advice: [
-        "Follow what you're genuinely interested in, even if it takes you in an unexpected direction.",
-        "Do not be afraid to try different things and discover what you enjoy!",
-        "Understanding how something works is the first step to fixing it.",
-        "You don't have to follow exactly the same path as everyone else.",
-      ],
-
-      /* ================================================
-           G. OPTIONAL VIDEO
-
-           No video has been added for Asha.
-
-           If Asha provides a research video,
-           add a "video" property here like Paddy's.
-           ================================================ */
+        "Follow what you enjoy, even if you are not sure where it will lead.",
+        "Try new things. You might discover a skill you never knew you had!",
+        "Ask how things work. That is a great place to start.",
+        "Your path can change as you learn more about yourself."
+      ]
     };
   })(),
 
@@ -3182,240 +3019,135 @@ sue: (() => {
   /* =====================================================
    CHRIS FREELANCE - EVOLUTIONARY BIOLOGIST
 
-   STEM EXPERT - NOT A GTAC STEM COACH
+   Reading level: upper primary / early secondary.
+   Based on Chris's interview and public research work.
 
-   Sources:
-   - Interview: 18 March 2026
-   - Original GTAC STEM Superheroes Showcase
-   - University of Melbourne researcher information
-   - Ecological Society of Australia research article
+   Known local files:
+   - portrait.jpg  (profile introduction only)
+   - dragons.jpeg (one selected astronomy hobby photo)
+   - comedy.jpeg  (not used until its content is checked)
 
-   All images are stored locally.
-   Uses the existing reusable profile and timeline code.
+   Timeline and impact intentionally omit images for now.
+   The shared Vue components will show text-only sections
+   instead of repeating a portrait or showing broken files.
    ===================================================== */
 
   chris: (() => {
-    /* ================================================
-       A. IMAGE FOLDER
-
-       All Chris's images are stored here.
-       ================================================ */
-
     const imageFolder = `${base}/chris/`;
 
     return {
-      /* ================================================
-           B. BASIC INFORMATION
-
-           Name, role, workplace, portrait and superpower.
-           ================================================ */
-
       name: "Chris",
-
       role: "Evolutionary Biologist",
-
-      organisation:
-        "Senior Lecturer and Melbourne Histology Platform Manager, University of Melbourne",
-
+      organisation: "University of Melbourne",
       portrait: `${imageFolder}portrait.jpg`,
-
-      superpower:
-        "Investigating why animals have different body structures and sensory organs, and how these help them survive in their environments",
-
+      superpower: "Finding out why animals have different eyes, antennae and other body parts.",
       imageFolder,
 
-      /* ================================================
-           C. INTERACTIVE TIMELINE
-
-           Five clickable stages.
-
-           Each stage includes:
-           - Title
-           - Colour
-           - Image
-           - Story points
-
-           timeline.js handles the interactions.
-           ================================================ */
-
+      /* Five stages. Each photo path points to a locally saved stock image.
+         See CHRIS-IMAGE-GUIDE.txt for search terms and exact filenames. */
       timeline: [
-        // STAGE 1: CURIOUS BEGINNINGS
-
         {
-          title: "Curious beginnings",
+          title: "A country kid who loved science",
           colour: "#F43559",
-
-          image: `${imageFolder}portrait.jpg`,
-          imageAlt: "Portrait of Chris today",
-
+          image: `${imageFolder}country-road.jpg`,
+          imageAlt: "A tree-lined country road in Victoria",
           points: [
-            "Chris grew up in regional Victoria, in the Macedon Ranges.",
-            "He was the first person in his family to attend university.",
-            "At primary school, he didn't have separate science classes, but he enjoyed learning and exploring different subjects.",
-            "In high school, science became one of his favourite subjects.",
-            "He also completed work experience in a medical science laboratory, giving him an early introduction to research.",
+            "Chris grew up in the Macedon Ranges, not far from Melbourne.",
+            "Science became one of his favourite subjects at high school.",
+            "He tried working in a medical lab during work experience.",
+            "He was the first person in his family to go to university.",
           ],
         },
-
-        // STAGE 2: CHALLENGES IN SCHOOL
-
         {
-          title: "Challenges in school",
+          title: "Maths was tough",
           colour: "#E9B400",
-
-          image: `${imageFolder}maths.jpg`,
-          imageAlt: "Image representing school mathematics and learning",
-
+          image: `${imageFolder}maths-notebook.jpg`,
+          imageAlt: "Maths problems being worked out in a notebook",
           points: [
-            "Chris enjoyed science, but he didn't always find mathematics easy.",
-            "In Year 11, he struggled with Maths Methods, particularly probability and statistics.",
-            "He received extra help and learned that sometimes understanding something takes more time and practice.",
-            "Even at university, he found some physics subjects challenging.",
-            "Chris discovered that grades don't always reflect what someone is capable of achieving.",
-            "He encourages students to be persistent and not give up just because a subject feels difficult.",
+            "Chris enjoyed science, but Maths Methods was hard for him.",
+            "He found questions about chance and data tricky, so he got extra help.",
+            "Physics at university was hard too.",
+            "He learned that one tough subject does not stop you from becoming a scientist.",
           ],
         },
-
-        // STAGE 3: FINDING HIS PATH
-
         {
-          title: "Finding his path",
+          title: "A new direction",
           colour: "#50B96D",
-
-          image: `${imageFolder}university.jpg`,
-          imageAlt:
-            "Image representing Chris's journey through university and scientific research",
-
+          image: `${imageFolder}wildlife-observation.jpg`,
+          imageAlt: "A person watching wildlife through binoculars",
           points: [
-            "Chris originally considered becoming a medical doctor, but eventually realised medicine wasn't the right pathway for him.",
-            "He began studying neuroscience, the science of the brain and nervous system.",
-            "He was also fascinated by animals, their behaviour and how they experience the world.",
-            "His interests led him towards zoology, ecology and evolutionary biology.",
-            "During university, he gained experience working as a research assistant.",
-            "For his PhD, he investigated how the environment can influence the evolution of animals' sensory organs.",
-            "Chris's career shows that discovering new interests can change where your science journey takes you.",
+            "At first, Chris thought he might become a doctor.",
+            "He studied how the brain works at university.",
+            "Then he became more interested in how animals behave and sense the world.",
+            "He changed his plans and began to study animals instead.",
           ],
         },
-
-        // STAGE 4: RESEARCH WITH AN IMPACT
-
         {
-          title: "Research with an impact",
+          title: "What can insects sense?",
           colour: "#4F71CB",
-
           image: `${imageFolder}stick-insect.jpg`,
-          imageAlt:
-            "Lord Howe Island stick insect studied in conservation research",
-
+          imageAlt: "A stick insect on a leaf, illustrating how insects sense their world",
+          imageFit: "contain",
           points: [
-            "Chris studies evolutionary biology and sensory ecology - how animals' senses help them interact with their environments.",
-            "Animals may have eyes, antennae and other sensory organs that look different, even when they perform similar jobs.",
-            "He investigated Lord Howe Island stick insects, comparing insects living in the wild with those bred in captivity.",
-            "He found that captive-bred insects had smaller compound eyes and fewer scent-detecting receptors on their antennae.",
-            "These differences might affect how well insects find food, locate mates or detect danger after being returned to the wild.",
-            "His discoveries help scientists consider how to improve conservation programs for threatened species.",
+            "Chris studies how animals use their eyes, antennae and other senses.",
+            "He compared wild Lord Howe Island stick insects with ones raised in care.",
+            "Some of the insects raised in care had smaller eyes and fewer parts on their antennae that help them smell.",
+            "These changes could make life harder when the insects return to the wild.",
           ],
         },
-
-        // STAGE 5: SCIENCE AND COMMUNICATION
-
         {
-          title: "Science and communication",
+          title: "Sharing what he learns",
           colour: "#00A7B8",
-
-          image: `${imageFolder}microscope.jpg`,
-          imageAlt:
-            "Image representing microscopy and scientific research at the University of Melbourne",
-
+          image: `${imageFolder}podcast.jpg`,
+          imageAlt: "Microphone and headphones used to record a podcast",
           points: [
-            "Today, Chris works at the University of Melbourne as a Senior Lecturer and manager of the Melbourne Histology Platform.",
-            "Histology involves studying thin sections of biological material, often using microscopes.",
-            "He helps researchers use microscopes and other techniques to investigate cells, tissues and living things.",
-            "Chris is also passionate about making science understandable and accessible to everyone.",
-            "He hosts a podcast called 'Divergent in STEMM', where scientists and other STEM professionals share their experiences of thinking and learning differently.",
-            "Through research, education and communication, Chris helps people discover that there are many different ways to succeed in science.",
+            "Today, Chris works at the University of Melbourne.",
+            "He helps scientists use microscopes to study tiny parts of living things.",
+            "He also shares science through talks, comedy and his podcast, Divergent in STEMM.",
+            "He wants more people to feel welcome in science.",
           ],
         },
       ],
 
-      /* ================================================
-           D. HOBBIES AND INTERESTS
-
-           One image is displayed by default.
-
-           To display multiple photographs,
-           add a "photos" array like Paddy's profile.
-           ================================================ */
-
+      /* HOBBIES: Two real, selected photos.
+         The carousel appears when images contains 2 or more photos.
+         Keep this as 'images' and do not add a separate 'photos' array. */
       hobbies: {
         heading: "Hobbies and interests",
-
-        text: "Chris loves astrophotography - taking photographs of stars and the night sky! He also enjoys science communication and hosts his own podcast, Divergent in STEMM, where he talks with people about their experiences working in science.",
-
+        text: "Chris takes photos of the night sky. He has also tried stand-up comedy!",
         images: [
           {
-            image: `${imageFolder}astrophotography.jpg`,
-            imageAlt:
-              "Photograph of stars in the night sky, representing Chris's interest in astrophotography",
+            image: `${imageFolder}comedy.jpeg`,
+            imageAlt: "Chris's comedy photograph",
+            caption: "Stand-up comedy",
+          },
+          {
+            image: `${imageFolder}dragons.jpeg`,
+            imageAlt: "Chris's photo of the night sky",
+            caption: "Night-sky photography",
           },
         ],
       },
 
-      /* ================================================
-           E. WHY HIS RESEARCH MATTERS
-
-           Three impact points displayed with icons.
-           One accompanying image.
-
-           Focuses on the connection between sensory
-           ecology, evolution and conservation.
-           ================================================ */
+      /* Extra gallery is separate from hobbies: nothing selected yet. */
+      gallery: [],
 
       impact: {
-        heading: "Why does his research matter?",
-
-        image: `${imageFolder}stick-insect.jpg`,
-        imageAlt: "Lord Howe Island stick insect",
-
+        heading: "Why does his work matter?",
         points: [
-          "Helps explain why animals have different sensory organs and how these structures help them survive",
-          "Investigates differences between wild animals and animals raised in captivity",
-          "Provides knowledge that could help conservation scientists protect threatened species and plan wildlife reintroductions",
+          "Shows how animals use their senses to find food and stay safe.",
+          "Helps scientists compare wild animals with those raised in care.",
+          "May help people find better ways to protect rare insects.",
         ],
       },
 
-      /* ================================================
-           F. ADVICE FOR STUDENTS
-
-           Based on Chris's interview and the original
-           GTAC STEM Superheroes Showcase.
-
-           The advice is adapted for primary students.
-           ================================================ */
-
       adviceHeading: "Chris's advice",
-
       advice: [
-        "You don't have to be fantastic at maths to become a successful scientist!",
-        "If something is difficult, don't give up. Ask for help, practise and keep trying.",
-        "Grades don't define everything you're capable of achieving.",
-        "Follow what interests you. Your career might take you somewhere you never expected!",
-        "Be persistent and fight for what you want.",
+        "You don't need perfect marks to work in science.",
+        "Ask for help when a subject feels hard.",
+        "Try new things. It's OK if your plans change.",
+        "Keep going with the things that matter to you.",
       ],
-
-      /* ================================================
-           G. OPTIONAL VIDEO
-
-           No video is currently added for Chris.
-
-           You could later include:
-           - A research video showing insect sensory organs
-           - A microscopy demonstration
-           - A short introduction to his podcast
-
-           Add a "video" property here using Paddy's
-           existing video feature as a template.
-           ================================================ */
     };
   })(),
 
