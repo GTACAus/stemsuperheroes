@@ -217,37 +217,17 @@ export const expertProfiles = {
         ],
       },
 
-      /* ================================================
-         OPTIONAL PHOTO GALLERY - PADDY
-
-         ONLY these selected photos appear in the gallery.
-         The hobby, timeline and research images remain
-         separate. Display is capped at 5 in the renderer.
-         Remove a photo entry here to deselect it.
-         ================================================ */
-      gallery: [
-
-
-        {
-          image: `${imageFolder}hiking.jpeg`,
-          imageAlt: "Paddy hiking outdoors",
-          caption: "Hiking",
-        },
-
-
-        {
-          image: `${imageFolder}running.png`,
-          imageAlt: "Paddy at a running event",
-          caption: "Running",
-        },
-
-
-      ],
+      // Only show a separate More moments gallery for additional, distinct photos.
+      // Hiking and running already appear in Paddy's hobby carousel.
+      gallery: [],
 
       impact: {
         heading: "Why does his research matter?",
-        image: `${imageFolder}organoid-still.jpg`,
-        imageAlt: "Fluorescent microscope image of a brain organoid",
+        // The reusable impact panel already supports .mp4 video, as with Juliana.
+        // This keeps the short organoid clip beside the research points.
+        image: `${videos}/paddy-brain-organoid.mp4`,
+        poster: `${imageFolder}organoid-still.jpg`,
+        imageAlt: "Paddy's microscope video of a lab-grown brain organoid, not human brain tissue",
         points: [
           "Helps scientists understand how childhood brain cancer develops.",
           "Paddy grows tiny brain-like models called organoids in a dish. He uses them to study how brain cells grow and communicate.",
@@ -255,15 +235,8 @@ export const expertProfiles = {
         ],
       },
 
-      video: {
-        heading: "See a brain organoid under the microscope!",
-        src: `${videos}/paddy-brain-organoid.mp4`,
-        poster: `${imageFolder}organoid-still.jpg`,
-        description:
-          "This 10-second video shared by Paddy shows a fluorescent microscope scan of a brain organoid — a tiny lab-grown model of brain tissue. The microscope records views at different depths, a bit like looking through many thin layers.",
-        caption:
-          "These are microscope images of a lab-grown model, not slices taken from a person's brain.",
-      },
+      // No separate video section needed: the same clip is in impact above.
+      // The generic expert.video feature is unchanged for any other profile.
 
       adviceHeading: "Paddy's Advice",
       advice: ["Follow your nose."],
@@ -1890,221 +1863,125 @@ export const expertProfiles = {
    ===================================================== */
 
   meagan: (() => {
-    /* ================================================
-       A. IMAGE FOLDER
-
-       All Meagan's images are stored here.
-       ================================================ */
-
     const imageFolder = `${base}/meagan/`;
 
     return {
-      /* ================================================
-           B. BASIC INFORMATION
-           ================================================ */
-
       name: "Meagan",
-
       role: "Marsupial Biology Researcher",
-
       organisation: "Genetics, immunology and marsupial research in Melbourne",
 
+      // Her portrait has not arrived. The card and profile show a neat
+      // "Photo coming soon" placeholder if portrait.jpg does not exist.
+      // Add portrait.jpg later and it appears automatically after refresh.
       portrait: `${imageFolder}portrait.jpg`,
-
       superpower:
-        "Using genetics and immunology to understand how marsupials develop and how science might help protect wildlife",
-
+        "Using genetics and immune-system science to understand marsupials and help protect wildlife",
       imageFolder,
 
-      /* ================================================
-           C. INTERACTIVE TIMELINE
-
-           Five clickable stages.
-           Each stage includes a title, colour,
-           image and story.
-
-           timeline.js handles the interactions.
-           ================================================ */
-
+      /* Five short story stages, based on Meagan's GTAC interview.
+         All five use distinct illustrative images, NOT a portrait. */
       timeline: [
-        // STAGE 1: CURIOUS BEGINNINGS
-
         {
-          title: "Curious beginnings",
+          title: "Science kits and questions",
           colour: "#F43559",
-
-          image: `${imageFolder}portrait.jpg`,
-          imageAlt: "Portrait of Meagan today",
-
+          image: `${imageFolder}science-kit.jpg`,
+          imageAlt: "A child exploring a colourful science activity, representing Meagan's childhood curiosity",
           points: [
-            "Meagan grew up in Minnesota, USA, and enjoyed exploring science from a young age.",
-            "Her father was an engineer who encouraged her interest in science, technology and mathematics.",
-            "As a child, she loved experimenting with science kits and discovering how things worked.",
-            "She was naturally curious and wanted to understand the world around her.",
+            "Meagan grew up in Minnesota, in the United States.",
+            "Her dad was an engineer who encouraged her to explore science and maths.",
+            "She loved using science kits at home to find out how things worked."
           ],
         },
-
-        // STAGE 2: CHALLENGES IN SCHOOL
-
         {
-          title: "Challenges in school",
+          title: "A genetics puzzle",
           colour: "#E9B400",
-
-          image: `${imageFolder}genetics.jpg`,
-          imageAlt: "Image representing genetics and Punnett squares",
-
+          image: `${imageFolder}genetics-peas.jpg`,
+          imageAlt: "Green peas in a pod, illustrating how scientists explore inherited traits",
           points: [
             "Meagan enjoyed biology and maths at school.",
-            "In Year 10, she completed a genetics project using Punnett squares, which help predict how traits can be inherited.",
-            "This project sparked her interest in genetics and helped her decide what she wanted to study.",
-            "She also found making friends challenging at times, especially because her family moved several times.",
+            "In Year 10, she used Punnett squares to predict how traits pass from parents to their young.",
+            "The project made her want to study genetics.",
+            "Moving schools sometimes made it hard to find friends."
           ],
         },
-
-        // STAGE 3: FINDING HER PATH
-
         {
-          title: "Finding her path",
+          title: "A big move",
           colour: "#50B96D",
-
-          image: `${imageFolder}university.jpg`,
-          imageAlt: "Image representing Meagan's studies in Australia",
-
+          image: `${imageFolder}melbourne.jpg`,
+          imageAlt: "The city of Melbourne, where Meagan moved to study",
           points: [
-            "Meagan moved from the USA to Australia to study biomedical science at the University of Melbourne.",
-            "She focused on genetics, the study of DNA and how traits are passed from parents to offspring.",
-            "She continued into research, developing knowledge of immunology - the study of the immune system.",
-            "Her interests eventually brought her towards the biology of Australian marsupials.",
+            "Meagan moved to Australia to study biomedical science at the University of Melbourne.",
+            "She focused on genetics, then explored immunology - how the immune system works.",
+            "She began asking questions about the biology of Australian animals."
           ],
         },
-
-        // STAGE 4: RESEARCH WITH AN IMPACT
-
         {
-          title: "Research with an impact",
+          title: "Tiny marsupials, big questions",
           colour: "#4F71CB",
-
-          image: `${imageFolder}dunnart.jpg`,
-          imageAlt: "Fat-tailed dunnart, a small Australian marsupial",
-
+          image: `${imageFolder}marsupial-joey.jpg`,
+          imageAlt: "A kangaroo joey peeking from its mother's pouch, illustrating marsupial development",
           points: [
-            "Meagan is interested in the biology and immune systems of marsupials, including the fat-tailed dunnart.",
-            "Marsupials give birth to very tiny young that continue much of their development after birth, often in a pouch.",
-            "Scientists study dunnarts to better understand how marsupials grow and develop.",
-            "Dunnarts are also closely related to the extinct thylacine, or Tasmanian tiger. Research on living marsupials could help scientists develop future conservation technologies.",
+            "Meagan studies fat-tailed dunnarts, small Australian marsupials.",
+            "Marsupial babies are born tiny and keep developing after birth, often in a pouch.",
+            "Dunnarts are relatives of the extinct thylacine, or Tasmanian tiger.",
+            "Studying living marsupials may help scientists develop future conservation tools."
           ],
         },
-
-        // STAGE 5: LOOKING TO THE FUTURE
-
         {
-          title: "Looking to the Future",
+          title: "Science for wildlife",
           colour: "#00A7B8",
-
-          image: `${imageFolder}conservation.jpg`,
-          imageAlt: "Image representing wildlife conservation",
-
+          image: `${imageFolder}bat-wildlife.jpg`,
+          imageAlt: "A bat in its natural habitat, representing Meagan's conservation goals",
           points: [
-            "Meagan hopes to return to the USA and use her scientific knowledge to help protect wildlife.",
-            "She is particularly interested in conservation within her Native American community, including animals such as bats and bears.",
-            "She also wants to support education and create more opportunities for Native American students.",
-            "Her goal is to use science to help both wildlife and the communities she cares about.",
+            "Meagan hopes to help protect animals such as bats and bears in the United States.",
+            "She also wants to support more Native American students to study at university.",
+            "For her, science is a way to help wildlife and communities."
           ],
         },
       ],
 
-      /* ================================================
-           D. HOBBIES AND INTERESTS
-
-           Meagan has two hobby photos.
-
-           If your renderer supports the "photos" array,
-           both photos appear in a gallery.
-
-           Otherwise, the single "image" is displayed.
-           ================================================ */
-
       hobbies: {
         heading: "Hobbies and interests",
-
-        text: "Meagan enjoys acrobatics and circus sports! She has also tried soccer, athletics, basketball, ice hockey, and speech and debate.",
-
+        text: "Meagan enjoys acrobatics and circus sports! She has also tried soccer, athletics, ice hockey, and speech and debate.",
+        // Optional hobby carousel: add the photographs when available.
+        // These are NOT automatically duplicated in More moments.
         images: [
           {
             image: `${imageFolder}acrobatics.jpg`,
-            imageAlt: "Acrobatics activity",
+            imageAlt: "Acrobatics, one of Meagan's hobbies",
             caption: "Acrobatics",
           },
           {
             image: `${imageFolder}ice-hockey.jpg`,
-            imageAlt: "Ice hockey activity",
+            imageAlt: "Ice hockey, a sport Meagan has played",
             caption: "Ice hockey",
           },
         ],
       },
 
-      /* ================================================
-         OPTIONAL PHOTO GALLERY - MEAGAN
+      // Only use this for extra, distinct work images (such as dunnart research).
+      // A blank gallery means no redundant More moments section.
+      gallery: [],
 
-         ONLY these selected photos appear in the gallery.
-         To change the collage, edit these entries only.
-         ================================================ */
-      gallery: [
-        {
-          image: `${imageFolder}acrobatics.jpg`,
-          imageAlt: "Meagan taking part in acrobatics",
-          caption: "Acrobatics",
-        },
-        {
-          image: `${imageFolder}ice-hockey.jpg`,
-          imageAlt: "Meagan taking part in ice hockey",
-          caption: "Ice hockey",
-        },
-      ],
-
-      /* ================================================
-           E. WHY HER RESEARCH MATTERS
-
-           Three impact points and one accompanying image.
-           ================================================ */
-
+      // Text only for now; no repeated dunnart photograph.
       impact: {
         heading: "Why does her research matter?",
-
-        image: `${imageFolder}dunnart.jpg`,
-        imageAlt: "Fat-tailed dunnart used in marsupial research",
-
         points: [
-          "Helps scientists understand how tiny marsupials grow and how their bodies develop",
-          "Supports research into the biology of Australian marsupials and ways to conserve them",
-          "Research on living relatives of the thylacine could help scientists develop technologies for conservation and possible future de-extinction research",
+          "Explores how tiny marsupials grow and how their immune systems develop",
+          "Builds knowledge about dunnarts, living relatives of the extinct thylacine",
+          "May support future wildlife conservation and research into threatened species",
         ],
       },
 
-      /* ================================================
-           F. ADVICE FOR STUDENTS
-
-           Based on Meagan's interview.
-           ================================================ */
-
       adviceHeading: "Meagan's advice",
-
       advice: [
-        "Science is all around you! Start by asking questions about things you find interesting.",
-        "Try small investigations at home, such as exploring how different conditions affect a growing plant.",
-        "Don't just watch what happens - try to understand why it happens!",
-        "If you cannot find an answer, that might be the perfect opportunity to investigate.",
+        "Science is all around you. Start by asking questions about things that interest you!",
+        "Try a small investigation at home, such as changing how much water a plant receives.",
+        "Don't just watch what happens - ask why it happens.",
+        "If you cannot find an answer, that might be something you can investigate!",
       ],
 
-      /* ================================================
-           G. OPTIONAL VIDEO
-
-           No video is currently included.
-
-           If Meagan provides a video of dunnarts or
-           her research, add a video property here
-           like Paddy's profile.
-           ================================================ */
+      // Optional expert.video remains available for Meagan and every other expert.
     };
   })(),
 
@@ -3201,245 +3078,152 @@ export const expertProfiles = {
 /* =====================================================
    KIARA SIMONIS - AVIAN SPECIALIST VETERINARIAN
 
-   STEM EXPERT - NOT A GTAC STEM COACH
+   STEM EXPERT (not a GTAC STEM Coach)
+   Based on existing GTAC interview/profile information.
 
-   Sources:
-   - Interview: 11 February 2026
-   - The Unusual Pet Vets biography
+   IMAGE PLAN:
+   - The portrait stays in the introduction only.
+   - Four timeline photos and one hobby photo are Pexels
+     placeholders, with direct links in KIARA-IMAGE-GUIDE.txt.
+   - The existing surgery photo appears in timeline stage 5.
+   - The existing reptile and chicken scans appear ONLY in
+     Kiara's optional extra gallery, not in multiple sections.
+   - The impact section deliberately has no extra image.
+   - No separate video is included unless Kiara sends one.
 
-   Uses the existing reusable profile, timeline,
-   hobbies carousel and optional photo gallery.
+   Check the exact extensions of existing images with
+   File Explorer > View > Show > File name extensions.
+   We reference aligator.jpg (one 'l', per folder screenshot),
+   chicken.jpg, surgery.jpg and portrait.jpeg.
    ===================================================== */
 
 kiara: (() => {
-
-    /* ================================================
-       A. IMAGE FOLDER
-
-       All Kiara's images are stored locally.
-       ================================================ */
-
-    const imageFolder = `${base}/kiara/`;
-
-    return {
-
-        /* ================================================
-           B. BASIC INFORMATION
-           ================================================ */
-
-        name: "Kiara",
-
-        role: "Avian Specialist Veterinarian",
-
-        organisation: "The Unusual Pet Vets, Flemington, Melbourne",
-
-        portrait: `${imageFolder}portrait.jpeg`,
-
-        superpower: "Being an animal healer - using biology and veterinary medicine to care for birds, reptiles and other unusual pets",
-
-        imageFolder,
-
-
-        /* ================================================
-           C. INTERACTIVE TIMELINE
-
-           Five clickable stages.
-           timeline.js handles the interactions.
-           ================================================ */
-
-        timeline: [
-
-            // STAGE 1: A LOVE FOR ANIMALS
-
-            {
-                title: "A love for animals",
-                colour: "#F43559",
-
-                image: `${imageFolder}cockatiel.jpg`,
-                imageAlt: "Cockatiel, the type of bird that inspired Kiara's career",
-
-                points: [
-                    "Kiara loved animals from a very young age. She remembers watching the television vet Dr Harry at her grandmother's house.",
-                    "When she was around 10, she got a pet cockatiel called Tinkerbell.",
-                    "Caring for her bird inspired her dream of becoming a veterinarian who specialises in birds.",
-                    "Even as a primary school student, she knew she wanted to help animals feel better."
-                ]
-            },
-
-
-            // STAGE 2: CHALLENGES AT SCHOOL
-
-            {
-                title: "Challenges at school",
-                colour: "#E9B400",
-
-                image: `${imageFolder}school.jpg`,
-                imageAlt: "Image representing Kiara's school years and science subjects",
-
-                points: [
-                    "At school, Kiara enjoyed Biology, Chemistry and learning about plants and animals.",
-                    "But she found some Maths subjects, including Maths Methods, difficult.",
-                    "She felt pressure to achieve top marks, and a teacher even told her that she was not good enough to become a vet.",
-                    "Her ATAR was 72, which was not the result she had hoped for. She was disappointed, but she did not give up on her goal.",
-                    "Kiara learned that one exam score does not decide everything you can achieve."
-                ]
-            },
-
-
-            // STAGE 3: A DIFFERENT PATHWAY
-
-            {
-                title: "A different pathway",
-                colour: "#50B96D",
-
-                image: `${imageFolder}university.jpg`,
-                imageAlt: "Image representing Kiara studying biology and veterinary medicine",
-
-                points: [
-                    "Kiara did not enter her dream course straight after high school, so she took another university pathway.",
-                    "She focused on Science subjects she loved, especially Biology, while continuing to work towards veterinary medicine.",
-                    "Her determination paid off: she entered the Doctor of Veterinary Medicine program at the University of Melbourne.",
-                    "She graduated as a veterinarian in 2018.",
-                    "Her story shows that there can be more than one route to the career you want."
-                ]
-            },
-
-
-            // STAGE 4: LEARNING ABOUT UNUSUAL PETS
-
-            {
-                title: "Learning about unusual pets",
-                colour: "#4F71CB",
-
-                image: `${imageFolder}exotic-animals.jpg`,
-                imageAlt: "Image representing birds, reptiles and other unusual veterinary patients",
-
-                points: [
-                    "During veterinary school, Kiara deliberately looked for placements where she could work with birds and other unusual animals.",
-                    "Her experience included exotic animal veterinary clinics, a raptor rehabilitation centre and Healesville Sanctuary.",
-                    "She also learned from specialists overseas, including at an exotic animal hospital in Hong Kong.",
-                    "These placements helped her build the special skills needed to care for birds, reptiles, rabbits and guinea pigs.",
-                    "She discovered how much she enjoyed learning from veterinarians who specialise in animals other than cats and dogs."
-                ]
-            },
-
-
-            // STAGE 5: BECOMING A BIRD SPECIALIST
-
-            {
-                title: "Becoming a bird specialist",
-                colour: "#00A7B8",
-
-                image: `${imageFolder}chicken-ct.jpg`,
-                imageAlt: "CT scan or 3D medical image of a chicken",
-
-                points: [
-                    "Kiara began advanced specialist training in avian medicine and surgery in 2021.",
-                    "She trained with experienced bird veterinarians and visited the Dubai Falcon Hospital to learn more about specialist procedures.",
-                    "In 2025, she passed her Fellowship examinations and became one of Australia's relatively few avian veterinary specialists.",
-                    "At The Unusual Pet Vets, she helps birds and other unusual animals with illnesses and injuries.",
-                    "She even shared an example of a chicken CT scan - medical technology that can help vets build a detailed 3D view of an animal's body."
-                ]
-            }
-
-        ],
-
-
-        /* ================================================
-           D. HOBBIES AND INTERESTS
-
-           One main image by default.
-
-           Our existing carousel feature can also
-           support multiple selected hobby photos.
-           ================================================ */
-
-        hobbies: {
-            heading: "Hobbies and interests",
-
-            text: "Kiara loves birdwatching, spending time outdoors and caring for her pets. She also enjoys plants and cheering on an AFL team with her family! Her pets include birds, a dog, a snake and frogs.",
-
-            image: `${imageFolder}birdwatching.jpg`,
-            imageAlt: "Photograph representing Kiara's love of birdwatching"
-        },
-
-
-        /* ================================================
-           E. OPTIONAL EXTRA PHOTO GALLERY
-
-           IMPORTANT!
-
-           Only photographs listed here will appear.
-
-           - Does NOT automatically use all photos.
-           - Maximum of 5 selected photographs.
-           - Responsive collage.
-           - Empty array = NO gallery box.
-
-           When you have extra photos, replace [] with
-           the image objects you want to display.
-
-           Example:
-
-           gallery: [
-               {
-                   image: `${imageFolder}kiara-with-bird.jpg`,
-                   imageAlt: "Kiara holding a bird",
-                   caption: "Working with birds"
-               }
-           ],
-
-           ================================================ */
-
-        gallery: [],
-
-
-        /* ================================================
-           F. WHY HER WORK MATTERS
-
-           Three icon-led points and accompanying image.
-           ================================================ */
-
-        impact: {
-            heading: "Why does her work matter?",
-
-            image: `${imageFolder}chicken-ct.jpg`,
-            imageAlt: "Example of a medical scan used to investigate an animal's anatomy",
-
-            points: [
-                "Provides specialist veterinary care for birds and unusual pets that have different needs from cats and dogs",
-                "Uses scientific knowledge, examinations and medical scans to investigate animal illness and injuries",
-                "Helps animal owners understand how to keep their pets healthy and improve animal welfare"
-            ]
-        },
-
-
-        /* ================================================
-           G. ADVICE FOR STUDENTS
-
-           Based on Kiara's interview.
-           ================================================ */
-
-        adviceHeading: "Kiara's advice",
-
-        advice: [
-            "A single exam is not the end of the world.",
-            "There is more than one route to get to where you want to be.",
-            "You can only do the best you can. Don't give up because a subject or exam is difficult.",
-            "Keep following what you love, and look for opportunities to learn from others."
+  const imageFolder = `${base}/kiara/`;
+
+  return {
+    name: "Kiara",
+    role: "Avian Specialist Veterinarian",
+    organisation: "The Unusual Pet Vets, Flemington, Melbourne",
+    portrait: `${imageFolder}portrait.jpeg`,
+    superpower:
+      "Using biology and veterinary medicine to help birds, reptiles and other unusual pets feel better.",
+    imageFolder,
+
+    /* A. FIVE CLICKABLE STORY STAGES
+       Download and save the four new timeline JPGs.
+       The final stage uses Kiara's existing surgery photo. */
+    timeline: [
+      {
+        title: "A love for animals",
+        colour: "#F43559",
+        image: `${imageFolder}cockatiel.jpg`,
+        imageAlt: "A cockatiel, the kind of pet bird that inspired Kiara as a child",
+        points: [
+          "As a child, Kiara loved watching the TV vet Dr Harry with her grandmother.",
+          "When she was about 10, she got a pet cockatiel named Tinkerbell.",
+          "Tinkerbell inspired her dream of becoming a vet who helps birds."
         ]
+      },
+      {
+        title: "A challenge at school",
+        colour: "#E9B400",
+        image: `${imageFolder}school-study.jpg`,
+        imageAlt: "Student writing notes in a notebook, representing school challenges",
+        points: [
+          "Kiara enjoyed Biology and Chemistry, but found some maths subjects hard.",
+          "A teacher even told her she was not good enough to become a vet.",
+          "Her final school score was lower than she had hoped. She was disappointed, but didn't give up."
+        ]
+      },
+      {
+        title: "Another way into science",
+        colour: "#50B96D",
+        image: `${imageFolder}unimelb-arches.jpg`,
+        imageAlt: "Gothic arches at the University of Melbourne campus",
+        points: [
+          "Kiara couldn't enter veterinary medicine straight after school, so she started with another university course.",
+          "She kept studying science and later earned a place in veterinary medicine at the University of Melbourne.",
+          "She became a vet in 2018."
+        ]
+      },
+      {
+        title: "Learning from unusual pets",
+        colour: "#4F71CB",
+        image: `${imageFolder}raptor-care.jpg`,
+        imageAlt: "A rescued bird of prey receiving care, illustrating avian veterinary work",
+        points: [
+          "While training, Kiara looked for chances to care for unusual animals.",
+          "She learnt at bird rescue centres, specialist clinics and Healesville Sanctuary.",
+          "She also visited an exotic animal hospital in Hong Kong."
+        ]
+      },
+      {
+        title: "Becoming a bird specialist",
+        colour: "#00A7B8",
+        image: `${imageFolder}surgery.jpg`,
+        imageAlt: "Veterinary surgery under way, from Kiara's existing photo collection",
+        points: [
+          "In 2021, Kiara began extra training to become a bird specialist.",
+          "She learnt from specialists, including during a visit to a falcon hospital in Dubai.",
+          "In 2025, she passed her specialist exams.",
+          "Today she helps unusual pets using medical scans and, when needed, surgery."
+        ]
+      }
+    ],
 
-        /* ================================================
-           H. OPTIONAL VIDEO
+    /* B. HOBBIES
+       Stock birdwatching photo is an illustration of her hobby;
+       it is not a photograph of Kiara. */
+    hobbies: {
+      heading: "Hobbies and interests",
+      text:
+        "Away from the clinic, Kiara enjoys birdwatching, plants, time outdoors and watching AFL with her family. Her pets include birds, a dog, a snake and frogs!",
+      image: `${imageFolder}birdwatching.jpg`,
+      imageAlt: "Person birdwatching with binoculars beside a lake"
+    },
 
-           No video added for Kiara.
+    /* C. OPTIONAL EXTRA GALLERY
+       These are Kiara's TWO existing medical scan images.
+       Keep both distinct from the timeline and hobbies.
+       imageFit: 'contain' means the X-rays are NOT cropped.
+       'aligator' deliberately has one 'l', per the screenshot. */
+    gallery: [
+      {
+        image: `${imageFolder}aligator.jpg`,
+        imageAlt: "Veterinary X-ray showing the bones of a reptile",
+        caption: "Reptile X-ray",
+        imageFit: "contain"
+      },
+      {
+        image: `${imageFolder}chicken.jpg`,
+        imageAlt: "3D medical scan of a chicken's head and skull",
+        caption: "Chicken CT scan",
+        imageFit: "contain"
+      }
+    ],
 
-           Add a video property later if Kiara provides
-           one, using Paddy's existing video format.
-           ================================================ */
+    /* D. WHY HER WORK MATTERS
+       Text-only by design: no duplicated scans or photos. */
+    impact: {
+      heading: "Why does her work matter?",
+      points: [
+        "Helps birds, reptiles and unusual pets get care suited to their special needs.",
+        "Uses scans and other tests to find out what is making an animal sick.",
+        "Helps pet owners understand how to keep their animals healthy."
+      ]
+    },
 
-    };
+    /* E. ADVICE FROM KIARA'S STORY */
+    adviceHeading: "Kiara's advice",
+    advice: [
+      "One exam score does not decide your future.",
+      "There is more than one pathway to the job you want.",
+      "Keep trying, and learn from people who work in a field you love."
+    ]
 
+    /* OPTIONAL VIDEO: No video has been supplied for Kiara.
+       The shared profile component already supports expert.video. */
+  };
 })(),
 
 

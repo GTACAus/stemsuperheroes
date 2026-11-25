@@ -19,6 +19,7 @@ const impactIsVideo = computed(() =>
 // Hobby photos: hobbies.photos or hobbies.images (array), else hobbies.image (one).
 // Missing files are hidden automatically so you can add photos over time.
 const failedHobbyImages = ref([]);
+const missingPortrait = ref(false);
 // 1 photo shows a plain image; 2+ photos show the carousel.
 const hobbyPhotos = computed(() => {
   const hobbies = props.expert.hobbies || {};
@@ -42,6 +43,7 @@ const hobbyPhotoDialog = ref(null);
 watch(() => props.expert, () => {
   carouselIndex.value = 0;
   failedHobbyImages.value = [];
+  missingPortrait.value = false;
   if (hobbyPhotoDialog.value?.open) hobbyPhotoDialog.value.close();
 });
 
@@ -92,10 +94,16 @@ const galleryPhotos = computed(() =>
 
   <div class="profile-intro">
     <img
+      v-if="expert.portrait && !missingPortrait"
       class="profile-portrait"
       :src="expert.portrait"
       :alt="`Portrait of ${expert.name}`"
+      @error="missingPortrait = true"
     />
+    <div v-else class="profile-portrait profile-portrait-placeholder" role="img" :aria-label="`Portrait of ${expert.name} coming soon`">
+      <span aria-hidden="true">{{ expert.name.slice(0, 1) }}</span>
+      <small>Photo coming soon</small>
+    </div>
     <div class="profile-intro-text">
       <h2 id="active-expert-name">{{ expert.name }}</h2>
       <p class="profile-meta">
@@ -220,6 +228,8 @@ const galleryPhotos = computed(() =>
         <video
           v-if="impactIsVideo"
           :src="expert.impact.image"
+          :poster="expert.impact.poster || undefined"
+          :aria-label="expert.impact.imageAlt || `Research video from ${expert.name}`"
           controls
           playsinline
           preload="metadata"
@@ -244,6 +254,7 @@ const galleryPhotos = computed(() =>
         <img
           :src="photo.image"
           :alt="photo.imageAlt || photo.caption || `Photo of ${expert.name}`"
+          :style="photo.imageFit === 'contain' ? { objectFit: 'contain', backgroundColor: '#131b22' } : undefined"
           loading="lazy"
         />
         <figcaption v-if="photo.caption">{{ photo.caption }}</figcaption>
@@ -307,6 +318,16 @@ const galleryPhotos = computed(() =>
   border: 3px solid var(--charcoal);
   border-radius: 16px;
 }
+.profile-portrait-placeholder {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 5px;
+  background: #e1e9df;
+  color: #37275c;
+}
+.profile-portrait-placeholder > span { font-size: 3.25rem; font-weight: 800; line-height: 1; }
+.profile-portrait-placeholder small { font-size: .75rem; font-weight: 700; }
 .profile-intro-text {
   min-width: 0;
 }

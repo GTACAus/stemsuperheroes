@@ -1,11 +1,19 @@
 <script setup>
-defineProps({
+import { ref, watch } from 'vue';
+
+const props = defineProps({
   // One entry from data/expert-cards.js
   expert: { type: Object, required: true },
   flipped: Boolean,
   expanded: Boolean,
 });
 defineEmits(['activate']);
+
+// An expert can have a complete profile before their portrait is supplied.
+const missingPortrait = ref(false);
+const missingChipImage = ref(false);
+watch(() => props.expert.portrait, () => { missingPortrait.value = false; });
+watch(() => props.expert.chipImage, () => { missingChipImage.value = false; });
 
 const rows = [
   { key: 'superpower', icon: '⚛', label: 'STEM superpower', tone: 'dark' },
@@ -30,7 +38,16 @@ const rows = [
     <div class="expert-flip-inner">
       <div class="expert-card-face expert-card-front">
         <div class="expert-image">
-          <img :src="expert.portrait" :alt="expert.portraitAlt" />
+          <img
+            v-if="expert.portrait && !missingPortrait"
+            :src="expert.portrait"
+            :alt="expert.portraitAlt"
+            @error="missingPortrait = true"
+          />
+          <div v-else class="expert-image-placeholder" role="img" :aria-label="`Portrait of ${expert.name} coming soon`">
+            <span aria-hidden="true">{{ expert.name.slice(0, 1) }}</span>
+            <small>Photo coming soon</small>
+          </div>
         </div>
         <div class="expert-card-content">
           <p class="expert-field">{{ expert.field }}</p>
@@ -53,7 +70,13 @@ const rows = [
             </div>
           </div>
           <div class="expert-profile-chip">
-            <img :src="expert.chipImage ?? expert.portrait" alt="" />
+            <img
+              v-if="expert.chipImage ? !missingChipImage : (expert.portrait && !missingPortrait)"
+              :src="expert.chipImage ?? expert.portrait"
+              alt=""
+              @error="expert.chipImage ? (missingChipImage = true) : (missingPortrait = true)"
+            />
+            <span v-else class="expert-chip-placeholder" aria-hidden="true">{{ expert.name.slice(0, 1) }}</span>
             <div>
               <strong>{{ expert.name }}</strong><span>{{ expert.field }}</span>
             </div>
@@ -100,6 +123,19 @@ const rows = [
 .expert-card-front { display: flex; flex-direction: column; }
 .expert-image { aspect-ratio: 1 / 1; overflow: hidden; }
 .expert-image img { width: 100%; height: 100%; object-fit: cover; }
+.expert-image-placeholder {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 5px;
+  width: 100%;
+  height: 100%;
+  min-height: 130px;
+  background: #e1e9df;
+  color: #37275c;
+}
+.expert-image-placeholder > span { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; }
+.expert-image-placeholder small { font-size: .75rem; font-weight: 700; }
 .expert-card-content { padding: 20px; }
 .expert-card-front h3 { margin: 0 0 6px; font-size: 1.4rem; }
 .expert-field {
@@ -147,6 +183,18 @@ const rows = [
   border-radius: 999px;
 }
 .expert-profile-chip img { width: 42px; height: 42px; object-fit: cover; border: 2px solid white; border-radius: 50%; }
+.expert-chip-placeholder {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #e1e9df;
+  color: #37275c;
+  font-weight: 800;
+}
 .expert-profile-chip strong, .expert-profile-chip span { display: block; }
 .expert-profile-chip strong { font-size: .9rem; }
 .expert-profile-chip span { font-size: .75rem; }

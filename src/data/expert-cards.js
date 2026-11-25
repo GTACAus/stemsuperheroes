@@ -237,9 +237,9 @@ export const expertCards = [
     role: "GTAC STEM Coach",
     portrait: `${base}/meagan/portrait.jpg`,
     portraitAlt: "Portrait of Meagan",
-    superpower: "Using genetics and immunology to understand marsupials and help protect wildlife!",
-    coolFact: "A Year 10 genetics project helped Meagan discover what she wanted to study!",
-    impact: "Her research interests could help scientists better understand and protect marsupials.",
+    superpower: "Using genetics and immune-system science to understand marsupials and help protect wildlife!",
+    coolFact: "A Year 10 project with Punnett squares sparked her love of genetics!",
+    impact: "Her work may help scientists understand marsupials and protect wildlife.",
     lesson: "Science starts with curiosity about the world around you!",
   },
 ];
