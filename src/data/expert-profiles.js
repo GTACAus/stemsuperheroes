@@ -2554,230 +2554,142 @@ export const expertProfiles = {
   })(),
 
   /* =====================================================
-   SUE FAWCETT - GENETIC COUNSELLOR
+     SUE FAWCETT - GENETIC COUNSELLOR
 
-   STEM EXPERT - NOT A GTAC STEM COACH
+     STEM EXPERT (not a GTAC STEM Coach)
+     Reading level: Years 5-7; around 220 timeline words.
+     Sources: GTAC interview, 30 October 2026; existing Sue profile.
 
-   Sources:
-   - Interview: 30 October 2026
-   - The Royal Women's Hospital, Clinical Genetics Service
+     Only known personal photos: portrait.jpg and bootscoot.jpg.
+     Each timeline photo uses a distinct, illustrative placeholder.
+     Add the JPGs named in SUE-IMAGE-GUIDE.txt to the sue folder.
+     Missing photos are automatically hidden by ExpertTimeline.vue.
+     ===================================================== */
 
-   All images are stored locally.
-   Uses the existing reusable profile and timeline code.
-   ===================================================== */
-
-sue: (() => {
-
+  sue: (() => {
     const imageFolder = `${base}/sue/`;
 
     return {
+      name: "Sue",
+      role: "Genetic Counsellor and Genetic Services Manager",
+      organisation: "The Royal Women's Hospital, Melbourne",
+      portrait: `${imageFolder}portrait.jpg`,
+      superpower: "Helping people understand their genes and make choices about their health.",
+      imageFolder,
 
-        /* ================================================
-           A. BASIC INFORMATION
-           ================================================ */
+      /* Sue's story, told in five short stages.
+         These stock-photo placeholders are NOT photos of Sue.
+         portrait.jpg is used ONLY in the profile introduction. */
+      timeline: [
+        {
+          title: "A spark in Year 11",
+          colour: "#F43559",
+          image: `${imageFolder}leaf-microscope.jpg`,
+          imageAlt: "A leaf being studied under a microscope, like the one that inspired Sue",
+          points: [
+            "Sue and her brother were the first in their family to go to university.",
+            "In Year 11, a teacher named Greg Hunt helped her enjoy biology.",
+            "Looking at a leaf through a microscope made her wonder about tiny parts of living things.",
+            "She wanted to learn more.",
+          ],
+        },
+        {
+          title: "A change of plans",
+          colour: "#E9B400",
+          image: `${imageFolder}biology-studies.jpg`,
+          imageAlt: "Students studying in a library, representing Sue's time at university",
+          points: [
+            "Sue liked biology, English and history, but maths was hard for her.",
+            "She wanted to become a physiotherapist, who helps people move and recover.",
+            "Her school results were not high enough for that course.",
+            "Instead, she studied biology at La Trobe University and grew to love genes.",
+          ],
+        },
+        {
+          title: "Finding a new path",
+          colour: "#50B96D",
+          image: `${imageFolder}cancer-lab.jpg`,
+          imageAlt: "Researchers working in a laboratory, representing Sue's early cancer research work",
+          points: [
+            "Sue first worked in cancer research and later sold science tools.",
+            "She liked science, but she wanted to help people face-to-face.",
+            "In 1996, she moved to Newcastle to study genetic counselling.",
+            "She worked in Bathurst before joining the Royal Women's Hospital.",
+          ],
+        },
+        {
+          title: "Science meets people",
+          colour: "#4F71CB",
+          image: `${imageFolder}genetic-counselling.jpg`,
+          imageAlt: "A healthcare worker listening during a consultation, illustrating genetic counselling",
+          points: [
+            "Genes are parts of DNA that carry instructions for our bodies.",
+            "Some changes in genes can affect our health.",
+            "Sue explains what genetic tests can and cannot tell people.",
+            "She listens to their worries and helps them think about their choices.",
+          ],
+        },
+        {
+          title: "Leading and learning",
+          colour: "#00A7B8",
+          image: `${imageFolder}team-discussion.jpg`,
+          imageAlt: "A group of healthcare colleagues talking, representing Sue's team",
+          points: [
+            "Today, Sue leads a team of genetic counsellors at the Royal Women's Hospital.",
+            "They use science to help people with questions about their health.",
+            "Some talks are hard, so the team also looks after each other.",
+            "Sue keeps learning as scientists make new discoveries about genes.",
+          ],
+        },
+      ],
 
-        name: "Sue",
-
-        role: "Genetic Counsellor and Genetic Services Manager",
-
-        organisation: "The Royal Women's Hospital, Melbourne",
-
-        portrait: `${imageFolder}portrait.jpg`,
-
-        superpower:
-            "Helping people understand their genes and make choices about their health.",
-
-        imageFolder,
-
-
-        /* ================================================
-           B. INTERACTIVE TIMELINE
-
-           Five stages telling Sue's story.
-
-           Only portrait.jpg is available for the timeline
-           at the moment. You can replace the pictures
-           later without changing the story.
-           ================================================ */
-
-        timeline: [
-
-            // STAGE 1: A SPARK IN YEAR 11
-
-            {
-                title: "A spark in Year 11",
-                colour: "#F43559",
-
-                image: `${imageFolder}microscope.jpg`,
-                imageAlt: "Microscope image representing Sue's interest in biology",
-
-                points: [
-                    "Sue and her brother were the first in their family to go to university.",
-                    "In Year 11, a teacher named Greg Hunt helped Sue fall in love with biology.",
-                    "She was amazed by what she could see under a microscope, even inside a leaf!",
-                    "Sue wanted to know more about how living things work."
-                ]
-            },
-
-
-            // STAGE 2: A CHANGE OF PLAN
-
-            {
-                title: "A change of plan",
-                colour: "#E9B400",
-
-                image: `${imageFolder}portrait.jpg`,
-                imageAlt: "Portrait of Sue",
-
-                points: [
-                    "Sue loved biology, English, history and languages. But maths was not her thing!",
-                    "She hoped to become a physiotherapist, someone who helps people move and recover from injury.",
-                    "She did not get the VCE score she needed for that course.",
-                    "So Sue studied biology at La Trobe University, where she grew to love genetics."
-                ]
-            },
-
-
-            // STAGE 3: FINDING HER PATH
-
-            {
-                title: "Finding her path",
-                colour: "#50B96D",
-
-                image: `${imageFolder}portrait.jpg`,
-                imageAlt: "Portrait of Sue",
-
-                points: [
-                    "Sue first worked in cancer research at Peter Mac.",
-                    "Then she worked for a company that sold science products.",
-                    "But she wanted a job that mixed science with helping people.",
-                    "In 1996, she moved to Newcastle to study genetic counselling.",
-                    "Her first job was in Bathurst. Later, she joined the Royal Women's Hospital."
-                ]
-            },
-
-
-            // STAGE 4: SCIENCE MEETS PEOPLE
-
-            {
-                title: "Science meets people",
-                colour: "#4F71CB",
-
-                image: `${imageFolder}portrait.jpg`,
-                imageAlt: "Portrait of Sue",
-
-                points: [
-                    "Genes are parts of DNA. They help give our bodies instructions.",
-                    "Some changes in genes can affect our health.",
-                    "Sue helps people understand genetic tests and what the results may mean.",
-                    "She listens to their worries and talks through their choices.",
-                    "She helps people decide what is right for them, without making the choice for them."
-                ]
-            },
-
-
-            // STAGE 5: LEADING A TEAM
-
-            {
-                title: "Leading a team",
-                colour: "#00A7B8",
-
-                image: `${imageFolder}portrait.jpg`,
-                imageAlt: "Portrait of Sue",
-
-                points: [
-                    "Today, Sue leads a team of genetic counsellors at the Royal Women's Hospital.",
-                    "Her team uses science, but being a good listener matters just as much.",
-                    "Some talks can be hard. Sue and her team support each other too.",
-                    "Genetics keeps changing, so Sue is still learning new things at work."
-                ]
-            }
-
-        ],
-
-
-        /* ================================================
-           C. HOBBIES AND INTERESTS
-
-           One photo: bootscoot.jpg
-
-           The profile renderer will display this
-           as a single hobbies photograph.
-           ================================================ */
-
-        hobbies: {
-            heading: "Hobbies and interests",
-
-            text:
-                "Sue has met with her book club once a month for over 10 years! She also loves bootscooting (line dancing). She used to dance ballet and still enjoys watching it.",
-
+      /* Sue's own bootscooting photo is available now.
+         An optional book-club stock image can be added later.
+         With one photo the viewer is still; with two it is a carousel.
+         Never claim an illustrative stock photo shows Sue. */
+      hobbies: {
+        heading: "Hobbies and interests",
+        text: "Sue has been part of a monthly book club for over 10 years. She also loves bootscooting (line dancing)! She used to dance ballet and still enjoys watching it.",
+        images: [
+          {
             image: `${imageFolder}bootscoot.jpg`,
-            imageAlt: "Sue enjoying bootscooting"
-        },
+            imageAlt: "Sue enjoying bootscooting",
+            caption: "Bootscooting",
+          },
+          {
+            image: `${imageFolder}book-club.jpg`,
+            imageAlt: "Books and a cup of tea, representing Sue's book club hobby",
+            caption: "Book club",
+          },
+        ],
+      },
 
+      /* Only photos explicitly added here appear in the optional gallery. */
+      gallery: [],
 
-        /* ================================================
-           D. OPTIONAL PHOTO GALLERY
+      /* No suitable work photo has been provided; keep this text-only.
+         Do not repeat Sue's portrait in the impact panel. */
+      impact: {
+        heading: "Why does her work matter?",
+        points: [
+          "Helps people understand what genetic tests can and cannot tell them.",
+          "Supports families as they make their own health choices.",
+          "Shows that listening and kindness matter in science too.",
+        ],
+      },
 
-           No extra pictures selected yet.
+      // Paraphrased from the interview, not direct quotations.
+      adviceHeading: "Sue's advice",
+      advice: [
+        "You do not have to love every school subject to work in science.",
+        "Your first plan can change. That is OK!",
+        "Talk to people about their jobs to see what you might enjoy.",
+        "Practise listening. Science needs that skill too!",
+      ],
 
-           The gallery box will NOT appear.
-
-           You can select up to 5 photos later.
-           ================================================ */
-
-        gallery: [],
-
-
-        /* ================================================
-           E. WHY HER WORK MATTERS
-
-           Uses portrait.jpg until a suitable
-           work-related photograph is available.
-           ================================================ */
-
-        impact: {
-            heading: "Why does her work matter?",
-
-            image: `${imageFolder}portrait.jpg`,
-            imageAlt: "Sue, a genetic counsellor",
-
-            points: [
-                "Explains what a genetic test can and cannot tell someone.",
-                "Helps families think through health choices, without telling them what to do.",
-                "Makes time for people's questions and worries."
-            ]
-        },
-
-
-        /* ================================================
-           F. ADVICE FOR STUDENTS
-
-           Short, practical advice based on Sue's
-           interview. Not direct quotations.
-           ================================================ */
-
-        adviceHeading: "Sue's advice",
-
-        advice: [
-            "You do not have to like every school subject to work in science.",
-            "Your first plan might change. That is OK!",
-            "If a job sounds fun, talk to someone who does it.",
-            "Practise listening to people. Science needs that skill too.",
-            "Try volunteering or joining a club to meet new people and learn new skills."
-        ]
-
-
-        /* ================================================
-           G. OPTIONAL VIDEO
-
-           No video has been added for Sue.
-           ================================================ */
-
+      // No optional video until a real video is supplied.
     };
-
-})(),
-
+  })(),
 
   /* =====================================================
      VIJAY RAJAGOPAL - COMPUTATIONAL PHYSIOLOGIST
