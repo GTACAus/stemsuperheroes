@@ -3093,8 +3093,8 @@ export const expertProfiles = {
 
    Check the exact extensions of existing images with
    File Explorer > View > Show > File name extensions.
-   We reference aligator.jpg (one 'l', per folder screenshot),
-   chicken.jpg, surgery.jpg and portrait.jpeg.
+   We use .jpeg first for aligator (one 'l'), chicken
+   and surgery, with .jpg/.png fallbacks. Portrait is unchanged.
    ===================================================== */
 
 kiara: (() => {
@@ -3160,7 +3160,17 @@ kiara: (() => {
       {
         title: "Becoming a bird specialist",
         colour: "#00A7B8",
-        image: `${imageFolder}surgery.jpg`,
+        image: `${imageFolder}surgery.jpeg`,
+        // This image already exists in Kiara's folder.
+        // Try common alternative extensions if its name is .jpg or .png.
+        imageFallbacks: [
+          `${imageFolder}surgery.jpg`,
+          `${imageFolder}surgery.JPEG`,
+          `${imageFolder}surgery.JPG`,
+          `${imageFolder}surgery.png`,
+          `${imageFolder}surgery.PNG`,
+          `${imageFolder}surgery.webp`
+        ],
         imageAlt: "Veterinary surgery under way, from Kiara's existing photo collection",
         points: [
           "In 2021, Kiara began extra training to become a bird specialist.",
@@ -3189,13 +3199,33 @@ kiara: (() => {
        'aligator' deliberately has one 'l', per the screenshot. */
     gallery: [
       {
-        image: `${imageFolder}aligator.jpg`,
+        image: `${imageFolder}aligator.jpeg`,
+        // This image already exists in Kiara's folder.
+        // Try common alternative extensions if its name is .jpg or .png.
+        imageFallbacks: [
+          `${imageFolder}aligator.jpg`,
+          `${imageFolder}aligator.JPEG`,
+          `${imageFolder}aligator.JPG`,
+          `${imageFolder}aligator.png`,
+          `${imageFolder}aligator.PNG`,
+          `${imageFolder}aligator.webp`
+        ],
         imageAlt: "Veterinary X-ray showing the bones of a reptile",
         caption: "Reptile X-ray",
         imageFit: "contain"
       },
       {
-        image: `${imageFolder}chicken.jpg`,
+        image: `${imageFolder}chicken.jpeg`,
+        // This image already exists in Kiara's folder.
+        // Try common alternative extensions if its name is .jpg or .png.
+        imageFallbacks: [
+          `${imageFolder}chicken.jpg`,
+          `${imageFolder}chicken.JPEG`,
+          `${imageFolder}chicken.JPG`,
+          `${imageFolder}chicken.png`,
+          `${imageFolder}chicken.PNG`,
+          `${imageFolder}chicken.webp`
+        ],
         imageAlt: "3D medical scan of a chicken's head and skull",
         caption: "Chicken CT scan",
         imageFit: "contain"

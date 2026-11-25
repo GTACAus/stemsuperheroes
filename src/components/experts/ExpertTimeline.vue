@@ -17,6 +17,21 @@ const stage = computed(() => (selected.value === null ? null : props.stages[sele
 // it will display automatically. Reset when a different pin is selected.
 const failedImage = ref(null);
 watch(selected, () => { failedImage.value = null; });
+
+// If an individual stage provides alternative filenames, try each one.
+// This lets Kiara's existing JPEG surgery photo work whether it is .jpeg,
+// .jpg, or .png. If none exist, use the original text-only layout.
+function onTimelinePhotoError(event, selectedStage) {
+  const img = event.currentTarget;
+  const alternatives = Array.isArray(selectedStage.imageFallbacks) ? selectedStage.imageFallbacks : [];
+  const next = Number(img.dataset.fallbackIndex || 0);
+  if (next < alternatives.length) {
+    img.dataset.fallbackIndex = String(next + 1);
+    img.src = alternatives[next];
+    return;
+  }
+  failedImage.value = selectedStage.image;
+}
 </script>
 
 <template>
@@ -49,9 +64,10 @@ watch(selected, () => { failedImage.value = null; });
       </div>
       <figure v-if="stage.image && failedImage !== stage.image" class="timeline-photo-wrap">
         <img
+          :key="stage.image"
           class="timeline-photo"
           :src="stage.image"
-          @error="failedImage = stage.image"
+          @error="onTimelinePhotoError($event, stage)"
           :alt="stage.imageAlt || stage.title"
           :style="{ objectFit: stage.imageFit || 'cover' }"
         />

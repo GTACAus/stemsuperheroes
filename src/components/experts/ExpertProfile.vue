@@ -19,6 +19,7 @@ const impactIsVideo = computed(() =>
 // Hobby photos: hobbies.photos or hobbies.images (array), else hobbies.image (one).
 // Missing files are hidden automatically so you can add photos over time.
 const failedHobbyImages = ref([]);
+const failedGalleryImages = ref([]);
 const missingPortrait = ref(false);
 // 1 photo shows a plain image; 2+ photos show the carousel.
 const hobbyPhotos = computed(() => {
@@ -43,6 +44,7 @@ const hobbyPhotoDialog = ref(null);
 watch(() => props.expert, () => {
   carouselIndex.value = 0;
   failedHobbyImages.value = [];
+  failedGalleryImages.value = [];
   missingPortrait.value = false;
   if (hobbyPhotoDialog.value?.open) hobbyPhotoDialog.value.close();
 });
@@ -82,9 +84,29 @@ function onHobbyDialogClick(event) {
 // Optional extra photo collage: only photos listed in expert.gallery, at most 5.
 const galleryPhotos = computed(() =>
   Array.isArray(props.expert.gallery)
-    ? props.expert.gallery.filter((p) => p && p.image).slice(0, 5)
+    ? props.expert.gallery
+        .filter((p) => p && p.image && !failedGalleryImages.value.includes(p.image))
+        .slice(0, 5)
     : [],
 );
+
+// An optional per-photo list of alternate file extensions.
+// Only photos with imageFallbacks (currently Kiara's existing scans)
+// use this. Once all options are exhausted, hide that photo instead of
+// showing a broken icon or a large empty image card.
+function onGalleryPhotoError(event, photo) {
+  const img = event.currentTarget;
+  const alternatives = Array.isArray(photo.imageFallbacks) ? photo.imageFallbacks : [];
+  const next = Number(img.dataset.fallbackIndex || 0);
+  if (next < alternatives.length) {
+    img.dataset.fallbackIndex = String(next + 1);
+    img.src = alternatives[next];
+    return;
+  }
+  if (!failedGalleryImages.value.includes(photo.image)) {
+    failedGalleryImages.value = [...failedGalleryImages.value, photo.image];
+  }
+}
 </script>
 
 <template>
@@ -250,12 +272,13 @@ const galleryPhotos = computed(() =>
       class="profile-gallery-grid"
       :class="{ 'profile-gallery-grid--single': galleryPhotos.length === 1 }"
     >
-      <figure v-for="(photo, i) in galleryPhotos" :key="i" class="profile-gallery-item">
+      <figure v-for="photo in galleryPhotos" :key="photo.image" class="profile-gallery-item">
         <img
           :src="photo.image"
           :alt="photo.imageAlt || photo.caption || `Photo of ${expert.name}`"
           :style="photo.imageFit === 'contain' ? { objectFit: 'contain', backgroundColor: '#131b22' } : undefined"
           loading="lazy"
+          @error="onGalleryPhotoError($event, photo)"
         />
         <figcaption v-if="photo.caption">{{ photo.caption }}</figcaption>
       </figure>
